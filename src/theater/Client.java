@@ -3,7 +3,9 @@ package theater;
 import java.io.IOException;
 import java.io.Serializable;
 
+import address.Address;
 import curancy.Dollar;
+import phoneNumber.PhoneNumber;
 import storage.FileIO;
 import storage.Savable;
 
@@ -19,17 +21,36 @@ public class Client implements Savable, Serializable
 													// have enough clients to
 													// roll over
 	private Dollar balanceDue;
-	private String name;
-	private String address; // change to Address type if/when we create Address
-							// class
-	private String phoneNumber; // change to PhoneNumber type if/when we create
-								// PhoneNumber class
+	private ClientName name;
+	private Address address; 
+	private PhoneNumber phoneNumber; 
+	
+	public class ClientName
+	{
+		private String name;
+
+		public String getName()
+		{
+			return name;
+		}
+
+		public void setName(String name)
+		{
+			this.name = name;
+		}
+		
+		@Override
+		public String toString()
+		{
+			return getName();
+		}
+	}
 
 	Client(String name, String address, String phoneNumber)
 	{
-		this.name = name;
-		this.address = address;
-		this.phoneNumber = phoneNumber;
+		this.name.setName(name);
+		this.address.setAddress(address);
+		this.phoneNumber.setNumber(phoneNumber);
 		id = ++lastId;
 	}
 
@@ -60,34 +81,34 @@ public class Client implements Savable, Serializable
 		this.balanceDue = balanceDue;
 	}
 
-	public String getName()
+	public ClientName getName()
 	{
 		return name;
 	}
 
 	public void setName(String name)
 	{
-		this.name = name;
+		this.name.setName(name);
 	}
 
-	public String getAddress()
+	public Address getAddress()
 	{
 		return address;
 	}
 
 	public void setAddress(String address)
 	{
-		this.address = address;
+		this.address.setAddress(address);
 	}
 
-	public String getPhoneNumber()
+	public PhoneNumber getPhoneNumber()
 	{
 		return phoneNumber;
 	}
 
 	public void setPhoneNumber(String phoneNumber)
 	{
-		this.phoneNumber = phoneNumber;
+		this.phoneNumber.setNumber(phoneNumber);
 	}
 
 }

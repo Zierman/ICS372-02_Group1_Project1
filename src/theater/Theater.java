@@ -95,7 +95,7 @@ public class Theater implements Singleton<Theater>, Loadable, Savable
 		return clientList;
 	}
 
-	public boolean addClient(Client client)
+	public boolean addClient(ClientName name, Address address, PhoneNumber phoneNumber)
 	{
 		return clientList.add(client);
 	}
