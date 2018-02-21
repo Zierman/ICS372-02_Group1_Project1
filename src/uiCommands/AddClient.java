@@ -3,6 +3,7 @@
  */
 package uiCommands;
 
+import client.Client;
 import client.ClientList;
 import theater.Theater;
 import userInterface.UI;
@@ -74,8 +75,27 @@ public class AddClient implements Command<Theater>
 	@Override
 	public void call(Theater theater)
 	{
-		String clientName = UI.getInput("Enter Client's Name: ");
-		ClientList clientList = theater.getClientList();
+		boolean done = false;
+		while (!done)
+		{
+			try
+			{
+				String clientName = UI.getInput("Enter Client's Name: ");
+				String clientAddress = UI.getInput("Enter Client's Address: ");
+				String clientPhoneNumber = UI.getInput("Enter Client's Phone Number: ");
+				theater.getClientList().add(new Client(clientName,clientAddress,clientPhoneNumber));
+				
+				// the loop is done if the user answers no
+				done = UI.getInput("Add another client? (Y/N)").toLowerCase().startsWith("n");
+			}
+			catch (Exception e)
+			{
+				UI.OutputError(e, "Unable to add client");
+				
+				// the loop is done if the user answers no
+				done = UI.getInput("Try again? (Y/N)").toLowerCase().startsWith("n");
+			}
+		}
 	}
 
 }

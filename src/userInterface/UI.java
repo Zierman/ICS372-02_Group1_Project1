@@ -53,6 +53,11 @@ public class UI implements Singleton
 
 	}
 
+	public static void OutputError(Exception e, String string)
+	{
+		System.out.println(string);
+	}
+
 	// TODO finish
 
 }
