@@ -84,7 +84,7 @@ public class AddClient implements Command<Theater>
 				String clientAddress = UI.getInput("Enter Client's Address: ");
 				String clientPhoneNumber = UI.getInput("Enter Client's Phone Number: ");
 				theater.getClientList().add(new Client(clientName,clientAddress,clientPhoneNumber));
-				UI.outputSuccessMessage()
+				UI.outputSuccessMessage(clientName + " added to client list.");
 				
 				// the loop is done if the user answers no
 				done = UI.getInput("Add another client? (Y/N)").toLowerCase().startsWith("n");
