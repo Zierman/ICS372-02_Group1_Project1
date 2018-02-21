@@ -115,80 +115,67 @@ public class ClientList implements Singleton<ClientList>, List<Client>
 	@Override
 	public ListIterator<Client> listIterator()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return instance().clients.listIterator();
 	}
 
 	@Override
 	public ListIterator<Client> listIterator(int index)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return instance().clients.listIterator(index);
 	}
 
 	@Override
 	public boolean remove(Object object)
 	{
-		// TODO Auto-generated method stub
-		return false;
+		return instance().clients.remove(object);
 	}
 
 	@Override
 	public Client remove(int index)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return instance().clients.remove(index);
 	}
 
 	@Override
 	public boolean removeAll(Collection<?> collection)
 	{
-		// TODO Auto-generated method stub
-		return false;
+		return instance().clients.removeAll(collection);
 	}
 
 	@Override
 	public boolean retainAll(Collection<?> collection)
 	{
-		// TODO Auto-generated method stub
-		return false;
+		return instance().clients.retainAll(collection);
 	}
 
 	@Override
 	public Client set(int index, Client client)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return instance().clients.set(index, client);
 	}
 
 	@Override
 	public int size()
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return instance().clients.size();
 	}
 
 	@Override
 	public List<Client> subList(int startIndex, int endIndex)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return instance().clients.subList(startIndex, endIndex);
 	}
 
 	@Override
 	public Object[] toArray()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return instance().clients.toArray();
 	}
 
 	@Override
 	public <T> T[] toArray(T[] arg0)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return instance().clients.toArray(arg0);
 	}
-
-	// TODO Auto-generated method stub
 
 }
