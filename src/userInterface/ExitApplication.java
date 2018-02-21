@@ -3,8 +3,6 @@
  */
 package userInterface;
 
-import ui.UI;
-
 /**
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
