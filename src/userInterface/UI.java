@@ -4,8 +4,10 @@
 package userInterface;
 
 import java.util.LinkedList;
+import java.util.Scanner;
 
 import singleton.Singleton;
+import theater.Theater;
 
 /**
  * @author Joshua Zierman [py1422xs@metrostate.edu]
@@ -42,6 +44,14 @@ public class UI implements Singleton
 	public Object readResolve()
 	{
 		return instance();
+	}
+	
+	public static String getInput(String userPrompt)
+	{
+		Scanner scanner = new Scanner(System.in);
+		System.out.print(userPrompt);
+		return scanner.nextLine();
+		
 	}
 
 	// TODO finish

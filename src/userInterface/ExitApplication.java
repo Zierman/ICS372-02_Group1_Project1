@@ -3,13 +3,13 @@
  */
 package userInterface;
 
-import theater.Theater;
+import ui.UI;
 
 /**
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
-public class ExitApplication implements Command<Theater>
+public class ExitApplication implements Command<UI>
 {
 	private static ExitApplication singleton;
 	private final String LABEL = "Exit the application";
@@ -60,13 +60,13 @@ public class ExitApplication implements Command<Theater>
 	 * @see singleton.Singleton#readResolve()
 	 */
 	@Override
-	public Command<Theater> readResolve()
+	public Command<UI> readResolve()
 	{
 		return instance();
 	}
 
 	@Override
-	public void call(Theater arg)
+	public void call(UI ui)
 	{
 		// TODO Auto-generated method stub
 		

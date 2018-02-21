@@ -64,10 +64,10 @@ public class AddClient implements Command<Theater>
 	}
 
 	@Override
-	public void call(Theater arg)
+	public void call(Theater theater)
 	{
-		// TODO Auto-generated method stub
-
+		String clientName = UI.getInput("Enter Client's Name: ");
+		ClientList.instance();
 	}
 
 }
