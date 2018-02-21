@@ -1,10 +1,11 @@
 /**
  * 
  */
-package userInterface;
+package uiCommands;
 
-import theater.ClientList;
+import client.ClientList;
 import theater.Theater;
+import userInterface.UI;
 
 /**
  * @author Joshua Zierman [py1422xs@metrostate.edu]

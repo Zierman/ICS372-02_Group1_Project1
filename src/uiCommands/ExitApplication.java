@@ -1,7 +1,9 @@
 /**
  * 
  */
-package userInterface;
+package uiCommands;
+
+import userInterface.UI;
 
 /**
  * @author Joshua Zierman [py1422xs@metrostate.edu]

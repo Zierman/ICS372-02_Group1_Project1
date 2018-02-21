@@ -1,4 +1,4 @@
-package theater;
+package client;
 
 import java.util.Collection;
 import java.util.Iterator;

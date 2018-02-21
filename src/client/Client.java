@@ -1,4 +1,4 @@
-package theater;
+package client;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -46,7 +46,7 @@ public class Client implements Savable, Serializable
 		}
 	}
 
-	Client(String name, String address, String phoneNumber)
+	public Client(String name, String address, String phoneNumber)
 	{
 		this.name.setName(name);
 		this.address.setAddress(address);
@@ -54,7 +54,7 @@ public class Client implements Savable, Serializable
 		id = ++lastId;
 	}
 
-	Client(String name, Address address, PhoneNumber phoneNumber)
+	public Client(String name, Address address, PhoneNumber phoneNumber)
 	{
 		this.name.setName(name);
 		this.address.setAddress(address);

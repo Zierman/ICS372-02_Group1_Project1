@@ -6,12 +6,14 @@ package theater;
 import java.io.IOException;
 
 import address.Address;
+import client.Client;
+import client.ClientList;
+import client.Client.ClientName;
 import phoneNumber.PhoneNumber;
 import singleton.Singleton;
 import storage.FileIO;
 import storage.Loadable;
 import storage.Savable;
-import theater.Client.ClientName;
 
 /**
  * @author Joshua Zierman [py1422xs@metrostate.edu]

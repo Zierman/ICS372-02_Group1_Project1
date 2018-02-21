@@ -1,7 +1,7 @@
 /**
  * 
  */
-package userInterface;
+package uiCommands;
 
 import singleton.Singleton;
 
