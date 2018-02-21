@@ -49,13 +49,21 @@ public class UI implements Singleton
 	{
 		Scanner scanner = new Scanner(System.in);
 		System.out.print(userPrompt);
-		return scanner.nextLine();
+		String input = scanner.nextLine();
+		scanner.close();
+		return input;
 
 	}
 
-	public static void OutputError(Exception e, String string)
+	public static void outputError(Exception e, String string)
 	{
 		System.out.println(string);
+	}
+
+	public static void outputSuccessMessage(String string)
+	{
+		System.out.println(string);
+		
 	}
 
 	// TODO finish
