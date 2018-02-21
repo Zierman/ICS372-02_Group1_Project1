@@ -19,4 +19,10 @@ public class PhoneNumber
 	{
 		this.number = number;
 	}
+
+	public void setNumber(PhoneNumber phoneNumber)
+	{
+		this.number = phoneNumber.getNumber();
+		
+	}
 }

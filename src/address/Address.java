@@ -19,4 +19,9 @@ public class Address
 	{
 		return getAddress();
 	}
+
+	public void setAddress(Address address)
+	{
+		this.address = address.getAddress();
+	}
 }
