@@ -8,8 +8,10 @@ import java.io.IOException;
 import address.Address;
 import client.Client;
 import client.ClientList;
+import customer.CustomerList;
 import client.Client.Name;
 import phoneNumber.PhoneNumber;
+import play.PlayList;
 import singleton.Singleton;
 import storage.FileIO;
 import storage.Loadable;
@@ -25,7 +27,20 @@ public class Theater implements Singleton<Theater>, Loadable, Savable
 	protected static final String FILENAME = "theater.dat";
 	private String name;
 	private Integer seatingCapacity;
+	
 	private ClientList clientList = ClientList.instance();
+	private PlayList playList = PlayList.instance();
+	private CustomerList customerList = CustomerList.instance();
+
+	public PlayList getPlayList()
+	{
+		return playList;
+	}
+
+	public CustomerList getCustomerList()
+	{
+		return customerList;
+	}
 
 	public Integer getSeatingCapacity()
 	{
