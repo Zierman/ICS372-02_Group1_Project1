@@ -67,57 +67,49 @@ public class ClientList implements Singleton<ClientList>, List<Client>
 	@Override
 	public void clear()
 	{
-		// TODO Auto-generated method stub
-		
+		instance().clients.clear();
 	}
 
 	@Override
 	public boolean contains(Object object)
 	{
-		// TODO Auto-generated method stub
-		return false;
+		return instance().clients.contains(object);
 	}
 
 	@Override
 	public boolean containsAll(Collection<?> collection)
 	{
-		// TODO Auto-generated method stub
-		return false;
+		return instance().clients.containsAll(collection);
 	}
 
 	@Override
 	public Client get(int index)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return instance().clients.get(index);
 	}
 
 	@Override
 	public int indexOf(Object object)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return instance().clients.indexOf(object);
 	}
 
 	@Override
 	public boolean isEmpty()
 	{
-		// TODO Auto-generated method stub
-		return false;
+		return instance().clients.isEmpty();
 	}
 
 	@Override
 	public Iterator<Client> iterator()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return instance().clients.iterator();
 	}
 
 	@Override
 	public int lastIndexOf(Object object)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return instance().clients.lastIndexOf(object);
 	}
 
 	@Override
