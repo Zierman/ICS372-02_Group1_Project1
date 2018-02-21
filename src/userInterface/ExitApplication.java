@@ -26,7 +26,7 @@ public class ExitApplication implements Command<UI>
 	private ExitApplication(int i)
 	{
 	}
-	
+
 	public ExitApplication instance()
 	{
 		if (singleton == null)
@@ -36,8 +36,9 @@ public class ExitApplication implements Command<UI>
 		return singleton;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see userInterface.Command#getLabel()
 	 */
 	@Override
@@ -46,8 +47,9 @@ public class ExitApplication implements Command<UI>
 		return instance().LABEL;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see userInterface.Command#isDataCommand()
 	 */
 	@Override
@@ -56,7 +58,9 @@ public class ExitApplication implements Command<UI>
 		return instance().IS_DATA_COMMAND;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see singleton.Singleton#readResolve()
 	 */
 	@Override
@@ -69,9 +73,7 @@ public class ExitApplication implements Command<UI>
 	public void call(UI ui)
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
-
-

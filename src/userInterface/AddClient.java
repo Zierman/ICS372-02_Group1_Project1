@@ -36,7 +36,9 @@ public class AddClient implements Command<Theater>
 		return singleton;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see userInterface.Command#getLabel()
 	 */
 	@Override
@@ -45,7 +47,9 @@ public class AddClient implements Command<Theater>
 		return instance().LABEL;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see userInterface.Command#isDataCommand()
 	 */
 	@Override
@@ -54,7 +58,9 @@ public class AddClient implements Command<Theater>
 		return instance().IS_DATA_COMMAND;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see singleton.Singleton#readResolve()
 	 */
 	@Override

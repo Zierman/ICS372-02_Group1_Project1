@@ -29,7 +29,6 @@ public class UI implements Singleton
 	private UI(int i)
 	{
 	}
-	
 
 	public static UI instance()
 	{
@@ -45,13 +44,13 @@ public class UI implements Singleton
 	{
 		return instance();
 	}
-	
+
 	public static String getInput(String userPrompt)
 	{
 		Scanner scanner = new Scanner(System.in);
 		System.out.print(userPrompt);
 		return scanner.nextLine();
-		
+
 	}
 
 	// TODO finish

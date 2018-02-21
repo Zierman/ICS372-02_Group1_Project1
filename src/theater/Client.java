@@ -12,26 +12,31 @@ public class Client implements Savable, Serializable
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private long id;
-	private static long lastId = Long.MIN_VALUE; // I'm assuming we will never have enough clients to roll over
+	private static long lastId = Long.MIN_VALUE; // I'm assuming we will never
+													// have enough clients to
+													// roll over
 	private Dollar balanceDue;
 	private String name;
-	private String address; // change to Address type if/when we create Address class
-	private String phoneNumber; // change to PhoneNumber type if/when we create PhoneNumber class
-	
-	Client(String name, String address, String phoneNumber){
+	private String address; // change to Address type if/when we create Address
+							// class
+	private String phoneNumber; // change to PhoneNumber type if/when we create
+								// PhoneNumber class
+
+	Client(String name, String address, String phoneNumber)
+	{
 		this.name = name;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
-		id = ++ lastId; 
+		id = ++lastId;
 	}
-	
+
 	@Override
 	public void save() throws IOException
 	{
 		FileIO.write(this, ClientList.FILENAME);
-		
+
 	}
 
 	public long getId()
@@ -83,7 +88,5 @@ public class Client implements Savable, Serializable
 	{
 		this.phoneNumber = phoneNumber;
 	}
-	
-	
-	
+
 }

@@ -18,7 +18,7 @@ public class Theater implements Singleton<Theater>, Loadable, Savable
 	protected static final String FILENAME = "theater.dat";
 	private String name;
 	private Integer seatingCapacity;
-	
+
 	public Integer getSeatingCapacity()
 	{
 		return seatingCapacity;
@@ -60,7 +60,9 @@ public class Theater implements Singleton<Theater>, Loadable, Savable
 		return singleton;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see singleton.Singleton#readResolve()
 	 */
 	@Override
@@ -72,16 +74,16 @@ public class Theater implements Singleton<Theater>, Loadable, Savable
 	@Override
 	public void load() throws ClassNotFoundException, IOException
 	{
-		instance().setName((String)FileIO.read(filename));
-		instance().setSeatingCapacity((Integer)FileIO.read(filename));
+		instance().setName((String) FileIO.read(filename));
+		instance().setSeatingCapacity((Integer) FileIO.read(filename));
 		// TODO finish this
 	}
 
 	@Override
 	public void save() throws IOException
 	{
-		FileIO.write(name,filename);
-		FileIO.write(seatingCapacity,filename);
+		FileIO.write(name, filename);
+		FileIO.write(seatingCapacity, filename);
 		// TODO finish this
 	}
 
