@@ -15,7 +15,7 @@ import storage.FileIO;
 public class Theater implements Singleton<Theater>, Loadable, Savable
 {
 	private static Theater singleton;
-	private static final String filename = "theater.dat";
+	protected static final String FILENAME = "theater.dat";
 	private String name;
 	private Integer seatingCapacity;
 	

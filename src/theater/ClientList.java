@@ -11,6 +11,7 @@ import singleton.Singleton;
 public class ClientList implements Singleton<ClientList>, List<Client>
 {
 	private static ClientList singleton;
+	protected static final String FILENAME = "clients.dat";
 	private LinkedList<Client> clients = new LinkedList<Client>();
 
 	protected ClientList() throws Exception
