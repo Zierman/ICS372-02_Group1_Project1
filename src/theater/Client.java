@@ -54,6 +54,14 @@ public class Client implements Savable, Serializable
 		id = ++lastId;
 	}
 
+	Client(String name, Address address, PhoneNumber phoneNumber)
+	{
+		this.name.setName(name);
+		this.address.setAddress(address);
+		this.phoneNumber.setNumber(phoneNumber);
+		id = ++lastId;
+	}
+
 	@Override
 	public void save() throws IOException
 	{
