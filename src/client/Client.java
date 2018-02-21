@@ -21,10 +21,8 @@ public class Client implements Savable, Serializable
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private long id;
-	private static long lastId = Long.MIN_VALUE; // I'm assuming we will never
-													// have enough clients to
-													// roll over
+	private static long lastId = Long.MIN_VALUE; 
+	private ID id;
 	private Dollar balanceDue;
 	private Name name;
 	private Address address; 
@@ -34,8 +32,26 @@ public class Client implements Savable, Serializable
 	 * @author Joshua Zierman [py1422xs@metrostate.edu]
 	 *
 	 */
-	public class ID extends KeyToken<Client>
+	public class ID extends KeyToken<Client, Long>
 	{
+
+		@Override
+		protected Long getNextKey()
+		{
+			return Client.lastId + 1;
+		}
+
+		@Override
+		protected Long getLastKey()
+		{
+			return Client.lastId;
+		}
+
+		@Override
+		protected void setLastKey(Long key)
+		{
+			Client.lastId = key;		
+		}
 		
 	}
 	
@@ -69,7 +85,7 @@ public class Client implements Savable, Serializable
 		this.name.setName(name);
 		this.address.setAddress(address);
 		this.phoneNumber.setNumber(phoneNumber);
-		id = ++lastId;
+		id = new ID();
 	}
 
 	public Client(String name, Address address, PhoneNumber phoneNumber)
@@ -77,7 +93,7 @@ public class Client implements Savable, Serializable
 		this.name.setName(name);
 		this.address.setAddress(address);
 		this.phoneNumber.setNumber(phoneNumber);
-		id = ++lastId;
+		id = new ID();
 	}
 
 	@Override
@@ -87,12 +103,12 @@ public class Client implements Savable, Serializable
 
 	}
 
-	public long getId()
+	public ID getId()
 	{
 		return id;
 	}
 
-	public void setId(int id)
+	public void setId(ID id)
 	{
 		this.id = id;
 	}

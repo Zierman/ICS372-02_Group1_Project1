@@ -1,18 +1,36 @@
 package keyToken;
 
+import java.io.Serializable;
+
 /**
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  * @param <Type> They type of object this key is used for
  */
-public class KeyToken <Type>
+public abstract class KeyToken <Type, Key> implements Serializable
 {
-	private long id;
-	private static long lastID = Long.MIN_VALUE;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private Key key;
 	
 	public KeyToken()
 	{
-		id = ++ lastID;
+		key = getNextKey();
+		setLastKey(key);
+	}
+	
+	protected abstract Key getNextKey();
+	
+	protected abstract Key getLastKey();
+	
+	protected abstract void setLastKey(Key key);
+	
+	protected void setKey(Key key)
+	{
+		this.key = key;
 	}
 	
 	@Override
@@ -24,6 +42,6 @@ public class KeyToken <Type>
 	@Override
 	public String toString()
 	{
-		return getClass().getName() + id;
+		return getClass().getName() + key;
 	}
 }

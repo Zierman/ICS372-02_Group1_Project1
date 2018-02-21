@@ -9,6 +9,7 @@ import storage.Savable;
 
 public class Customer implements Savable, Serializable
 {
+	private static Long lastID = Long.MIN_VALUE;
 	
 	/**
 	 * @author Joshua Zierman [py1422xs@metrostate.edu]
@@ -39,9 +40,28 @@ public class Customer implements Savable, Serializable
 	 * @author Joshua Zierman [py1422xs@metrostate.edu]
 	 *
 	 */
-	public class ID extends KeyToken<Customer>
+	public class ID extends KeyToken<Customer, Long>
 	{
-		// Nothing should need to be added because it extends KeyToken<Customer>
+
+		@Override
+		protected Long getNextKey()
+		{
+			return Customer.lastID + 1;
+		}
+
+		@Override
+		protected Long getLastKey()
+		{
+			// TODO Auto-generated method stub
+			return Customer.lastID;
+		}
+
+		@Override
+		protected void setLastKey(Long key)
+		{
+			Customer.lastID = key;
+			
+		}
 	}
 	
 	@Override
