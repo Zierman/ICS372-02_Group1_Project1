@@ -1,7 +1,7 @@
 /**
  * 
  */
-package theater;
+package storage;
 
 import java.io.IOException;
 

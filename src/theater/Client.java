@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 import curancy.Dollar;
 import storage.FileIO;
+import storage.Savable;
 
 public class Client implements Savable, Serializable
 {

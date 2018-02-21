@@ -7,6 +7,8 @@ import java.io.IOException;
 
 import singleton.Singleton;
 import storage.FileIO;
+import storage.Loadable;
+import storage.Savable;
 
 /**
  * @author Joshua Zierman [py1422xs@metrostate.edu]
