@@ -34,7 +34,7 @@ public class Client implements Savable, Serializable
 		
 	}
 
-	public int getId()
+	public long getId()
 	{
 		return id;
 	}
