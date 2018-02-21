@@ -1,5 +1,9 @@
 package phoneNumber;
 
+/**
+ * @author Joshua Zierman [py1422xs@metrostate.edu]
+ *
+ */
 public class PhoneNumber
 {
 	private String number;

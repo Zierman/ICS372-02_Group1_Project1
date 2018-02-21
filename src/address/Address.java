@@ -1,5 +1,9 @@
 package address;
 
+/**
+ * @author Joshua Zierman [py1422xs@metrostate.edu]
+ *
+ */
 public class Address
 {
 	private String address;

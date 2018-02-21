@@ -5,10 +5,15 @@ import java.io.Serializable;
 
 import address.Address;
 import curancy.Dollar;
+import keyToken.KeyToken;
 import phoneNumber.PhoneNumber;
 import storage.FileIO;
 import storage.Savable;
 
+/**
+ * @author Joshua Zierman [py1422xs@metrostate.edu]
+ *
+ */
 public class Client implements Savable, Serializable
 {
 	/**
@@ -21,11 +26,24 @@ public class Client implements Savable, Serializable
 													// have enough clients to
 													// roll over
 	private Dollar balanceDue;
-	private ClientName name;
+	private Name name;
 	private Address address; 
 	private PhoneNumber phoneNumber; 
 	
-	public class ClientName
+	/**
+	 * @author Joshua Zierman [py1422xs@metrostate.edu]
+	 *
+	 */
+	public class ID extends KeyToken<Client>
+	{
+		
+	}
+	
+	/**
+	 * @author Joshua Zierman [py1422xs@metrostate.edu]
+	 *
+	 */
+	public class Name
 	{
 		private String name;
 
@@ -89,7 +107,7 @@ public class Client implements Savable, Serializable
 		this.balanceDue = balanceDue;
 	}
 
-	public ClientName getName()
+	public Name getName()
 	{
 		return name;
 	}

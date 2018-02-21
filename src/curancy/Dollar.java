@@ -1,5 +1,9 @@
 package curancy;
 
+/**
+ * @author Joshua Zierman [py1422xs@metrostate.edu]
+ *
+ */
 public class Dollar extends Currency<Double>
 {
 	private Double amount;

@@ -8,6 +8,10 @@ import java.util.ListIterator;
 
 import singleton.Singleton;
 
+/**
+ * @author Joshua Zierman [py1422xs@metrostate.edu]
+ *
+ */
 public class ClientList implements Singleton<ClientList>, List<Client>
 {
 	private static ClientList singleton;
