@@ -9,33 +9,32 @@ import theater.Theater;
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
-public class ExitApplication implements Command<Theater>
+public class AddClient implements Command<Theater>
 {
-	private static ExitApplication singleton;
-	private final String LABEL = "Exit the application";
+	private static AddClient singleton;
+	private final String LABEL = "Add a new client";
 	private final boolean IS_DATA_COMMAND = true;
 
-	protected ExitApplication() throws Exception
+	protected AddClient() throws Exception
 	{
-		if (getClass().getName().equals("ExitApplication"))
+		if (getClass().getName().equals("AddClient"))
 		{
 			throw new Exception();
 		}
 	}
 
-	private ExitApplication(int i)
+	private AddClient(int i)
 	{
 	}
-	
-	public ExitApplication instance()
+
+	public AddClient instance()
 	{
 		if (singleton == null)
 		{
-			singleton = new ExitApplication(1);
+			singleton = new AddClient(1);
 		}
 		return singleton;
 	}
-
 
 	/* (non-Javadoc)
 	 * @see userInterface.Command#getLabel()
@@ -45,7 +44,6 @@ public class ExitApplication implements Command<Theater>
 	{
 		return instance().LABEL;
 	}
-
 
 	/* (non-Javadoc)
 	 * @see userInterface.Command#isDataCommand()
@@ -69,9 +67,7 @@ public class ExitApplication implements Command<Theater>
 	public void call(Theater arg)
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
-
-

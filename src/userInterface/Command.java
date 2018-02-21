@@ -9,9 +9,9 @@ import singleton.Singleton;
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
-public interface Command extends Singleton
+public interface Command  <Type> extends Singleton<Command<Type>>
 {
 	public String getLabel();
-	public void setLabel(String label);
-	public void call();
+	public void call(Type arg);
+	public boolean isDataCommand();
 }

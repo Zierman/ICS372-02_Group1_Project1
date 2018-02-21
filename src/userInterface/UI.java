@@ -14,24 +14,36 @@ import singleton.Singleton;
 public class UI implements Singleton
 {
 
-	/* (non-Javadoc)
-	 * @see singleton.Singleton#instance()
-	 */
-	@Override
-	public Object instance()
+	private static UI singleton;
+
+	protected UI() throws Exception
 	{
-		// TODO Auto-generated method stub
-		return null;
+		if (getClass().getName().equals("UI"))
+		{
+			throw new Exception();
+		}
 	}
 
-	/* (non-Javadoc)
-	 * @see singleton.Singleton#readResolve()
-	 */
+	private UI(int i)
+	{
+	}
+	
+
+	public static UI instance()
+	{
+		if (singleton == null)
+		{
+			singleton = new UI(1);
+		}
+		return singleton;
+	}
+
 	@Override
 	public Object readResolve()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return instance();
 	}
+
+	// TODO finish
 
 }
