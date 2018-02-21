@@ -5,10 +5,13 @@ package theater;
 
 import java.io.IOException;
 
+import address.Address;
+import phoneNumber.PhoneNumber;
 import singleton.Singleton;
 import storage.FileIO;
 import storage.Loadable;
 import storage.Savable;
+import theater.Client.ClientName;
 
 /**
  * @author Joshua Zierman [py1422xs@metrostate.edu]
@@ -95,8 +98,8 @@ public class Theater implements Singleton<Theater>, Loadable, Savable
 		return clientList;
 	}
 
-	public boolean addClient(ClientName name, Address address, PhoneNumber phoneNumber)
+	public boolean addClient(String name, String address, String phoneNumber)
 	{
-		return clientList.add(client);
+		return clientList.add(new Client(name, address, phoneNumber));
 	}
 }
