@@ -3,6 +3,8 @@
  */
 package userInterface;
 
+import java.util.LinkedList;
+
 import singleton.Singleton;
 
 /**
