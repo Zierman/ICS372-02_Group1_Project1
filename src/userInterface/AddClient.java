@@ -3,6 +3,7 @@
  */
 package userInterface;
 
+import theater.ClientList;
 import theater.Theater;
 
 /**
@@ -73,7 +74,7 @@ public class AddClient implements Command<Theater>
 	public void call(Theater theater)
 	{
 		String clientName = UI.getInput("Enter Client's Name: ");
-		ClientList.instance();
+		ClientList clientList = theater.getClientList();
 	}
 
 }
