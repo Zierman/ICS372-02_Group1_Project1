@@ -16,6 +16,7 @@ import uiCommands.AddCustomer;
 import uiCommands.AddPlay;
 import uiCommands.Command;
 import uiCommands.ExitApplication;
+import uiCommands.Help;
 import uiCommands.ListAllClients;
 import uiCommands.ListAllCustomers;
 import uiCommands.ListAllPlays;
@@ -67,7 +68,7 @@ public class UI implements Singleton<UI>, Closeable
 			commandList.add(ListAllPlays.instance()); 		// command 11
 			commandList.add(StoreData.instance()); 			// command 12
 			commandList.add(RetrieveData.instance()); 		// command 13
-//			commandList.add(Help.instance()); 				// command 14
+			commandList.add(Help.instance()); 				// command 14
 			
 			// TODO make the rest of above commented out adds work
 			
