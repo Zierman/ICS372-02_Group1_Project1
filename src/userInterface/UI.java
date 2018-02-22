@@ -50,20 +50,20 @@ public class UI implements Singleton<UI>, Closeable
 		if (singleton == null)
 		{
 			singleton = new UI(1);
-			commandList.add(ExitApplication.instance());
-			commandList.add(AddClient.instance());
-			commandList.add(RemoveClient.instance());
-			commandList.add(ListAllClients.instance());
-			commandList.add(AddCustomer.instance());
-			commandList.add(RemoveCustomer.instance());
-			commandList.add(AddCreditCard.instance());
-			commandList.add(RemoveCreditCard.instance());
-			commandList.add(ListAllCustomers.instance());
-			//commandList.add(AddPlay.instance());
-			//commandList.add(ListAllPlays.instance());
-			//commandList.add(StoreData.instance());
-			//commandList.add(RetrieveData.instance());
-			//commandList.add(Help.instance());
+			commandList.add(ExitApplication.instance()); 	// command 1
+			commandList.add(AddClient.instance()); 			// command 2
+			commandList.add(RemoveClient.instance()); 		// command 3
+			commandList.add(ListAllClients.instance()); 	// command 4
+			commandList.add(AddCustomer.instance()); 		// command 5
+			commandList.add(RemoveCustomer.instance()); 	// command 6
+			commandList.add(AddCreditCard.instance()); 		// command 7
+			commandList.add(RemoveCreditCard.instance()); 	// command 8
+			commandList.add(ListAllCustomers.instance()); 	// command 9
+//			commandList.add(AddPlay.instance()); 			// command 10
+//			commandList.add(ListAllPlays.instance()); 		// command 11
+//			commandList.add(StoreData.instance()); 			// command 12
+//			commandList.add(RetrieveData.instance()); 		// command 13
+//			commandList.add(Help.instance()); 				// command 14
 			
 			// TODO make the rest of above commented out adds work
 			
