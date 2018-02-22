@@ -18,6 +18,7 @@ import uiCommands.Command;
 import uiCommands.ExitApplication;
 import uiCommands.ListAllClients;
 import uiCommands.ListAllCustomers;
+import uiCommands.ListAllPlays;
 import uiCommands.RemoveClient;
 import uiCommands.RemoveCreditCard;
 import uiCommands.RemoveCustomer;
@@ -61,7 +62,7 @@ public class UI implements Singleton<UI>, Closeable
 			commandList.add(RemoveCreditCard.instance()); 	// command 8
 			commandList.add(ListAllCustomers.instance()); 	// command 9
 			commandList.add(AddPlay.instance()); 			// command 10
-//			commandList.add(ListAllPlays.instance()); 		// command 11
+			commandList.add(ListAllPlays.instance()); 		// command 11
 //			commandList.add(StoreData.instance()); 			// command 12
 //			commandList.add(RetrieveData.instance()); 		// command 13
 //			commandList.add(Help.instance()); 				// command 14
