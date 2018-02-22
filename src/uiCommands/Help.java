@@ -81,7 +81,13 @@ public class Help implements Command<UI>
 	@Override
 	public void call(UI arg)
 	{
-		// TODO Auto-generated method stub
+		UI ui = UI.instance();
+		for (Command c : ui.getCommandList())
+		{
+			// TODO finish
+			// use c.getLabel() 
+		}
+		
 		
 	}
 
