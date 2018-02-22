@@ -150,6 +150,11 @@ public class UI implements Singleton<UI>, Closeable
 		scanner.close();
 	}
 
+	public LinkedList<Command<UI>> getCommandList()
+	{
+		return commandList;
+	}
+
 	// TODO finish
 
 }
