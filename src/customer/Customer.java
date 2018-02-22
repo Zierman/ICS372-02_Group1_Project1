@@ -46,6 +46,7 @@ public class Customer implements Savable, Serializable
 	}
 	
 	/**
+	 * subclass used to create a name for each Customer
 	 * @author Joshua Zierman [py1422xs@metrostate.edu]
 	 *
 	 */
@@ -71,6 +72,7 @@ public class Customer implements Savable, Serializable
 	}
 	
 	/**
+	 * subclass used to create an ID for each Customer
 	 * @author Joshua Zierman [py1422xs@metrostate.edu]
 	 *
 	 */
