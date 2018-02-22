@@ -122,7 +122,7 @@ public class UI implements Singleton<UI>, Closeable
 		{
 			ui.close();
 		}
-		catch (IOException e)
+		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
