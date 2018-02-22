@@ -111,7 +111,7 @@ public class AddPlay implements Command<UI>
 				
 				// convert from string to dates				
 				Date startDate = new SimpleDateFormat("MM/dd/yyyy").parse(startDateString);
-				Date endDate = new SimpleDateFormat("MM/dd/yyyy").parse(startDateString);
+				Date endDate = new SimpleDateFormat("MM/dd/yyyy").parse(endDateString);
 				
 				// create new play object
 				Play play = new Play(name, client, startDate, endDate);
