@@ -77,6 +77,11 @@ public class Customer implements Savable, Serializable
 	public class ID extends KeyToken<Customer, Long>
 	{
 
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		@Override
 		protected Long getNextKey()
 		{

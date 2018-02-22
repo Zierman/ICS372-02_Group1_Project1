@@ -35,6 +35,11 @@ public class Client implements Savable, Serializable
 	public static class ID extends KeyToken<Client, Long>
 	{
 
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		@Override
 		protected Long getNextKey()
 		{
