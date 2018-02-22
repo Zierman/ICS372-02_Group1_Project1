@@ -32,7 +32,7 @@ public class Client implements Savable, Serializable
 	 * @author Joshua Zierman [py1422xs@metrostate.edu]
 	 *
 	 */
-	public class ID extends KeyToken<Client, Long>
+	public static class ID extends KeyToken<Client, Long>
 	{
 
 		@Override
@@ -59,7 +59,7 @@ public class Client implements Savable, Serializable
 	 * @author Joshua Zierman [py1422xs@metrostate.edu]
 	 *
 	 */
-	public class Name
+	public static class Name
 	{
 		private String name;
 
@@ -106,11 +106,6 @@ public class Client implements Savable, Serializable
 	public ID getId()
 	{
 		return id;
-	}
-
-	public void setId(ID id)
-	{
-		this.id = id;
 	}
 
 	public Dollar getBalanceDue()
