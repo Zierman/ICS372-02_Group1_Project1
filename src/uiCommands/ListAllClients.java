@@ -1,12 +1,13 @@
 package uiCommands;
 
 import theater.Theater;
+import userInterface.UI;
 
 /**
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
-public class ListAllClients implements Command<Theater>
+public class ListAllClients implements Command<UI>
 {
 	private static ListAllClients singleton;
 	private final String LABEL = "Show a list of all clients.";
@@ -62,7 +63,7 @@ public class ListAllClients implements Command<Theater>
 	 * @see singleton.Singleton#readResolve()
 	 */
 	@Override
-	public Command<Theater> readResolve()
+	public Command<UI> readResolve()
 	{
 		return instance();
 	}
@@ -79,7 +80,7 @@ public class ListAllClients implements Command<Theater>
 	}
 
 	@Override
-	public void call(Theater arg)
+	public void call(UI arg)
 	{
 		// TODO Auto-generated method stub
 

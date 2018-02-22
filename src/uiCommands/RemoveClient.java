@@ -1,12 +1,13 @@
 package uiCommands;
 
 import theater.Theater;
+import userInterface.UI;
 
 /**
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
-public class RemoveClient implements Command<Theater>
+public class RemoveClient implements Command<UI>
 {
 	private static RemoveClient singleton;
 	private final String LABEL = "Remvoe a client from the client list.";
@@ -25,7 +26,7 @@ public class RemoveClient implements Command<Theater>
 	{
 	}
 
-	public RemoveClient instance()
+	public static RemoveClient instance()
 	{
 		if (singleton == null)
 		{
@@ -62,7 +63,7 @@ public class RemoveClient implements Command<Theater>
 	 * @see singleton.Singleton#readResolve()
 	 */
 	@Override
-	public Command<Theater> readResolve()
+	public Command<UI> readResolve()
 	{
 		return instance();
 	}
@@ -76,11 +77,12 @@ public class RemoveClient implements Command<Theater>
 		return IS_TERMINATION_COMMAND;
 	}
 
+
 	@Override
-	public void call(Theater arg)
+	public void call(UI arg)
 	{
 		// TODO Auto-generated method stub
-
+		
 	}
 
 }

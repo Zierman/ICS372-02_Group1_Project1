@@ -11,7 +11,7 @@ import userInterface.UI;
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
-public class AddClient implements Command<Theater>
+public class AddClient implements Command<UI>
 {
 	private static AddClient singleton;
 	private final String LABEL = "Add a new client";
@@ -67,14 +67,15 @@ public class AddClient implements Command<Theater>
 	 * @see singleton.Singleton#readResolve()
 	 */
 	@Override
-	public Command<Theater> readResolve()
+	public Command<UI> readResolve()
 	{
 		return instance();
 	}
 
 	@Override
-	public void call(Theater theater)
+	public void call(UI ui)
 	{
+		Theater theater = ui.getTheater();
 		boolean done = false;
 		while (!done)
 		{

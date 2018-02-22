@@ -8,8 +8,10 @@ import java.util.Scanner;
 
 import singleton.Singleton;
 import theater.Theater;
+import uiCommands.AddClient;
 import uiCommands.Command;
 import uiCommands.ExitApplication;
+import uiCommands.RemoveClient;
 
 /**
  * @author Joshua Zierman [py1422xs@metrostate.edu]
@@ -19,7 +21,7 @@ public class UI implements Singleton
 {
 
 	private static UI singleton;
-	private static Theater theater = Theater.instance();
+	private Theater theater = Theater.instance();
 	private static LinkedList<Command<UI>> commandList = new LinkedList<Command<UI>>();
 
 	protected UI() throws Exception
@@ -40,6 +42,22 @@ public class UI implements Singleton
 		{
 			singleton = new UI(1);
 			commandList.add(ExitApplication.instance());
+			commandList.add(AddClient.instance());
+			commandList.add(RemoveClient.instance());
+			
+			//TODO make the rest of this work
+			
+//			commandList.add(ListAllClients.instance());
+//			commandList.add(AddCustomer.instance());
+//			commandList.add(RemoveCustomer.instance());
+//			commandList.add(AddCreditCard.instance());
+//			commandList.add(RemoveCreditCard.instance());
+//			commandList.add(ListAllCustomers.instance());
+//			commandList.add(AddPlay.instance());
+//			commandList.add(ListAllPlays.instance());
+//			commandList.add(StoreData.instance());
+//			commandList.add(RetrieveData.instance());
+//			commandList.add(Help.instance());
 		}
 		return singleton;
 	}
@@ -82,6 +100,12 @@ public class UI implements Singleton
 			lastCommand.call(ui);
 		}
 	}
+
+	public Theater getTheater()
+	{
+		return theater;
+	}
+
 
 	// TODO finish
 
