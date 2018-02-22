@@ -197,6 +197,7 @@ public class ClientList implements Singleton<ClientList>, List<Client>, Savable,
 		{
 			instance().clients.add((Client) clientFile.read());
 		}
+		clientFile.close();
 		
 	}
 
@@ -208,6 +209,7 @@ public class ClientList implements Singleton<ClientList>, List<Client>, Savable,
 		{
 			clientFile.write(client);
 		}
+		clientFile.close();
 		
 	}
 

@@ -196,6 +196,7 @@ public class PlayList implements Singleton<PlayList>, List<Play>, Savable, Loada
 		{
 			instance().plays.add((Play) playFile.read());
 		}
+		playFile.close();
 	}
 
 	@Override
@@ -206,6 +207,7 @@ public class PlayList implements Singleton<PlayList>, List<Play>, Savable, Loada
 		{
 			playFile.write(play);
 		}
+		playFile.close();
 	}
 
 }
