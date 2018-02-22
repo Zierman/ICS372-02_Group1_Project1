@@ -26,7 +26,7 @@ public class ListAllClients implements Command<UI>
 	{
 	}
 
-	public ListAllClients instance()
+	public static ListAllClients instance()
 	{
 		if (singleton == null)
 		{
