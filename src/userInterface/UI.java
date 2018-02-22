@@ -3,6 +3,8 @@
  */
 package userInterface;
 
+import java.io.Closeable;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -17,9 +19,10 @@ import uiCommands.RemoveClient;
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
-public class UI implements Singleton
+public class UI implements Singleton<UI>, Closeable
 {
 
+	private static Scanner scanner = new Scanner(System.in);
 	private static UI singleton;
 	private Theater theater = Theater.instance();
 	private static LinkedList<Command<UI>> commandList = new LinkedList<Command<UI>>();
@@ -44,60 +47,84 @@ public class UI implements Singleton
 			commandList.add(ExitApplication.instance());
 			commandList.add(AddClient.instance());
 			commandList.add(RemoveClient.instance());
-			
-			//TODO make the rest of this work
-			
-//			commandList.add(ListAllClients.instance());
-//			commandList.add(AddCustomer.instance());
-//			commandList.add(RemoveCustomer.instance());
-//			commandList.add(AddCreditCard.instance());
-//			commandList.add(RemoveCreditCard.instance());
-//			commandList.add(ListAllCustomers.instance());
-//			commandList.add(AddPlay.instance());
-//			commandList.add(ListAllPlays.instance());
-//			commandList.add(StoreData.instance());
-//			commandList.add(RetrieveData.instance());
-//			commandList.add(Help.instance());
+			// TODO make the rest of this work
+
+			// commandList.add(ListAllClients.instance());
+			// commandList.add(AddCustomer.instance());
+			// commandList.add(RemoveCustomer.instance());
+			// commandList.add(AddCreditCard.instance());
+			// commandList.add(RemoveCreditCard.instance());
+			// commandList.add(ListAllCustomers.instance());
+			// commandList.add(AddPlay.instance());
+			// commandList.add(ListAllPlays.instance());
+			// commandList.add(StoreData.instance());
+			// commandList.add(RetrieveData.instance());
+			// commandList.add(Help.instance());
 		}
 		return singleton;
 	}
 
 	@Override
-	public Object readResolve()
+	public UI readResolve()
 	{
 		return instance();
 	}
 
 	public static String getInput(String userPrompt)
 	{
-		Scanner scanner = new Scanner(System.in);
+		String input = "";
+
 		System.out.print(userPrompt);
-		String input = scanner.nextLine();
-		scanner.close();
+		while (input == "" && scanner.hasNextLine())
+		{
+			input += scanner.nextLine();
+		}
 		return input;
 
 	}
 
 	public static void outputError(Exception e, String string)
 	{
-		System.out.println(string);
+		System.err.println(string);
 	}
 
 	public static void outputSuccessMessage(String string)
 	{
 		System.out.println(string);
-		
+
 	}
-	
+
 	public static void main(String[] args)
 	{
 		UI ui = UI.instance();
-		Command lastCommand = null;
-		
-		while(lastCommand == null || lastCommand.isTerminationCommand())
+		Command<UI> lastCommand = null;
+		String input = "";
+
+		// until a terminating command is issued, keep getting commands
+		while (lastCommand == null || !lastCommand.isTerminationCommand())
 		{
-			lastCommand = commandList.get(Integer.parseInt(getInput("Enter command number: ")));
-			lastCommand.call(ui);
+			try
+			{
+				input = getInput("Enter command number: ");
+				int commandNumber = Integer.parseInt(input) - 1;
+				lastCommand = commandList.get(commandNumber);
+				lastCommand.call(ui);
+			}
+			catch (Exception e)
+			{
+				outputError(e, "command \"" + input + "\" failed.");
+				lastCommand = null;
+			}
+		}
+
+		// after the program completes, close the UI.
+		try
+		{
+			ui.close();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
 		}
 	}
 
@@ -106,6 +133,11 @@ public class UI implements Singleton
 		return theater;
 	}
 
+	@Override
+	public void close() throws IOException
+	{
+		scanner.close();
+	}
 
 	// TODO finish
 

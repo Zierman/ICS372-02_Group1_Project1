@@ -24,9 +24,9 @@ public class Client implements Savable, Serializable
 	private static long lastId = Long.MIN_VALUE; 
 	private ID id;
 	private Dollar balanceDue;
-	private Name name;
-	private Address address; 
-	private PhoneNumber phoneNumber; 
+	private Name name = new Name();
+	private Address address = new Address(); 
+	private PhoneNumber phoneNumber = new PhoneNumber(); 
 	
 	/**
 	 * @author Joshua Zierman [py1422xs@metrostate.edu]
