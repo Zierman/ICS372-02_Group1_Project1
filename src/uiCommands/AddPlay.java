@@ -3,7 +3,7 @@
  */
 package uiCommands;
 
-import client.Client;
+import play.Play;
 import theater.Theater;
 import userInterface.UI;
 
@@ -75,29 +75,30 @@ public class AddPlay implements Command<UI>
 	@Override
 	public void call(UI ui)
 	{
-		Theater theater = ui.getTheater();
-		boolean done = false;
-		while (!done)
-		{
-			try
-			{
-				String clientName = UI.getInput("Enter Client's Name: ");
-				String clientAddress = UI.getInput("Enter Client's Address: ");
-				String clientPhoneNumber = UI.getInput("Enter Client's Phone Number: ");
-				theater.getClientList().add(new Client(clientName,clientAddress,clientPhoneNumber));
-				UI.outputSuccessMessage(clientName + " added to client list.");
-				
-				// the loop is done if the user answers no
-				done = UI.getInput("Add another client? (Y/N)").toLowerCase().startsWith("n");
-			}
-			catch (Exception e)
-			{
-				UI.outputError(e, "Unable to add client");
-				
-				// the loop is done if the user answers no
-				done = UI.getInput("Try again? (Y/N)").toLowerCase().startsWith("n");
-			}
-		}
+		//TODO finish working on this
+//		Theater theater = ui.getTheater();
+//		boolean done = false;
+//		while (!done)
+//		{
+//			try
+//			{
+//				String playName = UI.getInput("Enter Play's Name: ");
+//				String playAddress = UI.getDate("Enter Play's Address: ");
+//				String playPhoneNumber = UI.getInput("Enter Play's Phone Number: ");
+//				theater.getPlayList().add(new Play(playName,playAddress,playPhoneNumber));
+//				UI.outputSuccessMessage(playName + " added to play list.");
+//				
+//				// the loop is done if the user answers no
+//				done = UI.getInput("Add another play? (Y/N)").toLowerCase().startsWith("n");
+//			}
+//			catch (Exception e)
+//			{
+//				UI.outputError(e, "Unable to add play");
+//				
+//				// the loop is done if the user answers no
+//				done = UI.getInput("Try again? (Y/N)").toLowerCase().startsWith("n");
+//			}
+//		}
 	}
 
 	/* (non-Javadoc)

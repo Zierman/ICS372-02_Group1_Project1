@@ -55,6 +55,15 @@ public class Play implements Savable, Serializable
 			return getName();
 		}
 	}
+	
+	Play(String name, Client client, Date startDate, Date endDate)
+	{
+		this.name.setName(name);
+		this.client = client;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.balanceDue = new Dollar(0.0);
+	}
 
 	@Override
 	public void save() throws IOException
