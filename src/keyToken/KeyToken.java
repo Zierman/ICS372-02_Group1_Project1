@@ -33,6 +33,11 @@ public abstract class KeyToken <Type, Key> implements Serializable
 		this.key = key;
 	}
 	
+	public boolean matches(Key key)
+	{
+		return key == this.key;
+	}
+	
 	@Override
 	public boolean equals(Object obj)
 	{
