@@ -11,10 +11,14 @@ import java.util.Scanner;
 import singleton.Singleton;
 import theater.Theater;
 import uiCommands.AddClient;
+import uiCommands.AddCreditCard;
+import uiCommands.AddCustomer;
 import uiCommands.Command;
 import uiCommands.ExitApplication;
 import uiCommands.ListAllClients;
 import uiCommands.RemoveClient;
+import uiCommands.RemoveCreditCard;
+import uiCommands.RemoveCustomer;
 
 /**
  * @author Joshua Zierman [py1422xs@metrostate.edu]
@@ -49,19 +53,19 @@ public class UI implements Singleton<UI>, Closeable
 			commandList.add(AddClient.instance());
 			commandList.add(RemoveClient.instance());
 			commandList.add(ListAllClients.instance());
-			
-			// TODO make the rest of this work
-			
-			// commandList.add(AddCustomer.instance());
-			// commandList.add(RemoveCustomer.instance());
-			// commandList.add(AddCreditCard.instance());
-			// commandList.add(RemoveCreditCard.instance());
+			commandList.add(AddCustomer.instance());
+			commandList.add(RemoveCustomer.instance());
+			commandList.add(AddCreditCard.instance());
+			commandList.add(RemoveCreditCard.instance());
 			// commandList.add(ListAllCustomers.instance());
 			// commandList.add(AddPlay.instance());
 			// commandList.add(ListAllPlays.instance());
 			// commandList.add(StoreData.instance());
 			// commandList.add(RetrieveData.instance());
 			// commandList.add(Help.instance());
+			
+			// TODO make the rest of above commented out adds work
+			
 		}
 		return singleton;
 	}
