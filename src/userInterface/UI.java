@@ -22,6 +22,7 @@ import uiCommands.ListAllPlays;
 import uiCommands.RemoveClient;
 import uiCommands.RemoveCreditCard;
 import uiCommands.RemoveCustomer;
+import uiCommands.StoreData;
 
 /**
  * @author Joshua Zierman [py1422xs@metrostate.edu]
@@ -63,7 +64,7 @@ public class UI implements Singleton<UI>, Closeable
 			commandList.add(ListAllCustomers.instance()); 	// command 9
 			commandList.add(AddPlay.instance()); 			// command 10
 			commandList.add(ListAllPlays.instance()); 		// command 11
-//			commandList.add(StoreData.instance()); 			// command 12
+			commandList.add(StoreData.instance()); 			// command 12
 //			commandList.add(RetrieveData.instance()); 		// command 13
 //			commandList.add(Help.instance()); 				// command 14
 			
