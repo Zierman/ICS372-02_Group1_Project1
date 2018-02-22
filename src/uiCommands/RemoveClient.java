@@ -11,6 +11,7 @@ public class RemoveClient implements Command<Theater>
 	private static RemoveClient singleton;
 	private final String LABEL = "Remvoe a client from the client list.";
 	private final boolean IS_DATA_COMMAND = true;
+	private final boolean IS_TERMINATION_COMMAND = false;
 
 	protected RemoveClient() throws Exception
 	{
@@ -64,6 +65,15 @@ public class RemoveClient implements Command<Theater>
 	public Command<Theater> readResolve()
 	{
 		return instance();
+	}
+
+	/* (non-Javadoc)
+	 * @see uiCommands.Command#isTerminateionCommand()
+	 */
+	@Override
+	public boolean isTerminationCommand()
+	{
+		return IS_TERMINATION_COMMAND;
 	}
 
 	@Override

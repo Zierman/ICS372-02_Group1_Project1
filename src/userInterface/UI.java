@@ -8,6 +8,8 @@ import java.util.Scanner;
 
 import singleton.Singleton;
 import theater.Theater;
+import uiCommands.Command;
+import uiCommands.ExitApplication;
 
 /**
  * @author Joshua Zierman [py1422xs@metrostate.edu]
@@ -17,6 +19,8 @@ public class UI implements Singleton
 {
 
 	private static UI singleton;
+	private static Theater theater = Theater.instance();
+	private static LinkedList<Command<UI>> commandList = new LinkedList<Command<UI>>();
 
 	protected UI() throws Exception
 	{
@@ -35,6 +39,7 @@ public class UI implements Singleton
 		if (singleton == null)
 		{
 			singleton = new UI(1);
+			commandList.add(ExitApplication.instance());
 		}
 		return singleton;
 	}
@@ -64,6 +69,17 @@ public class UI implements Singleton
 	{
 		System.out.println(string);
 		
+	}
+	
+	public static void main(String[] args)
+	{
+		UI ui = UI.instance();
+		Command lastCommand;
+		
+		while(lastCommand == null || lastCommand.isTerminationCommand())
+		{
+			commandList.get(Integer.parseInt(getInput("Enter command number: ")));
+		}
 	}
 
 	// TODO finish

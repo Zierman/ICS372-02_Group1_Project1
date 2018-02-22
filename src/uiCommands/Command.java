@@ -16,4 +16,6 @@ public interface Command<Type> extends Singleton<Command<Type>>
 	public void call(Type arg);
 
 	public boolean isDataCommand();
+
+	public boolean isTerminationCommand();
 }

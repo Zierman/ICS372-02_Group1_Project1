@@ -11,6 +11,7 @@ public class ListAllClients implements Command<Theater>
 	private static ListAllClients singleton;
 	private final String LABEL = "Show a list of all clients.";
 	private final boolean IS_DATA_COMMAND = true;
+	private final boolean IS_TERMINATION_COMMAND = false;
 
 	protected ListAllClients() throws Exception
 	{
@@ -64,6 +65,17 @@ public class ListAllClients implements Command<Theater>
 	public Command<Theater> readResolve()
 	{
 		return instance();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see uiCommands.Command#isTerminationCommand()
+	 */
+	@Override
+	public boolean isTerminationCommand()
+	{
+		return IS_TERMINATION_COMMAND;
 	}
 
 	@Override

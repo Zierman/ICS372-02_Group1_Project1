@@ -14,6 +14,7 @@ public class ExitApplication implements Command<UI>
 	private static ExitApplication singleton;
 	private final String LABEL = "Exit the application";
 	private final boolean IS_DATA_COMMAND = true;
+	private final boolean IS_TERMINATION_COMMAND = true;
 
 	protected ExitApplication() throws Exception
 	{
@@ -27,7 +28,7 @@ public class ExitApplication implements Command<UI>
 	{
 	}
 
-	public ExitApplication instance()
+	public static ExitApplication instance()
 	{
 		if (singleton == null)
 		{
@@ -74,6 +75,12 @@ public class ExitApplication implements Command<UI>
 	{
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public boolean isTerminationCommand()
+	{
+		return IS_TERMINATION_COMMAND;
 	}
 
 }

@@ -4,7 +4,6 @@
 package uiCommands;
 
 import client.Client;
-import client.ClientList;
 import theater.Theater;
 import userInterface.UI;
 
@@ -17,6 +16,7 @@ public class AddClient implements Command<Theater>
 	private static AddClient singleton;
 	private final String LABEL = "Add a new client";
 	private final boolean IS_DATA_COMMAND = true;
+	private final boolean IS_TERMINATION_COMMAND = false;
 
 	protected AddClient() throws Exception
 	{
@@ -30,7 +30,7 @@ public class AddClient implements Command<Theater>
 	{
 	}
 
-	public AddClient instance()
+	public static AddClient instance()
 	{
 		if (singleton == null)
 		{
@@ -97,6 +97,15 @@ public class AddClient implements Command<Theater>
 				done = UI.getInput("Try again? (Y/N)").toLowerCase().startsWith("n");
 			}
 		}
+	}
+
+	/* (non-Javadoc)
+	 * @see uiCommands.Command#isTerminationCommand()
+	 */
+	@Override
+	public boolean isTerminationCommand()
+	{
+		return IS_TERMINATION_COMMAND;
 	}
 
 }
