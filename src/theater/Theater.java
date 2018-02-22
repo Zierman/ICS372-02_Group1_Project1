@@ -120,4 +120,9 @@ public class Theater implements Singleton<Theater>, Loadable, Savable
 	{
 		return list.add(object);
 	}
+	
+	public <Type, ListType extends List<Type>> boolean remove(Type object, ListType list)
+	{
+		return list.remove(object);
+	}
 }
