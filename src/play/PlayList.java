@@ -1,5 +1,6 @@
 package play;
 
+import java.io.IOException;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -7,12 +8,14 @@ import java.util.List;
 import java.util.ListIterator;
 
 import singleton.Singleton;
+import storage.Loadable;
+import storage.Savable;
 
 /**
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
-public class PlayList implements Singleton<PlayList>, List<Play>
+public class PlayList implements Singleton<PlayList>, List<Play>, Savable, Loadable
 {
 	private static PlayList singleton;
 	protected static final String FILENAME = "plays.dat";
@@ -181,6 +184,20 @@ public class PlayList implements Singleton<PlayList>, List<Play>
 	public <T> T[] toArray(T[] arg0)
 	{
 		return instance().plays.toArray(arg0);
+	}
+
+	@Override
+	public void load() throws ClassNotFoundException, IOException
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void save() throws IOException
+	{
+		// TODO Auto-generated method stub
+		
 	}
 
 }

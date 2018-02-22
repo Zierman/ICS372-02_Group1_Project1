@@ -6,12 +6,8 @@ package theater;
 import java.io.IOException;
 import java.util.List;
 
-import address.Address;
-import client.Client;
 import client.ClientList;
 import customer.CustomerList;
-import client.Client.Name;
-import phoneNumber.PhoneNumber;
 import play.PlayList;
 import singleton.Singleton;
 import storage.FileIO;
@@ -100,7 +96,9 @@ public class Theater implements Singleton<Theater>, Loadable, Savable
 	{
 		instance().setName((String) FileIO.read(FILENAME));
 		instance().setSeatingCapacity((Integer) FileIO.read(FILENAME));
-		// TODO finish this
+		clientList.load();
+		customerList.load();
+		playList.load();
 	}
 
 	@Override
@@ -108,7 +106,9 @@ public class Theater implements Singleton<Theater>, Loadable, Savable
 	{
 		FileIO.write(name, FILENAME);
 		FileIO.write(seatingCapacity, FILENAME);
-		// TODO finish this
+		clientList.save();
+		customerList.save();
+		playList.save();
 	}
 
 	public ClientList getClientList()
