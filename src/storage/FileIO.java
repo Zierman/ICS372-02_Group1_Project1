@@ -18,7 +18,7 @@ public class FileIO implements Closeable
 
 	private ObjectOutputStream objectOutputStream = null;
 
-	public FileIO() throws Exception
+	protected FileIO() throws Exception
 	{
 		throw new Exception();
 	}
