@@ -30,7 +30,6 @@ public class Play implements Serializable
 	private Date endDate;
 	
 	
-	
 	/**
 	 * @author Joshua Zierman [py1422xs@metrostate.edu]
 	 *
@@ -56,7 +55,7 @@ public class Play implements Serializable
 		}
 	}
 	
-	Play(String name, Client client, Date startDate, Date endDate)
+	public Play(String name, Client client, Date startDate, Date endDate)
 	{
 		this.name.setName(name);
 		this.client = client;

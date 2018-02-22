@@ -3,6 +3,12 @@
  */
 package uiCommands;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import client.Client;
+import jdk.nashorn.internal.parser.DateParser;
+import keyToken.noKeyTokenFoundException;
 import play.Play;
 import theater.Theater;
 import userInterface.UI;
@@ -76,29 +82,58 @@ public class AddPlay implements Command<UI>
 	public void call(UI ui)
 	{
 		//TODO finish working on this
-//		Theater theater = ui.getTheater();
-//		boolean done = false;
-//		while (!done)
-//		{
-//			try
-//			{
-//				String playName = UI.getInput("Enter Play's Name: ");
-//				String playAddress = UI.getDate("Enter Play's Address: ");
-//				String playPhoneNumber = UI.getInput("Enter Play's Phone Number: ");
-//				theater.getPlayList().add(new Play(playName,playAddress,playPhoneNumber));
-//				UI.outputSuccessMessage(playName + " added to play list.");
-//				
-//				// the loop is done if the user answers no
-//				done = UI.getInput("Add another play? (Y/N)").toLowerCase().startsWith("n");
-//			}
-//			catch (Exception e)
-//			{
-//				UI.outputError(e, "Unable to add play");
-//				
-//				// the loop is done if the user answers no
-//				done = UI.getInput("Try again? (Y/N)").toLowerCase().startsWith("n");
-//			}
-//		}
+		Theater theater = ui.getTheater();
+		boolean done = false;
+		while (!done)
+		{
+			try
+			{
+				// get input needed to create a new play object
+				String name = UI.getInput("Enter play's name: ");
+				String clientID = UI.getInput("Enter client's ID: ");
+				String startDateString = UI.getInput("Enter play's start date (MM/dd/yyyy): ");
+				String endDateString = UI.getInput("Enter play's end date (MM/dd/yyyy): ");
+				
+				// find client from clientID
+				Client client = null;
+				for(Client c : theater.getClientList())
+				{
+					if (c.getId().matches(Long.parseLong(clientID)))
+					{
+						client = c;
+						break;
+					}
+				}
+				if(client == null)
+				{
+					throw new noKeyTokenFoundException();
+				}
+				
+				// convert from string to dates				
+				Date startDate = new SimpleDateFormat("MM/dd/yyyy").parse(startDateString);
+				Date endDate = new SimpleDateFormat("MM/dd/yyyy").parse(startDateString);
+				
+				// create new play object
+				Play play = new Play(name, client, startDate, endDate);
+				
+				// add to list
+				theater.add(play, theater.getPlayList());
+				
+				// show user that it was added
+				UI.outputSuccessMessage(name + " added to play list.");
+				
+				// ask if user wants to continue and end if the user answers no
+				done = UI.getInput("Add another play? (Y/N)").toLowerCase().startsWith("n");
+			}
+			catch (Exception e)
+			{
+				// show error message
+				UI.outputError(e, "Unable to add play");
+				
+				// ask if user wants to continue and end if the user answers no
+				done = UI.getInput("Try again? (Y/N)").toLowerCase().startsWith("n");
+			}
+		}
 	}
 
 	/* (non-Javadoc)
