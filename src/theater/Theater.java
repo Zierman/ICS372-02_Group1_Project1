@@ -4,6 +4,7 @@
 package theater;
 
 import java.io.IOException;
+import java.util.List;
 
 import address.Address;
 import client.Client;
@@ -113,6 +114,11 @@ public class Theater implements Singleton<Theater>, Loadable, Savable
 	public ClientList getClientList()
 	{
 		return clientList;
+	}
+	
+	public <Type, ListType extends List<Type>> boolean  add(Type object, ListType list)
+	{
+		return list.add(object);
 	}
 
 	public boolean addClient(String name, String address, String phoneNumber)

@@ -81,20 +81,29 @@ public class AddClient implements Command<UI>
 		{
 			try
 			{
+				// get input needed to create a new client object
 				String clientName = UI.getInput("Enter Client's Name: ");
 				String clientAddress = UI.getInput("Enter Client's Address: ");
 				String clientPhoneNumber = UI.getInput("Enter Client's Phone Number: ");
-				theater.getClientList().add(new Client(clientName,clientAddress,clientPhoneNumber));
+				
+				// create new client object
+				Client client = new Client(clientName,clientAddress,clientPhoneNumber);
+				
+				// add to list
+				theater.add(client, theater.getClientList());
+				
+				// show user that it was added
 				UI.outputSuccessMessage(clientName + " added to client list.");
 				
-				// the loop is done if the user answers no
+				// ask if user wants to continue and end if the user answers no
 				done = UI.getInput("Add another client? (Y/N)").toLowerCase().startsWith("n");
 			}
 			catch (Exception e)
 			{
+				// show error message
 				UI.outputError(e, "Unable to add client");
 				
-				// the loop is done if the user answers no
+				// ask if user wants to continue and end if the user answers no
 				done = UI.getInput("Try again? (Y/N)").toLowerCase().startsWith("n");
 			}
 		}
