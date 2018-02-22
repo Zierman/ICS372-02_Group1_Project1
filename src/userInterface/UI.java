@@ -16,6 +16,7 @@ import uiCommands.AddCustomer;
 import uiCommands.Command;
 import uiCommands.ExitApplication;
 import uiCommands.ListAllClients;
+import uiCommands.ListAllCustomers;
 import uiCommands.RemoveClient;
 import uiCommands.RemoveCreditCard;
 import uiCommands.RemoveCustomer;
@@ -57,12 +58,12 @@ public class UI implements Singleton<UI>, Closeable
 			commandList.add(RemoveCustomer.instance());
 			commandList.add(AddCreditCard.instance());
 			commandList.add(RemoveCreditCard.instance());
-			// commandList.add(ListAllCustomers.instance());
-			// commandList.add(AddPlay.instance());
-			// commandList.add(ListAllPlays.instance());
-			// commandList.add(StoreData.instance());
-			// commandList.add(RetrieveData.instance());
-			// commandList.add(Help.instance());
+			commandList.add(ListAllCustomers.instance());
+			//commandList.add(AddPlay.instance());
+			//commandList.add(ListAllPlays.instance());
+			//commandList.add(StoreData.instance());
+			//commandList.add(RetrieveData.instance());
+			//commandList.add(Help.instance());
 			
 			// TODO make the rest of above commented out adds work
 			
