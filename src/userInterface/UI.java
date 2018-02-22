@@ -74,11 +74,12 @@ public class UI implements Singleton
 	public static void main(String[] args)
 	{
 		UI ui = UI.instance();
-		Command lastCommand;
+		Command lastCommand = null;
 		
 		while(lastCommand == null || lastCommand.isTerminationCommand())
 		{
-			commandList.get(Integer.parseInt(getInput("Enter command number: ")));
+			lastCommand = commandList.get(Integer.parseInt(getInput("Enter command number: ")));
+			lastCommand.call(ui);
 		}
 	}
 
