@@ -70,7 +70,6 @@ public class UI implements Singleton<UI>, Closeable
 			commandList.add(RetrieveData.instance()); 		// command 13
 			commandList.add(Help.instance()); 				// command 14
 			
-			// TODO make the rest of above commented out adds work
 			
 		}
 		return singleton;
