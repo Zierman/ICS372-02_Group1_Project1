@@ -120,9 +120,4 @@ public class Theater implements Singleton<Theater>, Loadable, Savable
 	{
 		return list.add(object);
 	}
-
-	public boolean addClient(String name, String address, String phoneNumber)
-	{
-		return clientList.add(new Client(name, address, phoneNumber));
-	}
 }
