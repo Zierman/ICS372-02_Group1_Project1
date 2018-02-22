@@ -13,6 +13,7 @@ import theater.Theater;
 import uiCommands.AddClient;
 import uiCommands.AddCreditCard;
 import uiCommands.AddCustomer;
+import uiCommands.AddPlay;
 import uiCommands.Command;
 import uiCommands.ExitApplication;
 import uiCommands.ListAllClients;
@@ -59,7 +60,7 @@ public class UI implements Singleton<UI>, Closeable
 			commandList.add(AddCreditCard.instance()); 		// command 7
 			commandList.add(RemoveCreditCard.instance()); 	// command 8
 			commandList.add(ListAllCustomers.instance()); 	// command 9
-//			commandList.add(AddPlay.instance()); 			// command 10
+			commandList.add(AddPlay.instance()); 			// command 10
 //			commandList.add(ListAllPlays.instance()); 		// command 11
 //			commandList.add(StoreData.instance()); 			// command 12
 //			commandList.add(RetrieveData.instance()); 		// command 13
