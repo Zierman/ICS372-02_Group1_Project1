@@ -170,6 +170,13 @@ public class Customer implements Savable, Serializable
 	 * options from the list of java's pre-defined Exceptions...
 	 * NoSuchFieldException or ClassNotFoundException could work, but they
 	 * don't seem fully appropriate.
+	 * 
+	 * >>FROM JOSH<<
+	 * 
+	 * NoSuchField and ClassNotFound don't work for this situation.
+	 * IllegalArgumentException might work because the card number 
+	 * is illegal. You could also create a new class named 
+	 * DuplicateCardException that extends Exception.  
 	 */
 	
 	/**
