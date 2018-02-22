@@ -94,8 +94,10 @@ public class Theater implements Singleton<Theater>, Loadable, Savable
 	@Override
 	public void load() throws ClassNotFoundException, IOException
 	{
-		instance().setName((String) FileIO.read(FILENAME));
-		instance().setSeatingCapacity((Integer) FileIO.read(FILENAME));
+		FileIO theaterFile = FileIO.startRead(FILENAME);
+		instance().setName((String) theaterFile.read());
+		instance().setSeatingCapacity((Integer) theaterFile.read());
+		theaterFile.close();
 		clientList.load();
 		customerList.load();
 		playList.load();
@@ -104,8 +106,10 @@ public class Theater implements Singleton<Theater>, Loadable, Savable
 	@Override
 	public void save() throws IOException
 	{
-		FileIO.write(name, FILENAME);
-		FileIO.write(seatingCapacity, FILENAME);
+		FileIO theaterFile = FileIO.startWrite(FILENAME);
+		theaterFile.write(name);
+		theaterFile.write(seatingCapacity);
+		theaterFile.close();
 		clientList.save();
 		customerList.save();
 		playList.save();

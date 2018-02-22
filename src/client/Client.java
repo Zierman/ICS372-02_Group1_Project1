@@ -14,7 +14,7 @@ import storage.Savable;
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
-public class Client implements Savable, Serializable
+public class Client implements Serializable
 {
 	/**
 	 * 
@@ -99,13 +99,6 @@ public class Client implements Savable, Serializable
 		this.address.setAddress(address);
 		this.phoneNumber.setNumber(phoneNumber);
 		id = new ID();
-	}
-
-	@Override
-	public void save() throws IOException
-	{
-		FileIO.write(this, ClientList.FILENAME);
-
 	}
 
 	public ID getId()

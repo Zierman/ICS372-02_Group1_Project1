@@ -16,7 +16,7 @@ import storage.Savable;
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
-public class Play implements Savable, Serializable
+public class Play implements Serializable
 {
 	/**
 	 * 
@@ -63,13 +63,6 @@ public class Play implements Savable, Serializable
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.balanceDue = new Dollar(0.0);
-	}
-
-	@Override
-	public void save() throws IOException
-	{
-		FileIO.write(this, PlayList.FILENAME);
-
 	}
 
 	public Dollar getBalanceDue()

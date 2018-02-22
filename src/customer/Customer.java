@@ -12,7 +12,7 @@ import storage.FileIO;
 import storage.Savable;
 
 
-public class Customer implements Savable, Serializable
+public class Customer implements Serializable
 {
 	private static Long lastID = Long.MIN_VALUE;
 	private ID id;
@@ -152,15 +152,6 @@ public class Customer implements Savable, Serializable
 		}
 	}
 	
-	/**
-	 * saves 
-	 */
-	@Override
-	public void save() throws IOException
-	{
-		FileIO.write(this, CustomerList.FILENAME);
-
-	}
 	
 	/*
 	 * !! JOSH !!

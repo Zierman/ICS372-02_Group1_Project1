@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 import singleton.Singleton;
+import storage.FileIO;
 import storage.Loadable;
 import storage.Savable;
 
@@ -189,15 +190,22 @@ public class PlayList implements Singleton<PlayList>, List<Play>, Savable, Loada
 	@Override
 	public void load() throws ClassNotFoundException, IOException
 	{
-		// TODO Auto-generated method stub
-		
+		instance().clear(); // clears the list in case anything was in it
+		FileIO playFile = FileIO.startRead(FILENAME);
+		while(playFile.hasMoreToRead())
+		{
+			instance().plays.add((Play) playFile.read());
+		}
 	}
 
 	@Override
 	public void save() throws IOException
 	{
-		// TODO Auto-generated method stub
-		
+		FileIO playFile = FileIO.startWrite(FILENAME);
+		for(Play play : instance().plays)
+		{
+			playFile.write(play);
+		}
 	}
 
 }

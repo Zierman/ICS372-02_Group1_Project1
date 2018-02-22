@@ -7,7 +7,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
+import play.Play;
 import singleton.Singleton;
+import storage.FileIO;
 import storage.Loadable;
 import storage.Savable;
 
@@ -189,14 +191,23 @@ public class ClientList implements Singleton<ClientList>, List<Client>, Savable,
 	@Override
 	public void load() throws ClassNotFoundException, IOException
 	{
-		// TODO Auto-generated method stub
+		instance().clear(); // clears the list in case anything was in it
+		FileIO clientFile = FileIO.startRead(FILENAME);
+		while(clientFile.hasMoreToRead())
+		{
+			instance().clients.add((Client) clientFile.read());
+		}
 		
 	}
 
 	@Override
 	public void save() throws IOException
 	{
-		// TODO Auto-generated method stub
+		FileIO clientFile = FileIO.startWrite(FILENAME);
+		for(Client client : instance().clients)
+		{
+			clientFile.write(client);
+		}
 		
 	}
 
