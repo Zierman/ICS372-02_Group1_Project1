@@ -7,9 +7,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
+import client.Client;
 import customer.Customer;
 import customer.CustomerList;
 import singleton.Singleton;
+import storage.FileIO;
 import storage.Loadable;
 import storage.Savable;
 
@@ -184,17 +186,29 @@ public class CustomerList implements Singleton<CustomerList>, List<Customer>, Sa
 		return instance().customers.toArray(arg0);
 	}
 
+
 	@Override
 	public void load() throws ClassNotFoundException, IOException
 	{
-		// TODO Auto-generated method stub
+		instance().clear(); // clears the list in case anything was in it
+		FileIO customerFile = FileIO.startRead(FILENAME);
+		LinkedList<Customer> tmp =  (LinkedList<Customer>) customerFile.read();
+		customerFile.close();
 		
+		for(Customer c : tmp)
+		{
+			instance().add(c);
+		}
 	}
 
 	@Override
 	public void save() throws IOException
 	{
-		// TODO Auto-generated method stub
+	
+		
+		FileIO customerFile = FileIO.startWrite(FILENAME);
+		customerFile.write(new LinkedList<Customer>(instance()));
+		customerFile.close();
 		
 	}
 
