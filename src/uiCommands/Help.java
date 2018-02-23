@@ -68,7 +68,9 @@ public class Help implements Command<UI>
 		return instance();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see uiCommands.Command#isTerminateionCommand()
 	 */
 	@Override
@@ -77,18 +79,33 @@ public class Help implements Command<UI>
 		return IS_TERMINATION_COMMAND;
 	}
 
-
 	@Override
 	public void call(UI arg)
 	{
-		UI ui = UI.instance();
-		int i = 0;
-		for (Command c : ui.getCommandList())
+		boolean done = false;
+		while (!done)
 		{
-			UI.println(++i + ") " + c.getLabel());
+			try
+			{
+				UI ui = UI.instance();
+				int i = 0;
+				for (Command c : ui.getCommandList())
+				{
+					UI.println(++i + ") " + c.getLabel());
+				}
+				done = true;
+			}
+			catch (Exception e)
+			{
+				// show error message
+				UI.outputError(e, "Unable to show commands");
+
+				// ask if user wants to continue and end if the user answers no
+				done = UI.getInput("Try again? (Y/N)").toLowerCase()
+						.startsWith("n");
+			}
 		}
-		
-		
+
 	}
 
 }
