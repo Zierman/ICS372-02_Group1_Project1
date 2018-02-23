@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.LinkedList;
 
+import com.sun.org.apache.xml.internal.serializer.SerializationHandler;
+
 import address.Address;
 import client.ClientList;
 import keyToken.KeyToken;
@@ -51,7 +53,7 @@ public class Customer implements Serializable, Keyed<Long>
 	 * @author Joshua Zierman [py1422xs@metrostate.edu]
 	 *
 	 */
-	public class Name
+	public class Name implements Serializable
 	{
 		private String name;
 

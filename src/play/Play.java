@@ -34,7 +34,7 @@ public class Play implements Serializable
 	 * @author Joshua Zierman [py1422xs@metrostate.edu]
 	 *
 	 */
-	public class Name
+	public class Name implements Serializable
 	{
 		private String name;
 
