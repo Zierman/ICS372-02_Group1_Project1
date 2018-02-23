@@ -3,6 +3,7 @@
  */
 package uiCommands;
 
+import theater.Theater;
 import userInterface.UI;
 
 /**
@@ -73,8 +74,22 @@ public class ExitApplication implements Command<UI>
 	@Override
 	public void call(UI ui)
 	{
-		// TODO Auto-generated method stub
-
+		boolean done = false;
+		while(!done)
+		try
+		{
+			Theater theater = ui.getTheater();
+			theater.save();
+			done = true;
+		}
+		catch (Exception e)
+		{
+			// show error message
+			UI.outputError(e, "Unable to store data");
+			
+			// ask if user wants to continue and end if the user answers no
+			done = !UI.tryAgainCheck();
+		}
 	}
 
 	@Override
