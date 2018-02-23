@@ -1,5 +1,6 @@
 package uiCommands;
 
+import keyToken.NoKeyTokenFoundException;
 import theater.Theater;
 import userInterface.UI;
 
@@ -68,7 +69,9 @@ public class RemoveCustomer implements Command<UI>
 		return instance();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see uiCommands.Command#isTerminateionCommand()
 	 */
 	@Override
@@ -77,12 +80,21 @@ public class RemoveCustomer implements Command<UI>
 		return IS_TERMINATION_COMMAND;
 	}
 
-
 	@Override
-	public void call(UI arg)
+	public void call(UI ui)
 	{
-		// TODO Auto-generated method stub
-		
+		Theater theater = ui.getTheater();
+		Long key = Long.parseLong(UI.getInput("Enter customer ID: "));
+		try
+		{
+			theater.removeMatched(key, theater.getCustomerList());
+			UI.outputSuccessMessage("customer removed");
+		}
+		catch (NoKeyTokenFoundException e)
+		{
+			UI.outputError(e, "no match found");
+		}
+
 	}
 
 }
