@@ -155,6 +155,23 @@ public class UI implements Singleton<UI>, Closeable
 	{
 		return theater;
 	}
+	
+	public boolean tryAgainCheck()
+	{
+		String input = "";
+		boolean bool = true;
+		do
+		{
+			input = UI.getInput("Try again? (Y/N)").toLowerCase();
+		}
+		while (!input.startsWith("n") && !input.startsWith("y"));
+		if(input.startsWith("n"))
+		{
+			bool = false;
+		}
+		
+		return bool;
+	}
 
 	@Override
 	public void close() throws IOException
