@@ -79,7 +79,7 @@ public class RetrieveData implements Command<UI>
 
 
 	@Override
-	public void call(UI arg)
+	public void call(UI ui)
 	{
 		// TODO check for data accessing command usage
 		boolean done = false;
