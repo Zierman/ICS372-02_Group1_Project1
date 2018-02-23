@@ -38,6 +38,7 @@ public class UI implements Singleton<UI>, Closeable
 	private Theater theater = Theater.instance();
 	private static LinkedList<Command<UI>> commandList = new LinkedList<Command<UI>>();
 	private static Command<UI> helpCommand = Help.instance();
+	private static final boolean DEBUG_MODE = true; // TODO turn DEBUG_MODE off
 
 	protected UI() throws Exception
 	{
@@ -97,6 +98,10 @@ public class UI implements Singleton<UI>, Closeable
 	public static void outputError(Exception e, String string)
 	{
 		System.err.println(string);
+		if(DEBUG_MODE)
+		{
+			e.printStackTrace();
+		}
 	}
 
 	public static void println(String string)

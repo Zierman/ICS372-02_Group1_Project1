@@ -5,7 +5,7 @@ package keyToken;
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
-public class noKeyTokenFoundException extends Exception
+public class NoKeyTokenFoundException extends Exception
 {
 
 	/**

@@ -8,7 +8,7 @@ import java.util.Date;
 
 import client.Client;
 import jdk.nashorn.internal.parser.DateParser;
-import keyToken.noKeyTokenFoundException;
+import keyToken.NoKeyTokenFoundException;
 import play.Play;
 import theater.Theater;
 import userInterface.UI;
@@ -98,7 +98,7 @@ public class AddPlay implements Command<UI>
 				Client client = null;
 				for(Client c : theater.getClientList())
 				{
-					if (c.getId().matches(Long.parseLong(clientID)))
+					if (c.getID().matches(Long.parseLong(clientID)))
 					{
 						client = c;
 						break;
@@ -106,7 +106,7 @@ public class AddPlay implements Command<UI>
 				}
 				if(client == null)
 				{
-					throw new noKeyTokenFoundException();
+					throw new NoKeyTokenFoundException();
 				}
 				
 				// convert from string to dates				

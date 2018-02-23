@@ -6,6 +6,7 @@ import java.io.Serializable;
 import address.Address;
 import curancy.Dollar;
 import keyToken.KeyToken;
+import keyToken.Keyed;
 import phoneNumber.PhoneNumber;
 import storage.FileIO;
 import storage.Savable;
@@ -14,25 +15,25 @@ import storage.Savable;
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
-public class Client implements Serializable
+public class Client implements Serializable, Keyed<Long>
 {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private static long lastId = Long.MIN_VALUE; 
+	private static long lastId = Long.MIN_VALUE;
 	private ID id;
 	private Dollar balanceDue;
 	private Name name = new Name();
-	private Address address = new Address(); 
-	private PhoneNumber phoneNumber = new PhoneNumber(); 
-	
+	private Address address = new Address();
+	private PhoneNumber phoneNumber = new PhoneNumber();
+
 	/**
 	 * @author Joshua Zierman [py1422xs@metrostate.edu]
 	 *
 	 */
-	public static class ID extends KeyToken<Client, Long> 
+	public static class ID extends KeyToken<Client, Long>
 	{
 
 		/**
@@ -55,11 +56,11 @@ public class Client implements Serializable
 		@Override
 		protected void setLastKey(Long key)
 		{
-			Client.lastId = key;		
+			Client.lastId = key;
 		}
-		
+
 	}
-	
+
 	/**
 	 * @author Joshua Zierman [py1422xs@metrostate.edu]
 	 *
@@ -77,7 +78,7 @@ public class Client implements Serializable
 		{
 			this.name = name;
 		}
-		
+
 		@Override
 		public String toString()
 		{
@@ -103,7 +104,7 @@ public class Client implements Serializable
 		balanceDue = new Dollar(0.0);
 	}
 
-	public ID getId()
+	public ID getID()
 	{
 		return id;
 	}
@@ -146,6 +147,12 @@ public class Client implements Serializable
 	public void setPhoneNumber(String phoneNumber)
 	{
 		this.phoneNumber.setNumber(phoneNumber);
+	}
+
+	@Override
+	public boolean matches(Long key)
+	{
+		return getID().matches(key);
 	}
 
 }

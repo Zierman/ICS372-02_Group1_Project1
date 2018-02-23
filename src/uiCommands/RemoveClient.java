@@ -1,5 +1,7 @@
 package uiCommands;
 
+import client.Client;
+import keyToken.NoKeyTokenFoundException;
 import theater.Theater;
 import userInterface.UI;
 
@@ -79,9 +81,19 @@ public class RemoveClient implements Command<UI>
 
 
 	@Override
-	public void call(UI arg)
+	public void call(UI ui)
 	{
-		// TODO Auto-generated method stub
+		Theater theater = ui.getTheater();
+		Long key = Long.parseLong(UI.getInput("Enter client ID: "));
+		try
+		{
+			theater.removeMatched(key, theater.getClientList());
+			UI.outputSuccessMessage("client removed");
+		}
+		catch (NoKeyTokenFoundException e)
+		{
+			UI.outputError(e, "no match found");
+		}
 		
 	}
 

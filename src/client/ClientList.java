@@ -7,6 +7,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
+import client.Client.ID;
+import keyToken.KeyedList;
+import keyToken.NoKeyTokenFoundException;
 import play.Play;
 import singleton.Singleton;
 import storage.FileIO;
@@ -17,7 +20,7 @@ import storage.Savable;
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
-public class ClientList implements Singleton<ClientList>, List<Client>, Savable, Loadable
+public class ClientList implements Singleton<ClientList>, KeyedList<Client, Long>, Savable, Loadable
 {
 	private static ClientList singleton;
 	protected static final String FILENAME = "clients.dat";
@@ -213,4 +216,43 @@ public class ClientList implements Singleton<ClientList>, List<Client>, Savable,
 		
 	}
 
+	@Override
+	public Client findMatched(Long key) throws NoKeyTokenFoundException
+	{
+		Client client = null;
+		for(Client c :  instance())
+		{
+			if(c.matches(key))
+			{
+				client = c;
+			}
+		}
+		if(client == null)
+		{
+			throw new NoKeyTokenFoundException();
+		}
+		return client;
+	}
+
+	@Override
+	public void removeMatched(Long key) throws NoKeyTokenFoundException
+	{
+		boolean found = false;
+		int i = 0;
+		for(Client c :  instance())
+		{
+			if(c.matches(key))
+			{
+				instance().remove(i);
+				found = true;
+				break;
+			}
+			i++;
+		}
+		if(!found)
+		{
+			throw new NoKeyTokenFoundException();
+		}
+		
+	}
 }

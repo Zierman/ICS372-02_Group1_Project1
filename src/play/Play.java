@@ -24,7 +24,7 @@ public class Play implements Serializable
 	private static final long serialVersionUID = 1L;
 
 	private Dollar balanceDue;
-	private Name name;
+	private Name name = new Name();
 	private Client client;
 	private Date startDate;
 	private Date endDate;
@@ -62,16 +62,6 @@ public class Play implements Serializable
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.balanceDue = new Dollar(0.0);
-	}
-
-	public Dollar getBalanceDue()
-	{
-		return balanceDue;
-	}
-
-	public void setBalanceDue(Dollar balanceDue)
-	{
-		this.balanceDue = balanceDue;
 	}
 
 	public Name getName()

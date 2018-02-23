@@ -1,5 +1,9 @@
 package uiCommands;
 
+import client.Client;
+import client.ClientList;
+import play.Play;
+import play.PlayList;
 import theater.Theater;
 import userInterface.UI;
 
@@ -80,9 +84,38 @@ public class ListAllPlays implements Command<UI>
 	}
 
 	@Override
-	public void call(UI arg)
+	public void call(UI ui)
 	{
-		// TODO Auto-generated method stub
+
+		boolean done = false;
+		while (!done)
+		{
+			try
+			{
+				Theater theater = ui.getTheater();
+				PlayList playList = theater.getPlayList();
+				String output = "";
+				for (Play play : playList)
+				{
+					output += "name: " + play.getName() + ",\n" + "start date: "
+							+ play.getStartDate() + ",\n" + "end date: "
+							+ play.getEndDate() + ",\n" + "Client : "
+							+ play.getClient().getName() + " ("
+							+ play.getClient().getID() + ")\n" + "\n";
+				}
+				UI.println(output);
+				done = true;
+			}
+			catch (Exception e)
+			{
+
+				// show error message
+				UI.outputError(e, "Unable to list all plays");
+
+				// ask if user wants to continue and end if the user answers no
+				done = !UI.tryAgainCheck();
+			}
+		}
 
 	}
 

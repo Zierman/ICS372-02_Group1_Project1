@@ -8,6 +8,9 @@ import java.util.List;
 
 import client.ClientList;
 import customer.CustomerList;
+import keyToken.Keyed;
+import keyToken.KeyedList;
+import keyToken.NoKeyTokenFoundException;
 import play.PlayList;
 import singleton.Singleton;
 import storage.FileIO;
@@ -125,8 +128,8 @@ public class Theater implements Singleton<Theater>, Loadable, Savable
 		return list.add(object);
 	}
 	
-	public <Type, ListType extends List<Type>> boolean remove(Type object, ListType list)
+	public <ListType extends KeyedList<Type, Key>, Type extends Keyed<Key>, Key> void removeMatched(Key key, ListType list) throws NoKeyTokenFoundException
 	{
-		return list.remove(object);
+		list.removeMatched(key);
 	}
 }

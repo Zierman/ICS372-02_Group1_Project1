@@ -35,7 +35,7 @@ public abstract class KeyToken <Type, Key> implements Serializable
 	
 	public boolean matches(Key key)
 	{
-		return key.equals(key);
+		return this.key.equals(key);
 	}
 	
 	@Override

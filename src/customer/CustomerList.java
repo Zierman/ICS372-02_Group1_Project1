@@ -10,12 +10,14 @@ import java.util.ListIterator;
 import client.Client;
 import customer.Customer;
 import customer.CustomerList;
+import keyToken.KeyedList;
+import keyToken.NoKeyTokenFoundException;
 import singleton.Singleton;
 import storage.FileIO;
 import storage.Loadable;
 import storage.Savable;
 
-public class CustomerList implements Singleton<CustomerList>, List<Customer>, Savable, Loadable
+public class CustomerList implements Singleton<CustomerList>, KeyedList<Customer, Long>, Savable, Loadable
 {
 	private static CustomerList singleton;
 	protected static final String FILENAME = "customers.dat";
@@ -209,6 +211,48 @@ public class CustomerList implements Singleton<CustomerList>, List<Customer>, Sa
 		FileIO customerFile = FileIO.startWrite(FILENAME);
 		customerFile.write(new LinkedList<Customer>(instance()));
 		customerFile.close();
+		
+	}
+
+	@Override
+	public Customer findMatched(Long key) throws NoKeyTokenFoundException
+	{
+		Customer customer = null;
+		for(Customer c :  instance())
+		{
+			if(c.matches(key))
+			{
+				customer = c;
+			}
+		}
+		if(customer == null)
+		{
+			throw new NoKeyTokenFoundException();
+		}
+		return customer;
+	}
+
+	@Override
+	public void removeMatched(Long key) throws NoKeyTokenFoundException
+	{
+
+		boolean found = false;
+		int i = 0;
+		for(Customer c :  instance())
+		{
+			if(c.matches(key))
+			{
+				instance().remove(i);
+				found = true;
+				break;
+			}
+			i++;
+		}
+		if(!found)
+		{
+			throw new NoKeyTokenFoundException();
+		}
+		
 		
 	}
 

@@ -7,12 +7,13 @@ import java.util.LinkedList;
 import address.Address;
 import client.ClientList;
 import keyToken.KeyToken;
+import keyToken.Keyed;
 import phoneNumber.PhoneNumber;
 import storage.FileIO;
 import storage.Savable;
 
 
-public class Customer implements Serializable
+public class Customer implements Serializable, Keyed<Long>
 {
 	private static Long lastID = Long.MIN_VALUE;
 	private ID id;
@@ -290,6 +291,12 @@ public class Customer implements Serializable
 	 */
 	public void setPhoneNum(String phoneNum){
 		this.phoneNumber.setNumber(phoneNum);
+	}
+
+	@Override
+	public boolean matches(Long key)
+	{
+		return getID().matches(key);
 	}
 	
 	// TODO Finish

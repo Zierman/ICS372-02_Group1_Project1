@@ -85,33 +85,34 @@ public class ListAllClients implements Command<UI>
 	public void call(UI ui)
 	{
 		boolean done = false;
-		try
+		while (!done)
 		{
-			Theater theater = ui.getTheater();
-			ClientList clientList = theater.getClientList();
-			String output = "";
-			for(Client client : clientList)
+			try
 			{
-				output += "id: " + client.getId() + ",\n"
-						+ "name: " + client.getName() + ",\n"
-						+ "balance due: " + client.getBalanceDue() + ",\n"
-						+ "address: " + client.getAddress() + ",\n"
-						+ "phone number: " + client.getPhoneNumber() + "\n"
-						+ "\n";
+				Theater theater = ui.getTheater();
+				ClientList clientList = theater.getClientList();
+				String output = "";
+				for (Client client : clientList)
+				{
+					output += "id: " + client.getID() + ",\n" + "name: "
+							+ client.getName() + ",\n" + "balance due: "
+							+ client.getBalanceDue() + ",\n" + "address: "
+							+ client.getAddress() + ",\n" + "phone number: "
+							+ client.getPhoneNumber() + "\n" + "\n";
+				}
+				UI.println(output);
+				done = true;
 			}
-			UI.println(output);
-			done = true;
-		}
-		catch (Exception e)
-		{
+			catch (Exception e)
+			{
 
-			// show error message
-			UI.outputError(e, "Unable to list all clients");
-			
-			// ask if user wants to continue and end if the user answers no
-			done = !UI.tryAgainCheck();
+				// show error message
+				UI.outputError(e, "Unable to list all clients");
+
+				// ask if user wants to continue and end if the user answers no
+				done = !UI.tryAgainCheck();
+			}
 		}
-		
 
 	}
 
