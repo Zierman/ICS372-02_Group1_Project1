@@ -32,7 +32,7 @@ public class Client implements Serializable
 	 * @author Joshua Zierman [py1422xs@metrostate.edu]
 	 *
 	 */
-	public static class ID extends KeyToken<Client, Long>
+	public static class ID extends KeyToken<Client, Long> 
 	{
 
 		/**
@@ -64,7 +64,7 @@ public class Client implements Serializable
 	 * @author Joshua Zierman [py1422xs@metrostate.edu]
 	 *
 	 */
-	public static class Name
+	public static class Name implements Serializable
 	{
 		private String name;
 

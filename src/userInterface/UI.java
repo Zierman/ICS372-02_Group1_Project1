@@ -56,22 +56,21 @@ public class UI implements Singleton<UI>, Closeable
 		if (singleton == null)
 		{
 			singleton = new UI(1);
-			commandList.add(ExitApplication.instance()); 	// command 1
-			commandList.add(AddClient.instance()); 			// command 2
-			commandList.add(RemoveClient.instance()); 		// command 3
-			commandList.add(ListAllClients.instance()); 	// command 4
-			commandList.add(AddCustomer.instance()); 		// command 5
-			commandList.add(RemoveCustomer.instance()); 	// command 6
-			commandList.add(AddCreditCard.instance()); 		// command 7
-			commandList.add(RemoveCreditCard.instance()); 	// command 8
-			commandList.add(ListAllCustomers.instance()); 	// command 9
-			commandList.add(AddPlay.instance()); 			// command 10
-			commandList.add(ListAllPlays.instance()); 		// command 11
-			commandList.add(StoreData.instance()); 			// command 12
-			commandList.add(RetrieveData.instance()); 		// command 13
-			commandList.add(Help.instance()); 				// command 14
-			
-			
+			commandList.add(ExitApplication.instance()); // command 1
+			commandList.add(AddClient.instance()); // command 2
+			commandList.add(RemoveClient.instance()); // command 3
+			commandList.add(ListAllClients.instance()); // command 4
+			commandList.add(AddCustomer.instance()); // command 5
+			commandList.add(RemoveCustomer.instance()); // command 6
+			commandList.add(AddCreditCard.instance()); // command 7
+			commandList.add(RemoveCreditCard.instance()); // command 8
+			commandList.add(ListAllCustomers.instance()); // command 9
+			commandList.add(AddPlay.instance()); // command 10
+			commandList.add(ListAllPlays.instance()); // command 11
+			commandList.add(StoreData.instance()); // command 12
+			commandList.add(RetrieveData.instance()); // command 13
+			commandList.add(Help.instance()); // command 14
+
 		}
 		return singleton;
 	}
@@ -155,8 +154,11 @@ public class UI implements Singleton<UI>, Closeable
 	{
 		return theater;
 	}
-	
-	public boolean tryAgainCheck()
+
+	/** Asks user if they wish to try again and returns true if they do
+	 * @return true if user wants to try again, else false
+	 */
+	public static boolean tryAgainCheck()
 	{
 		String input = "";
 		boolean bool = true;
@@ -165,11 +167,11 @@ public class UI implements Singleton<UI>, Closeable
 			input = UI.getInput("Try again? (Y/N)").toLowerCase();
 		}
 		while (!input.startsWith("n") && !input.startsWith("y"));
-		if(input.startsWith("n"))
+		if (input.startsWith("n"))
 		{
 			bool = false;
 		}
-		
+
 		return bool;
 	}
 

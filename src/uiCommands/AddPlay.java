@@ -131,7 +131,7 @@ public class AddPlay implements Command<UI>
 				UI.outputError(e, "Unable to add play");
 				
 				// ask if user wants to continue and end if the user answers no
-				done = UI.getInput("Try again? (Y/N)").toLowerCase().startsWith("n");
+				done = !UI.tryAgainCheck();
 			}
 		}
 	}

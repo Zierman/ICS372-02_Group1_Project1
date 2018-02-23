@@ -97,7 +97,7 @@ public class RetrieveData implements Command<UI>
 			UI.outputError(e, "Unable to retrieve data");
 			
 			// ask if user wants to continue and end if the user answers no
-			done = UI.getInput("Try again? (Y/N)").toLowerCase().startsWith("n");
+			done = !UI.tryAgainCheck();
 		}
 	}
 

@@ -1,11 +1,17 @@
 package phoneNumber;
 
+import java.io.Serializable;
+
 /**
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
-public class PhoneNumber
+public class PhoneNumber implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String number;
 	
 	@Override

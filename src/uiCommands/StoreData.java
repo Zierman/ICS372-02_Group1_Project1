@@ -93,12 +93,12 @@ public class StoreData implements Command<UI>
 		}
 		catch (Exception e)
 		{
-
+			e.printStackTrace();
 			// show error message
 			UI.outputError(e, "Unable to store data");
 			
 			// ask if user wants to continue and end if the user answers no
-			done = UI.getInput("Try again? (Y/N)").toLowerCase().startsWith("n");
+			done = !UI.tryAgainCheck();
 		}
 	}
 

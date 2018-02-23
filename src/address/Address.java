@@ -1,11 +1,17 @@
 package address;
 
+import java.io.Serializable;
+
 /**
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
-public class Address
+public class Address implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String address;
 
 	public String getAddress()
