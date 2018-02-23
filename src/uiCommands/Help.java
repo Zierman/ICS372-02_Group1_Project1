@@ -82,10 +82,10 @@ public class Help implements Command<UI>
 	public void call(UI arg)
 	{
 		UI ui = UI.instance();
+		int i = 0;
 		for (Command c : ui.getCommandList())
 		{
-			// TODO finish
-			// use c.getLabel() 
+			UI.println(++i + ") " + c.getLabel());
 		}
 		
 		

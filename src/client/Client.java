@@ -91,6 +91,7 @@ public class Client implements Serializable
 		this.address.setAddress(address);
 		this.phoneNumber.setNumber(phoneNumber);
 		id = new ID();
+		balanceDue = new Dollar(0.0);
 	}
 
 	public Client(String name, Address address, PhoneNumber phoneNumber)
@@ -99,6 +100,7 @@ public class Client implements Serializable
 		this.address.setAddress(address);
 		this.phoneNumber.setNumber(phoneNumber);
 		id = new ID();
+		balanceDue = new Dollar(0.0);
 	}
 
 	public ID getId()

@@ -37,6 +37,7 @@ public class UI implements Singleton<UI>, Closeable
 	private static UI singleton;
 	private Theater theater = Theater.instance();
 	private static LinkedList<Command<UI>> commandList = new LinkedList<Command<UI>>();
+	private static Command<UI> helpCommand = Help.instance();
 
 	protected UI() throws Exception
 	{
@@ -120,6 +121,7 @@ public class UI implements Singleton<UI>, Closeable
 		UI ui = UI.instance();
 		Command<UI> lastCommand = null;
 		String input = "";
+		helpCommand.call(ui);
 
 		// until a terminating command is issued, keep getting commands
 		while (lastCommand == null || !lastCommand.isTerminationCommand())
