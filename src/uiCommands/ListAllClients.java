@@ -1,5 +1,7 @@
 package uiCommands;
 
+import client.Client;
+import client.ClientList;
 import theater.Theater;
 import userInterface.UI;
 
@@ -80,9 +82,36 @@ public class ListAllClients implements Command<UI>
 	}
 
 	@Override
-	public void call(UI arg)
+	public void call(UI ui)
 	{
-		// TODO Auto-generated method stub
+		boolean done = false;
+		try
+		{
+			Theater theater = ui.getTheater();
+			ClientList clientList = theater.getClientList();
+			String output = "";
+			for(Client client : clientList)
+			{
+				output += "id: " + client.getId() + ",\n"
+						+ "name: " + client.getName() + ",\n"
+						+ "balance due: " + client.getBalanceDue() + ",\n"
+						+ "address: " + client.getAddress() + ",\n"
+						+ "phone number: " + client.getPhoneNumber() + "\n"
+						+ "\n";
+			}
+			UI.println(output);
+			done = true;
+		}
+		catch (Exception e)
+		{
+
+			// show error message
+			UI.outputError(e, "Unable to list all clients");
+			
+			// ask if user wants to continue and end if the user answers no
+			done = UI.getInput("Try again? (Y/N)").toLowerCase().startsWith("n");
+		}
+		
 
 	}
 
