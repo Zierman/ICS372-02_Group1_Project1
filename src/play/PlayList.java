@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
+import client.Client;
 import singleton.Singleton;
 import storage.FileIO;
 import storage.Loadable;
@@ -187,27 +188,30 @@ public class PlayList implements Singleton<PlayList>, List<Play>, Savable, Loada
 		return instance().plays.toArray(arg0);
 	}
 
+
 	@Override
 	public void load() throws ClassNotFoundException, IOException
 	{
 		instance().clear(); // clears the list in case anything was in it
 		FileIO playFile = FileIO.startRead(FILENAME);
-		while(playFile.hasMoreToRead())
-		{
-			instance().plays.add((Play) playFile.read());
-		}
+		LinkedList<Play> tmp =  (LinkedList<Play>) playFile.read();
 		playFile.close();
+		
+		for(Play c : tmp)
+		{
+			instance().add(c);
+		}
 	}
 
 	@Override
 	public void save() throws IOException
 	{
+	
+		
 		FileIO playFile = FileIO.startWrite(FILENAME);
-		for(Play play : instance().plays)
-		{
-			playFile.write(play);
-		}
+		playFile.write(new LinkedList<Play>(instance()));
 		playFile.close();
+		
 	}
 
 }

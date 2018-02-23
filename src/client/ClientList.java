@@ -193,22 +193,22 @@ public class ClientList implements Singleton<ClientList>, List<Client>, Savable,
 	{
 		instance().clear(); // clears the list in case anything was in it
 		FileIO clientFile = FileIO.startRead(FILENAME);
-		while(clientFile.hasMoreToRead())
-		{
-			instance().clients.add((Client) clientFile.read());
-		}
+		LinkedList<Client> tmp =  (LinkedList<Client>) clientFile.read();
 		clientFile.close();
 		
+		for(Client c : tmp)
+		{
+			instance().add(c);
+		}
 	}
 
 	@Override
 	public void save() throws IOException
 	{
+	
+		
 		FileIO clientFile = FileIO.startWrite(FILENAME);
-		for(Client client : instance().clients)
-		{
-			clientFile.write(client);
-		}
+		clientFile.write(new LinkedList<Client>(instance()));
 		clientFile.close();
 		
 	}

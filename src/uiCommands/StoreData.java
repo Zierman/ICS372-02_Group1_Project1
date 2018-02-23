@@ -93,7 +93,6 @@ public class StoreData implements Command<UI>
 		}
 		catch (Exception e)
 		{
-			e.printStackTrace();
 			// show error message
 			UI.outputError(e, "Unable to store data");
 			

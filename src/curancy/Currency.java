@@ -1,12 +1,18 @@
 package curancy;
 
+import java.io.Serializable;
+
 /**
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  * @param <Type> they type of number that is used to store the currency value
  */
-public abstract class Currency<Type extends Number>
+public abstract class Currency<Type extends Number> implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Type amount;
 
 	public Type getAmount()
