@@ -100,6 +100,8 @@ public class AddClient implements Command<UI>
 			}
 			catch (Exception e)
 			{
+				// show error message
+				UI.outputError(e, "Unable to add client");
 				
 				// ask if user wants to continue and end if the user answers no
 				done = !UI.tryAgainCheck();
