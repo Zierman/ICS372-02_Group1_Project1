@@ -81,7 +81,10 @@ public class RetrieveData implements Command<UI>
 	@Override
 	public void call(UI ui)
 	{
-		// TODO check for data accessing command usage
+		if(ui.hasUsedDataCommand())
+		{
+			UI.outputError(new Exception(), "cannot retrieve data because data command has been used already");
+		}
 		boolean done = false;
 		while(!done)
 		try

@@ -36,6 +36,7 @@ public class UI implements Singleton<UI>, Closeable
 	private static Scanner scanner = new Scanner(System.in);
 	private static UI singleton;
 	private Theater theater = Theater.instance();
+	private boolean dataCommandWasUsed = false;
 	private static LinkedList<Command<UI>> commandList = new LinkedList<Command<UI>>();
 	private static Command<UI> helpCommand = Help.instance();
 	private static final boolean DEBUG_MODE = true; // TODO turn DEBUG_MODE off
@@ -120,39 +121,17 @@ public class UI implements Singleton<UI>, Closeable
 
 	}
 
-	public static void main(String[] args)
+	private void setDataCommandUsed()
 	{
-		UI ui = UI.instance();
-		Command<UI> lastCommand = null;
-		String input = "";
-		helpCommand.call(ui);
-
-		// until a terminating command is issued, keep getting commands
-		while (lastCommand == null || !lastCommand.isTerminationCommand())
-		{
-			try
-			{
-				input = getInput("Enter command number: ");
-				int commandNumber = Integer.parseInt(input) - 1;
-				lastCommand = commandList.get(commandNumber);
-				lastCommand.call(ui);
-			}
-			catch (Exception e)
-			{
-				outputError(e, "command \"" + input + "\" failed.");
-				lastCommand = null;
-			}
-		}
-
-		// after the program completes, close the UI.
-		try
-		{
-			ui.close();
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
+		instance().dataCommandWasUsed  = true;
+	}
+	public boolean dataCommandWasUsed()
+	{
+		return hasUsedDataCommand();
+	}
+	public boolean hasUsedDataCommand()
+	{
+		return dataCommandWasUsed;
 	}
 
 	public Theater getTheater()
@@ -191,6 +170,44 @@ public class UI implements Singleton<UI>, Closeable
 		return commandList;
 	}
 
-	// TODO finish
+	public static void main(String[] args)
+	{
+		UI ui = UI.instance();
+		Command<UI> lastCommand = null;
+		String input = "";
+		helpCommand.call(ui);
+
+		// until a terminating command is issued, keep getting commands
+		while (lastCommand == null || !lastCommand.isTerminationCommand())
+		{
+			try
+			{
+				input = getInput("Enter command number: ");
+				int commandNumber = Integer.parseInt(input) - 1;
+				lastCommand = commandList.get(commandNumber);
+				lastCommand.call(ui);
+				if(lastCommand.isDataCommand())
+				{
+					ui.setDataCommandUsed();
+				}
+			}
+			catch (Exception e)
+			{
+				outputError(e, "command \"" + input + "\" failed.");
+				lastCommand = null;
+			}
+		}
+
+		// after the program completes, close the UI.
+		try
+		{
+			ui.close();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+
 
 }
