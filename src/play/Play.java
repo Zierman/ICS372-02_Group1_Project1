@@ -61,7 +61,6 @@ public class Play implements Serializable
 		this.client = client;
 		this.startDate = startDate;
 		this.endDate = endDate;
-		this.balanceDue = new Dollar(0.0);
 	}
 
 	public Name getName()
