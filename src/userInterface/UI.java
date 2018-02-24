@@ -27,20 +27,60 @@ import uiCommands.RetrieveData;
 import uiCommands.StoreData;
 
 /**
+ * A user interface that is responsible for handling interactions between the
+ * user and the data.
+ * 
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
 public class UI implements Singleton<UI>, Closeable
 {
 
+	/**
+	 * a <code>Scanner</code> to get input from user
+	 */
 	private static Scanner scanner = new Scanner(System.in);
+
+	/**
+	 * a <code>UI</code> object to enforce singleton behavior
+	 */
 	private static UI singleton;
+
+	/**
+	 * a <code>Theater</code> object
+	 */
 	private Theater theater = Theater.instance();
+
+	/**
+	 * a <code>boolean</code> that is true if a data command was used while the
+	 * application has been running this session.
+	 */
 	private boolean dataCommandWasUsed = false;
+
+	/**
+	 * a <code>LinkedList</code> of all available commands
+	 */
 	private static LinkedList<Command<UI>> commandList = new LinkedList<Command<UI>>();
+
+	/**
+	 * a <code>Command</code> that holds an instance of the help command.
+	 */
 	private static Command<UI> helpCommand = Help.instance();
+
+	/**
+	 * a <code>final boolean</code> that is true if debug mode is on. If debug
+	 * mode is on, extra information will be displayed when error output is
+	 * shown during a {@link userInterface.UI#outputError(Exception, String)}
+	 * call.
+	 */
 	private static final boolean DEBUG_MODE = true; // TODO turn DEBUG_MODE off
 
+	/**
+	 * Constructs a UI used when creating a subtype singleton
+	 * 
+	 * @throws Exception
+	 *             if used to try to create a base type UI
+	 */
 	protected UI() throws Exception
 	{
 		if (getClass().getName().equals("UI"))
@@ -49,10 +89,22 @@ public class UI implements Singleton<UI>, Closeable
 		}
 	}
 
+	/**
+	 * Constructs the UI used to create the singleton.
+	 * 
+	 * @param i
+	 *            an integer with no significance other than giving it a
+	 *            different signature than the protected constructor.
+	 */
 	private UI(int i)
 	{
 	}
 
+	/**
+	 * Gets or Creates the instance of the singleton UI
+	 * 
+	 * @return the instance of the singleton UI
+	 */
 	public static UI instance()
 	{
 		if (singleton == null)
@@ -77,12 +129,25 @@ public class UI implements Singleton<UI>, Closeable
 		return singleton;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see singleton.Singleton#readResolve()
+	 */
 	@Override
 	public UI readResolve()
 	{
 		return instance();
 	}
 
+	/**
+	 * Gets input from the user
+	 * 
+	 * @param userPrompt
+	 *            a string that is to be displayed to the user before getting
+	 *            input.
+	 * @return the string that was input from the user.
+	 */
 	public static String getInput(String userPrompt)
 	{
 		String input = "";
@@ -96,20 +161,37 @@ public class UI implements Singleton<UI>, Closeable
 
 	}
 
+	/**
+	 * Shows an error message to the user. If
+	 * {@link userInterface.UI#DEBUG_MODE} is set to true, the stack trace of
+	 * the exception is printed.
+	 * 
+	 * @param e
+	 *            the <code>Exception</code> that caused the error
+	 * @param string
+	 *            the <code>String</code> that will be shown to the user
+	 */
 	public static void outputError(Exception e, String string)
 	{
 		System.err.println(string);
-		if(DEBUG_MODE)
+		if (DEBUG_MODE)
 		{
 			e.printStackTrace();
 		}
 	}
 
+	/** Prints a string to the system's standard output with a line break at the end.
+	 * @param string the <code>String</code> to be printed.
+	 */
 	public static void println(String string)
 	{
 		System.out.println(string);
 	}
 
+	/**
+	 * Prints a string to the system's standard output.
+	 * @param string the <code>String</code> to be printed.
+	 */
 	public static void print(String string)
 	{
 		System.out.print(string);
@@ -123,12 +205,14 @@ public class UI implements Singleton<UI>, Closeable
 
 	private void setDataCommandUsed()
 	{
-		instance().dataCommandWasUsed  = true;
+		instance().dataCommandWasUsed = true;
 	}
+
 	public boolean dataCommandWasUsed()
 	{
 		return hasUsedDataCommand();
 	}
+
 	public boolean hasUsedDataCommand()
 	{
 		return dataCommandWasUsed;
@@ -139,7 +223,9 @@ public class UI implements Singleton<UI>, Closeable
 		return theater;
 	}
 
-	/** Asks user if they wish to try again and returns true if they do
+	/**
+	 * Asks user if they wish to try again and returns true if they do
+	 * 
 	 * @return true if user wants to try again, else false
 	 */
 	public static boolean tryAgainCheck()
@@ -159,17 +245,28 @@ public class UI implements Singleton<UI>, Closeable
 		return bool;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.io.Closeable#close()
+	 */
 	@Override
 	public void close() throws IOException
 	{
 		scanner.close();
 	}
 
+	/**
+	 * Gets the command list.
+	 * @return a <code>LinkedList</code> that holds all the commands
+	 */
 	public LinkedList<Command<UI>> getCommandList()
 	{
 		return commandList;
 	}
 
+	/**
+	 * Drives the UI.
+	 * @param args a array of string arguments that are not used.
+	 */
 	public static void main(String[] args)
 	{
 		UI ui = UI.instance();
@@ -186,7 +283,7 @@ public class UI implements Singleton<UI>, Closeable
 				int commandNumber = Integer.parseInt(input) - 1;
 				lastCommand = commandList.get(commandNumber);
 				lastCommand.call(ui);
-				if(lastCommand.isDataCommand())
+				if (lastCommand.isDataCommand())
 				{
 					ui.setDataCommandUsed();
 				}
@@ -208,6 +305,5 @@ public class UI implements Singleton<UI>, Closeable
 			e.printStackTrace();
 		}
 	}
-
 
 }

@@ -13,6 +13,7 @@ import phoneNumber.PhoneNumber;
 import storage.FileIO;
 import storage.Savable;
 
+//TODO document all of this
 /**
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
