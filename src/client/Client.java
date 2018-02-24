@@ -8,7 +8,6 @@ import keyToken.KeyToken;
 import keyToken.Keyed;
 import phoneNumber.PhoneNumber;
 
-// TODO document all of this
 /**
  * Represents a Client who performs plays at the theater.
  * @author Joshua Zierman [py1422xs@metrostate.edu]
@@ -195,36 +194,63 @@ public class Client implements Serializable, Keyed<Long>
 		this.balanceDue = balanceDue;
 	}
 
+	/**
+	 * Gets the client's name.
+	 * @returnthe <code>Name</code> object that holds the client's name.
+	 */
 	public Name getName()
 	{
 		return name;
 	}
 
+	/**
+	 * Sets the client's name.
+	 * @param name a <code>String</code> representation of the client's name.
+	 */
 	public void setName(String name)
 	{
 		this.name.setName(name);
 	}
 
+	/**
+	 * Gets the client's address.
+	 * @return the <code>Address</code> object that contains the client's address.
+	 */
 	public Address getAddress()
 	{
 		return address;
 	}
 
+	/**
+	 * Sets the client's address.
+	 * @param address the <code>Address</code> object that contains the client's address.
+	 */
 	public void setAddress(String address)
 	{
 		this.address.setAddress(address);
 	}
 
+	/**
+	 * Gets the client's phone number.
+	 * @return the <code>PhoneNumber</code> object that contains the client's phone number.
+	 */
 	public PhoneNumber getPhoneNumber()
 	{
 		return phoneNumber;
 	}
 
+	/**
+	 * Sets the client's phone number.
+	 * @param phoneNumber the <code>PhoneNumber</code> object that contains the client's phone number.
+	 */
 	public void setPhoneNumber(String phoneNumber)
 	{
 		this.phoneNumber.setNumber(phoneNumber);
 	}
 
+	/* (non-Javadoc)
+	 * @see keyToken.Keyed#matches(java.lang.Object)
+	 */
 	@Override
 	public boolean matches(Long key)
 	{
