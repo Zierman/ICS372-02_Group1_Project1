@@ -26,6 +26,7 @@ import uiCommands.RemoveCustomer;
 import uiCommands.RetrieveData;
 import uiCommands.StoreData;
 
+//TODO document all of this
 /**
  * A user interface that is responsible for handling interactions between the
  * user and the data.
@@ -197,27 +198,49 @@ public class UI implements Singleton<UI>, Closeable
 		System.out.print(string);
 	}
 
+	/**
+	 * Displays a success message to the user. 
+	 * @param string the <code>String</code> containing the message to be displayed
+	 */
 	public static void outputSuccessMessage(String string)
 	{
 		System.out.println(string);
 
 	}
 
+	/**
+	 * Sets the {@link userInterface.UI#dataCommandWasUsed} to true.
+	 */
 	private void setDataCommandUsed()
 	{
 		instance().dataCommandWasUsed = true;
 	}
 
+	/**
+	 * Checks if there has been any data commands used this session.
+	 * @return true if a data command was used, else false.
+	 * @see userInterface.UI#hasUsedDataCommand()
+	 */
 	public boolean dataCommandWasUsed()
 	{
 		return hasUsedDataCommand();
 	}
 
+	
+	/**
+	 * Checks if there has been any data commands used this session.
+	 * @return true if a data command was used, else false.
+	 * @see userInterface.UI#dataCommandWasUsed
+	 */
 	public boolean hasUsedDataCommand()
 	{
 		return dataCommandWasUsed;
 	}
 
+	/**
+	 * Gets the theater.
+	 * @return the <code>Theater</code> instance
+	 */
 	public Theater getTheater()
 	{
 		return theater;
@@ -230,19 +253,30 @@ public class UI implements Singleton<UI>, Closeable
 	 */
 	public static boolean tryAgainCheck()
 	{
+		// input will hold the user input
 		String input = "";
-		boolean bool = true;
+		
+		// tryAgain hold a boolean value to show if the user wants to try again
+		boolean tryAgain = true;
+		
+		// until the user enters a string that starts with an 'n', 'N', 'y', or 'Y'
 		do
 		{
+			// gets a lower case version of the user input and stores it in input
 			input = UI.getInput("Try again? (Y/N)").toLowerCase();
 		}
 		while (!input.startsWith("n") && !input.startsWith("y"));
+		
+		// if the user's input started with an 'n' or 'N'
 		if (input.startsWith("n"))
 		{
-			bool = false;
+			// the user does not wish to try again
+			tryAgain = false;
 		}
+		
+		// otherwise the user wants to try again and tryAgain remains true
 
-		return bool;
+		return tryAgain;
 	}
 
 	/* (non-Javadoc)
@@ -269,39 +303,55 @@ public class UI implements Singleton<UI>, Closeable
 	 */
 	public static void main(String[] args)
 	{
+		// create a user interface instance
 		UI ui = UI.instance();
+		
+		// lastCommand holds the command last used or null if the last command was not valid or no command was used
 		Command<UI> lastCommand = null;
+		
+		// input is a string to store user input
 		String input = "";
+		
+		// show all commands.
 		helpCommand.call(ui);
 
-		// until a terminating command is issued, keep getting commands
+		// until a terminating command is called, keep getting commands
 		while (lastCommand == null || !lastCommand.isTerminationCommand())
 		{
 			try
 			{
+				// get the command number from user
 				input = getInput("Enter command number: ");
 				int commandNumber = Integer.parseInt(input) - 1;
+				
+				// find the command
 				lastCommand = commandList.get(commandNumber);
+				
+				// call the command
 				lastCommand.call(ui);
+				
+				// handle data command usage tracking
 				if (lastCommand.isDataCommand())
 				{
 					ui.setDataCommandUsed();
 				}
 			}
-			catch (Exception e)
+			catch (Exception e) // if any exceptions are thrown
 			{
+				// tell the user that the command failed
 				outputError(e, "command \"" + input + "\" failed.");
 				lastCommand = null;
 			}
 		}
 
-		// after the program completes, close the UI.
+		// after the program completes, close the user interface.
 		try
 		{
 			ui.close();
 		}
 		catch (Exception e)
 		{
+			// if the user interface can't close print the stack trace
 			e.printStackTrace();
 		}
 	}
