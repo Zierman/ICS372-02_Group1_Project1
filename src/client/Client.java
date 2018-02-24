@@ -111,8 +111,8 @@ public class Client implements Serializable, Keyed<Long>
 		private String name;
 
 		/**
-		 * Gets the string representation of the name.
-		 * @return the string representation of the name
+		 * Gets the client's name.
+		 * @return the string representation of the name.
 		 */
 		public String getName()
 		{
@@ -120,8 +120,8 @@ public class Client implements Serializable, Keyed<Long>
 		}
 
 		/**
-		 * Sets the string representation of the name
-		 * @param name
+		 * Sets the client's name.
+		 * @param name the string representation of the name.
 		 */
 		public void setName(String name)
 		{
@@ -139,7 +139,7 @@ public class Client implements Serializable, Keyed<Long>
 	}
 
 	/**
-	 * Constructs a new <code>Client</code> object
+	 * Constructs a new <code>Client</code> object.
 	 * @param name the string representation of the client's name.
 	 * @param address the string representation of the client's address.
 	 * @param phoneNumber the string representation of the client's phone number.
@@ -154,8 +154,8 @@ public class Client implements Serializable, Keyed<Long>
 	}
 
 	/**
-	 * Constructs a new <code>Client</code> object
-	 * @param name the string representation of the client's name
+	 * Constructs a new <code>Client</code> object.
+	 * @param name the string representation of the client's name.
 	 * @param address a <code>Address</code> object that is a representation of the client's address.
 	 * @param phoneNumber a <code>PhoneNumber</code> object that is a representation of the client's phone number.
 	 */
@@ -168,11 +168,19 @@ public class Client implements Serializable, Keyed<Long>
 		balanceDue = new Dollar(0.0);
 	}
 
+	/**
+	 * Gets the client ID.
+	 * @return the <code>ID</code> object that holds the client's ID.
+	 */
 	public ID getID()
 	{
 		return id;
 	}
 
+	/**
+	 * Gets the amount of money that is owed to the client.
+	 * @return a <code>Dollar</code> object that represents how much money is owed to the client.
+	 */
 	public Dollar getBalanceDue()
 	{
 		return balanceDue;
