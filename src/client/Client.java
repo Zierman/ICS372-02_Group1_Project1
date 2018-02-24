@@ -196,7 +196,7 @@ public class Client implements Serializable, Keyed<Long>
 
 	/**
 	 * Gets the client's name.
-	 * @returnthe <code>Name</code> object that holds the client's name.
+	 * @return the <code>Name</code> object that holds the client's name.
 	 */
 	public Name getName()
 	{

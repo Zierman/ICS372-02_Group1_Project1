@@ -103,8 +103,7 @@ public class Theater implements Singleton<Theater>, Loadable, Savable
 	/**
 	 * Sets the seating capacity.
 	 * 
-	 * @param seatingCapacity
-	 *            an <code>Integer</code> of the current seating capacity.
+	 * @param seatingCapacity an <code>Integer</code> of the current seating capacity.
 	 */
 	public void setSeatingCapacity(Integer seatingCapacity)
 	{
@@ -124,8 +123,7 @@ public class Theater implements Singleton<Theater>, Loadable, Savable
 	/**
 	 * Sets the name of the theater.
 	 * 
-	 * @param name
-	 *            a <code>String</code> representing the name of the theater
+	 * @param name a <code>String</code> representing the name of the theater
 	 */
 	public void setName(String name)
 	{
@@ -135,8 +133,7 @@ public class Theater implements Singleton<Theater>, Loadable, Savable
 	/**
 	 * Constructs a Theater used when creating a subtype singleton
 	 * 
-	 * @throws Exception
-	 *             if used to try to create a base type Theater
+	 * @throws Exception if used to try to create a base type Theater
 	 */
 	protected Theater() throws Exception
 	{
@@ -149,8 +146,7 @@ public class Theater implements Singleton<Theater>, Loadable, Savable
 	/**
 	 * Constructs the Theater used to create the singleton.
 	 * 
-	 * @param i
-	 *            an integer with no significance other than giving it a
+	 * @param i an integer with no significance other than giving it a
 	 *            different signature than the protected constructor.
 	 */
 	private Theater(int i)
@@ -219,8 +215,7 @@ public class Theater implements Singleton<Theater>, Loadable, Savable
 	/**
 	 * Adds a new client
 	 * 
-	 * @param client
-	 *            {@link client.Client} to be added.
+	 * @param client {@link client.Client} to be added.
 	 * @return true if added, false if not.
 	 */
 	public boolean add(Client client)
@@ -231,8 +226,7 @@ public class Theater implements Singleton<Theater>, Loadable, Savable
 	/**
 	 * Adds a new play
 	 * 
-	 * @param client
-	 *            {@link play.Play} to be added.
+	 * @param play a {@link play.Play} tobe added.
 	 * @return true if added, false if not.
 	 */
 	public boolean add(Play play)
@@ -243,8 +237,7 @@ public class Theater implements Singleton<Theater>, Loadable, Savable
 	/**
 	 * Adds a new customer
 	 * 
-	 * @param client
-	 *            {@link customer.Customer} to be added.
+	 * @param customer a {@link customer.Customer} to be added.
 	 * @return true if added, false if not.
 	 */
 	public boolean add(Customer customer)
@@ -254,8 +247,9 @@ public class Theater implements Singleton<Theater>, Loadable, Savable
 
 	/**
 	 * Removes a client with matching id
+	 * 
 	 * @param id a <code>Long</code> that represents the Id
-	 * @throws NoKeyTokenFoundException
+	 * @throws NoKeyTokenFoundException if no match is found
 	 */
 	public void removeMatchedClient(Long id) throws NoKeyTokenFoundException
 	{
@@ -264,8 +258,9 @@ public class Theater implements Singleton<Theater>, Loadable, Savable
 
 	/**
 	 * Removes a customer with a matching id
+	 * 
 	 * @param id a <code>Long</code> that represents the Id
-	 * @throws NoKeyTokenFoundException
+	 * @throws NoKeyTokenFoundException if no match is found
 	 */
 	public void removeMatchedCustomer(Long id) throws NoKeyTokenFoundException
 	{
