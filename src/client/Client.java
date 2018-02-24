@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.Serializable;
 
 import address.Address;
-import curancy.Dollar;
+import currency.Dollar;
 import keyToken.KeyToken;
 import keyToken.Keyed;
 import phoneNumber.PhoneNumber;

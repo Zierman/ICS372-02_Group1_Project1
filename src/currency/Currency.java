@@ -1,4 +1,4 @@
-package curancy;
+package currency;
 
 import java.io.Serializable;
 

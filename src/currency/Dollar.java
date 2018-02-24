@@ -1,4 +1,4 @@
-package curancy;
+package currency;
 
 //TODO document all of this
 /**

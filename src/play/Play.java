@@ -7,7 +7,7 @@ import java.util.Date;
 
 import address.Address;
 import client.Client;
-import curancy.Dollar;
+import currency.Dollar;
 import keyToken.KeyToken;
 import phoneNumber.PhoneNumber;
 import storage.FileIO;
