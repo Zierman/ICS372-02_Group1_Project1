@@ -7,16 +7,13 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
-import client.Client.ID;
 import keyToken.KeyedList;
 import keyToken.NoKeyTokenFoundException;
-import play.Play;
 import singleton.Singleton;
 import storage.FileIO;
 import storage.Loadable;
 import storage.Savable;
 
-//TODO document all of this
 /**
  * A list that holds clients.
  * @author Joshua Zierman [py1422xs@metrostate.edu]
