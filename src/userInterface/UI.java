@@ -26,7 +26,6 @@ import uiCommands.RemoveCustomer;
 import uiCommands.RetrieveData;
 import uiCommands.StoreData;
 
-//TODO document all of this
 /**
  * A user interface that is responsible for handling interactions between the
  * user and the data.
