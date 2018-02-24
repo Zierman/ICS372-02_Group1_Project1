@@ -7,7 +7,7 @@ package keyToken;
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  * @param <Key>
- *            The datatype of the key value
+ *            The data type of the key value
  */
 public interface Keyed<Key>
 {
