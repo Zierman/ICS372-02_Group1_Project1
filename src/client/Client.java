@@ -186,6 +186,10 @@ public class Client implements Serializable, Keyed<Long>
 		return balanceDue;
 	}
 
+	/**
+	 * Sets the amount of mony that is owed to the client.
+	 * @param balanceDue a <code>Dollar</code> object that represents how much money is owed to the client.
+	 */
 	public void setBalanceDue(Dollar balanceDue)
 	{
 		this.balanceDue = balanceDue;
