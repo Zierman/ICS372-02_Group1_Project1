@@ -4,15 +4,10 @@
 package theater;
 
 import java.io.IOException;
-import java.util.List;
-
 import client.Client;
 import client.ClientList;
 import customer.Customer;
-import customer.Customer.CreditCard;
 import customer.CustomerList;
-import keyToken.Keyed;
-import keyToken.KeyedList;
 import keyToken.NoKeyTokenFoundException;
 import play.Play;
 import play.PlayList;
@@ -20,9 +15,7 @@ import singleton.Singleton;
 import storage.FileIO;
 import storage.Loadable;
 import storage.Savable;
-import userInterface.UI;
 
-//TODO document all of this
 /**
  * Represents a theater that shows plays performed by clients to customers.
  * 
