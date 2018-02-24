@@ -1,5 +1,6 @@
 package phoneNumber;
 
+//TODO document all of this
 import java.io.Serializable;
 
 /**

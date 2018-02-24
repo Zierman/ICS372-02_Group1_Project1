@@ -2,6 +2,7 @@ package uiCommands;
 
 import userInterface.UI;
 
+//TODO document all of this
 /**
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *

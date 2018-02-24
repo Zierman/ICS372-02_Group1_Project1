@@ -17,6 +17,7 @@ import storage.FileIO;
 import storage.Loadable;
 import storage.Savable;
 
+//TODO document all of this
 /**
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *

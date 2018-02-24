@@ -14,6 +14,7 @@ import phoneNumber.PhoneNumber;
 import storage.FileIO;
 import storage.Savable;
 
+//TODO document all of this
 
 public class Customer implements Serializable, Keyed<Long>
 {

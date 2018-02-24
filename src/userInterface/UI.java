@@ -26,6 +26,7 @@ import uiCommands.RemoveCustomer;
 import uiCommands.RetrieveData;
 import uiCommands.StoreData;
 
+//TODO document all of this
 /**
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *

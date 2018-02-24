@@ -17,6 +17,7 @@ import storage.FileIO;
 import storage.Loadable;
 import storage.Savable;
 
+//TODO document all of this
 public class CustomerList implements Singleton<CustomerList>, KeyedList<Customer, Long>, Savable, Loadable
 {
 	private static CustomerList singleton;
