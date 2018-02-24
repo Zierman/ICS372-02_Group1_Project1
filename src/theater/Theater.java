@@ -259,13 +259,23 @@ public class Theater implements Singleton<Theater>, Loadable, Savable
 		return customerList.add(customer);
 	}
 
-	public void removeMatchedClient(Long key) throws NoKeyTokenFoundException
+	/**
+	 * Removes a client with matching id
+	 * @param id a <code>Long</code> that represents the Id
+	 * @throws NoKeyTokenFoundException
+	 */
+	public void removeMatchedClient(Long id) throws NoKeyTokenFoundException
 	{
-		clientList.removeMatched(key);
+		clientList.removeMatched(id);
 	}
 
-	public void removeMatchedCustomer(Long key) throws NoKeyTokenFoundException
+	/**
+	 * Removes a customer with a matching id
+	 * @param id a <code>Long</code> that represents the Id
+	 * @throws NoKeyTokenFoundException
+	 */
+	public void removeMatchedCustomer(Long id) throws NoKeyTokenFoundException
 	{
-		customerList.removeMatched(key);
+		customerList.removeMatched(id);
 	}
 }
