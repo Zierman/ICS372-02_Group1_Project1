@@ -13,6 +13,7 @@ import keyToken.Keyed;
 import phoneNumber.PhoneNumber;
 import storage.FileIO;
 import storage.Savable;
+import ownership.Owned;
 
 //TODO document all of this
 
@@ -45,7 +46,7 @@ public class Customer implements Serializable, Keyed<Long>
 		// give customer a unique customer ID
 		id = new ID();
 		// initialize the customer's list of credit cards
-		cardList.add(new CreditCard(cardNum, cardExpiry));
+		cardList.add(new CreditCard(cardNum, cardExpiry, this));
 		
 	}
 	
@@ -114,13 +115,16 @@ public class Customer implements Serializable, Keyed<Long>
 	 * @author Troy Novak [wh1617wd@metrostate.edu]
 	 * 
 	 */
-	public class CreditCard {
+	public class CreditCard implements Owned<Customer>{
 		private String cardNumber;
 		private String cardExpiration;
+		private Customer owner;
 		
-		public CreditCard(String cardNum, String cardExpiry){
+
+		public CreditCard(String cardNum, String cardExpiry, Customer owner){
 			cardNumber = cardNum;
 			cardExpiration = cardExpiry;
+			this.owner = owner;
 		}
 		
 		/**
@@ -154,6 +158,15 @@ public class Customer implements Serializable, Keyed<Long>
 		public void setCardExpiration(String newCardExpiration){
 			this.cardExpiration = newCardExpiration;
 		}
+
+		/* (non-Javadoc)
+		 * @see ownership.owned#getOwner()
+		 */
+		@Override
+		public Customer getOwner()
+		{
+			return owner;
+		}
 	}
 	
 	
@@ -186,7 +199,7 @@ public class Customer implements Serializable, Keyed<Long>
 		// if card doesn't already exist within cardList...
 		if(!exists(cardNum))
 			// ...add new card to cardList
-			cardList.add(new CreditCard(cardNum,cardExpiry));
+			cardList.add(new CreditCard(cardNum,cardExpiry, this));
 		
 		// if card does already exist within cardList...
 		else{

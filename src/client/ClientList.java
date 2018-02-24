@@ -54,6 +54,9 @@ public class ClientList implements Singleton<ClientList>, KeyedList<Client, Long
 		return instance();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#add(java.lang.Object)
+	 */
 	@Override
 	public boolean add(Client client)
 	{

@@ -87,7 +87,7 @@ public class RemoveCustomer implements Command<UI>
 		Long key = Long.parseLong(UI.getInput("Enter customer ID: "));
 		try
 		{
-			theater.removeMatched(key, theater.getCustomerList());
+			theater.removeMatchedCustomer(key);
 			UI.outputSuccessMessage("customer removed");
 		}
 		catch (NoKeyTokenFoundException e)

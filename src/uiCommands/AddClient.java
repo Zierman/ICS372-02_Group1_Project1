@@ -91,7 +91,7 @@ public class AddClient implements Command<UI>
 				Client client = new Client(clientName,clientAddress,clientPhoneNumber);
 				
 				// add to list
-				theater.add(client, theater.getClientList());
+				theater.add(client);
 				
 				// show user that it was added
 				UI.outputSuccessMessage(clientName + " added to client list.");

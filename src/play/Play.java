@@ -9,6 +9,7 @@ import address.Address;
 import client.Client;
 import currency.Dollar;
 import keyToken.KeyToken;
+import ownership.Owned;
 import phoneNumber.PhoneNumber;
 import storage.FileIO;
 import storage.Savable;
@@ -18,7 +19,7 @@ import storage.Savable;
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
-public class Play implements Serializable
+public class Play implements Serializable, Owned<Client>
 {
 	/**
 	 * 
@@ -26,7 +27,7 @@ public class Play implements Serializable
 	private static final long serialVersionUID = 1L;
 
 	private Name name = new Name();
-	private Client client;
+	private Client owner;
 	private Date startDate;
 	private Date endDate;
 
@@ -72,7 +73,7 @@ public class Play implements Serializable
 			throw new DateTimeException(null);
 		}
 		this.name.setName(name);
-		this.client = client;
+		this.owner = client;
 		this.startDate = startDate;
 		this.endDate = endDate;
 	}
@@ -107,14 +108,13 @@ public class Play implements Serializable
 		this.endDate = endDate;
 	}
 
-	public Client getClient()
+	/* (non-Javadoc)
+	 * @see ownership.Owned#getOwner()
+	 */
+	@Override
+	public Client getOwner()
 	{
-		return client;
-	}
-
-	public void setClient(Client client)
-	{
-		this.client = client;
+		return owner;
 	}
 
 }

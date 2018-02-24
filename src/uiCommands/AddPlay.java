@@ -7,7 +7,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import client.Client;
-import jdk.nashorn.internal.parser.DateParser;
 import keyToken.NoKeyTokenFoundException;
 import play.Play;
 import theater.Theater;
@@ -82,7 +81,6 @@ public class AddPlay implements Command<UI>
 	@Override
 	public void call(UI ui)
 	{
-		//TODO finish working on this
 		Theater theater = ui.getTheater();
 		boolean done = false;
 		while (!done)
@@ -118,7 +116,7 @@ public class AddPlay implements Command<UI>
 				Play play = new Play(name, client, startDate, endDate);
 				
 				// add to list
-				theater.add(play, theater.getPlayList());
+				theater.add(play);
 				
 				// show user that it was added
 				UI.outputSuccessMessage(name + " added to play list.");

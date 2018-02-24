@@ -101,8 +101,8 @@ public class ListAllPlays implements Command<UI>
 					output += "name: " + play.getName() + ",\n" + "start date: "
 							+ play.getStartDate() + ",\n" + "end date: "
 							+ play.getEndDate() + ",\n" + "Client : "
-							+ play.getClient().getName() + " ("
-							+ play.getClient().getID() + ")\n" + "\n";
+							+ play.getOwner().getName() + " ("
+							+ play.getOwner().getID() + ")\n" + "\n";
 				}
 				UI.println(output);
 				done = true;
