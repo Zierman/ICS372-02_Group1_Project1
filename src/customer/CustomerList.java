@@ -22,7 +22,7 @@ public class CustomerList implements Singleton<CustomerList>, KeyedList<Customer
 {
 	private static CustomerList singleton;
 	protected static final String FILENAME = "customers.dat";
-	private LinkedList<Customer> customers = new LinkedList<Customer>();
+	private static LinkedList<Customer> customers = new LinkedList<Customer>();
 
 	protected CustomerList() throws Exception
 	{

@@ -180,8 +180,12 @@ public class UI implements Singleton<UI>, Closeable
 		}
 	}
 
-	/** Prints a string to the system's standard output with a line break at the end.
-	 * @param string the <code>String</code> to be printed.
+	/**
+	 * Prints a string to the system's standard output with a line break at the
+	 * end.
+	 * 
+	 * @param string
+	 *            the <code>String</code> to be printed.
 	 */
 	public static void println(String string)
 	{
@@ -190,7 +194,9 @@ public class UI implements Singleton<UI>, Closeable
 
 	/**
 	 * Prints a string to the system's standard output.
-	 * @param string the <code>String</code> to be printed.
+	 * 
+	 * @param string
+	 *            the <code>String</code> to be printed.
 	 */
 	public static void print(String string)
 	{
@@ -198,8 +204,10 @@ public class UI implements Singleton<UI>, Closeable
 	}
 
 	/**
-	 * Displays a success message to the user. 
-	 * @param string the <code>String</code> containing the message to be displayed
+	 * Displays a success message to the user.
+	 * 
+	 * @param string
+	 *            the <code>String</code> containing the message to be displayed
 	 */
 	public static void outputSuccessMessage(String string)
 	{
@@ -217,6 +225,7 @@ public class UI implements Singleton<UI>, Closeable
 
 	/**
 	 * Checks if there has been any data commands used this session.
+	 * 
 	 * @return true if a data command was used, else false.
 	 * @see userInterface.UI#hasUsedDataCommand()
 	 */
@@ -225,9 +234,9 @@ public class UI implements Singleton<UI>, Closeable
 		return hasUsedDataCommand();
 	}
 
-	
 	/**
 	 * Checks if there has been any data commands used this session.
+	 * 
 	 * @return true if a data command was used, else false.
 	 * @see userInterface.UI#dataCommandWasUsed
 	 */
@@ -238,6 +247,7 @@ public class UI implements Singleton<UI>, Closeable
 
 	/**
 	 * Gets the theater.
+	 * 
 	 * @return the <code>Theater</code> instance
 	 */
 	public Theater getTheater()
@@ -254,31 +264,35 @@ public class UI implements Singleton<UI>, Closeable
 	{
 		// input will hold the user input
 		String input = "";
-		
+
 		// tryAgain hold a boolean value to show if the user wants to try again
 		boolean tryAgain = true;
-		
-		// until the user enters a string that starts with an 'n', 'N', 'y', or 'Y'
+
+		// until the user enters a string that starts with an 'n', 'N', 'y', or
+		// 'Y'
 		do
 		{
-			// gets a lower case version of the user input and stores it in input
+			// gets a lower case version of the user input and stores it in
+			// input
 			input = UI.getInput("Try again? (Y/N)").toLowerCase();
 		}
 		while (!input.startsWith("n") && !input.startsWith("y"));
-		
+
 		// if the user's input started with an 'n' or 'N'
 		if (input.startsWith("n"))
 		{
 			// the user does not wish to try again
 			tryAgain = false;
 		}
-		
+
 		// otherwise the user wants to try again and tryAgain remains true
 
 		return tryAgain;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.io.Closeable#close()
 	 */
 	@Override
@@ -289,6 +303,7 @@ public class UI implements Singleton<UI>, Closeable
 
 	/**
 	 * Gets the command list.
+	 * 
 	 * @return a <code>LinkedList</code> that holds all the commands
 	 */
 	public LinkedList<Command<UI>> getCommandList()
@@ -298,19 +313,22 @@ public class UI implements Singleton<UI>, Closeable
 
 	/**
 	 * Drives the UI.
-	 * @param args a array of string arguments that are not used.
+	 * 
+	 * @param args
+	 *            a array of string arguments that are not used.
 	 */
 	public static void main(String[] args)
 	{
 		// create a user interface instance
 		UI ui = UI.instance();
-		
-		// lastCommand holds the command last used or null if the last command was not valid or no command was used
+
+		// lastCommand holds the command last used or null if the last command
+		// was not valid or no command was used
 		Command<UI> lastCommand = null;
-		
+
 		// input is a string to store user input
 		String input = "";
-		
+
 		// show all commands.
 		helpCommand.call(ui);
 
@@ -322,13 +340,13 @@ public class UI implements Singleton<UI>, Closeable
 				// get the command number from user
 				input = getInput("Enter command number: ");
 				int commandNumber = Integer.parseInt(input) - 1;
-				
+
 				// find the command
 				lastCommand = commandList.get(commandNumber);
-				
+
 				// call the command
 				lastCommand.call(ui);
-				
+
 				// handle data command usage tracking
 				if (lastCommand.isDataCommand())
 				{

@@ -22,7 +22,7 @@ public class PlayList implements Singleton<PlayList>, List<Play>, Savable, Loada
 {
 	private static PlayList singleton;
 	protected static final String FILENAME = "plays.dat";
-	private LinkedList<Play> plays = new LinkedList<Play>();
+	private static LinkedList<Play> plays = new LinkedList<Play>();
 
 	protected PlayList() throws Exception
 	{

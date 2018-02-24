@@ -18,15 +18,34 @@ import storage.Savable;
 
 //TODO document all of this
 /**
+ * A list that holds clients.
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
 public class ClientList implements Singleton<ClientList>, KeyedList<Client, Long>, Savable, Loadable
 {
+	/**
+	 * the singleton <code>ClientList</code>.
+	 */
 	private static ClientList singleton;
+	
+	/**
+	 * The filename <code>String</code> that is used for the save and load functionality.
+	 */
 	protected static final String FILENAME = "clients.dat";
-	private LinkedList<Client> clients = new LinkedList<Client>();
+	
+	/**
+	 * the <code>LinkedList</code> that holds all the clients
+	 */
+	private static LinkedList<Client> clients = new LinkedList<Client>();
 
+	/**
+	 * 
+	 * Constructs a UI used when creating a subtype singleton
+	 * 
+	 * @throws Exception
+	 *             if used to try to create a base type UI
+	 */
 	protected ClientList() throws Exception
 	{
 		if (getClass().getName().equals("ClientList"))

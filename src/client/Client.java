@@ -139,9 +139,13 @@ public class Client implements Serializable, Keyed<Long>
 
 	/**
 	 * Constructs a new <code>Client</code> object.
-	 * @param name the string representation of the client's name.
-	 * @param address the string representation of the client's address.
-	 * @param phoneNumber the string representation of the client's phone number.
+	 * 
+	 * @param name
+	 *            the string representation of the client's name.
+	 * @param address
+	 *            the string representation of the client's address.
+	 * @param phoneNumber
+	 *            the string representation of the client's phone number.
 	 */
 	public Client(String name, String address, String phoneNumber)
 	{
