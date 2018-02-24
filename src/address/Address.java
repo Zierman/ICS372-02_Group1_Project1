@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class Address implements Serializable
 {
 	/**
-	 * 
+	 * the version of the serialization
 	 */
 	private static final long serialVersionUID = 1L;
 	

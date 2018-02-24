@@ -13,24 +13,49 @@ import storage.Savable;
 
 // TODO document all of this
 /**
+ * Represents a Client who performs plays at the theater.
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
 public class Client implements Serializable, Keyed<Long>
 {
 	/**
-	 * 
+	 * Serialization version.
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * The last used ID key.
+	 */
 	private static long lastId = Long.MIN_VALUE;
+	
+	/**
+	 * The client id.
+	 */
 	private ID id;
+	
+	/**
+	 * The amount of money owed to the client.
+	 */
 	private Dollar balanceDue;
+	
+	/**
+	 * The client's name.
+	 */
 	private Name name = new Name();
+	
+	/**
+	 * The client's street address.
+	 */
 	private Address address = new Address();
+	
+	/**
+	 * The client's phone number.
+	 */
 	private PhoneNumber phoneNumber = new PhoneNumber();
 
 	/**
+	 * Represents the client id
 	 * @author Joshua Zierman [py1422xs@metrostate.edu]
 	 *
 	 */
@@ -38,22 +63,31 @@ public class Client implements Serializable, Keyed<Long>
 	{
 
 		/**
-		 * 
+		 * Serialization version.
 		 */
 		private static final long serialVersionUID = 1L;
 
+		/* (non-Javadoc)
+		 * @see keyToken.KeyToken#getNextKey()
+		 */
 		@Override
 		protected Long getNextKey()
 		{
 			return Client.lastId + 1;
 		}
 
+		/* (non-Javadoc)
+		 * @see keyToken.KeyToken#getLastKey()
+		 */
 		@Override
 		protected Long getLastKey()
 		{
 			return Client.lastId;
 		}
 
+		/* (non-Javadoc)
+		 * @see keyToken.KeyToken#setLastKey(java.lang.Object)
+		 */
 		@Override
 		protected void setLastKey(Long key)
 		{
@@ -63,23 +97,43 @@ public class Client implements Serializable, Keyed<Long>
 	}
 
 	/**
+	 * Represents the client name
 	 * @author Joshua Zierman [py1422xs@metrostate.edu]
 	 *
 	 */
 	public static class Name implements Serializable
 	{
+		/**
+		 * Serialization version.
+		 */
+		private static final long serialVersionUID = 1L;
+		
+		/**
+		 * The string representation of the name
+		 */
 		private String name;
 
+		/**
+		 * Gets the string representation of the name.
+		 * @return the string representation of the name
+		 */
 		public String getName()
 		{
 			return name;
 		}
 
+		/**
+		 * Sets the string representation of the name
+		 * @param name
+		 */
 		public void setName(String name)
 		{
 			this.name = name;
 		}
 
+		/* (non-Javadoc)
+		 * @see java.lang.Object#toString()
+		 */
 		@Override
 		public String toString()
 		{
@@ -87,6 +141,12 @@ public class Client implements Serializable, Keyed<Long>
 		}
 	}
 
+	/**
+	 * Constructs a new <code>Client</code> object
+	 * @param name the string representation of the client's name.
+	 * @param address the string representation of the client's address.
+	 * @param phoneNumber the string representation of the client's phone number.
+	 */
 	public Client(String name, String address, String phoneNumber)
 	{
 		this.name.setName(name);
@@ -96,6 +156,12 @@ public class Client implements Serializable, Keyed<Long>
 		balanceDue = new Dollar(0.0);
 	}
 
+	/**
+	 * Constructs a new <code>Client</code> object
+	 * @param name the string representation of the client's name
+	 * @param address a <code>Address</code> object that is a representation of the client's address.
+	 * @param phoneNumber a <code>PhoneNumber</code> object that is a representation of the client's phone number.
+	 */
 	public Client(String name, Address address, PhoneNumber phoneNumber)
 	{
 		this.name.setName(name);
