@@ -45,144 +45,216 @@ public class CustomerList implements Singleton<CustomerList>, KeyedList<Customer
 		return singleton;
 	}
 
+	/* (non-Javadoc)
+	 * @see singleton.Singleton#readResolve()
+	 */
 	@Override
 	public CustomerList readResolve()
 	{
 		return instance();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#add(java.lang.Object)
+	 */
 	@Override
 	public boolean add(Customer customer)
 	{
 		return instance().customers.add(customer);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#add(int, java.lang.Object)
+	 */
 	@Override
 	public void add(int index, Customer customer)
 	{
 		instance().customers.add(index, customer);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#addAll(java.util.Collection)
+	 */
 	@Override
 	public boolean addAll(Collection<? extends Customer> collection)
 	{
 		return instance().customers.addAll(collection);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#addAll(int, java.util.Collection)
+	 */
 	@Override
 	public boolean addAll(int index, Collection<? extends Customer> collection)
 	{
 		return instance().customers.addAll(index, collection);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#clear()
+	 */
 	@Override
 	public void clear()
 	{
 		instance().customers.clear();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#contains(java.lang.Object)
+	 */
 	@Override
 	public boolean contains(Object object)
 	{
 		return instance().customers.contains(object);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#containsAll(java.util.Collection)
+	 */
 	@Override
 	public boolean containsAll(Collection<?> collection)
 	{
 		return instance().customers.containsAll(collection);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#get(int)
+	 */
 	@Override
 	public Customer get(int index)
 	{
 		return instance().customers.get(index);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#indexOf(java.lang.Object)
+	 */
 	@Override
 	public int indexOf(Object object)
 	{
 		return instance().customers.indexOf(object);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#isEmpty()
+	 */
 	@Override
 	public boolean isEmpty()
 	{
 		return instance().customers.isEmpty();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#iterator()
+	 */
 	@Override
 	public Iterator<Customer> iterator()
 	{
 		return instance().customers.iterator();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#lastIndexOf(java.lang.Object)
+	 */
 	@Override
 	public int lastIndexOf(Object object)
 	{
 		return instance().customers.lastIndexOf(object);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#listIterator()
+	 */
 	@Override
 	public ListIterator<Customer> listIterator()
 	{
 		return instance().customers.listIterator();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#listIterator(int)
+	 */
 	@Override
 	public ListIterator<Customer> listIterator(int index)
 	{
 		return instance().customers.listIterator(index);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#remove(java.lang.Object)
+	 */
 	@Override
 	public boolean remove(Object object)
 	{
 		return instance().customers.remove(object);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#remove(int)
+	 */
 	@Override
 	public Customer remove(int index)
 	{
 		return instance().customers.remove(index);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#removeAll(java.util.Collection)
+	 */
 	@Override
 	public boolean removeAll(Collection<?> collection)
 	{
 		return instance().customers.removeAll(collection);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#retainAll(java.util.Collection)
+	 */
 	@Override
 	public boolean retainAll(Collection<?> collection)
 	{
 		return instance().customers.retainAll(collection);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#set(int, java.lang.Object)
+	 */
 	@Override
 	public Customer set(int index, Customer customer)
 	{
 		return instance().customers.set(index, customer);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#size()
+	 */
 	@Override
 	public int size()
 	{
 		return instance().customers.size();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#subList(int, int)
+	 */
 	@Override
 	public List<Customer> subList(int startIndex, int endIndex)
 	{
 		return instance().customers.subList(startIndex, endIndex);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#toArray()
+	 */
 	@Override
 	public Object[] toArray()
 	{
 		return instance().customers.toArray();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#toArray(java.lang.Object[])
+	 */
 	@Override
 	public <T> T[] toArray(T[] arg0)
 	{
@@ -190,6 +262,9 @@ public class CustomerList implements Singleton<CustomerList>, KeyedList<Customer
 	}
 
 
+	/* (non-Javadoc)
+	 * @see storage.Loadable#load()
+	 */
 	@Override
 	public void load() throws ClassNotFoundException, IOException
 	{
@@ -204,6 +279,9 @@ public class CustomerList implements Singleton<CustomerList>, KeyedList<Customer
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see storage.Savable#save()
+	 */
 	@Override
 	public void save() throws IOException
 	{
@@ -215,6 +293,9 @@ public class CustomerList implements Singleton<CustomerList>, KeyedList<Customer
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see keyToken.KeyedList#findMatched(java.lang.Object)
+	 */
 	@Override
 	public Customer findMatched(Long key) throws NoKeyTokenFoundException
 	{
@@ -233,6 +314,9 @@ public class CustomerList implements Singleton<CustomerList>, KeyedList<Customer
 		return customer;
 	}
 
+	/* (non-Javadoc)
+	 * @see keyToken.KeyedList#removeMatched(java.lang.Object)
+	 */
 	@Override
 	public void removeMatched(Long key) throws NoKeyTokenFoundException
 	{
