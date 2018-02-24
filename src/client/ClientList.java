@@ -41,10 +41,10 @@ public class ClientList implements Singleton<ClientList>, KeyedList<Client, Long
 
 	/**
 	 * 
-	 * Constructs a UI used when creating a subtype singleton
+	 * Constructs a <code>ClientList</code> used when creating a subtype singleton
 	 * 
 	 * @throws Exception
-	 *             if used to try to create a base type UI
+	 *             if used to try to create a base type
 	 */
 	protected ClientList() throws Exception
 	{
@@ -54,10 +54,21 @@ public class ClientList implements Singleton<ClientList>, KeyedList<Client, Long
 		}
 	}
 
+	/**
+	 * Constructs the <code>ClientList</code> used to create the singleton.
+	 * 
+	 * @param i
+	 *            an integer with no significance other than giving it a
+	 *            different signature than the protected constructor.
+	 */
 	private ClientList(int i)
 	{
 	}
 
+	/**
+	 * Gets or Creates the instance of the singleton <code>ClientList</code>
+	 * @return the instance of the singleton <code>ClientList</code>
+	 */
 	public static ClientList instance()
 	{
 		if (singleton == null)
@@ -67,6 +78,9 @@ public class ClientList implements Singleton<ClientList>, KeyedList<Client, Long
 		return singleton;
 	}
 
+	/* (non-Javadoc)
+	 * @see singleton.Singleton#readResolve()
+	 */
 	@Override
 	public ClientList readResolve()
 	{
@@ -82,138 +96,207 @@ public class ClientList implements Singleton<ClientList>, KeyedList<Client, Long
 		return instance().clients.add(client);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#add(int, java.lang.Object)
+	 */
 	@Override
 	public void add(int index, Client client)
 	{
 		instance().clients.add(index, client);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#addAll(java.util.Collection)
+	 */
 	@Override
 	public boolean addAll(Collection<? extends Client> collection)
 	{
 		return instance().clients.addAll(collection);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#addAll(int, java.util.Collection)
+	 */
 	@Override
 	public boolean addAll(int index, Collection<? extends Client> collection)
 	{
 		return instance().clients.addAll(index, collection);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#clear()
+	 */
 	@Override
 	public void clear()
 	{
 		instance().clients.clear();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#contains(java.lang.Object)
+	 */
 	@Override
 	public boolean contains(Object object)
 	{
 		return instance().clients.contains(object);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#containsAll(java.util.Collection)
+	 */
 	@Override
 	public boolean containsAll(Collection<?> collection)
 	{
 		return instance().clients.containsAll(collection);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#get(int)
+	 */
 	@Override
 	public Client get(int index)
 	{
 		return instance().clients.get(index);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#indexOf(java.lang.Object)
+	 */
 	@Override
 	public int indexOf(Object object)
 	{
 		return instance().clients.indexOf(object);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#isEmpty()
+	 */
 	@Override
 	public boolean isEmpty()
 	{
 		return instance().clients.isEmpty();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#iterator()
+	 */
 	@Override
 	public Iterator<Client> iterator()
 	{
 		return instance().clients.iterator();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#lastIndexOf(java.lang.Object)
+	 */
 	@Override
 	public int lastIndexOf(Object object)
 	{
 		return instance().clients.lastIndexOf(object);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#listIterator()
+	 */
 	@Override
 	public ListIterator<Client> listIterator()
 	{
 		return instance().clients.listIterator();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#listIterator(int)
+	 */
 	@Override
 	public ListIterator<Client> listIterator(int index)
 	{
 		return instance().clients.listIterator(index);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#remove(java.lang.Object)
+	 */
 	@Override
 	public boolean remove(Object object)
 	{
 		return instance().clients.remove(object);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#remove(int)
+	 */
 	@Override
 	public Client remove(int index)
 	{
 		return instance().clients.remove(index);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#removeAll(java.util.Collection)
+	 */
 	@Override
 	public boolean removeAll(Collection<?> collection)
 	{
 		return instance().clients.removeAll(collection);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#retainAll(java.util.Collection)
+	 */
 	@Override
 	public boolean retainAll(Collection<?> collection)
 	{
 		return instance().clients.retainAll(collection);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#set(int, java.lang.Object)
+	 */
 	@Override
 	public Client set(int index, Client client)
 	{
 		return instance().clients.set(index, client);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#size()
+	 */
 	@Override
 	public int size()
 	{
 		return instance().clients.size();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#subList(int, int)
+	 */
 	@Override
 	public List<Client> subList(int startIndex, int endIndex)
 	{
 		return instance().clients.subList(startIndex, endIndex);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#toArray()
+	 */
 	@Override
 	public Object[] toArray()
 	{
 		return instance().clients.toArray();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#toArray(java.lang.Object[])
+	 */
 	@Override
 	public <T> T[] toArray(T[] arg0)
 	{
 		return instance().clients.toArray(arg0);
 	}
 
+	/* (non-Javadoc)
+	 * @see storage.Loadable#load()
+	 */
 	@Override
 	public void load() throws ClassNotFoundException, IOException
 	{
@@ -228,6 +311,9 @@ public class ClientList implements Singleton<ClientList>, KeyedList<Client, Long
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see storage.Savable#save()
+	 */
 	@Override
 	public void save() throws IOException
 	{
@@ -239,6 +325,9 @@ public class ClientList implements Singleton<ClientList>, KeyedList<Client, Long
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see keyToken.KeyedList#findMatched(java.lang.Object)
+	 */
 	@Override
 	public Client findMatched(Long key) throws NoKeyTokenFoundException
 	{
@@ -257,6 +346,9 @@ public class ClientList implements Singleton<ClientList>, KeyedList<Client, Long
 		return client;
 	}
 
+	/* (non-Javadoc)
+	 * @see keyToken.KeyedList#removeMatched(java.lang.Object)
+	 */
 	@Override
 	public void removeMatched(Long key) throws NoKeyTokenFoundException
 	{
