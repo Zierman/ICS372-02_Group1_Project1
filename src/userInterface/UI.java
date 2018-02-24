@@ -76,10 +76,10 @@ public class UI implements Singleton<UI>, Closeable
 	private static final boolean DEBUG_MODE = true; // TODO turn DEBUG_MODE off
 
 	/**
-	 * Constructs a UI used when creating a subtype singleton
+	 * Constructs a <code>UI</code> used when creating a subtype singleton
 	 * 
 	 * @throws Exception
-	 *             if used to try to create a base type UI
+	 *             if used to try to create a base type <code>UI</code>
 	 */
 	protected UI() throws Exception
 	{
@@ -90,7 +90,7 @@ public class UI implements Singleton<UI>, Closeable
 	}
 
 	/**
-	 * Constructs the UI used to create the singleton.
+	 * Constructs the <code>UI</code> used to create the singleton.
 	 * 
 	 * @param i
 	 *            an integer with no significance other than giving it a
