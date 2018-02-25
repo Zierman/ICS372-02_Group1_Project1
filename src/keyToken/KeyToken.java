@@ -2,7 +2,6 @@ package keyToken;
 
 import java.io.Serializable;
 
-//TODO document all of this
 /**
  * A Key value token used to store a key such as an ID number
  * @author Joshua Zierman [py1422xs@metrostate.edu]
