@@ -9,7 +9,7 @@ public class NoKeyTokenFoundException extends Exception
 {
 
 	/**
-	 * 
+	 * Serialization version.
 	 */
 	private static final long serialVersionUID = 1L;
 	
