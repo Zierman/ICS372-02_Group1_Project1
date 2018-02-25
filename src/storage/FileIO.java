@@ -8,32 +8,47 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-//TODO document all of this
 /**
+ * A class that makes FileIO simpler.
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
 public class FileIO implements Closeable
 {
+	/**
+	 * a stream that is used to input objects.
+	 */
 	private ObjectInputStream objectInputStream = null;
 
+	/**
+	 * a stram that is used to output objects.
+	 */
 	private ObjectOutputStream objectOutputStream = null;
 
-	protected FileIO() throws Exception
-	{
-		throw new Exception();
-	}
-
+	/**
+	 * Creates a FileIOobject for input
+	 * @param objectInputStream the stream to be used for inputing objects
+	 */
 	private FileIO(ObjectInputStream objectInputStream)
 	{
 		this.objectInputStream = objectInputStream;
 	}
 
+	/**Creates a FileIOobject for output
+	 * @param objectOutputStream the stream to be used for outputing objects
+	 */
 	private FileIO(ObjectOutputStream objectOutputStream)
 	{
 		this.objectOutputStream = objectOutputStream;
 	}
 
+	/**
+	 * Creates a new FileIO object for reading
+	 * @param filename a <code>String</code> that represents the name of the file objects will be read from.
+	 * @return a FileIO object set up to read from a file with the given filename
+	 * @throws FileNotFoundException if the file was not found.
+	 * @throws IOException if there is a problem during FileIO.
+	 */
 	public static FileIO startRead(String filename)
 			throws FileNotFoundException, IOException
 	{
@@ -43,16 +58,23 @@ public class FileIO implements Closeable
 		return new FileIO(tmpObjectInputStream);
 	}
 	
-	public boolean hasMoreToRead() throws IOException
-	{
-		return objectInputStream.available() > 0 ;
-	}
-
+	/**
+	 * Reads an object from the file.
+	 * @return an <code>Object</code> that was read from the file
+	 * @throws IOException if there is a problem during FileIO.
+	 * @throws ClassNotFoundException if there is a problem with finding the class
+	 */
 	public Object read() throws IOException, ClassNotFoundException
 	{
 		return objectInputStream.readObject();
 	}
 	
+	/**
+	 * Creates a <code>FileIO</code> object to write objects to storage with.
+	 * @param filename a <code>String</code> that holds the filename that the objects will be written to.
+	 * @return a FileIO object set up for output.
+	 * @throws FileNotFoundException if the file was not found.
+	 */
 	public static FileIO startWrite(String filename)
 			throws FileNotFoundException, IOException
 	{
@@ -62,11 +84,19 @@ public class FileIO implements Closeable
 		return new FileIO(tmpObjectOutputStream);
 	}
 
+	/**
+	 * Writes an <code>Object</code> to the file
+	 * @param object the <code>Object</code> to be written to file.
+	 * @throws IOException if there is a problem during FileIO.
+	 */
 	public void write(Object object) throws IOException
 	{
 		objectOutputStream.writeObject(object);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.io.Closeable#close()
+	 */
 	@Override
 	public void close() throws IOException
 	{
