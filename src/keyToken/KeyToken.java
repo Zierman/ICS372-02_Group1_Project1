@@ -67,12 +67,18 @@ public abstract class KeyToken <Type, Key> implements Serializable
 		return this.key.equals(key);
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj)
 	{
 		return obj instanceof KeyToken && toString().equals(obj.toString());
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString()
 	{
