@@ -6,8 +6,8 @@ package uiCommands;
 import theater.Theater;
 import userInterface.UI;
 
-//TODO document all of this
 /**
+ * The command to exit the application
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
@@ -18,6 +18,13 @@ public class ExitApplication implements Command<UI>
 	private final boolean IS_DATA_COMMAND = true;
 	private final boolean IS_TERMINATION_COMMAND = true;
 
+	/**
+	 * 
+	 * Constructs a <code>ExitApplication</code> object used when creating a subtype singleton
+	 * 
+	 * @throws Exception
+	 *             if used to try to create a base type
+	 */
 	protected ExitApplication() throws Exception
 	{
 		if (getClass().getName().equals("ExitApplication"))
@@ -26,10 +33,21 @@ public class ExitApplication implements Command<UI>
 		}
 	}
 
+	/**
+	 * Constructs the <code>ExitApplication</code> object used to create the singleton.
+	 * 
+	 * @param i
+	 *            an integer with no significance other than giving it a
+	 *            different signature than the protected constructor.
+	 */
 	private ExitApplication(int i)
 	{
 	}
 
+	/**
+	 * Gets or creates an instance of the singleton
+	 * @return an instance of the singleton
+	 */
 	public static ExitApplication instance()
 	{
 		if (singleton == null)
@@ -72,6 +90,9 @@ public class ExitApplication implements Command<UI>
 		return instance();
 	}
 
+	/* (non-Javadoc)
+	 * @see uiCommands.Command#call(java.lang.Object)
+	 */
 	@Override
 	public void call(UI ui)
 	{
@@ -93,6 +114,9 @@ public class ExitApplication implements Command<UI>
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see uiCommands.Command#isTerminationCommand()
+	 */
 	@Override
 	public boolean isTerminationCommand()
 	{

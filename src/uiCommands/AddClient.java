@@ -7,8 +7,8 @@ import client.Client;
 import theater.Theater;
 import userInterface.UI;
 
-//TODO document all of this
 /**
+ * the command to add a new client
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
@@ -19,6 +19,13 @@ public class AddClient implements Command<UI>
 	private final boolean IS_DATA_COMMAND = true;
 	private final boolean IS_TERMINATION_COMMAND = false;
 
+	/**
+	 * 
+	 * Constructs a <code>AddClient</code> object used when creating a subtype singleton
+	 * 
+	 * @throws Exception
+	 *             if used to try to create a base type
+	 */
 	protected AddClient() throws Exception
 	{
 		if (getClass().getName().equals("AddClient"))
@@ -27,10 +34,21 @@ public class AddClient implements Command<UI>
 		}
 	}
 
+	/**
+	 * Constructs the <code>AddClient</code> object used to create the singleton.
+	 * 
+	 * @param i
+	 *            an integer with no significance other than giving it a
+	 *            different signature than the protected constructor.
+	 */
 	private AddClient(int i)
 	{
 	}
 
+	/**
+	 * Gets or creates an instance of the singleton
+	 * @return an instance of the singleton
+	 */
 	public static AddClient instance()
 	{
 		if (singleton == null)
@@ -73,6 +91,9 @@ public class AddClient implements Command<UI>
 		return instance();
 	}
 
+	/* (non-Javadoc)
+	 * @see uiCommands.Command#call(java.lang.Object)
+	 */
 	@Override
 	public void call(UI ui)
 	{

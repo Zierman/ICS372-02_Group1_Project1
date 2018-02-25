@@ -12,8 +12,8 @@ import play.Play;
 import theater.Theater;
 import userInterface.UI;
 
-//TODO document all of this
 /**
+ * The command to add new play.
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
@@ -24,6 +24,13 @@ public class AddPlay implements Command<UI>
 	private final boolean IS_DATA_COMMAND = true;
 	private final boolean IS_TERMINATION_COMMAND = false;
 
+	/**
+	 * 
+	 * Constructs a <code>AddPlay</code> object used when creating a subtype singleton
+	 * 
+	 * @throws Exception
+	 *             if used to try to create a base type
+	 */
 	protected AddPlay() throws Exception
 	{
 		if (getClass().getName().equals("AddPlay"))
@@ -32,10 +39,21 @@ public class AddPlay implements Command<UI>
 		}
 	}
 
+	/**
+	 * Constructs the <code>AddPlay</code> object used to create the singleton.
+	 * 
+	 * @param i
+	 *            an integer with no significance other than giving it a
+	 *            different signature than the protected constructor.
+	 */
 	private AddPlay(int i)
 	{
 	}
 
+	/**
+	 * Gets or creates an instance of the singleton
+	 * @return an instance of the singleton
+	 */
 	public static AddPlay instance()
 	{
 		if (singleton == null)
@@ -78,6 +96,9 @@ public class AddPlay implements Command<UI>
 		return instance();
 	}
 
+	/* (non-Javadoc)
+	 * @see uiCommands.Command#call(java.lang.Object)
+	 */
 	@Override
 	public void call(UI ui)
 	{

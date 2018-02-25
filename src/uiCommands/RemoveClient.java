@@ -1,12 +1,11 @@
 package uiCommands;
 
-import client.Client;
 import keyToken.NoKeyTokenFoundException;
 import theater.Theater;
 import userInterface.UI;
 
-//TODO document all of this
 /**
+ * The command to remove a client.
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
@@ -17,6 +16,13 @@ public class RemoveClient implements Command<UI>
 	private final boolean IS_DATA_COMMAND = true;
 	private final boolean IS_TERMINATION_COMMAND = false;
 
+	/**
+	 * 
+	 * Constructs a <code>RemoveClient</code> object used when creating a subtype singleton
+	 * 
+	 * @throws Exception
+	 *             if used to try to create a base type
+	 */
 	protected RemoveClient() throws Exception
 	{
 		if (getClass().getName().equals("RemoveClient"))
@@ -25,10 +31,21 @@ public class RemoveClient implements Command<UI>
 		}
 	}
 
+	/**
+	 * Constructs the <code>RemoveClient</code> object used to create the singleton.
+	 * 
+	 * @param i
+	 *            an integer with no significance other than giving it a
+	 *            different signature than the protected constructor.
+	 */
 	private RemoveClient(int i)
 	{
 	}
 
+	/**
+	 * Gets or creates an instance of the singleton
+	 * @return an instance of the singleton
+	 */
 	public static RemoveClient instance()
 	{
 		if (singleton == null)
@@ -81,6 +98,9 @@ public class RemoveClient implements Command<UI>
 	}
 
 
+	/* (non-Javadoc)
+	 * @see uiCommands.Command#call(java.lang.Object)
+	 */
 	@Override
 	public void call(UI ui)
 	{
