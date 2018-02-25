@@ -7,14 +7,13 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
-import client.Client;
 import singleton.Singleton;
 import storage.FileIO;
 import storage.Loadable;
 import storage.Savable;
 
-//TODO document all of this
 /**
+ * A list of plays
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
@@ -24,6 +23,12 @@ public class PlayList implements Singleton<PlayList>, List<Play>, Savable, Loada
 	protected static final String FILENAME = "plays.dat";
 	private static LinkedList<Play> plays = new LinkedList<Play>();
 
+	/**
+	 * Constructs a <code>PlayList</code> used when creating a subtype singleton
+	 * 
+	 * @throws Exception
+	 *             if used to try to create a base type
+	 */
 	protected PlayList() throws Exception
 	{
 		if (getClass().getName().equals("PlayList"))
@@ -32,10 +37,21 @@ public class PlayList implements Singleton<PlayList>, List<Play>, Savable, Loada
 		}
 	}
 
+	/**
+	 * Constructs the <code>PlayList</code> used to create the singleton.
+	 * 
+	 * @param i
+	 *            an integer with no significance other than giving it a
+	 *            different signature than the protected constructor.
+	 */
 	private PlayList(int i)
 	{
 	}
 
+	/**
+	 * Gets or creates an instance of <code>PlayList</code>.
+	 * @return the instance of <code>PlayList</code>
+	 */
 	public static PlayList instance()
 	{
 		if (singleton == null)
@@ -45,155 +61,230 @@ public class PlayList implements Singleton<PlayList>, List<Play>, Savable, Loada
 		return singleton;
 	}
 
+	/* (non-Javadoc)
+	 * @see singleton.Singleton#readResolve()
+	 */
 	@Override
 	public PlayList readResolve()
 	{
 		return instance();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#add(java.lang.Object)
+	 */
 	@Override
 	public boolean add(Play play)
 	{
-		return instance().plays.add(play);
+		return plays.add(play);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#add(int, java.lang.Object)
+	 */
 	@Override
 	public void add(int index, Play play)
 	{
-		instance().plays.add(index, play);
+		plays.add(index, play);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#addAll(java.util.Collection)
+	 */
 	@Override
 	public boolean addAll(Collection<? extends Play> collection)
 	{
-		return instance().plays.addAll(collection);
+		return plays.addAll(collection);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#addAll(int, java.util.Collection)
+	 */
 	@Override
 	public boolean addAll(int index, Collection<? extends Play> collection)
 	{
-		return instance().plays.addAll(index, collection);
+		return plays.addAll(index, collection);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#clear()
+	 */
 	@Override
 	public void clear()
 	{
-		instance().plays.clear();
+		plays.clear();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#contains(java.lang.Object)
+	 */
 	@Override
 	public boolean contains(Object object)
 	{
-		return instance().plays.contains(object);
+		return plays.contains(object);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#containsAll(java.util.Collection)
+	 */
 	@Override
 	public boolean containsAll(Collection<?> collection)
 	{
-		return instance().plays.containsAll(collection);
+		return plays.containsAll(collection);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#get(int)
+	 */
 	@Override
 	public Play get(int index)
 	{
-		return instance().plays.get(index);
+		return plays.get(index);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#indexOf(java.lang.Object)
+	 */
 	@Override
 	public int indexOf(Object object)
 	{
-		return instance().plays.indexOf(object);
+		return plays.indexOf(object);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#isEmpty()
+	 */
 	@Override
 	public boolean isEmpty()
 	{
-		return instance().plays.isEmpty();
+		return plays.isEmpty();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#iterator()
+	 */
 	@Override
 	public Iterator<Play> iterator()
 	{
-		return instance().plays.iterator();
+		return plays.iterator();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#lastIndexOf(java.lang.Object)
+	 */
 	@Override
 	public int lastIndexOf(Object object)
 	{
-		return instance().plays.lastIndexOf(object);
+		return plays.lastIndexOf(object);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#listIterator()
+	 */
 	@Override
 	public ListIterator<Play> listIterator()
 	{
-		return instance().plays.listIterator();
+		return plays.listIterator();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#listIterator(int)
+	 */
 	@Override
 	public ListIterator<Play> listIterator(int index)
 	{
-		return instance().plays.listIterator(index);
+		return plays.listIterator(index);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#remove(java.lang.Object)
+	 */
 	@Override
 	public boolean remove(Object object)
 	{
-		return instance().plays.remove(object);
+		return plays.remove(object);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#remove(int)
+	 */
 	@Override
 	public Play remove(int index)
 	{
-		return instance().plays.remove(index);
+		return plays.remove(index);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#removeAll(java.util.Collection)
+	 */
 	@Override
 	public boolean removeAll(Collection<?> collection)
 	{
-		return instance().plays.removeAll(collection);
+		return plays.removeAll(collection);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#retainAll(java.util.Collection)
+	 */
 	@Override
 	public boolean retainAll(Collection<?> collection)
 	{
-		return instance().plays.retainAll(collection);
+		return plays.retainAll(collection);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#set(int, java.lang.Object)
+	 */
 	@Override
 	public Play set(int index, Play play)
 	{
-		return instance().plays.set(index, play);
+		return plays.set(index, play);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#size()
+	 */
 	@Override
 	public int size()
 	{
-		return instance().plays.size();
+		return plays.size();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#subList(int, int)
+	 */
 	@Override
 	public List<Play> subList(int startIndex, int endIndex)
 	{
-		return instance().plays.subList(startIndex, endIndex);
+		return plays.subList(startIndex, endIndex);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#toArray()
+	 */
 	@Override
 	public Object[] toArray()
 	{
-		return instance().plays.toArray();
+		return plays.toArray();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.List#toArray(java.lang.Object[])
+	 */
 	@Override
 	public <T> T[] toArray(T[] arg0)
 	{
-		return instance().plays.toArray(arg0);
+		return plays.toArray(arg0);
 	}
 
 
+	/* (non-Javadoc)
+	 * @see storage.Loadable#load()
+	 */
 	@Override
 	public void load() throws ClassNotFoundException, IOException
 	{
-		instance().clear(); // clears the list in case anything was in it
+		clear(); // clears the list in case anything was in it
 		FileIO playFile = FileIO.startRead(FILENAME);
 		LinkedList<Play> tmp =  (LinkedList<Play>) playFile.read();
 		playFile.close();
@@ -204,6 +295,9 @@ public class PlayList implements Singleton<PlayList>, List<Play>, Savable, Loada
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see storage.Savable#save()
+	 */
 	@Override
 	public void save() throws IOException
 	{
