@@ -24,7 +24,7 @@ public interface Command<Type> extends Singleton<Command<Type>>
 	 * @param ui a user interface
 	 * @throws Exception 
 	 */
-	public void call(Type ui) throws Exception;
+	public void call(Type ui);
 
 	/**
 	 * Checks to see if the command accesses data.
