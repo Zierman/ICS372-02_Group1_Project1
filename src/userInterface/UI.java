@@ -312,12 +312,10 @@ public class UI implements Singleton<UI>, Closeable
 	}
 
 	/**
-	 * Drives the UI.
+	 * Runs the UI.
 	 * 
-	 * @param args
-	 *            a array of string arguments that are not used.
 	 */
-	public static void main(String[] args)
+	public static void run()
 	{
 		// create a user interface instance
 		UI ui = UI.instance();
