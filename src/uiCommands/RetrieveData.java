@@ -126,6 +126,7 @@ public class RetrieveData implements Command<UI>
 					Theater theater = ui.getTheater();
 					theater.load();
 					done = true;
+					UI.outputSuccessMessage("data retrieved from storage.");
 				}
 				catch (Exception e)
 				{
