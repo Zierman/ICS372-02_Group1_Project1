@@ -104,16 +104,21 @@ public class RemoveClient implements Command<UI>
 	@Override
 	public void call(UI ui)
 	{
-		Theater theater = ui.getTheater();
-		Long key = Long.parseLong(UI.getInput("Enter client ID: "));
-		try
+		boolean done = false;
+		while(!done)
 		{
-			theater.removeMatchedClient(key);
-			UI.outputSuccessMessage("client removed");
-		}
-		catch (NoKeyTokenFoundException e)
-		{
-			UI.outputError(e, "no match found");
+			Theater theater = ui.getTheater();
+			Long key = Long.parseLong(UI.getInput("Enter client ID: "));
+			try
+			{
+				theater.removeMatchedClient(key);
+				UI.outputSuccessMessage("client removed");
+			}
+			catch (NoKeyTokenFoundException e)
+			{
+				UI.outputError(e, "no match found");
+			}
+			done = !ui.yesCheck("Remove another client?");
 		}
 		
 	}

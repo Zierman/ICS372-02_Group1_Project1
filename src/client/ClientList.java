@@ -367,4 +367,24 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 		}
 		
 	}
+
+	/* (non-Javadoc)
+	 * @see storage.Loadable#canLoad()
+	 */
+	@Override
+	public boolean canLoad()
+	{
+		try
+		{
+			FileIO clientFile = FileIO.startRead(FILENAME);
+			LinkedList<Client> tmp =  (LinkedList<Client>) clientFile.read();
+			clientFile.close();
+			
+		}
+		catch (Exception e)
+		{
+			return false;
+		}
+		return true;
+	}
 }

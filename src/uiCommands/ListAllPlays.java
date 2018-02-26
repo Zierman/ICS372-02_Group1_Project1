@@ -112,18 +112,28 @@ public class ListAllPlays implements Command<UI>
 		{
 			try
 			{
+				boolean found = false;
 				Theater theater = ui.getTheater();
 				PlayList playList = theater.getPlayList();
 				String output = "";
 				for (Play play : playList)
 				{
+					found = true;
 					output += "name: " + play.getName() + ",\n" + "start date: "
 							+ play.getStartDate() + ",\n" + "end date: "
 							+ play.getEndDate() + ",\n" + "Client : "
 							+ play.getOwner().getName() + " ("
 							+ play.getOwner().getID() + ")\n" + "\n";
 				}
-				UI.println(output);
+				
+				if(!found)
+				{
+					UI.println("No clients found.");
+				}
+				else
+				{
+					UI.println(output);
+				}
 				done = true;
 			}
 			catch (Exception e)

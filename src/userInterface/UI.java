@@ -66,6 +66,11 @@ public class UI implements ReadResolveable<UI>, Closeable
 	 * a <code>Command</code> that holds an instance of the help command.
 	 */
 	private static Command<UI> helpCommand = Help.instance();
+	
+	/**
+	 * a Command that holds an instance of the retrieve data command.
+	 */
+	private static Command<UI> retrieveDataCommand = RetrieveData.instance();
 
 	/**
 	 * a <code>final boolean</code> that is true if debug mode is on. If debug
@@ -268,6 +273,52 @@ public class UI implements ReadResolveable<UI>, Closeable
 	{
 		return theater;
 	}
+	
+	/**
+	 * Asks a question and returns true if user answers yes.
+	 * @param question a String that holds a question to ask the user. Should end with '?'
+	 * @return true if the user answers yes.
+	 */
+	public static boolean yesCheck(String question)
+	{
+		// input will hold the user input
+				String input = "";
+
+				// tryAgain hold a boolean value to show if the user wants to try again
+				boolean yes = true;
+
+				// until the user enters a string that starts with an 'n', 'N', 'y', or
+				// 'Y'
+				do
+				{
+					// gets a lower case version of the user input and stores it in
+					// input
+					input = UI.getInput(question + " (Y/N): ").toLowerCase();
+				}
+				while (!input.startsWith("n") && !input.startsWith("y"));
+
+				// if the user's input started with an 'n' or 'N'
+				if (input.startsWith("n"))
+				{
+					// the user does not wish to try again
+					yes = false;
+				}
+
+				// otherwise the user wants to try again and tryAgain remains true
+
+				return yes;
+	}
+	
+
+	/**
+	 * Asks a question and returns true if user answers no.
+	 * @param question a String that holds a question to ask the user. Should end with '?'
+	 * @return true if the user answers no.
+	 */
+	public static boolean noCheck(String question)
+	{
+		return !yesCheck(question);
+	}
 
 	/**
 	 * Asks user if they wish to try again and returns true if they do
@@ -340,6 +391,15 @@ public class UI implements ReadResolveable<UI>, Closeable
 
 		// input is a string to store user input
 		String input = "";
+		
+		if(ui.getTheater().canLoad())
+		{
+			if(UI.yesCheck("Save data was found, retrieve data?"))
+			{
+				retrieveDataCommand.call(ui);
+			}
+			
+		}
 
 		// show all commands.
 		helpCommand.call(ui);

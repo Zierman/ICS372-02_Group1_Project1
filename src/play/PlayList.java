@@ -309,4 +309,26 @@ public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable,
 		
 	}
 
+	@Override
+	public boolean canLoad()
+	{
+		try
+		{
+			clear(); // clears the list in case anything was in it
+			FileIO playFile = FileIO.startRead(FILENAME);
+			LinkedList<Play> tmp =  (LinkedList<Play>) playFile.read();
+			playFile.close();
+			
+			for(Play c : tmp)
+			{
+				instance().add(c);
+			}
+		}
+		catch (Exception e)
+		{
+			return false;
+		}
+		return true;
+	}
+
 }

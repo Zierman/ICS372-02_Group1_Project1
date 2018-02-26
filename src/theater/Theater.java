@@ -266,4 +266,28 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 	{
 		customerList.removeMatched(id);
 	}
+
+	
+	/* (non-Javadoc)
+	 * @see storage.Loadable#canLoad()
+	 */
+	@Override
+	public boolean canLoad()
+	{
+		try
+		{
+			FileIO theaterFile = FileIO.startRead(FILENAME);
+			String tmpString = (String) theaterFile.read();
+			Integer tmpInteger = (Integer) theaterFile.read();
+			theaterFile.close();
+			clientList.canLoad();
+			customerList.canLoad();
+			playList.canLoad();
+		}
+		catch(Exception e)
+		{
+			
+		}
+		return true;
+	}
 }

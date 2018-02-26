@@ -1,5 +1,6 @@
 package customer;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Iterator;
@@ -339,6 +340,25 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		}
 		
 		
+	}
+
+	/* (non-Javadoc)
+	 * @see storage.Loadable#canLoad()
+	 */
+	@Override
+	public boolean canLoad()
+	{
+		try
+		{
+			FileIO customerFile = FileIO.startRead(FILENAME);
+			LinkedList<Customer> tmp =  (LinkedList<Customer>) customerFile.read();
+			customerFile.close();
+		}
+		catch (Exception e)
+		{
+			return false;
+		}
+		return true;
 	}
 
 }

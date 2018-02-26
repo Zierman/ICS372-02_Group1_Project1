@@ -7,6 +7,7 @@ import userInterface.UI;
 
 /**
  * The command to list alll clients
+ * 
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
@@ -19,7 +20,8 @@ public class ListAllClients implements Command<UI>
 
 	/**
 	 * 
-	 * Constructs a <code>ListAllClients</code> object used when creating a subtype singleton
+	 * Constructs a <code>ListAllClients</code> object used when creating a
+	 * subtype singleton
 	 * 
 	 * @throws Exception
 	 *             if used to try to create a base type
@@ -33,7 +35,8 @@ public class ListAllClients implements Command<UI>
 	}
 
 	/**
-	 * Constructs the <code>ListAllClients</code> object used to create the singleton.
+	 * Constructs the <code>ListAllClients</code> object used to create the
+	 * singleton.
 	 * 
 	 * @param i
 	 *            an integer with no significance other than giving it a
@@ -45,6 +48,7 @@ public class ListAllClients implements Command<UI>
 
 	/**
 	 * Gets or creates an instance of the singleton
+	 * 
 	 * @return an instance of the singleton
 	 */
 	public static ListAllClients instance()
@@ -100,7 +104,9 @@ public class ListAllClients implements Command<UI>
 		return IS_TERMINATION_COMMAND;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see uiCommands.Command#call(java.lang.Object)
 	 */
 	@Override
@@ -111,18 +117,28 @@ public class ListAllClients implements Command<UI>
 		{
 			try
 			{
+				boolean found = false;
 				Theater theater = ui.getTheater();
 				ClientList clientList = theater.getClientList();
 				String output = "";
 				for (Client client : clientList)
 				{
+					found = true;
 					output += "id: " + client.getID() + ",\n" + "name: "
 							+ client.getName() + ",\n" + "balance due: "
 							+ client.getBalanceDue() + ",\n" + "address: "
 							+ client.getAddress() + ",\n" + "phone number: "
 							+ client.getPhoneNumber() + "\n" + "\n";
 				}
-				UI.println(output);
+
+				if (!found)
+				{
+					UI.println("No clients found.");
+				}
+				else
+				{
+					UI.println(output);
+				}
 				done = true;
 			}
 			catch (Exception e)

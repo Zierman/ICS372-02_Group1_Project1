@@ -4,6 +4,7 @@ import userInterface.UI;
 
 /**
  * The command to list all customers.
+ * 
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
@@ -16,7 +17,8 @@ public class ListAllCustomers implements Command<UI>
 
 	/**
 	 * 
-	 * Constructs a <code>ListAllCustomers</code> object used when creating a subtype singleton
+	 * Constructs a <code>ListAllCustomers</code> object used when creating a
+	 * subtype singleton
 	 * 
 	 * @throws Exception
 	 *             if used to try to create a base type
@@ -30,7 +32,8 @@ public class ListAllCustomers implements Command<UI>
 	}
 
 	/**
-	 * Constructs the <code>ListAllCustomers</code> object used to create the singleton.
+	 * Constructs the <code>ListAllCustomers</code> object used to create the
+	 * singleton.
 	 * 
 	 * @param i
 	 *            an integer with no significance other than giving it a
@@ -42,6 +45,7 @@ public class ListAllCustomers implements Command<UI>
 
 	/**
 	 * Gets or creates an instance of the singleton
+	 * 
 	 * @return an instance of the singleton
 	 */
 	public static ListAllCustomers instance()
@@ -97,7 +101,9 @@ public class ListAllCustomers implements Command<UI>
 		return IS_TERMINATION_COMMAND;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see uiCommands.Command#call(java.lang.Object)
 	 */
 	@Override

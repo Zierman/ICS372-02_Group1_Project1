@@ -47,14 +47,14 @@
   </combined-fragment>  
   <combined-fragment id="20" interaction-operator="LOOP">    
     <interaction-operand id="21" constraint="while: !done">      
-      <fragment refId="22"/>      
       <fragment refId="7"/>      
-      <fragment refId="9"/>    
+      <fragment refId="9"/>      
+      <fragment refId="22"/>    
     </interaction-operand>    
     <combined-fragment id="22" interaction-operator="NEG">      
       <interaction-operand id="23" constraint="Exception e">        
-        <fragment refId="11"/>        
-        <fragment refId="13"/>      
+        <fragment refId="13"/>        
+        <fragment refId="11"/>      
       </interaction-operand>    
     </combined-fragment>  
   </combined-fragment>  

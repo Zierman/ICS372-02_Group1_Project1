@@ -16,4 +16,10 @@ public interface Loadable
 	 * @throws IOException If there is an issue with the FileIO.
 	 */
 	public void load() throws ClassNotFoundException, IOException;
+	
+	/**
+	 * Checks to see if the object can be loaded.
+	 * @return true if the object can be loaded, else false.
+	 */
+	public boolean canLoad();
 }

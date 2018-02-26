@@ -118,7 +118,7 @@ public class AddClient implements Command<UI>
 				UI.outputSuccessMessage(clientName + " added to client list.");
 				
 				// ask if user wants to continue and end if the user answers no
-				done = UI.getInput("Add another client? (Y/N)").toLowerCase().startsWith("n");
+				done = !UI.yesCheck("Add another client?");
 			}
 			catch (Exception e)
 			{

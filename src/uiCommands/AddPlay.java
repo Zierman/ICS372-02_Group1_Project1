@@ -143,7 +143,7 @@ public class AddPlay implements Command<UI>
 				UI.outputSuccessMessage(name + " added to play list.");
 				
 				// ask if user wants to continue and end if the user answers no
-				done = UI.getInput("Add another play? (Y/N)").toLowerCase().startsWith("n");
+				done = !UI.yesCheck("Add another play?");
 			}
 			catch (Exception e)
 			{

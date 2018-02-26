@@ -22,7 +22,6 @@ public interface Command<Type> extends ReadResolveable<Command<Type>>
 
 	/**Executes the action associated with the command.
 	 * @param ui a user interface
-	 * @throws Exception 
 	 */
 	public void call(Type ui);
 
