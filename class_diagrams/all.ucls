@@ -4,7 +4,7 @@
   router="FAN">  
   <class id="1" language="java" name="currency.Currency" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/currency/Currency.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="206" width="140" x="7210" y="37"/>    
+    <position height="206" width="140" x="7415" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -22,7 +22,7 @@
   </class>  
   <class id="3" language="java" name="storage.FileIO" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/storage/FileIO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="206" width="212" x="6775" y="37"/>    
+    <position height="206" width="212" x="6980" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -31,7 +31,7 @@
   </class>  
   <class id="4" language="java" name="uiCommands.ListAllCustomers" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/uiCommands/ListAllCustomers.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="254" width="198" x="5891" y="37"/>    
+    <position height="254" width="198" x="6096" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -40,7 +40,7 @@
   </class>  
   <class id="5" language="java" name="customer.Customer.CreditCard" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/customer/Customer.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="206" width="183" x="7390" y="37"/>    
+    <position height="206" width="183" x="7595" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -49,7 +49,7 @@
   </class>  
   <class id="6" language="java" name="customer.CustomerList" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/customer/CustomerList.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="606" width="213" x="6129" y="37"/>    
+    <position height="606" width="213" x="6334" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -58,7 +58,7 @@
   </class>  
   <class id="7" language="java" name="play.Play" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/play/Play.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="270" width="151" x="7613" y="37"/>    
+    <position height="270" width="151" x="7818" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -67,7 +67,7 @@
   </class>  
   <class id="8" language="java" name="uiCommands.AddCreditCard" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/uiCommands/AddCreditCard.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="254" width="198" x="5272" y="37"/>    
+    <position height="254" width="198" x="5477" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -76,7 +76,7 @@
   </class>  
   <class id="9" language="java" name="uiCommands.ExitApplication" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/uiCommands/ExitApplication.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="254" width="198" x="7804" y="37"/>    
+    <position height="254" width="198" x="8009" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -139,7 +139,7 @@
   </class>  
   <class id="16" language="java" name="uiCommands.RemoveCreditCard" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/uiCommands/RemoveCreditCard.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="254" width="198" x="8042" y="37"/>    
+    <position height="254" width="198" x="8247" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -157,7 +157,7 @@
   </class>  
   <class id="18" language="java" name="address.Address" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/address/Address.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="174" width="146" x="4682" y="37"/>    
+    <position height="174" width="146" x="4887" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -166,7 +166,7 @@
   </class>  
   <class id="19" language="java" name="theater.Theater" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/theater/Theater.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="462" width="194" x="6541" y="37"/>    
+    <position height="462" width="194" x="6746" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -184,7 +184,7 @@
   </class>  
   <class id="21" language="java" name="play.Play.Name" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/play/Play.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="174" width="119" x="6382" y="37"/>    
+    <position height="174" width="119" x="6587" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -193,7 +193,7 @@
   </class>  
   <class id="22" language="java" name="client.Client.ID" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/client/Client.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="142" width="126" x="4868" y="37"/>    
+    <position height="142" width="126" x="5073" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -202,7 +202,7 @@
   </class>  
   <class id="23" language="java" name="uiCommands.ListAllPlays" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/uiCommands/ListAllPlays.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="254" width="198" x="5510" y="37"/>    
+    <position height="254" width="198" x="5715" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -211,7 +211,7 @@
   </class>  
   <class id="24" language="java" name="uiCommands.AddClient" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/uiCommands/AddClient.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="254" width="198" x="5034" y="37"/>    
+    <position height="254" width="198" x="5239" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -310,7 +310,7 @@
   </class>  
   <interface id="35" language="java" name="ownership.Owned" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/ownership/Owned.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="78" width="103" x="5748" y="37"/>    
+    <position height="78" width="103" x="5953" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -337,7 +337,7 @@
   </interface>  
   <interface id="38" language="java" name="keyToken.KeyedList" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/keyToken/KeyedList.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="94" width="143" x="7027" y="37"/>    
+    <position height="94" width="143" x="7232" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -353,6 +353,15 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
+  <class id="40" language="java" name="TheaterApplicationVersion1" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/TheaterApplicationVersion1.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="94" width="165" x="4682" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
