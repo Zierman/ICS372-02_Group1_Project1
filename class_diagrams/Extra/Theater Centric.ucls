@@ -74,139 +74,137 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <association id="9">    
-    <end type="SOURCE" refId="1" navigable="false" variant="ASSOCIATION">      
-      <attribute id="10" name="singleton">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="11" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="false"/>  
-  </association>  
-  <realization id="12">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="8"/>  
+  <realization id="9">    
+    <bendpoint x="827" y="927"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="6"/>  
   </realization>  
-  <realization id="13">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="8"/>  
-  </realization>  
-  <association id="14">    
-    <end type="SOURCE" refId="1" navigable="false" variant="ASSOCIATION">      
-      <attribute id="15" name="theater">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="16" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="false"/>  
-  </association>  
-  <realization id="17">    
+  <realization id="10">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="7"/>  
   </realization>  
-  <realization id="18">    
-    <bendpoint x="402" y="862"/>    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="6"/>  
+  <realization id="11">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="8"/>  
   </realization>  
-  <association id="19">    
-    <bendpoint x="641" y="847"/>    
-    <end type="SOURCE" refId="2" navigable="false" variant="ASSOCIATION">      
-      <attribute id="20" name="customerList">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="21" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="false"/>  
-  </association>  
-  <realization id="22">    
-    <bendpoint x="492" y="816"/>    
-    <bendpoint x="373" y="779"/>    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="6"/>  
-  </realization>  
-  <realization id="23">    
+  <realization id="12">    
     <bendpoint x="815" y="939"/>    
     <bendpoint x="607" y="890"/>    
     <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="7"/>  
   </realization>  
-  <realization id="24">    
-    <bendpoint x="555" y="941"/>    
-    <bendpoint x="503" y="883"/>    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="6"/>  
-  </realization>  
-  <association id="25">    
+  <association id="13">    
     <end type="SOURCE" refId="3" navigable="false" variant="ASSOCIATION">      
-      <attribute id="26" name="singleton">        
+      <attribute id="14" name="singleton">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="27" minimum="0" maximum="1">        
+      <multiplicity id="15" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="3" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="false"/>  
   </association>  
-  <realization id="28">    
-    <bendpoint x="827" y="927"/>    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="6"/>  
+  <realization id="16">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="7"/>  
   </realization>  
-  <association id="29">    
+  <association id="17">    
     <end type="SOURCE" refId="2" navigable="false" variant="ASSOCIATION">      
-      <attribute id="30" name="playList">        
+      <attribute id="18" name="playList">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="31" minimum="0" maximum="1">        
+      <multiplicity id="19" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="5" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="false"/>  
   </association>  
-  <realization id="32">    
-    <bendpoint x="574" y="768"/>    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="7"/>  
-  </realization>  
-  <association id="33">    
-    <end type="SOURCE" refId="2" navigable="false" variant="ASSOCIATION">      
-      <attribute id="34" name="singleton">        
+  <association id="20">    
+    <end type="SOURCE" refId="1" navigable="false" variant="ASSOCIATION">      
+      <attribute id="21" name="singleton">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="35" minimum="0" maximum="1">        
+      <multiplicity id="22" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="2" navigable="true" variant="ASSOCIATION"/>    
+    <end type="TARGET" refId="1" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="false"/>  
   </association>  
-  <association id="36">    
-    <bendpoint x="386" y="902"/>    
-    <end type="SOURCE" refId="2" navigable="false" variant="ASSOCIATION">      
-      <attribute id="37" name="clientList">        
-        <position height="0" width="0" x="0" y="0"/>      
+  <association id="23">    
+    <end type="SOURCE" refId="4" navigable="false" variant="ASSOCIATION">      
+      <attribute id="24" name="singleton">        
+        <position height="18" width="51" x="483" y="1478"/>      
       </attribute>      
-      <multiplicity id="38" minimum="0" maximum="1">        
+      <multiplicity id="25" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="false"/>  
   </association>  
-  <association id="39">    
+  <realization id="26">    
+    <bendpoint x="574" y="768"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="7"/>  
+  </realization>  
+  <realization id="27">    
+    <bendpoint x="555" y="941"/>    
+    <bendpoint x="503" y="883"/>    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <association id="28">    
+    <end type="SOURCE" refId="1" navigable="false" variant="ASSOCIATION">      
+      <attribute id="29" name="theater">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="30" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="false"/>  
+  </association>  
+  <realization id="31">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <association id="32">    
     <end type="SOURCE" refId="5" navigable="false" variant="ASSOCIATION">      
+      <attribute id="33" name="singleton">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="34" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="false"/>  
+  </association>  
+  <association id="35">    
+    <bendpoint x="641" y="847"/>    
+    <end type="SOURCE" refId="2" navigable="false" variant="ASSOCIATION">      
+      <attribute id="36" name="customerList">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="37" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="false"/>  
+  </association>  
+  <realization id="38">    
+    <bendpoint x="492" y="816"/>    
+    <bendpoint x="373" y="779"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <association id="39">    
+    <end type="SOURCE" refId="2" navigable="false" variant="ASSOCIATION">      
       <attribute id="40" name="singleton">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
@@ -214,17 +212,19 @@
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="5" navigable="true" variant="ASSOCIATION"/>    
+    <end type="TARGET" refId="2" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="false"/>  
   </association>  
   <realization id="42">    
+    <bendpoint x="402" y="862"/>    
     <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="7"/>  
+    <end type="TARGET" refId="6"/>  
   </realization>  
   <association id="43">    
-    <end type="SOURCE" refId="4" navigable="false" variant="ASSOCIATION">      
-      <attribute id="44" name="singleton">        
-        <position height="18" width="51" x="483" y="1478"/>      
+    <bendpoint x="386" y="902"/>    
+    <end type="SOURCE" refId="2" navigable="false" variant="ASSOCIATION">      
+      <attribute id="44" name="clientList">        
+        <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="45" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
