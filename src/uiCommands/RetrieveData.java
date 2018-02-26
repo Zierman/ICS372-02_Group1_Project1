@@ -101,30 +101,33 @@ public class RetrieveData implements Command<UI>
 	 * @see uiCommands.Command#call(java.lang.Object)
 	 */
 	@Override
-	public void call(UI ui) throws Exception
+	public void call(UI ui)
 	{
 		if(ui.hasUsedDataCommand())
 		{
 			Exception e = new DataCommandUsedBeforeRetrievalCallException();
 			UI.outputError(e, "cannot retrieve data because data command has been used already");
-			throw e;
-		}
-		boolean done = false;
-		while(!done)
-		try
-		{
-			Theater theater = ui.getTheater();
-			theater.load();
-			done = true;
-		}
-		catch (Exception e)
-		{
-
-			// show error message
-			UI.outputError(e, "Unable to retrieve data");
 			
-			// ask if user wants to continue and end if the user answers no
-			done = !UI.tryAgainCheck();
+		}
+		else
+		{
+			boolean done = false;
+			while(!done)
+			try
+			{
+				Theater theater = ui.getTheater();
+				theater.load();
+				done = true;
+			}
+			catch (Exception e)
+			{
+	
+				// show error message
+				UI.outputError(e, "Unable to retrieve data");
+				
+				// ask if user wants to continue and end if the user answers no
+				done = !UI.tryAgainCheck();
+			}
 		}
 	}
 	
