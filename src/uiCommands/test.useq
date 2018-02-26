@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.2" icons="false" automaticImage="PNG" generate-combined-fragments="true">  
+  <object id="1" language="java" name="uiCommands.StoreData" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/uiCommands/StoreData.java" binary="false" label="storeData" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="2">      
+      <position height="328" width="0" x="0" y="78"/>    
+    </execution>    
+    <execution id="4">      
+      <position height="265" width="0" x="0" y="120"/>    
+    </execution>  
+  </object>  
+  <object id="13" language="java" name="userInterface.UI" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/userInterface/UI.java" binary="false" label="ui" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="6">      
+      <position height="21" width="0" x="0" y="179"/>    
+    </execution>  
+  </object>  
+  <object id="14" language="java" name="theater.Theater" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/theater/Theater.java" binary="false" label="theater" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="8">      
+      <position height="21" width="0" x="0" y="221"/>    
+    </execution>  
+  </object>  
+  <object id="15" language="java" name="userInterface.UI" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/userInterface/UI.java" binary="false" label="&lt;static&gt;" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="10">      
+      <position height="21" width="0" x="0" y="301"/>    
+    </execution>    
+    <execution id="12">      
+      <position height="21" width="0" x="0" y="343"/>    
+    </execution>  
+  </object>  
+  <combined-fragment id="16" interaction-operator="LOOP">    
+    <interaction-operand id="17" constraint="while: !done">      
+      <fragment refId="18"/>      
+      <fragment refId="5"/>      
+      <fragment refId="7"/>    
+    </interaction-operand>    
+    <combined-fragment id="18" interaction-operator="NEG">      
+      <interaction-operand id="19" constraint="Exception e">        
+        <fragment refId="11"/>        
+        <fragment refId="9"/>      
+      </interaction-operand>    
+    </combined-fragment>  
+  </combined-fragment>  
+  <message id="3" operation="call(userInterface.UI):void" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="5" operation="getTheater():theater.Theater" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
+  </message>  
+  <message id="7" operation="save():void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="8"/>  
+  </message>  
+  <message id="9" operation="outputError(java.lang.Exception,java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="10"/>  
+  </message>  
+  <message id="11" operation="tryAgainCheck():boolean" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="12"/>  
+  </message>
+</sequence-diagram>
