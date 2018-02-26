@@ -37,4 +37,5 @@ public interface Command<Type> extends Singleton<Command<Type>>
 	 * @return true if the command is supposed to close the application.
 	 */
 	public boolean isTerminationCommand();
+	
 }

@@ -73,7 +73,21 @@ public class UI implements Singleton<UI>, Closeable
 	 * shown during a {@link userInterface.UI#outputError(Exception, String)}
 	 * call.
 	 */
-	private static final boolean DEBUG_MODE = true; // TODO turn DEBUG_MODE off
+	protected static final boolean DEBUG_MODE = true; // TODO turn DEBUG_MODE off
+
+	/**
+	 * The first number in shown in the command list. All commands will be shown regardless.
+	 */
+	public static final int COMMAND_LIST_FIRST_NUMBER = 0; // If you want list to start at 1 instead of 0 enter 1.
+
+	/**
+	 * Gets the first number to be shown in the list of commands.
+	 * @return
+	 */
+	public static int getCommandListFirstNumber()
+	{
+		return COMMAND_LIST_FIRST_NUMBER;
+	}
 
 	/**
 	 * Constructs a <code>UI</code> used when creating a subtype singleton
@@ -337,7 +351,7 @@ public class UI implements Singleton<UI>, Closeable
 			{
 				// get the command number from user
 				input = getInput("Enter command number: ");
-				int commandNumber = Integer.parseInt(input) - 1;
+				int commandNumber = Integer.parseInt(input) - COMMAND_LIST_FIRST_NUMBER;
 
 				// find the command
 				lastCommand = commandList.get(commandNumber);

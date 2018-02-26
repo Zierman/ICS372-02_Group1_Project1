@@ -110,10 +110,10 @@ public class Help implements Command<UI>
 			try
 			{
 				UI ui = UI.instance();
-				int i = 0;
+				int i = UI.getCommandListFirstNumber();
 				for (Command c : ui.getCommandList())
 				{
-					UI.println(++i + ") " + c.getLabel());
+					UI.println(i++ + ") " + c.getLabel());
 				}
 				done = true;
 			}
