@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-import singleton.Singleton;
+import singleton.ReadResolveable;
 import theater.Theater;
 import uiCommands.AddClient;
 import uiCommands.AddCreditCard;
@@ -33,7 +33,7 @@ import uiCommands.StoreData;
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
-public class UI implements Singleton<UI>, Closeable
+public class UI implements ReadResolveable<UI>, Closeable
 {
 
 	/**

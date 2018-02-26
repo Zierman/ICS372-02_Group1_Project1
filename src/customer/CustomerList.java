@@ -12,13 +12,13 @@ import customer.Customer;
 import customer.CustomerList;
 import keyToken.KeyedList;
 import keyToken.NoKeyTokenFoundException;
-import singleton.Singleton;
+import singleton.ReadResolveable;
 import storage.FileIO;
 import storage.Loadable;
 import storage.Savable;
 
 //TODO document all of this
-public class CustomerList implements Singleton<CustomerList>, KeyedList<Customer, Long>, Savable, Loadable
+public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Customer, Long>, Savable, Loadable
 {
 	private static CustomerList singleton;
 	protected static final String FILENAME = "customers.dat";

@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
-import singleton.Singleton;
+import singleton.ReadResolveable;
 import storage.FileIO;
 import storage.Loadable;
 import storage.Savable;
@@ -17,7 +17,7 @@ import storage.Savable;
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
-public class PlayList implements Singleton<PlayList>, List<Play>, Savable, Loadable
+public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable, Loadable
 {
 	private static PlayList singleton;
 	protected static final String FILENAME = "plays.dat";

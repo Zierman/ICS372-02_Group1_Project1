@@ -3,7 +3,7 @@
  */
 package uiCommands;
 
-import singleton.Singleton;
+import singleton.ReadResolveable;
 
 
 /**
@@ -12,7 +12,7 @@ import singleton.Singleton;
  *
  * @param <Type> the type of User Interface that the commands are designed for.
  */
-public interface Command<Type> extends Singleton<Command<Type>>
+public interface Command<Type> extends ReadResolveable<Command<Type>>
 {
 	/**
 	 * Gets a label to show to user describing the command.

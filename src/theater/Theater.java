@@ -11,7 +11,7 @@ import customer.CustomerList;
 import keyToken.NoKeyTokenFoundException;
 import play.Play;
 import play.PlayList;
-import singleton.Singleton;
+import singleton.ReadResolveable;
 import storage.FileIO;
 import storage.Loadable;
 import storage.Savable;
@@ -22,7 +22,7 @@ import storage.Savable;
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
-public class Theater implements Singleton<Theater>, Loadable, Savable
+public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 {
 	/**
 	 * a <code>Theater</code> object to enforce singleton behavior.

@@ -9,7 +9,7 @@ import java.util.ListIterator;
 
 import keyToken.KeyedList;
 import keyToken.NoKeyTokenFoundException;
-import singleton.Singleton;
+import singleton.ReadResolveable;
 import storage.FileIO;
 import storage.Loadable;
 import storage.Savable;
@@ -19,7 +19,7 @@ import storage.Savable;
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
-public class ClientList implements Singleton<ClientList>, KeyedList<Client, Long>, Savable, Loadable
+public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client, Long>, Savable, Loadable
 {
 	/**
 	 * the singleton <code>ClientList</code>.
