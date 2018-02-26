@@ -4,7 +4,7 @@
   router="MANHATTAN">  
   <class id="1" language="java" name="phoneNumber.PhoneNumber" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/phoneNumber/PhoneNumber.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="52" width="89" x="498" y="375"/>    
+    <position height="-1" width="-1" x="319" y="214"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -13,7 +13,7 @@
   </class>  
   <interface id="2" language="java" name="java.io.Serializable" project="ICS372-02_Group1_Project1" 
     file="C:/Program Files/Java/jre1.8.0_161/lib/rt.jar" binary="true" corner="BOTTOM_RIGHT">    
-    <position height="52" width="103" x="487" y="188"/>    
+    <position height="-1" width="-1" x="315" y="27"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -22,7 +22,7 @@
   </interface>  
   <class id="3" language="java" name="customer.Customer" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/customer/Customer.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="399" y="693"/>    
+    <position height="-1" width="-1" x="171" y="415"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -31,35 +31,48 @@
   </class>  
   <class id="4" language="java" name="client.Client" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/client/Client.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="52" width="87" x="645" y="660"/>    
+    <position height="-1" width="-1" x="461" y="376"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <association id="5">    
-    <bendpoint x="692" y="451"/>    
+  <package id="5" language="java" name="phoneNumber" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/phoneNumber" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="217" y="125"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <association id="6">    
+    <bendpoint x="469" y="264"/>    
     <end type="SOURCE" refId="4" navigable="false" variant="ASSOCIATION">      
-      <attribute id="6" name="phoneNumber"/>      
-      <multiplicity id="7" minimum="0" maximum="1"/>    
+      <attribute id="7" name="phoneNumber">        
+        <position height="0" width="0" x="-223" y="-187"/>      
+      </attribute>      
+      <multiplicity id="8" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-223" y="-187"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="8">    
+  <association id="9">    
+    <bendpoint x="170" y="258"/>    
+    <end type="SOURCE" refId="3" navigable="false" variant="ASSOCIATION">      
+      <attribute id="10" name="phoneNumber">        
+        <position height="0" width="0" x="-223" y="-187"/>      
+      </attribute>      
+      <multiplicity id="11" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-223" y="-187"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="12">    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="2"/>  
   </realization>  
-  <association id="9">    
-    <bendpoint x="393" y="445"/>    
-    <end type="SOURCE" refId="3" navigable="false" variant="ASSOCIATION">      
-      <attribute id="10" name="phoneNumber"/>      
-      <multiplicity id="11" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="false" package="false" protected="false" private="false" static="false"/>    

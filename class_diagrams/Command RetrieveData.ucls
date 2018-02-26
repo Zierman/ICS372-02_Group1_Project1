@@ -40,7 +40,7 @@
   </interface>  
   <package id="5" language="java" name="uiCommands" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/uiCommands" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="49" width="101" x="524" y="258"/>    
+    <position height="-1" width="-1" x="566" y="281"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <dependency id="6">    

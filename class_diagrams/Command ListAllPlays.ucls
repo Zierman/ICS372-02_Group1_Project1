@@ -94,7 +94,7 @@
   </interface>  
   <package id="11" language="java" name="uiCommands" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/uiCommands" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="487" y="220"/>    
+    <position height="-1" width="-1" x="482" y="220"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <realization id="12">    

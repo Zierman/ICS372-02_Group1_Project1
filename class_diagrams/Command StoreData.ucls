@@ -22,7 +22,7 @@
   </class>  
   <class id="3" language="java" name="theater.Theater" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/theater/Theater.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="52" width="87" x="766" y="377"/>    
+    <position height="-1" width="-1" x="800" y="403"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      

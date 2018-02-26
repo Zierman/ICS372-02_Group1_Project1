@@ -103,7 +103,7 @@
   </class>  
   <package id="12" language="java" name="uiCommands" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/uiCommands" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="371" y="273"/>    
+    <position height="-1" width="-1" x="362" y="278"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <dependency id="13">    

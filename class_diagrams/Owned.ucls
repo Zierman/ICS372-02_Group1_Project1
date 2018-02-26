@@ -4,7 +4,7 @@
   router="MANHATTAN">  
   <interface id="1" language="java" name="ownership.Owned" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/ownership/Owned.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="102" width="262" x="522" y="288"/>    
+    <position height="102" width="262" x="153" y="72"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -13,7 +13,7 @@
   </interface>  
   <class id="2" language="java" name="customer.Customer" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/customer/Customer.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="658" y="803"/>    
+    <position height="-1" width="-1" x="281" y="468"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -22,7 +22,7 @@
   </class>  
   <class id="3" language="java" name="customer.Customer.CreditCard" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/customer/Customer.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="653" y="582"/>    
+    <position height="-1" width="-1" x="284" y="366"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -31,7 +31,7 @@
   </class>  
   <class id="4" language="java" name="play.Play" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/play/Play.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="823" y="551"/>    
+    <position height="-1" width="-1" x="454" y="335"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -40,39 +40,45 @@
   </class>  
   <package id="5" language="java" name="ownership" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/ownership" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="516" y="290"/>    
+    <position height="-1" width="-1" x="147" y="74"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <realization id="6">    
-    <end type="SOURCE" refId="4"/>    
+    <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="1"/>  
   </realization>  
   <association id="7">    
-    <bendpoint x="524" y="797"/>    
-    <bendpoint x="524" y="598"/>    
+    <bendpoint x="162" y="470"/>    
+    <bendpoint x="162" y="382"/>    
     <end type="SOURCE" refId="2" navigable="false" variant="ASSOCIATION">      
-      <attribute id="8" name="cardList"/>      
-      <multiplicity id="9" minimum="0" maximum="2147483647"/>    
+      <attribute id="8" name="cardList">        
+        <position height="0" width="0" x="-369" y="-216"/>      
+      </attribute>      
+      <multiplicity id="9" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-369" y="-216"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="3" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="10">    
-    <bendpoint x="739" y="590"/>    
-    <bendpoint x="739" y="787"/>    
+  <realization id="10">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
+  <association id="11">    
+    <bendpoint x="384" y="374"/>    
+    <bendpoint x="384" y="489"/>    
     <end type="SOURCE" refId="3" navigable="false" variant="ASSOCIATION">      
-      <attribute id="11" name="owner">        
-        <position height="18" width="40" x="747" y="773"/>      
+      <attribute id="12" name="owner">        
+        <position height="18" width="40" x="332" y="462"/>      
       </attribute>      
-      <multiplicity id="12" minimum="0" maximum="1"/>    
+      <multiplicity id="13" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-377" y="-335"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="2" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="13">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="1"/>  
-  </realization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="false" package="false" protected="false" private="false" static="false"/>    
