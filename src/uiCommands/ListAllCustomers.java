@@ -133,7 +133,6 @@ public class ListAllCustomers implements Command<UI>
 								+ ",\nCard Expiration: " + creditCard.getCardExpiration()
 								+ "\n\n";
 					}
-					
 				}
 				if(!found){
 					UI.println("No customers found.");
