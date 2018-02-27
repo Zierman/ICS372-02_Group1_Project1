@@ -109,13 +109,14 @@ public class RemoveCreditCard implements Command<UI>
 		boolean done = false;
 		while(!done){
 			try{
-				// get Customer ID for customer for which to add a CreditCard object
+				// get Customer ID for customer for which to remove a CreditCard object
 				Long customerID = Long.parseLong(UI.getInput("Enter Customer ID: "));
-				// get other necessary information to add a CreditCard object to the list
-				String cardNumber = UI.getInput("Enter Credit Card Number: ");
 				
 				// find customer using target customerID
 				Customer customer = theater.getCustomerList().findMatched(customerID);
+				
+				// get other necessary information to remove a CreditCard object to the list
+				String cardNumber = UI.getInput("Enter Credit Card Number: ");
 				
 				// remove card from Customer's list
 				theater.removeCreditCard(customer, cardNumber);
