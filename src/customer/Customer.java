@@ -155,7 +155,6 @@ public class Customer implements Serializable, Keyed<Long>
 		@Override
 		protected Long getLastValue()
 		{
-			// TODO Auto-generated method stub
 			return Customer.lastID;
 		}
 
@@ -373,6 +372,10 @@ public class Customer implements Serializable, Keyed<Long>
 		this.phoneNumber.setNumber(phoneNum);
 	}
 
+	/**
+	 * returns this instance's cardList
+	 * @return cardList
+	 */
 	public LinkedList<CreditCard> getCardList(){
 		return this.cardList;
 	}
@@ -386,7 +389,11 @@ public class Customer implements Serializable, Keyed<Long>
 		return getID().matches(key);
 	}
 	
-
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see keyToken.Keyed#setKey(java.lang.Object)
+	 */
 	@Override
 	public void setKey(Long key)
 	{
@@ -395,6 +402,11 @@ public class Customer implements Serializable, Keyed<Long>
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see keyToken.Keyed#getKey(java.lang.Object)
+	 */
 	@Override
 	public Long getKey()
 	{

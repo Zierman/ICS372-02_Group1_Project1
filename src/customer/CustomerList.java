@@ -18,13 +18,35 @@ import storage.FileIO;
 import storage.Loadable;
 import storage.Savable;
 
-//TODO document all of this
+/**
+ * A list that holds customers.
+ * @author Troy Novak [wh1617wd@metrostate.edu]
+ *
+ */
 public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Customer, Long>, Savable, Loadable
 {
+	/**
+	 * the singleton <code>CustomerList</code>.
+	 */
 	private static CustomerList singleton;
+	
+	/**
+	 * The filename <code>String</code> that is used for the save and load functionality.
+	 */
 	protected static final String FILENAME = "customers.dat";
+	
+	/**
+	 * the <code>LinkedList</code> that holds all the customers
+	 */
 	private static LinkedList<Customer> customers = new LinkedList<Customer>();
 
+	/**
+	 * 
+	 * Constructs a <code>CustomerList</code> used when creating a subtype singleton
+	 * 
+	 * @throws Exception
+	 *             if used to try to create a base type
+	 */
 	protected CustomerList() throws Exception
 	{
 		if (getClass().getName().equals("CustomerList"))
@@ -33,6 +55,13 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		}
 	}
 
+	/**
+	 * Constructs the <code>CustomerList</code> used to create the singleton.
+	 * 
+	 * @param i
+	 *            an integer with no significance other than giving it a
+	 *            different signature than the protected constructor.
+	 */
 	private CustomerList(int i)
 	{
 	}
