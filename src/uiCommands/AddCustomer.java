@@ -121,8 +121,7 @@ public class AddCustomer implements Command<UI>
 				theater.add(customer);
 				
 				// output to user that the Customer was added
-				UI.outputSuccessMessage(customerName + " added to customer list.\n"
-										+ "Customer ID: " + customer.getID());
+				UI.outputSuccessMessage(customerName + " added to customer list.\n");
 				
 				// ask the user if they would like to add another Customer
 				done = UI.getInput("Add another customer? (Y/N)").toLowerCase().startsWith("n");

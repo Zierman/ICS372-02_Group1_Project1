@@ -1,5 +1,11 @@
 package uiCommands;
 
+import java.util.LinkedList;
+
+import customer.Customer;
+import customer.Customer.CreditCard;
+import customer.CustomerList;
+import theater.Theater;
 import userInterface.UI;
 
 /**
@@ -107,9 +113,37 @@ public class ListAllCustomers implements Command<UI>
 	 * @see uiCommands.Command#call(java.lang.Object)
 	 */
 	@Override
-	public void call(UI arg)
+	public void call(UI ui)
 	{
-		// TODO Auto-generated method stub
+		boolean done = false;
+		while(!done){
+			try{
+				Theater theater = ui.getTheater();
+				CustomerList customerList = theater.getCustomerList();
+				String output = "";
+				for(Customer customer : customerList){
+					output += "ID: " + customer.getID() + ",\nName: "
+							+ customer.getName() + ",\nAddress: " 
+							+ customer.getAddress() + ",\nPhone Number: "
+							+ customer.getPhoneNumber() + "\n\n";
+					LinkedList<CreditCard> cardList = customer.getCardList();
+					for(CreditCard creditCard : cardList){
+						output += "Card Number: " + creditCard.getCardNumber()
+								+ ",\nCard Expiration: " + creditCard.getCardExpiration()
+								+ "\n\n";
+					}
+				}
+				UI.println(output);
+				done = true;
+			}
+			catch(Exception e){
+				// output error message to user
+				UI.outputError(e, "Unable to list all customers.");
+				
+				// ask user if they would like to try again
+				done = !UI.tryAgainCheck();
+			}
+		}
 
 	}
 
