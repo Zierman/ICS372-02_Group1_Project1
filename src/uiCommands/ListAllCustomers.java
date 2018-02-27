@@ -118,10 +118,12 @@ public class ListAllCustomers implements Command<UI>
 		boolean done = false;
 		while(!done){
 			try{
+				boolean found = false;
 				Theater theater = ui.getTheater();
 				CustomerList customerList = theater.getCustomerList();
 				String output = "";
 				for(Customer customer : customerList){
+					found = true;
 					output += "ID: " + customer.getID() + ",\nName: "
 							+ customer.getName() + ",\nAddress: " 
 							+ customer.getAddress() + ",\nPhone Number: "
@@ -132,8 +134,14 @@ public class ListAllCustomers implements Command<UI>
 								+ ",\nCard Expiration: " + creditCard.getCardExpiration()
 								+ "\n\n";
 					}
+					
 				}
-				UI.println(output);
+				if(!found){
+					UI.println("No customers found.");
+				}
+				else{
+					UI.println(output);
+				}
 				done = true;
 			}
 			catch(Exception e){
