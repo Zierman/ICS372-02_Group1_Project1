@@ -5,7 +5,7 @@
   <interface id="1" language="java" name="storage.Loadable" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/storage/Loadable.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="102" width="245" x="148" y="205"/>    
-    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    

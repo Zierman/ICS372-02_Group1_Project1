@@ -103,7 +103,7 @@
   </class>  
   <package id="12" language="java" name="userInterface" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/userInterface" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1092" y="135"/>    
+    <position height="-1" width="-1" x="1084" y="124"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <class id="13" language="java" name="uiCommands.AddPlay" project="ICS372-02_Group1_Project1" 

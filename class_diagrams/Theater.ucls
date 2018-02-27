@@ -13,7 +13,7 @@
   </class>  
   <package id="2" language="java" name="theater" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/theater" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="536" y="481"/>    
+    <position height="-1" width="-1" x="524" y="450"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <class id="3" language="java" name="uiCommands.RemoveClient" project="ICS372-02_Group1_Project1" 

@@ -5,7 +5,7 @@
   <class id="1" language="java" name="keyToken.KeyToken" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/keyToken/KeyToken.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="239" width="286" x="303" y="322"/>    
-    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
@@ -40,7 +40,7 @@
   </class>  
   <package id="5" language="java" name="keyToken" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/keyToken" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="324" y="324"/>    
+    <position height="-1" width="-1" x="321" y="293"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <interface id="6" language="java" name="java.io.Serializable" project="ICS372-02_Group1_Project1" 

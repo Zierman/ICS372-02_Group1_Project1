@@ -5,7 +5,7 @@
   <class id="1" language="java" name="address.Address" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/address/Address.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="168" width="257" x="424" y="298"/>    
-    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
@@ -40,7 +40,7 @@
   </interface>  
   <package id="5" language="java" name="address" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/address" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="49" width="101" x="376" y="280"/>    
+    <position height="-1" width="-1" x="454" y="297"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <association id="6">    

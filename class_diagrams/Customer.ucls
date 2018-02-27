@@ -40,7 +40,7 @@
   </class>  
   <package id="5" language="java" name="customer" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/customer" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="485" y="221"/>    
+    <position height="-1" width="-1" x="481" y="179"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <class id="6" language="java" name="customer.CustomerList" project="ICS372-02_Group1_Project1" 

@@ -76,7 +76,7 @@
   </class>  
   <package id="9" language="java" name="customer" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/customer" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="454" y="166"/>    
+    <position height="-1" width="-1" x="448" y="154"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <realization id="10">    
