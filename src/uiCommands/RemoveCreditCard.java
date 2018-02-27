@@ -100,6 +100,7 @@ public class RemoveCreditCard implements Command<UI>
 
 	/* (non-Javadoc)
 	 * @see uiCommands.Command#call(java.lang.Object)
+	 * @author Troy Novak [wh1617wd@metrostate.edu]
 	 */
 	@Override
 	public void call(UI ui)

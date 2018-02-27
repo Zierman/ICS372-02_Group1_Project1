@@ -91,6 +91,7 @@ public class RemoveCustomer implements Command<UI>
 	 * (non-Javadoc)
 	 * 
 	 * @see uiCommands.Command#isTerminateionCommand()
+	 * @author Troy Novak [wh1617wd@metrostate.edu]
 	 */
 	@Override
 	public boolean isTerminationCommand()
