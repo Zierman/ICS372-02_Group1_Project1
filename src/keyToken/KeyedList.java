@@ -27,4 +27,8 @@ public interface KeyedList<Type extends Keyed<Key>, Key> extends List<Type>
 	 * @throws NoKeyTokenFoundException if no key is found during the search.
 	 */
 	public void removeMatched(Key key) throws NoKeyTokenFoundException;
+	
+	public Key getLastKey();
+	
+	public void setLastKey(Key key);
 }

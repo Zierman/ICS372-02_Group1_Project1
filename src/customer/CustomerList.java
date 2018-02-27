@@ -348,6 +348,7 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 	@Override
 	public boolean canLoad()
 	{
+		Long id = getLastKey();
 		try
 		{
 			FileIO customerFile = FileIO.startRead(FILENAME);
@@ -358,7 +359,27 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		{
 			return false;
 		}
+		setLastKey(id);
 		return true;
+	}
+
+	/* (non-Javadoc)
+	 * @see keyToken.KeyedList#getLastKey()
+	 */
+	@Override
+	public Long getLastKey()
+	{
+		return Customer.lastID;
+	}
+
+	/* (non-Javadoc)
+	 * @see keyToken.KeyedList#setLastKey(java.lang.Object)
+	 */
+	@Override
+	public void setLastKey(Long key)
+	{
+		Customer.lastID = key;
+		
 	}
 
 }

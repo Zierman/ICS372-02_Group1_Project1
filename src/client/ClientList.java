@@ -90,7 +90,7 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	@Override
 	public boolean add(Client client)
 	{
-		return instance().clients.add(client);
+		return clients.add(client);
 	}
 
 	/* (non-Javadoc)
@@ -99,7 +99,7 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	@Override
 	public void add(int index, Client client)
 	{
-		instance().clients.add(index, client);
+		clients.add(index, client);
 	}
 
 	/* (non-Javadoc)
@@ -108,7 +108,7 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	@Override
 	public boolean addAll(Collection<? extends Client> collection)
 	{
-		return instance().clients.addAll(collection);
+		return clients.addAll(collection);
 	}
 
 	/* (non-Javadoc)
@@ -117,7 +117,7 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	@Override
 	public boolean addAll(int index, Collection<? extends Client> collection)
 	{
-		return instance().clients.addAll(index, collection);
+		return clients.addAll(index, collection);
 	}
 
 	/* (non-Javadoc)
@@ -126,7 +126,7 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	@Override
 	public void clear()
 	{
-		instance().clients.clear();
+		clients.clear();
 	}
 
 	/* (non-Javadoc)
@@ -135,7 +135,7 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	@Override
 	public boolean contains(Object object)
 	{
-		return instance().clients.contains(object);
+		return clients.contains(object);
 	}
 
 	/* (non-Javadoc)
@@ -144,7 +144,7 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	@Override
 	public boolean containsAll(Collection<?> collection)
 	{
-		return instance().clients.containsAll(collection);
+		return clients.containsAll(collection);
 	}
 
 	/* (non-Javadoc)
@@ -153,7 +153,7 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	@Override
 	public Client get(int index)
 	{
-		return instance().clients.get(index);
+		return clients.get(index);
 	}
 
 	/* (non-Javadoc)
@@ -162,7 +162,7 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	@Override
 	public int indexOf(Object object)
 	{
-		return instance().clients.indexOf(object);
+		return clients.indexOf(object);
 	}
 
 	/* (non-Javadoc)
@@ -171,7 +171,7 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	@Override
 	public boolean isEmpty()
 	{
-		return instance().clients.isEmpty();
+		return clients.isEmpty();
 	}
 
 	/* (non-Javadoc)
@@ -180,7 +180,7 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	@Override
 	public Iterator<Client> iterator()
 	{
-		return instance().clients.iterator();
+		return clients.iterator();
 	}
 
 	/* (non-Javadoc)
@@ -189,7 +189,7 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	@Override
 	public int lastIndexOf(Object object)
 	{
-		return instance().clients.lastIndexOf(object);
+		return clients.lastIndexOf(object);
 	}
 
 	/* (non-Javadoc)
@@ -198,7 +198,7 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	@Override
 	public ListIterator<Client> listIterator()
 	{
-		return instance().clients.listIterator();
+		return clients.listIterator();
 	}
 
 	/* (non-Javadoc)
@@ -207,7 +207,7 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	@Override
 	public ListIterator<Client> listIterator(int index)
 	{
-		return instance().clients.listIterator(index);
+		return clients.listIterator(index);
 	}
 
 	/* (non-Javadoc)
@@ -216,7 +216,7 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	@Override
 	public boolean remove(Object object)
 	{
-		return instance().clients.remove(object);
+		return clients.remove(object);
 	}
 
 	/* (non-Javadoc)
@@ -225,7 +225,7 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	@Override
 	public Client remove(int index)
 	{
-		return instance().clients.remove(index);
+		return clients.remove(index);
 	}
 
 	/* (non-Javadoc)
@@ -234,7 +234,7 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	@Override
 	public boolean removeAll(Collection<?> collection)
 	{
-		return instance().clients.removeAll(collection);
+		return clients.removeAll(collection);
 	}
 
 	/* (non-Javadoc)
@@ -243,7 +243,7 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	@Override
 	public boolean retainAll(Collection<?> collection)
 	{
-		return instance().clients.retainAll(collection);
+		return clients.retainAll(collection);
 	}
 
 	/* (non-Javadoc)
@@ -252,7 +252,7 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	@Override
 	public Client set(int index, Client client)
 	{
-		return instance().clients.set(index, client);
+		return clients.set(index, client);
 	}
 
 	/* (non-Javadoc)
@@ -261,7 +261,7 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	@Override
 	public int size()
 	{
-		return instance().clients.size();
+		return clients.size();
 	}
 
 	/* (non-Javadoc)
@@ -270,7 +270,7 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	@Override
 	public List<Client> subList(int startIndex, int endIndex)
 	{
-		return instance().clients.subList(startIndex, endIndex);
+		return clients.subList(startIndex, endIndex);
 	}
 
 	/* (non-Javadoc)
@@ -279,7 +279,7 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	@Override
 	public Object[] toArray()
 	{
-		return instance().clients.toArray();
+		return clients.toArray();
 	}
 
 	/* (non-Javadoc)
@@ -288,7 +288,7 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	@Override
 	public <T> T[] toArray(T[] arg0)
 	{
-		return instance().clients.toArray(arg0);
+		return clients.toArray(arg0);
 	}
 
 	/* (non-Javadoc)
@@ -305,6 +305,7 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 		for(Client c : tmp)
 		{
 			instance().add(c);
+			
 			c.getID().setKey(c.getID());
 		}
 	}
@@ -375,8 +376,10 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	@Override
 	public boolean canLoad()
 	{
+		Long id = getLastKey();
 		try
 		{
+			
 			FileIO clientFile = FileIO.startRead(FILENAME);
 			LinkedList<Client> tmp =  (LinkedList<Client>) clientFile.read();
 			clientFile.close();
@@ -386,6 +389,26 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 		{
 			return false;
 		}
+		setLastKey(id);
 		return true;
+	}
+
+	/* (non-Javadoc)
+	 * @see keyToken.KeyedList#getLastKey()
+	 */
+	@Override
+	public Long getLastKey()
+	{
+		return Client.lastId;
+	}
+
+	/* (non-Javadoc)
+	 * @see keyToken.KeyedList#setLastKey(java.lang.Object)
+	 */
+	@Override
+	public void setLastKey(Long key)
+	{
+		Client.lastId = key;
+		
 	}
 }

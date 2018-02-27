@@ -38,16 +38,7 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <interface id="5" language="java" name="keyToken.KeyedList" project="ICS372-02_Group1_Project1" 
-    file="/ICS372-02_Group1_Project1/src/keyToken/KeyedList.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="373" y="71"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
-      <operations public="false" package="false" protected="false" private="false" static="false"/>    
-    </display>  
-  </interface>  
-  <interface id="6" language="java" name="storage.Loadable" project="ICS372-02_Group1_Project1" 
+  <interface id="5" language="java" name="storage.Loadable" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/storage/Loadable.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="699" y="72"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -56,7 +47,7 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </interface>  
-  <interface id="7" language="java" name="storage.Savable" project="ICS372-02_Group1_Project1" 
+  <interface id="6" language="java" name="storage.Savable" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/storage/Savable.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="898" y="174"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -65,7 +56,7 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </interface>  
-  <interface id="8" language="java" name="singleton.ReadResolveable" project="ICS372-02_Group1_Project1" 
+  <interface id="7" language="java" name="singleton.ReadResolveable" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/singleton/ReadResolveable.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="184" y="148"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -74,7 +65,7 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </interface>  
-  <class id="9" language="java" name="exceptions.NoKeyTokenFoundException" project="ICS372-02_Group1_Project1" 
+  <class id="8" language="java" name="exceptions.NoKeyTokenFoundException" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/exceptions/NoKeyTokenFoundException.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="180" y="447"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -83,78 +74,74 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <package id="10" language="java" name="customer" project="ICS372-02_Group1_Project1" 
+  <package id="9" language="java" name="customer" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/customer" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="454" y="166"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <realization id="11">    
+  <realization id="10">    
     <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="8"/>  
+    <end type="TARGET" refId="7"/>  
   </realization>  
-  <association id="12">    
+  <association id="11">    
     <end type="SOURCE" refId="1" navigable="false" variant="ASSOCIATION">      
-      <attribute id="13" name="customers">        
+      <attribute id="12" name="customers">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="14" minimum="0" maximum="2147483647">        
+      <multiplicity id="13" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="3" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="15">    
+  <association id="14">    
     <end type="SOURCE" refId="2" navigable="false" variant="ASSOCIATION">      
-      <attribute id="16" name="customerList">        
+      <attribute id="15" name="customerList">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="17" minimum="0" maximum="1">        
+      <multiplicity id="16" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="18">    
+  <realization id="17">    
     <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="7"/>  
+    <end type="TARGET" refId="6"/>  
   </realization>  
-  <dependency id="19">    
+  <dependency id="18">    
     <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="9"/>  
+    <end type="TARGET" refId="8"/>  
   </dependency>  
-  <realization id="20">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <association id="21">    
+  <association id="19">    
     <end type="SOURCE" refId="1" navigable="false" variant="ASSOCIATION">      
-      <attribute id="22" name="customers">        
+      <attribute id="20" name="customers">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="23" minimum="0" maximum="1">        
+      <multiplicity id="21" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="24">    
+  <association id="22">    
     <end type="SOURCE" refId="1" navigable="false" variant="ASSOCIATION">      
-      <attribute id="25" name="singleton">        
+      <attribute id="23" name="singleton">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="26" minimum="0" maximum="1">        
+      <multiplicity id="24" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="27">    
+  <realization id="25">    
     <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="6"/>  
+    <end type="TARGET" refId="5"/>  
   </realization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    

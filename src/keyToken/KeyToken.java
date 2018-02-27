@@ -8,10 +8,10 @@ import java.io.Serializable;
  *
  * @param <Type> They type of object this key is used for
  */
-public abstract class KeyToken <Type, Key> implements Serializable
+public abstract class KeyToken <Type, Key extends Comparable<Key> > implements Serializable
 {
 	/**
-	 * Serilization version
+	 * Serialization version
 	 */
 	private static final long serialVersionUID = 1L;
 	
@@ -20,41 +20,55 @@ public abstract class KeyToken <Type, Key> implements Serializable
 	 */
 	private Key keyValue;
 	
+	public Key getKeyValue()
+	{
+		return keyValue;
+	}
+
+	public void setKeyValue(Key keyValue)
+	{
+		this.keyValue = keyValue;
+	}
+
 	/**
 	 * Constructs a new Key Value
 	 */
 	public KeyToken()
 	{
-		keyValue = getNextKey();
-		setLastKey(keyValue);
+		keyValue = getNextValue();
+		setLastValue(keyValue);
 	}
 	
 	/**
 	 * Gets the next key to be generated.
 	 * @return a key value
 	 */
-	protected abstract Key getNextKey();
+	protected abstract Key getNextValue();
 	
 	/**
 	 * Gets the last key generated
 	 * @return a key value
 	 */
-	protected abstract Key getLastKey();
+	protected abstract Key getLastValue();
 	
 	/**
 	 * Sets the last key generated
 	 * @param key a key value
 	 */
-	protected abstract void setLastKey(Key key);
+	protected abstract void setLastValue(Key key);
 	
 	/**
-	 * Sets the key 
+	 * Sets the key and
 	 * @param key a key value
 	 */
-	protected void setKey(Key key)
+	public void setValue(Key key)
 	{
 		this.keyValue = key;
-		setLastKey(this.keyValue);
+		
+		if(this.keyValue.compareTo(getLastValue()) < 0)
+		{
+			setLastValue(this.keyValue);
+		}
 	}
 	
 	/**
@@ -63,7 +77,17 @@ public abstract class KeyToken <Type, Key> implements Serializable
 	 */
 	public void setKey(KeyToken<Type, Key> keyToken)
 	{
-		setKey(keyToken.keyValue);
+		setValue(keyToken.keyValue);
+	}
+	
+	/**
+	 * Checks if a key value matches this key value
+	 * @param value a key value
+	 * @return true if they match, else false
+	 */
+	public boolean matches(Key value)
+	{
+		return this.keyValue.equals(value);
 	}
 	
 	/**
@@ -71,7 +95,7 @@ public abstract class KeyToken <Type, Key> implements Serializable
 	 * @param key a key value
 	 * @return true if they match, else false
 	 */
-	public boolean matches(Key key)
+	public boolean matches(KeyToken<Type, Key> key)
 	{
 		return this.keyValue.equals(key);
 	}

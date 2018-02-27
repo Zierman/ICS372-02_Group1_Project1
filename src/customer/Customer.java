@@ -31,7 +31,7 @@ public class Customer implements Serializable, Keyed<Long>
 	/**
 	 * The last used ID key.
 	 */
-	private static Long lastID = Long.MIN_VALUE;
+	protected static Long lastID = Long.MIN_VALUE;
 	
 	/**
 	 * The customer id.
@@ -141,29 +141,29 @@ public class Customer implements Serializable, Keyed<Long>
 		private static final long serialVersionUID = 1L;
 
 		/* (non-Javadoc)
-		 * @see keyToken.KeyToken#getNextKey()
+		 * @see keyToken.ValueToken#getNextValue()
 		 */
 		@Override
-		protected Long getNextKey()
+		protected Long getNextValue()
 		{
 			return Customer.lastID + 1;
 		}
 
 		/* (non-Javadoc)
-		 * @see keyToken.KeyToken#getLastKey()
+		 * @see keyToken.ValueToken#getLastValue()
 		 */
 		@Override
-		protected Long getLastKey()
+		protected Long getLastValue()
 		{
 			// TODO Auto-generated method stub
 			return Customer.lastID;
 		}
 
 		/* (non-Javadoc)
-		 * @see keyToken.KeyToken#setLastKey(java.lang.Object)
+		 * @see keyToken.ValueToken#setLastValue(java.lang.Object)
 		 */
 		@Override
-		protected void setLastKey(Long key)
+		protected void setLastValue(Long key)
 		{
 			Customer.lastID = key;
 			
@@ -387,4 +387,17 @@ public class Customer implements Serializable, Keyed<Long>
 	}
 	
 
+	@Override
+	public void setKey(Long key)
+	{
+
+		this.id.setValue(key);
+
+	}
+
+	@Override
+	public Long getKey()
+	{
+		return this.id.getKeyValue();
+	}
 }

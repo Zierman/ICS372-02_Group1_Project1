@@ -47,16 +47,7 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <interface id="6" language="java" name="keyToken.KeyedList" project="ICS372-02_Group1_Project1" 
-    file="/ICS372-02_Group1_Project1/src/keyToken/KeyedList.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="635" y="672"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
-      <operations public="false" package="false" protected="false" private="false" static="false"/>    
-    </display>  
-  </interface>  
-  <class id="7" language="java" name="theater.Theater" project="ICS372-02_Group1_Project1" 
+  <class id="6" language="java" name="theater.Theater" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/theater/Theater.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="782" y="672"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -65,7 +56,7 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="uiCommands.RemoveCustomer" project="ICS372-02_Group1_Project1" 
+  <class id="7" language="java" name="uiCommands.RemoveCustomer" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/uiCommands/RemoveCustomer.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="921" y="672"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -74,7 +65,7 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="java.lang.Exception" project="ICS372-02_Group1_Project1" 
+  <class id="8" language="java" name="java.lang.Exception" project="ICS372-02_Group1_Project1" 
     file="C:/Program Files/Java/jre1.8.0_161/lib/rt.jar" binary="true" corner="BOTTOM_RIGHT">    
     <position height="52" width="87" x="425" y="195"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -83,40 +74,35 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <package id="10" language="java" name="keyToken" project="ICS372-02_Group1_Project1" 
+  <package id="9" language="java" name="keyToken" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/keyToken" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="351" y="354"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <dependency id="11">    
+  <dependency id="10">    
     <bendpoint x="767" y="432"/>    
-    <end type="SOURCE" refId="7"/>    
+    <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="1"/>  
   </dependency>  
-  <dependency id="12">    
+  <dependency id="11">    
     <bendpoint x="255" y="433"/>    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="1"/>  
   </dependency>  
-  <dependency id="13">    
+  <dependency id="12">    
     <bendpoint x="373" y="552"/>    
     <bendpoint x="374" y="552"/>    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="1"/>  
   </dependency>  
-  <dependency id="14">    
-    <bendpoint x="619" y="549"/>    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="1"/>  
-  </dependency>  
-  <dependency id="15">    
+  <dependency id="13">    
     <bendpoint x="866" y="418"/>    
-    <end type="SOURCE" refId="8"/>    
+    <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="1"/>  
   </dependency>  
-  <generalization id="16">    
+  <generalization id="14">    
     <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="9"/>  
+    <end type="TARGET" refId="8"/>  
   </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
