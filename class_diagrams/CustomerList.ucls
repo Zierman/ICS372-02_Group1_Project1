@@ -74,8 +74,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </interface>  
-  <class id="9" language="java" name="keyToken.NoKeyTokenFoundException" project="ICS372-02_Group1_Project1" 
-    file="/ICS372-02_Group1_Project1/src/keyToken/NoKeyTokenFoundException.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="9" language="java" name="exceptions.NoKeyTokenFoundException" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/exceptions/NoKeyTokenFoundException.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="180" y="447"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      

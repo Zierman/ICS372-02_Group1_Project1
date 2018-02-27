@@ -1,4 +1,4 @@
-package keyToken;
+package exceptions;
 
 /**
  * An exception to be thrown if a search for a keyToken doesn't find one

@@ -1,12 +1,15 @@
 package play;
 
 import java.io.IOException;
+import java.time.DateTimeException;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
+import exceptions.ConflictingDatesException;
 import singleton.ReadResolveable;
 import storage.FileIO;
 import storage.Loadable;
@@ -14,10 +17,12 @@ import storage.Savable;
 
 /**
  * A list of plays
+ * 
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
-public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable, Loadable
+public class PlayList
+		implements ReadResolveable<PlayList>, List<Play>, Savable, Loadable
 {
 	private static PlayList singleton;
 	protected static final String FILENAME = "plays.dat";
@@ -50,6 +55,7 @@ public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable,
 
 	/**
 	 * Gets or creates an instance of <code>PlayList</code>.
+	 * 
 	 * @return the instance of <code>PlayList</code>
 	 */
 	public static PlayList instance()
@@ -61,7 +67,9 @@ public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable,
 		return singleton;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see singleton.Singleton#readResolve()
 	 */
 	@Override
@@ -70,43 +78,72 @@ public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable,
 		return instance();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#add(java.lang.Object)
 	 */
 	@Override
 	public boolean add(Play play)
 	{
+		if (!canAdd(play))
+		{
+			throw new ConflictingDatesException();
+		}
 		return plays.add(play);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#add(int, java.lang.Object)
 	 */
 	@Override
 	public void add(int index, Play play)
 	{
+		if (!canAdd(play))
+		{
+			throw new DateTimeException(null);
+		}
 		plays.add(index, play);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#addAll(java.util.Collection)
 	 */
 	@Override
 	public boolean addAll(Collection<? extends Play> collection)
 	{
-		return plays.addAll(collection);
+		int size = plays.size();
+		for(Play p : collection)
+		{
+			plays.add(p);
+		}
+		return size != plays.size();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#addAll(int, java.util.Collection)
 	 */
 	@Override
 	public boolean addAll(int index, Collection<? extends Play> collection)
 	{
-		return plays.addAll(index, collection);
+		int size = plays.size();
+		for(Play p : collection)
+		{
+			plays.add(index++ ,p);
+			
+		}
+		return size != plays.size();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#clear()
 	 */
 	@Override
@@ -115,7 +152,9 @@ public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable,
 		plays.clear();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#contains(java.lang.Object)
 	 */
 	@Override
@@ -124,7 +163,9 @@ public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable,
 		return plays.contains(object);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#containsAll(java.util.Collection)
 	 */
 	@Override
@@ -133,7 +174,9 @@ public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable,
 		return plays.containsAll(collection);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#get(int)
 	 */
 	@Override
@@ -142,7 +185,9 @@ public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable,
 		return plays.get(index);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#indexOf(java.lang.Object)
 	 */
 	@Override
@@ -151,7 +196,9 @@ public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable,
 		return plays.indexOf(object);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#isEmpty()
 	 */
 	@Override
@@ -160,7 +207,9 @@ public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable,
 		return plays.isEmpty();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#iterator()
 	 */
 	@Override
@@ -169,7 +218,9 @@ public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable,
 		return plays.iterator();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#lastIndexOf(java.lang.Object)
 	 */
 	@Override
@@ -178,7 +229,9 @@ public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable,
 		return plays.lastIndexOf(object);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#listIterator()
 	 */
 	@Override
@@ -187,7 +240,9 @@ public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable,
 		return plays.listIterator();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#listIterator(int)
 	 */
 	@Override
@@ -196,7 +251,9 @@ public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable,
 		return plays.listIterator(index);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#remove(java.lang.Object)
 	 */
 	@Override
@@ -205,7 +262,9 @@ public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable,
 		return plays.remove(object);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#remove(int)
 	 */
 	@Override
@@ -214,7 +273,9 @@ public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable,
 		return plays.remove(index);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#removeAll(java.util.Collection)
 	 */
 	@Override
@@ -223,7 +284,9 @@ public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable,
 		return plays.removeAll(collection);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#retainAll(java.util.Collection)
 	 */
 	@Override
@@ -232,7 +295,9 @@ public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable,
 		return plays.retainAll(collection);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#set(int, java.lang.Object)
 	 */
 	@Override
@@ -241,7 +306,9 @@ public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable,
 		return plays.set(index, play);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#size()
 	 */
 	@Override
@@ -250,7 +317,9 @@ public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable,
 		return plays.size();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#subList(int, int)
 	 */
 	@Override
@@ -259,7 +328,9 @@ public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable,
 		return plays.subList(startIndex, endIndex);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#toArray()
 	 */
 	@Override
@@ -268,7 +339,9 @@ public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable,
 		return plays.toArray();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#toArray(java.lang.Object[])
 	 */
 	@Override
@@ -277,8 +350,9 @@ public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable,
 		return plays.toArray(arg0);
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see storage.Loadable#load()
 	 */
 	@Override
@@ -286,27 +360,28 @@ public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable,
 	{
 		clear(); // clears the list in case anything was in it
 		FileIO playFile = FileIO.startRead(FILENAME);
-		LinkedList<Play> tmp =  (LinkedList<Play>) playFile.read();
+		LinkedList<Play> tmp = (LinkedList<Play>) playFile.read();
 		playFile.close();
-		
-		for(Play c : tmp)
+
+		for (Play c : tmp)
 		{
 			instance().add(c);
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see storage.Savable#save()
 	 */
 	@Override
 	public void save() throws IOException
 	{
-	
-		
+
 		FileIO playFile = FileIO.startWrite(FILENAME);
 		playFile.write(new LinkedList<Play>(instance()));
 		playFile.close();
-		
+
 	}
 
 	@Override
@@ -316,10 +391,10 @@ public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable,
 		{
 			clear(); // clears the list in case anything was in it
 			FileIO playFile = FileIO.startRead(FILENAME);
-			LinkedList<Play> tmp =  (LinkedList<Play>) playFile.read();
+			LinkedList<Play> tmp = (LinkedList<Play>) playFile.read();
 			playFile.close();
-			
-			for(Play c : tmp)
+
+			for (Play c : tmp)
 			{
 				instance().add(c);
 			}
@@ -331,4 +406,27 @@ public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable,
 		return true;
 	}
 
+	public boolean canAdd(Play play)
+	{
+		Date start1 = play.getStartDate();
+		Date start = null;
+		Date end1 = play.getEndDate();
+		Date end = null;
+		boolean canAdd = true;
+
+		for (Play p : instance())
+		{
+			start = p.getStartDate();
+			end = p.getEndDate();
+
+			if (start.before(end1) && end.after(start1))
+			{
+				canAdd = false;
+			}
+
+		}
+		return canAdd;
+	}
+	
+	
 }

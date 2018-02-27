@@ -1,6 +1,6 @@
 package uiCommands;
 
-import keyToken.NoKeyTokenFoundException;
+import exceptions.NoKeyTokenFoundException;
 import theater.Theater;
 import userInterface.UI;
 

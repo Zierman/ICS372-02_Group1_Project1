@@ -23,7 +23,7 @@ public class Client implements Serializable, Keyed<Long>
 	/**
 	 * The last used ID key.
 	 */
-	private static long lastId = Long.MIN_VALUE;
+	private static long lastId = 0L;
 	
 	/**
 	 * The client id.

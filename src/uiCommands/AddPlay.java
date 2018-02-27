@@ -7,8 +7,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import client.Client;
-import keyToken.NoKeyTokenFoundException;
+import exceptions.ConflictingDatesException;
+import exceptions.NoKeyTokenFoundException;
 import play.Play;
+import play.PlayList;
 import theater.Theater;
 import userInterface.UI;
 
@@ -111,17 +113,22 @@ public class AddPlay implements Command<UI>
 				// get input needed to create a new play object
 				String name = UI.getInput("Enter play's name: ");
 				String clientID = UI.getInput("Enter client's ID: ");
-				String startDateString = UI.getInput("Enter play's start date (MM/dd/yyyy): ");
-				String endDateString = UI.getInput("Enter play's end date (MM/dd/yyyy): ");
-				
+
 				// find client from clientID
 				Client client = null;
 				for(Client c : theater.getClientList())
 				{
-					if (c.getID().matches(Long.parseLong(clientID)))
+					try
 					{
-						client = c;
-						break;
+						if (c.getID().matches(Long.parseLong(clientID)))
+						{
+							client = c;
+							break;
+						}
+					}
+					catch (NumberFormatException e)
+					{
+						throw new NoKeyTokenFoundException();
 					}
 				}
 				if(client == null)
@@ -129,8 +136,10 @@ public class AddPlay implements Command<UI>
 					throw new NoKeyTokenFoundException();
 				}
 				
-				// convert from string to dates				
+				String startDateString = UI.getInput("Enter play's start date (MM/dd/yyyy): ");
 				Date startDate = new SimpleDateFormat("MM/dd/yyyy").parse(startDateString);
+				
+				String endDateString = UI.getInput("Enter play's end date (MM/dd/yyyy): ");
 				Date endDate = new SimpleDateFormat("MM/dd/yyyy").parse(endDateString);
 				
 				// create new play object
@@ -144,6 +153,22 @@ public class AddPlay implements Command<UI>
 				
 				// ask if user wants to continue and end if the user answers no
 				done = !UI.yesCheck("Add another play?");
+			}
+			catch (NoKeyTokenFoundException e)
+			{
+				// show error message
+				UI.outputError(e, "Client ID could not be matched.");
+				
+				// ask if user wants to continue and end if the user answers no
+				done = !UI.tryAgainCheck();
+			}
+			catch (ConflictingDatesException e)
+			{
+				// show error message
+				UI.outputError(e, "Dates conflict with other plays in the list.");
+				
+				// ask if user wants to continue and end if the user answers no
+				done = !UI.tryAgainCheck();
 			}
 			catch (Exception e)
 			{

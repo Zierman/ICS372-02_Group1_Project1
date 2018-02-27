@@ -19,7 +19,7 @@ import ownership.Owned;
 
 public class Customer implements Serializable, Keyed<Long>
 {
-	private static Long lastID = Long.MIN_VALUE;
+	private static Long lastID = 0L;
 	private ID id;
 	private Name name;
 	private Address address;

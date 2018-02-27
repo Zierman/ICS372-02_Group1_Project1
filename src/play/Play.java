@@ -54,7 +54,7 @@ public class Play implements Serializable, Owned<Client>
 		/**
 		 * shortest allowed length of name
 		 */
-		public static final int MIN_LENGTH = 2;
+		public static final int MIN_LENGTH = 0;
 		
 		/**
 		 * the string that holds the name.

@@ -2,8 +2,8 @@
 <class-diagram version="1.2.2" icons="false" automaticImage="PNG" always-add-relationships="false" 
   generalizations="false" realizations="false" associations="false" dependencies="false" nesting-relationships="false" 
   router="MANHATTAN">  
-  <class id="1" language="java" name="keyToken.NoKeyTokenFoundException" project="ICS372-02_Group1_Project1" 
-    file="/ICS372-02_Group1_Project1/src/keyToken/NoKeyTokenFoundException.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="1" language="java" name="exceptions.NoKeyTokenFoundException" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/exceptions/NoKeyTokenFoundException.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="120" width="282" x="347" y="356"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -89,7 +89,8 @@
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <dependency id="11">    
-    <end type="SOURCE" refId="5"/>    
+    <bendpoint x="767" y="432"/>    
+    <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="1"/>  
   </dependency>  
   <dependency id="12">    
@@ -98,30 +99,25 @@
     <end type="TARGET" refId="1"/>  
   </dependency>  
   <dependency id="13">    
-    <bendpoint x="866" y="418"/>    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="1"/>  
-  </dependency>  
-  <dependency id="14">    
-    <bendpoint x="767" y="432"/>    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="1"/>  
-  </dependency>  
-  <dependency id="15">    
     <bendpoint x="373" y="552"/>    
     <bendpoint x="374" y="552"/>    
     <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="14">    
+    <bendpoint x="619" y="549"/>    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="15">    
+    <bendpoint x="866" y="418"/>    
+    <end type="SOURCE" refId="8"/>    
     <end type="TARGET" refId="1"/>  
   </dependency>  
   <generalization id="16">    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="9"/>  
   </generalization>  
-  <dependency id="17">    
-    <bendpoint x="619" y="549"/>    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="1"/>  
-  </dependency>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="false" package="false" protected="false" private="false" static="false"/>    

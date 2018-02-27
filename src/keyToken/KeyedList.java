@@ -2,6 +2,8 @@ package keyToken;
 
 import java.util.List;
 
+import exceptions.NoKeyTokenFoundException;
+
 /**
  * A list of {@link keyToken.Keyed} objects.
  * @author Joshua Zierman [py1422xs@metrostate.edu]
