@@ -114,12 +114,13 @@ public class AddCreditCard implements Command<UI>
 			try{
 				// get Customer ID for customer for which to add a CreditCard object
 				Long customerID = Long.parseLong(UI.getInput("Enter Customer ID: "));
-				// get other necessary information to add a CreditCard object to the list
-				String cardNumber = UI.getInput("Enter Credit Card Number: ");
-				String cardExpiration = UI.getInput("Enter Credit Card Expiration: ");
 				
 				// find customer using target customerID
 				Customer customer = theater.getCustomerList().findMatched(customerID);
+				
+				// get other necessary information to add a CreditCard object to the list
+				String cardNumber = UI.getInput("Enter Credit Card Number: ");
+				String cardExpiration = UI.getInput("Enter Credit Card Expiration: ");
 				
 				// add the CreditCard object to the Customer's list
 				theater.add(customer, cardNumber, cardExpiration);
