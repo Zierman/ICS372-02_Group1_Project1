@@ -63,11 +63,11 @@ public class Customer implements Serializable, Keyed<Long>
 	 * generates an ID unique to the instance, and initializes a list of
 	 * CreditCard objects unique to the instance.
 	 * @author Troy Novak [wh1617wd@metrostate.edu]
-	 * @param custName
-	 * @param custAddress
-	 * @param custPhone
-	 * @param cardNum
-	 * @param cardExpiry
+	 * @param name
+	 * @param address
+	 * @param phoneNumber
+	 * @param cardNumber
+	 * @param cardExpiration
 	 */
 	public Customer(String name, String address,
 					String phoneNumber, String cardNumber, String cardExpiration){
@@ -226,7 +226,7 @@ public class Customer implements Serializable, Keyed<Long>
 		
 		/**
 		 * returns this instance's cardExpiration
-		 * @return
+		 * @return cardExpiration
 		 */
 		public String getCardExpiration(){
 			return this.cardExpiration;
