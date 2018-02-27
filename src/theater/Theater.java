@@ -8,6 +8,7 @@ import client.Client;
 import client.ClientList;
 import customer.Customer;
 import customer.CustomerList;
+import exceptions.NoCardFoundException;
 import exceptions.NoKeyTokenFoundException;
 import play.Play;
 import play.PlayList;
@@ -244,6 +245,19 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 	{
 		return customerList.add(customer);
 	}
+	
+	/**
+	 * adds a new credit card
+	 * 
+	 * @param customer
+	 * @param cardNumber
+	 * @param cardExpiration
+	 * @return true if added, false if not
+	 * @throws NoCardFoundException
+	 */
+	public boolean add(Customer customer, String cardNumber, String cardExpiration) throws NoCardFoundException{
+		return customer.addCreditCard(cardNumber, cardExpiration);
+	}
 
 	/**
 	 * Removes a client with matching id
@@ -267,6 +281,16 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 		customerList.removeMatched(id);
 	}
 
+	/**
+	 * removes a credit card
+	 * 
+	 * @param customer
+	 * @param cardNumber
+	 * @throws NoCardFoundException
+	 */
+	public void removeCreditCard(Customer customer, String cardNumber) throws NoCardFoundException{
+		customer.removeCreditCard(cardNumber);
+	}
 	
 	/* (non-Javadoc)
 	 * @see storage.Loadable#canLoad()
