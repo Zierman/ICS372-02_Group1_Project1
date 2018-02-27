@@ -73,7 +73,7 @@ public abstract class KeyToken <Type, Key extends Comparable<Key> > implements S
 	
 	/**
 	 * Sets the key 
-	 * @param key a key value
+	 * @param keyToken a key value
 	 */
 	public void setKey(KeyToken<Type, Key> keyToken)
 	{
