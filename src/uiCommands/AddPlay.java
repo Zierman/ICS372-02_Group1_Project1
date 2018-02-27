@@ -16,6 +16,7 @@ import userInterface.UI;
 
 /**
  * The command to add new play.
+ * 
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
@@ -28,7 +29,8 @@ public class AddPlay implements Command<UI>
 
 	/**
 	 * 
-	 * Constructs a <code>AddPlay</code> object used when creating a subtype singleton
+	 * Constructs a <code>AddPlay</code> object used when creating a subtype
+	 * singleton
 	 * 
 	 * @throws Exception
 	 *             if used to try to create a base type
@@ -54,6 +56,7 @@ public class AddPlay implements Command<UI>
 
 	/**
 	 * Gets or creates an instance of the singleton
+	 * 
 	 * @return an instance of the singleton
 	 */
 	public static AddPlay instance()
@@ -98,7 +101,9 @@ public class AddPlay implements Command<UI>
 		return instance();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see uiCommands.Command#call(java.lang.Object)
 	 */
 	@Override
@@ -106,6 +111,7 @@ public class AddPlay implements Command<UI>
 	{
 		Theater theater = ui.getTheater();
 		boolean done = false;
+		Client client = null;
 		while (!done)
 		{
 			try
@@ -114,74 +120,127 @@ public class AddPlay implements Command<UI>
 				String name = UI.getInput("Enter play's name: ");
 				String clientID = UI.getInput("Enter client's ID: ");
 
-				// find client from clientID
-				Client client = null;
-				for(Client c : theater.getClientList())
+				boolean doneWithID = false;
+				while (!doneWithID)
+				{
+					// find client from clientID
+					client = null;
+					try
+					{
+						for (Client c : theater.getClientList())
+						{
+							try
+							{
+								if (c.getID().matches(Long.parseLong(clientID)))
+								{
+									client = c;
+									break;
+								}
+							}
+							catch (NumberFormatException e)
+							{
+								throw new NoKeyTokenFoundException();
+							}
+						}
+						if (client == null)
+						{
+							throw new NoKeyTokenFoundException();
+						}
+						else
+						{
+							doneWithID = true;
+						}
+					}
+					catch (NoKeyTokenFoundException e)
+					{
+						// show error message
+						UI.outputError(e, "Client ID could not be matched.");
+
+						// ask if user wants to continue and end if the user
+						// answers no
+						doneWithID = !UI.tryAgainCheck();
+
+						if (doneWithID)
+						{
+							throw new Exception();
+						}
+					}
+				}
+				boolean doneWithDates = false;
+				while (!doneWithDates)
 				{
 					try
 					{
-						if (c.getID().matches(Long.parseLong(clientID)))
+						String startDateString = UI.getInput(
+								"Enter play's start date (MM/dd/yyyy): ");
+						Date startDate = new SimpleDateFormat("MM/dd/yyyy")
+								.parse(startDateString);
+
+						String endDateString = UI.getInput(
+								"Enter play's end date (MM/dd/yyyy): ");
+						Date endDate = new SimpleDateFormat("MM/dd/yyyy")
+								.parse(endDateString);
+
+						// create new play object
+						Play play = new Play(name, client, startDate, endDate);
+
+						// add to list
+						theater.add(play);
+
+					}
+					catch (ConflictingDatesException e)
+					{
+						// show error message
+						UI.outputError(e,
+								"Dates conflict with other plays in the list.");
+
+						// ask if user wants to continue and end if the user
+						// answers no
+						doneWithDates = !UI.tryAgainCheck();
+						
+						if (doneWithDates)
 						{
-							client = c;
-							break;
+							throw new Exception();
 						}
 					}
-					catch (NumberFormatException e)
+					catch(Exception e)
 					{
-						throw new NoKeyTokenFoundException();
+						// show error message
+						UI.outputError(e,
+								"There was a problem with the entered dates.");
+
+						// ask if user wants to continue and end if the user
+						// answers no
+						doneWithDates = !UI.tryAgainCheck();
+
+						if (doneWithDates)
+						{
+							throw new Exception();
+						}
 					}
 				}
-				if(client == null)
-				{
-					throw new NoKeyTokenFoundException();
-				}
-				
-				String startDateString = UI.getInput("Enter play's start date (MM/dd/yyyy): ");
-				Date startDate = new SimpleDateFormat("MM/dd/yyyy").parse(startDateString);
-				
-				String endDateString = UI.getInput("Enter play's end date (MM/dd/yyyy): ");
-				Date endDate = new SimpleDateFormat("MM/dd/yyyy").parse(endDateString);
-				
-				// create new play object
-				Play play = new Play(name, client, startDate, endDate);
-				
-				// add to list
-				theater.add(play);
-				
 				// show user that it was added
 				UI.outputSuccessMessage(name + " added to play list.");
-				
+
 				// ask if user wants to continue and end if the user answers no
 				done = !UI.yesCheck("Add another play?");
+
 			}
-			catch (NoKeyTokenFoundException e)
-			{
-				// show error message
-				UI.outputError(e, "Client ID could not be matched.");
-				
-				// ask if user wants to continue and end if the user answers no
-				done = !UI.tryAgainCheck();
-			}
-			catch (ConflictingDatesException e)
-			{
-				// show error message
-				UI.outputError(e, "Dates conflict with other plays in the list.");
-				
-				// ask if user wants to continue and end if the user answers no
-				done = !UI.tryAgainCheck();
-			}
+
 			catch (Exception e)
 			{
 				// show error message
 				UI.outputError(e, "Unable to add play");
-				
+
 				// ask if user wants to continue and end if the user answers no
 				done = !UI.tryAgainCheck();
 			}
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see uiCommands.Command#isTerminationCommand()
 	 */
 	@Override

@@ -305,6 +305,7 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 		for(Client c : tmp)
 		{
 			instance().add(c);
+			c.getID().setKey(c.getID());
 		}
 	}
 

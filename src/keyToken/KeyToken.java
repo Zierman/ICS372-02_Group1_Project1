@@ -18,15 +18,15 @@ public abstract class KeyToken <Type, Key> implements Serializable
 	/**
 	 * The actual key value 
 	 */
-	private Key key;
+	private Key keyValue;
 	
 	/**
 	 * Constructs a new Key Value
 	 */
 	public KeyToken()
 	{
-		key = getNextKey();
-		setLastKey(key);
+		keyValue = getNextKey();
+		setLastKey(keyValue);
 	}
 	
 	/**
@@ -53,7 +53,17 @@ public abstract class KeyToken <Type, Key> implements Serializable
 	 */
 	protected void setKey(Key key)
 	{
-		this.key = key;
+		this.keyValue = key;
+		setLastKey(this.keyValue);
+	}
+	
+	/**
+	 * Sets the key 
+	 * @param key a key value
+	 */
+	public void setKey(KeyToken<Type, Key> keyToken)
+	{
+		setKey(keyToken.keyValue);
 	}
 	
 	/**
@@ -63,7 +73,7 @@ public abstract class KeyToken <Type, Key> implements Serializable
 	 */
 	public boolean matches(Key key)
 	{
-		return this.key.equals(key);
+		return this.keyValue.equals(key);
 	}
 	
 	/* (non-Javadoc)
@@ -81,6 +91,6 @@ public abstract class KeyToken <Type, Key> implements Serializable
 	@Override
 	public String toString()
 	{
-		return getClass().getName() + key;
+		return getClass().getName() + keyValue;
 	}
 }
