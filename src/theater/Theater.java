@@ -258,6 +258,17 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 	public boolean add(Customer customer, String cardNumber, String cardExpiration) throws NoCardFoundException{
 		return customer.addCreditCard(cardNumber, cardExpiration);
 	}
+	
+	/**
+	 * removes a credit card
+	 * 
+	 * @param customer
+	 * @param cardNumber
+	 * @throws NoCardFoundException
+	 */
+	public void removeCreditCard(Customer customer, String cardNumber) throws NoCardFoundException{
+		customer.removeCreditCard(cardNumber);
+	}
 
 	/**
 	 * Removes a client with matching id
@@ -279,17 +290,6 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 	public void removeMatchedCustomer(Long id) throws NoKeyTokenFoundException
 	{
 		customerList.removeMatched(id);
-	}
-
-	/**
-	 * removes a credit card
-	 * 
-	 * @param customer
-	 * @param cardNumber
-	 * @throws NoCardFoundException
-	 */
-	public void removeCreditCard(Customer customer, String cardNumber) throws NoCardFoundException{
-		customer.removeCreditCard(cardNumber);
 	}
 	
 	/* (non-Javadoc)
