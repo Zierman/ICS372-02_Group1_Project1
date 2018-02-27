@@ -1,5 +1,7 @@
 package uiCommands;
 
+import customer.Customer;
+import theater.Theater;
 import userInterface.UI;
 
 /**
@@ -104,9 +106,40 @@ public class AddCreditCard implements Command<UI>
 	 * @see uiCommands.Command#call(java.lang.Object)
 	 */
 	@Override
-	public void call(UI arg)
+	public void call(UI ui)
 	{
-		// TODO Auto-generated method stub
+		Theater theater = ui.getTheater();
+		boolean done = false;
+		while(!done){
+			try{
+				// get Customer ID for customer for which to add a CreditCard object
+				Long customerID = Long.parseLong(UI.getInput("Enter Customer ID: "));
+				// get other necessary information to add a CreditCard object to the list
+				String cardNumber = UI.getInput("Enter Credit Card Number: ");
+				String cardExpiration = UI.getInput("Enter Credit Card Expiration: ");
+				
+				// find customer using target customerID
+				Customer customer = theater.getCustomerList().findMatched(customerID);
+				
+				// add the CreditCard object to the Customer's list
+				theater.add(customer, cardNumber, cardExpiration);
+				
+				// output to user that CreditCard was added to the list
+				UI.outputSuccessMessage(cardNumber + " was added to Customer " + customerID
+										+ "'s list of credit cards.");
+				
+				// ask the user if they would like to add another CreditCard
+				done = UI.getInput("Add another Credit Card? (Y/N)").toLowerCase().startsWith("n");
+				
+			}
+			catch(Exception e){
+				// output error message to user
+				UI.outputError(e, "Unable to add Credit Card.");
+				
+				// ask user if they would like to try again
+				done = !UI.tryAgainCheck();
+			}
+		}
 
 	}
 

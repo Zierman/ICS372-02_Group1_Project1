@@ -8,6 +8,7 @@ import client.Client;
 import client.ClientList;
 import customer.Customer;
 import customer.CustomerList;
+import exceptions.NoCardFoundException;
 import exceptions.NoKeyTokenFoundException;
 import play.Play;
 import play.PlayList;
@@ -243,6 +244,19 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 	public boolean add(Customer customer)
 	{
 		return customerList.add(customer);
+	}
+	
+	/**
+	 * adds a new credit card
+	 * 
+	 * @param customer
+	 * @param cardNumber
+	 * @param cardExpiration
+	 * @return
+	 * @throws NoCardFoundException
+	 */
+	public boolean add(Customer customer, String cardNumber, String cardExpiration) throws NoCardFoundException{
+		return customer.addCreditCard(cardNumber, cardExpiration);
 	}
 
 	/**
