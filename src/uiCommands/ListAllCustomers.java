@@ -123,14 +123,14 @@ public class ListAllCustomers implements Command<UI>
 				String output = "";
 				for(Customer customer : customerList){
 					found = true;
-					output += "ID: " + customer.getID() + ",\nName: "
-							+ customer.getName() + ",\nAddress: " 
-							+ customer.getAddress() + ",\nPhone Number: "
+					output += "ID: " + customer.getID() + "\nName: "
+							+ customer.getName() + "\nAddress: " 
+							+ customer.getAddress() + "\nPhone Number: "
 							+ customer.getPhoneNumber() + "\n\n";
 					LinkedList<CreditCard> cardList = customer.getCardList();
 					for(CreditCard creditCard : cardList){
 						output += "Card Number: " + creditCard.getCardNumber()
-								+ ",\nCard Expiration: " + creditCard.getCardExpiration()
+								+ "\nCard Expiration: " + creditCard.getCardExpiration()
 								+ "\n\n";
 					}
 				}
