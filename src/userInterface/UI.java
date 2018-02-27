@@ -78,7 +78,7 @@ public class UI implements ReadResolveable<UI>, Closeable
 	 * shown during a {@link userInterface.UI#outputError(Exception, String)}
 	 * call.
 	 */
-	protected static final boolean DEBUG_MODE = true; // TODO turn DEBUG_MODE off
+	protected static final boolean DEBUG_MODE = false;
 
 	/**
 	 * The first number in shown in the command list. All commands will be shown regardless.
