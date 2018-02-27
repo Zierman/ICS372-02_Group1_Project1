@@ -124,7 +124,7 @@ public class RemoveCreditCard implements Command<UI>
 										+ "'s list of credit cards.");
 				
 				// ask the user if they would like to remove another CreditCard
-				done = UI.getInput("Remove another Credit Card? (Y/N)").toLowerCase().startsWith("n");
+				done = !UI.yesCheck("Remove another credit card?");
 			}
 			catch(Exception e){
 				// output error message to user

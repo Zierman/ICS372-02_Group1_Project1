@@ -104,16 +104,21 @@ public class RemoveCustomer implements Command<UI>
 	@Override
 	public void call(UI ui)
 	{
-		Theater theater = ui.getTheater();
-		Long key = Long.parseLong(UI.getInput("Enter customer ID: "));
-		try
-		{
-			theater.removeMatchedCustomer(key);
-			UI.outputSuccessMessage("customer removed");
-		}
-		catch (NoKeyTokenFoundException e)
-		{
-			UI.outputError(e, "no match found");
+		boolean done = false;
+		while(!done){
+			Theater theater = ui.getTheater();
+			Long key = Long.parseLong(UI.getInput("Enter customer ID: "));
+			try
+			{
+				theater.removeMatchedCustomer(key);
+				UI.outputSuccessMessage("customer removed");
+			}
+			catch (NoKeyTokenFoundException e)
+			{
+				UI.outputError(e, "no match found");
+				done = !UI.tryAgainCheck();
+			}
+			done = !UI.yesCheck("Remove another customer?");
 		}
 
 	}
