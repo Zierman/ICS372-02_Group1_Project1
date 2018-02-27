@@ -252,7 +252,7 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 	 * @param customer
 	 * @param cardNumber
 	 * @param cardExpiration
-	 * @return
+	 * @return true if added, false if not
 	 * @throws NoCardFoundException
 	 */
 	public boolean add(Customer customer, String cardNumber, String cardExpiration) throws NoCardFoundException{
@@ -281,6 +281,16 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 		customerList.removeMatched(id);
 	}
 
+	/**
+	 * removes a credit card
+	 * 
+	 * @param customer
+	 * @param cardNumber
+	 * @throws NoCardFoundException
+	 */
+	public void removeCreditCard(Customer customer, String cardNumber) throws NoCardFoundException{
+		customer.removeCreditCard(cardNumber);
+	}
 	
 	/* (non-Javadoc)
 	 * @see storage.Loadable#canLoad()

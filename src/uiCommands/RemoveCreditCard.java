@@ -1,5 +1,7 @@
 package uiCommands;
 
+import customer.Customer;
+import theater.Theater;
 import userInterface.UI;
 
 /**
@@ -100,9 +102,38 @@ public class RemoveCreditCard implements Command<UI>
 	 * @see uiCommands.Command#call(java.lang.Object)
 	 */
 	@Override
-	public void call(UI arg)
+	public void call(UI ui)
 	{
-		// TODO Auto-generated method stub
+		Theater theater = ui.getTheater();
+		boolean done = false;
+		while(!done){
+			try{
+				// get Customer ID for customer for which to add a CreditCard object
+				Long customerID = Long.parseLong(UI.getInput("Enter Customer ID: "));
+				// get other necessary information to add a CreditCard object to the list
+				String cardNumber = UI.getInput("Enter Credit Card Number: ");
+				
+				// find customer using target customerID
+				Customer customer = theater.getCustomerList().findMatched(customerID);
+				
+				// remove card from Customer's list
+				theater.removeCreditCard(customer, cardNumber);
+				
+				// output to user that CreditCard was removed from the list
+				UI.outputSuccessMessage(cardNumber + " was removed from Customer " + customerID
+										+ "'s list of credit cards.");
+				
+				// ask the user if they would like to remove another CreditCard
+				done = UI.getInput("Remove another Credit Card? (Y/N)").toLowerCase().startsWith("n");
+			}
+			catch(Exception e){
+				// output error message to user
+				UI.outputError(e, "Unable to remove Credit Card.");
+				
+				// ask user if they would like to try again
+				done = !UI.tryAgainCheck();
+			}
+		}
 		
 	}
 
