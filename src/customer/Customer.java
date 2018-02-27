@@ -8,6 +8,7 @@ import com.sun.org.apache.xml.internal.serializer.SerializationHandler;
 
 import address.Address;
 import client.ClientList;
+import exceptions.NoCardFoundException;
 import keyToken.KeyToken;
 import keyToken.Keyed;
 import phoneNumber.PhoneNumber;
@@ -15,16 +16,47 @@ import storage.FileIO;
 import storage.Savable;
 import ownership.Owned;
 
-//TODO document all of this
-
+/**
+ * Represents a Customer who attends plays at the theater.
+ * @author Troy Novak [wh1617wd@metrostate.edu]
+ *
+ */
 public class Customer implements Serializable, Keyed<Long>
 {
-	private static Long lastID = 0L;
+	/**
+	 * Serialization version.
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * The last used ID key.
+	 */
+	private static Long lastID = Long.MIN_VALUE;
+	
+	/**
+	 * The customer id.
+	 */
 	private ID id;
-	private Name name;
-	private Address address;
-	private PhoneNumber phoneNumber;
-	private LinkedList<CreditCard> cardList;
+	
+	/**
+	 * The customer's name.
+	 */
+	private Name name = new Name();
+	
+	/**
+	 * The customer's street address.
+	 */
+	private Address address = new Address();
+	
+	/**
+	 * The customer's phone number.
+	 */
+	private PhoneNumber phoneNumber = new PhoneNumber();
+	
+	/**
+	 * List to hold customer's credit card information
+	 */
+	private LinkedList<CreditCard> cardList = new LinkedList<CreditCard>();
 	
 	/**
 	 * Customer class constructor that initializes instances attributes,
@@ -37,16 +69,16 @@ public class Customer implements Serializable, Keyed<Long>
 	 * @param cardNum
 	 * @param cardExpiry
 	 */
-	public Customer(String custName, String custAddress,
-					String custPhone, String cardNum, String cardExpiry){
+	public Customer(String name, String address,
+					String phoneNumber, String cardNumber, String cardExpiration){
 		// initialize customer's information
-		this.name.setName(custName);
-		this.address.setAddress(custAddress);
-		this.phoneNumber.setNumber(custPhone);
+		this.name.setName(name);
+		this.address.setAddress(address);
+		this.phoneNumber.setNumber(phoneNumber);
 		// give customer a unique customer ID
 		id = new ID();
 		// initialize the customer's list of credit cards
-		cardList.add(new CreditCard(cardNum, cardExpiry, this));
+		cardList.add(new CreditCard(cardNumber, cardExpiration, this));
 		
 	}
 	
@@ -57,18 +89,37 @@ public class Customer implements Serializable, Keyed<Long>
 	 */
 	public class Name implements Serializable
 	{
+		/**
+		 * Serialization version.
+		 */
+		private static final long serialVersionUID = 1L;
+		
+		/**
+		 * The string representation of the name
+		 */
 		private String name;
 
+		/**
+		 * Gets the customer's name.
+		 * @return the string representation of the name.
+		 */
 		public String getName()
 		{
 			return name;
 		}
 
+		/**
+		 * Sets the customer's name.
+		 * @param name the string representation of the name.
+		 */
 		public void setName(String name)
 		{
 			this.name = name;
 		}
 		
+		/* (non-Javadoc)
+		 * @see java.lang.Object#toString()
+		 */
 		@Override
 		public String toString()
 		{
@@ -85,16 +136,22 @@ public class Customer implements Serializable, Keyed<Long>
 	{
 
 		/**
-		 * 
+		 * Serialization version.
 		 */
 		private static final long serialVersionUID = 1L;
 
+		/* (non-Javadoc)
+		 * @see keyToken.KeyToken#getNextKey()
+		 */
 		@Override
 		protected Long getNextKey()
 		{
 			return Customer.lastID + 1;
 		}
 
+		/* (non-Javadoc)
+		 * @see keyToken.KeyToken#getLastKey()
+		 */
 		@Override
 		protected Long getLastKey()
 		{
@@ -102,6 +159,9 @@ public class Customer implements Serializable, Keyed<Long>
 			return Customer.lastID;
 		}
 
+		/* (non-Javadoc)
+		 * @see keyToken.KeyToken#setLastKey(java.lang.Object)
+		 */
 		@Override
 		protected void setLastKey(Long key)
 		{
@@ -115,15 +175,37 @@ public class Customer implements Serializable, Keyed<Long>
 	 * @author Troy Novak [wh1617wd@metrostate.edu]
 	 * 
 	 */
-	public class CreditCard implements Owned<Customer>{
+	public class CreditCard implements Owned<Customer>,Serializable{
+		
+		/**
+		 * Serialization version.
+		 */
+		private static final long serialVersionUID = 1L;
+		
+		/**
+		 * the String representation of the credit card number
+		 */
 		private String cardNumber;
+		
+		/**
+		 * the String representation of the card expiration date
+		 */
 		private String cardExpiration;
+		
+		/**
+		 * the instance of Cutomer that owns the credit card
+		 */
 		private Customer owner;
 		
-
+		/**
+		 * creates a CreditCard object
+		 * @param cardNum
+		 * @param cardExpiry
+		 * @param owner
+		 */
 		public CreditCard(String cardNum, String cardExpiry, Customer owner){
-			cardNumber = cardNum;
-			cardExpiration = cardExpiry;
+			this.cardNumber = cardNum;
+			this.cardExpiration = cardExpiry;
 			this.owner = owner;
 		}
 		
@@ -169,49 +251,31 @@ public class Customer implements Serializable, Keyed<Long>
 		}
 	}
 	
-	
-	/*
-	 * !! JOSH !!
-	 *
-	 * let me know if you think it would be a good idea to create custom
-	 * Exceptions to be thrown when a user attempts to add a duplicate of a
-	 * card already in the list, or if the card that they are attempting to
-	 * delete from the list does not exist. I couldn't really find solid
-	 * options from the list of java's pre-defined Exceptions...
-	 * NoSuchFieldException or ClassNotFoundException could work, but they
-	 * don't seem fully appropriate.
-	 * 
-	 * >>FROM JOSH<<
-	 * 
-	 * NoSuchField and ClassNotFound don't work for this situation.
-	 * IllegalArgumentException might work because the card number 
-	 * is illegal. You could also create a new class named 
-	 * DuplicateCardException that extends Exception.  
-	 */
-	
 	/**
 	 * adds a new card to cardList as long as that card doesn't already exist
 	 * within cardList
 	 * @param cardNum
 	 * @param cardExpiry
+	 * @throws NoCardFoundException 
 	 */
-	public void addCreditCard(String cardNum, String cardExpiry){
+	public boolean addCreditCard(String cardNum, String cardExpiry) throws NoCardFoundException{
 		// if card doesn't already exist within cardList...
 		if(!exists(cardNum))
 			// ...add new card to cardList
-			cardList.add(new CreditCard(cardNum,cardExpiry, this));
+			return cardList.add(new CreditCard(cardNum,cardExpiry, this));
 		
 		// if card does already exist within cardList...
 		else{
-			// ...throw custom exception?
+			throw new NoCardFoundException();
 		}
 	}
 	
 	/**
 	 * removes a card from cardList as long as that card exists within cardList
 	 * @param cardNum
+	 * @throws NoCardFoundException 
 	 */
-	public void removeCreditCard(String cardNum){
+	public void removeCreditCard(String cardNum) throws NoCardFoundException{
 		// if card exists within cardList...
 		if(exists(cardNum)){
 			// ...remove it from cardList
@@ -223,14 +287,13 @@ public class Customer implements Serializable, Keyed<Long>
 		}
 		// if card doesn't exist within cardList...
 		else{
-			// ...throw custom exception?
+			throw new NoCardFoundException();
 		}
 	}
 	
-	// TODO fix @param in this javadoc comment
 	/**
 	 * searches cardList for specified cardNumber
-	 * @param target
+	 * @param cardNum
 	 * @return true if found
 	 * @return false if not found
 	 */
@@ -310,12 +373,18 @@ public class Customer implements Serializable, Keyed<Long>
 		this.phoneNumber.setNumber(phoneNum);
 	}
 
+	public LinkedList<CreditCard> getCardList(){
+		return this.cardList;
+	}
+	
+	/* (non-Javadoc)
+	 * @see keyToken.Keyed#matches(java.lang.Object)
+	 */
 	@Override
 	public boolean matches(Long key)
 	{
 		return getID().matches(key);
 	}
 	
-	// TODO Finish
 
 }

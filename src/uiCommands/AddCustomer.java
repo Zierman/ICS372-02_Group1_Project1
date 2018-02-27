@@ -1,5 +1,7 @@
 package uiCommands;
 
+import customer.Customer;
+import theater.Theater;
 import userInterface.UI;
 
 /**
@@ -99,9 +101,41 @@ public class AddCustomer implements Command<UI>
 	 * @see uiCommands.Command#call(java.lang.Object)
 	 */
 	@Override
-	public void call(UI arg)
+	public void call(UI ui)
 	{
-		// TODO Auto-generated method stub
+		Theater theater = ui.getTheater();
+		boolean done = false;
+		while(!done){
+			try{
+				// get input needed to create a new Customer object
+				String customerName = UI.getInput("Enter Customer's Name: ");
+				String customerAddress = UI.getInput("Enter Customer's Address: ");
+				String customerPhoneNumber = UI.getInput("Enter Customer's Phone Number: ");
+				String cardNumber = UI.getInput("Enter a Credit Card Number: ");
+				String cardExpiration = UI.getInput("Enter the Credit Card's Expiration Date: ");
+				
+				// create the new Customer object
+				Customer customer = new Customer(customerName, customerAddress, customerPhoneNumber, cardNumber, cardExpiration);
+				
+				// add the Customer object to the list
+				theater.add(customer);
+				
+				// output to user that the Customer was added
+				UI.outputSuccessMessage(customerName + " added to customer list.\n"
+										+ "Customer ID: " + customer.getID());
+				
+				// ask the user if they would like to add another Customer
+				done = UI.getInput("Add another customer? (Y/N)").toLowerCase().startsWith("n");
+				
+			}
+			catch(Exception e){
+				// output error message to user
+				UI.outputError(e, "Unable to add customer.");
+				
+				// ask user if they would like to try again or end
+				done = !UI.tryAgainCheck();
+			}
+		}
 		
 	}
 
