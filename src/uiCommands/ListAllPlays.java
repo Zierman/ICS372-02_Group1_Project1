@@ -102,6 +102,7 @@ public class ListAllPlays implements Command<UI>
 
 	/* (non-Javadoc)
 	 * @see uiCommands.Command#call(java.lang.Object)
+	 * 
 	 */
 	@Override
 	public void call(UI ui)
