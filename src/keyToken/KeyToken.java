@@ -106,7 +106,13 @@ public abstract class KeyToken <Type, Key extends Comparable<Key> > implements S
 	@Override
 	public boolean equals(Object obj)
 	{
-		return obj instanceof KeyToken && toString().equals(obj.toString());
+		return obj instanceof KeyToken && toTestString().equals(((KeyToken<Type, Key>)obj).toTestString());
+	}
+
+	
+	public String toTestString()
+	{
+		return getClass().getName() + keyValue;
 	}
 	
 	/* (non-Javadoc)
@@ -115,6 +121,6 @@ public abstract class KeyToken <Type, Key extends Comparable<Key> > implements S
 	@Override
 	public String toString()
 	{
-		return getClass().getName() + keyValue;
+		return "" + keyValue;
 	}
 }
