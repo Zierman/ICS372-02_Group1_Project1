@@ -176,4 +176,11 @@ public class Play implements Serializable, Owned<Client>
 		return owner;
 	}
 
+	@Override
+	public void setOwner(Client owner)
+	{
+		this.owner = owner;
+		
+	}
+
 }

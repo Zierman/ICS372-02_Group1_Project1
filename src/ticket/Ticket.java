@@ -228,12 +228,6 @@ public abstract class Ticket implements Keyed<Long>, Owned<Customer>, Serializab
 
 		}
 
-		@Override
-		public Object writeReplace()
-		{
-			return new StorageForm<SerialNumber, Ticket, Long>();
-		}
-
 	}
 
 	/* (non-Javadoc)
@@ -280,22 +274,6 @@ public abstract class Ticket implements Keyed<Long>, Owned<Customer>, Serializab
 		return serialNumber.matches(key);
 	}
 
-	//TODO delete this
-	public Long getLast()
-	{
-		return serialNumber.lastValue;
-	}
-
-
-	/* (non-Javadoc)
-	 * @see keyToken.Keyed#getKey()
-	 */
-	@Override
-	public Long getKey()
-	{
-		return serialNumber.getKeyValue();
-	}
-
 
 
 	/* (non-Javadoc)
@@ -317,6 +295,14 @@ public abstract class Ticket implements Keyed<Long>, Owned<Customer>, Serializab
 	{
 		serialNumber.setValue(keyValue);
 		
+	}
+
+
+	@Override
+	public Long getKey()
+	{
+		
+		return serialNumber.getKeyValue();
 	}
 	
 
