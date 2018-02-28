@@ -248,6 +248,13 @@ public class Customer implements Serializable, Keyed<Long>
 		{
 			return owner;
 		}
+
+		@Override
+		public void setOwner(Customer owner)
+		{
+			this.owner = owner;
+			
+		}
 	}
 	
 	/**
