@@ -12,10 +12,12 @@ import play.Play;
 
 /**
  * Tickets are objects grant entry to a play.
+ * 
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
-public abstract class Ticket implements Keyed<Long>, Owned<Customer>, Serializable
+public abstract class Ticket
+		implements Keyed<Long>, Owned<Customer>, Serializable
 {
 	public Ticket(Date dateOfShow, Play play, Customer owner)
 	{
@@ -24,33 +26,31 @@ public abstract class Ticket implements Keyed<Long>, Owned<Customer>, Serializab
 		this.play = play;
 		this.owner = owner;
 		this.serialNumber = new SerialNumber();
+		extraMessage = null;
 	}
-
-
 
 	/**
 	 * The serial number of the ticket.
 	 */
-	private SerialNumber serialNumber;
-	
-	private Date dateOfShow;
-	
-	private String TypeOfTicket;
-	
-	private double priceMultiplier;
-	
-	private Dollar priceOfTicket;
-	
-	private String extraMessage;
-	
-	private Play play;
+	protected SerialNumber serialNumber;
 
-	private Customer owner;
-	
-	
-	
+	protected Date dateOfShow;
+
+	protected String typeOfTicket;
+
+	protected double priceMultiplier;
+
+	protected Dollar priceOfTicket;
+
+	protected String extraMessage;
+
+	protected Play play;
+
+	protected Customer owner;
+
 	/**
 	 * gets the date of show
+	 * 
 	 * @return the dateOfShow
 	 */
 	public Date getDateOfShow()
@@ -58,43 +58,41 @@ public abstract class Ticket implements Keyed<Long>, Owned<Customer>, Serializab
 		return dateOfShow;
 	}
 
-
-
 	/**
-	 * sets the date of the show 
-	 * @param dateOfShow the dateOfShow to set
+	 * sets the date of the show
+	 * 
+	 * @param dateOfShow
+	 *            the dateOfShow to set
 	 */
 	public void setDateOfShow(Date dateOfShow)
 	{
 		this.dateOfShow = dateOfShow;
 	}
 
-
-
 	/**
 	 * gets the type of ticket
+	 * 
 	 * @return the typeOfTicket
 	 */
 	public String getTypeOfTicket()
 	{
-		return TypeOfTicket;
+		return typeOfTicket;
 	}
-
-
 
 	/**
 	 * sets the type of ticket
-	 * @param typeOfTicket the typeOfTicket to set
+	 * 
+	 * @param typeOfTicket
+	 *            the typeOfTicket to set
 	 */
 	public void setTypeOfTicket(String typeOfTicket)
 	{
-		TypeOfTicket = typeOfTicket;
+		typeOfTicket = typeOfTicket;
 	}
-
-
 
 	/**
 	 * gets the price multiplier
+	 * 
 	 * @return the priceMultiplier
 	 */
 	public double getPriceMultiplier()
@@ -102,43 +100,51 @@ public abstract class Ticket implements Keyed<Long>, Owned<Customer>, Serializab
 		return priceMultiplier;
 	}
 
-
-
 	/**
 	 * Sets the price multiplier
-	 * @param priceMultiplier the priceMultiplier to set
+	 * 
+	 * @param priceMultiplier
+	 *            the priceMultiplier to set
 	 */
 	public void setPriceMultiplier(double priceMultiplier)
 	{
 		this.priceMultiplier = priceMultiplier;
 	}
 
-
-
 	/**
 	 * Gets the price of the ticket
+	 * 
 	 * @return the priceOfTicket
 	 */
-	public Dollar getPriceOfTicket()
+	public Dollar getPriceOfTicket() 
 	{
+		// I set it up so that if the price is blank, it will calculate and set
+		// the current price to the initial price of that type of ticket, but if
+		// the price is already set it returns that amount. I did this to allow
+		// for the possibility of additional price adjustments
+
+		if (priceOfTicket == null)
+		{
+			setPriceOfTicket(new Dollar(
+					play.getTicketPrice().getAmount() * priceMultiplier));
+		}
 		return priceOfTicket;
 	}
 
-
-
 	/**
 	 * Sets the price of the ticket
-	 * @param priceOfTicket the priceOfTicket to set
+	 * 
+	 * @param priceOfTicket
+	 *            the priceOfTicket to set
 	 */
 	public void setPriceOfTicket(Dollar priceOfTicket)
 	{
 		this.priceOfTicket = priceOfTicket;
 	}
 
-
-
 	/**
 	 * Gets the extra message
+	 * 
 	 * @return the extraMessage
 	 */
 	public String getExtraMessage()
@@ -146,21 +152,20 @@ public abstract class Ticket implements Keyed<Long>, Owned<Customer>, Serializab
 		return extraMessage;
 	}
 
-
-
 	/**
 	 * Sets the extra message
-	 * @param extraMessage the extraMessage to set
+	 * 
+	 * @param extraMessage
+	 *            the extraMessage to set
 	 */
 	public void setExtraMessage(String extraMessage)
 	{
 		this.extraMessage = extraMessage;
 	}
 
-
-
 	/**
 	 * Gets the play
+	 * 
 	 * @return the play
 	 */
 	public Play getPlay()
@@ -168,21 +173,20 @@ public abstract class Ticket implements Keyed<Long>, Owned<Customer>, Serializab
 		return play;
 	}
 
-
-
 	/**
 	 * Sets the play.
-	 * @param play the play to set
+	 * 
+	 * @param play
+	 *            the play to set
 	 */
 	public void setPlay(Play play)
 	{
 		this.play = play;
 	}
 
-
-
 	/**
 	 * Holds a serial number assosiated with the ticket.
+	 * 
 	 * @author Joshua Zierman [py1422xs@metrostate.edu]
 	 *
 	 */
@@ -198,7 +202,9 @@ public abstract class Ticket implements Keyed<Long>, Owned<Customer>, Serializab
 		 */
 		private static Long lastValue = 0L;
 
-		/* (non-Javadoc)
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see keyToken.KeyToken#getNextValue()
 		 */
 		@Override
@@ -208,7 +214,9 @@ public abstract class Ticket implements Keyed<Long>, Owned<Customer>, Serializab
 			return lastValue + 1;
 		}
 
-		/* (non-Javadoc)
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see keyToken.KeyToken#getLastValue()
 		 */
 		@Override
@@ -218,7 +226,9 @@ public abstract class Ticket implements Keyed<Long>, Owned<Customer>, Serializab
 			return lastValue;
 		}
 
-		/* (non-Javadoc)
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see keyToken.KeyToken#setLastValue(java.lang.Comparable)
 		 */
 		@Override
@@ -230,7 +240,9 @@ public abstract class Ticket implements Keyed<Long>, Owned<Customer>, Serializab
 
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see ownership.Owned#setOwner(java.lang.Object)
 	 */
 	@Override
@@ -239,20 +251,21 @@ public abstract class Ticket implements Keyed<Long>, Owned<Customer>, Serializab
 		this.owner = owner;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see ownership.Owned#getOwner()
 	 */
 	@Override
 	public Customer getOwner()
 	{
-		
+
 		return owner;
 	}
 
-
-
 	/**
-	 * Sets the key to a provided key. used in loading from storage. 
+	 * Sets the key to a provided key. used in loading from storage.
+	 * 
 	 * @param keyToken
 	 * @see keyToken.KeyToken#setKey(keyToken.KeyToken)
 	 */
@@ -261,11 +274,12 @@ public abstract class Ticket implements Keyed<Long>, Owned<Customer>, Serializab
 		serialNumber.setKey(keyToken);
 	}
 
-
-
 	/**
-	 * Checks to see if the key value in the parameter is a match for this item's key
-	 * @param key the key value to be checked against
+	 * Checks to see if the key value in the parameter is a match for this
+	 * item's key
+	 * 
+	 * @param key
+	 *            the key value to be checked against
 	 * @return true if the two match or false if they don't.
 	 * @see keyToken.KeyToken#matches(keyToken.KeyToken)
 	 */
@@ -274,9 +288,9 @@ public abstract class Ticket implements Keyed<Long>, Owned<Customer>, Serializab
 		return serialNumber.matches(key);
 	}
 
-
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see keyToken.Keyed#matches(java.lang.Object)
 	 */
 	@Override
@@ -285,25 +299,23 @@ public abstract class Ticket implements Keyed<Long>, Owned<Customer>, Serializab
 		return serialNumber.matches(keyValue);
 	}
 
-
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see keyToken.Keyed#setKey(java.lang.Object)
 	 */
 	@Override
 	public void setKey(Long keyValue)
 	{
 		serialNumber.setValue(keyValue);
-		
-	}
 
+	}
 
 	@Override
 	public Long getKey()
 	{
-		
+
 		return serialNumber.getKeyValue();
 	}
-	
 
 }

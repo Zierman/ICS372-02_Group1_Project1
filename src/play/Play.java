@@ -5,10 +5,12 @@ import java.time.DateTimeException;
 import java.util.Date;
 
 import client.Client;
+import currency.Dollar;
 import ownership.Owned;
 
 /**
  * A play that is performed in a theater by a client for customers.
+ * 
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
@@ -23,24 +25,27 @@ public class Play implements Serializable, Owned<Client>
 	 * the name of the play.
 	 */
 	private Name name = new Name();
-	
+
 	/**
 	 * The client that performs the play.
 	 */
 	private Client owner;
-	
+
 	/**
 	 * the date that the play starts performances.
 	 */
 	private Date startDate;
-	
+
 	/**
 	 * the date that the play ends performances.
 	 */
 	private Date endDate;
 
+	private Dollar ticketPrice;
+
 	/**
-	 * Play name 
+	 * Play name
+	 * 
 	 * @author Joshua Zierman [py1422xs@metrostate.edu]
 	 *
 	 */
@@ -50,12 +55,12 @@ public class Play implements Serializable, Owned<Client>
 		 * Serialization version.
 		 */
 		private static final long serialVersionUID = 1L;
-		
+
 		/**
 		 * shortest allowed length of name
 		 */
 		public static final int MIN_LENGTH = 0;
-		
+
 		/**
 		 * the string that holds the name.
 		 */
@@ -63,6 +68,7 @@ public class Play implements Serializable, Owned<Client>
 
 		/**
 		 * Gets the name
+		 * 
 		 * @return a <code>String</code> representing the name
 		 */
 		public String getName()
@@ -72,18 +78,24 @@ public class Play implements Serializable, Owned<Client>
 
 		/**
 		 * Sets the name
-		 * @param name a <code>String</code> representing a name.
+		 * 
+		 * @param name
+		 *            a <code>String</code> representing a name.
 		 */
 		public void setName(String name)
 		{
-			if(name.length() < MIN_LENGTH)
+			if (name.length() < MIN_LENGTH)
 			{
-				throw new IllegalArgumentException("name must be length at least " + MIN_LENGTH + " characters long.");
+				throw new IllegalArgumentException(
+						"name must be length at least " + MIN_LENGTH
+								+ " characters long.");
 			}
 			this.name = name;
 		}
 
-		/* (non-Javadoc)
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see java.lang.Object#toString()
 		 */
 		@Override
@@ -95,10 +107,16 @@ public class Play implements Serializable, Owned<Client>
 
 	/**
 	 * Creates a <code>Play</code> object
-	 * @param name the <code>String</code> that holds the name of the play
-	 * @param client the <code>Client</code> object of the client that performs the play.
-	 * @param startDate the <code>Date</code> object that holds the starting date.
-	 * @param endDate the <code>Date</code> object that holds the ending date.
+	 * 
+	 * @param name
+	 *            the <code>String</code> that holds the name of the play
+	 * @param client
+	 *            the <code>Client</code> object of the client that performs the
+	 *            play.
+	 * @param startDate
+	 *            the <code>Date</code> object that holds the starting date.
+	 * @param endDate
+	 *            the <code>Date</code> object that holds the ending date.
 	 */
 	public Play(String name, Client client, Date startDate, Date endDate)
 	{
@@ -115,6 +133,7 @@ public class Play implements Serializable, Owned<Client>
 
 	/**
 	 * Gets the name
+	 * 
 	 * @return a <code>Name</code> object.
 	 */
 	public Name getName()
@@ -124,7 +143,10 @@ public class Play implements Serializable, Owned<Client>
 
 	/**
 	 * Sets the name
-	 * @param name the <code>String</code> representation of a name that <code>this</code> name will be set to.
+	 * 
+	 * @param name
+	 *            the <code>String</code> representation of a name that
+	 *            <code>this</code> name will be set to.
 	 */
 	public void setName(String name)
 	{
@@ -133,7 +155,8 @@ public class Play implements Serializable, Owned<Client>
 
 	/**
 	 * Gets the start date.
-	 * @return the date that the play begins showing. 
+	 * 
+	 * @return the date that the play begins showing.
 	 */
 	public Date getStartDate()
 	{
@@ -142,7 +165,9 @@ public class Play implements Serializable, Owned<Client>
 
 	/**
 	 * Sets the start date
-	 * @param startDate the date that the play begins showing. 
+	 * 
+	 * @param startDate
+	 *            the date that the play begins showing.
 	 */
 	public void setStartDate(Date startDate)
 	{
@@ -151,7 +176,8 @@ public class Play implements Serializable, Owned<Client>
 
 	/**
 	 * Gets the end date
-	 * @return the date that the play stops showing. 
+	 * 
+	 * @return the date that the play stops showing.
 	 */
 	public Date getEndDate()
 	{
@@ -160,14 +186,18 @@ public class Play implements Serializable, Owned<Client>
 
 	/**
 	 * Sets the end date
-	 * @param endDate the date that the play stops showing. 
+	 * 
+	 * @param endDate
+	 *            the date that the play stops showing.
 	 */
 	public void setEndDate(Date endDate)
 	{
 		this.endDate = endDate;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see ownership.Owned#getOwner()
 	 */
 	@Override
@@ -180,7 +210,16 @@ public class Play implements Serializable, Owned<Client>
 	public void setOwner(Client owner)
 	{
 		this.owner = owner;
-		
+
+	}
+
+	/**
+	 * @return
+	 */
+	public Dollar getTicketPrice()
+	{
+
+		return ticketPrice;
 	}
 
 }
