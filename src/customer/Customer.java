@@ -8,6 +8,7 @@ import com.sun.org.apache.xml.internal.serializer.SerializationHandler;
 
 import address.Address;
 import client.ClientList;
+import exceptions.CardAlreadyInListException;
 import exceptions.NoCardFoundException;
 import keyToken.KeyToken;
 import keyToken.Keyed;
@@ -53,9 +54,9 @@ public class Customer implements Serializable, Keyed<Long>
 		
 		/**
 		 * creates a CreditCard object
-		 * @param cardNum
-		 * @param cardExpiry
-		 * @param owner
+		 * @param cardNum The card number
+		 * @param cardExpiry the card's experation
+		 * @param owner the card's owner
 		 */
 		public CreditCard(String cardNum, String cardExpiry, Customer owner){
 			this.cardNumber = cardNum;
@@ -90,7 +91,7 @@ public class Customer implements Serializable, Keyed<Long>
 		
 		/**
 		 * sets this instance's cardExpiration
-		 * @param newCardExpiration
+		 * @param newCardExpiration the new card expiration date
 		 */
 		public void setCardExpiration(String newCardExpiration){
 			this.cardExpiration = newCardExpiration;
@@ -98,7 +99,7 @@ public class Customer implements Serializable, Keyed<Long>
 
 		/**
 		 * sets this instance's cardNumber
-		 * @param newCardNumber
+		 * @param newCardNumber the new credit card number.
 		 */
 		public void setCardNumber(String newCardNumber){
 			this.cardNumber = newCardNumber;
@@ -244,11 +245,11 @@ public class Customer implements Serializable, Keyed<Long>
 	 * generates an ID unique to the instance, and initializes a list of
 	 * CreditCard objects unique to the instance.
 	 * @author Troy Novak [wh1617wd@metrostate.edu]
-	 * @param name
-	 * @param address
-	 * @param phoneNumber
-	 * @param cardNumber
-	 * @param cardExpiration
+	 * @param name the customer's full name
+	 * @param address the customer's street address
+	 * @param phoneNumber the customer's phone number
+	 * @param cardNumber The customer's credit card number
+	 * @param cardExpiration The credit card's expiration date
 	 */
 	public Customer(String name, String address,
 					String phoneNumber, String cardNumber, String cardExpiration){
@@ -265,12 +266,13 @@ public class Customer implements Serializable, Keyed<Long>
 	
 	/**
 	 * adds a new card to cardList as long as that card doesn't already exist
-	 * within cardList
-	 * @param cardNum
-	 * @param cardExpiry
-	 * @throws NoCardFoundException 
+	 * within cardList 
+	 * @param cardNum The credit card number
+	 * @param cardExpiry the expereraiton date
+	 * @throws NoCardFoundException  if the card cannot be found
+	 * @return true if the card is found or false if not. 
 	 */
-	public boolean addCreditCard(String cardNum, String cardExpiry) throws NoCardFoundException{
+	public boolean addCreditCard(String cardNum, String cardExpiry) throws CardAlreadyInListException{
 		// if card doesn't already exist within cardList...
 		if(!exists(cardNum))
 			// ...add new card to cardList
@@ -278,13 +280,13 @@ public class Customer implements Serializable, Keyed<Long>
 		
 		// if card does already exist within cardList...
 		else{
-			throw new NoCardFoundException();
+			throw new CardAlreadyInListException();
 		}
 	}
 	
 	/**
 	 * searches cardList for specified cardNumber
-	 * @param cardNum
+	 * @param cardNum The credit card number
 	 * @return true if found
 	 * @return false if not found
 	 */
@@ -412,7 +414,7 @@ public class Customer implements Serializable, Keyed<Long>
 	
 	/**
 	 * sets this instance's name
-	 * @param custName
+	 * @param custName the full name of the customer
 	 */
 	public void setName(String custName){
 		this.name.setName(custName);
@@ -420,7 +422,7 @@ public class Customer implements Serializable, Keyed<Long>
 
 	/**
 	 * sets this instance's phoneNumber
-	 * @param phoneNum
+	 * @param phoneNum The phone number of the customer
 	 */
 	public void setPhoneNum(String phoneNum){
 		this.phoneNumber.setNumber(phoneNum);
@@ -437,7 +439,7 @@ public class Customer implements Serializable, Keyed<Long>
 
 	/**
 	 * Adds a ticket to this customer's ticket list
-	 * @param ticket
+	 * @param ticket The ticket to be added to the ticket list
 	 * @return true if the ticket was added
 	 * @see java.util.LinkedList#add(java.lang.Object)
 	 */
