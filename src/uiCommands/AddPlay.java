@@ -7,10 +7,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import client.Client;
+import currency.Dollar;
 import exceptions.ConflictingDatesException;
 import exceptions.NoKeyTokenFoundException;
 import play.Play;
-import play.PlayList;
 import theater.Theater;
 import userInterface.UI;
 
@@ -86,11 +86,13 @@ public class AddPlay implements Command<UI>
 				// get input needed to create a new play object
 				String name = UI.getInput("Enter play's name: ");
 				String clientID = UI.getInput("Enter client's ID: ");
+				Dollar price = null;
 
+
+				// find client from input client ID
 				boolean doneWithID = false;
 				while (!doneWithID)
 				{
-					// find client from clientID
 					client = null;
 					try
 					{
@@ -133,6 +135,36 @@ public class AddPlay implements Command<UI>
 						}
 					}
 				}
+				
+				// sets regular ticket price from user input
+				boolean doneWithRegularTicketPrice = false;
+				while (!doneWithRegularTicketPrice)
+				{
+					try
+					{
+						String startDateString = UI.getInput(
+								"Enter play's regular ticket price: $");
+						 price = new Dollar(Double.parseDouble(startDateString));
+						 doneWithRegularTicketPrice = true;
+					}
+					catch(Exception e)
+					{
+						// show error message
+						UI.outputError(e,
+								"There was a problem with the entered regular ticket price.");
+
+						// ask if user wants to continue and end if the user
+						// answers no
+						doneWithRegularTicketPrice = !UI.tryAgainCheck();
+
+						if (doneWithRegularTicketPrice)
+						{
+							throw new Exception();
+						}
+					}
+				}
+				
+				// trys to set the dates from input
 				boolean doneWithDates = false;
 				while (!doneWithDates)
 				{
@@ -149,7 +181,7 @@ public class AddPlay implements Command<UI>
 								.parse(endDateString);
 
 						// create new play object
-						Play play = new Play(name, client, startDate, endDate);
+						Play play = new Play(name, client, startDate, endDate, price);
 
 						// add to list
 						theater.add(play);
@@ -186,6 +218,7 @@ public class AddPlay implements Command<UI>
 						}
 					}
 				}
+				
 				// show user that it was added
 				UI.outputSuccessMessage(name + " added to play list.");
 

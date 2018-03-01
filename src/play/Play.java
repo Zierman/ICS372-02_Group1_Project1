@@ -103,7 +103,7 @@ public class Play implements Serializable, Owned<Client>
 	 */
 	private Date endDate;
 
-	private Dollar ticketPrice;
+	private Dollar regularTicketPrice;
 
 	/**
 	 * Creates a <code>Play</code> object
@@ -117,8 +117,9 @@ public class Play implements Serializable, Owned<Client>
 	 *            the <code>Date</code> object that holds the starting date.
 	 * @param endDate
 	 *            the <code>Date</code> object that holds the ending date.
+	 * @param regularTicketPrice the price of a non-discounted ticket.
 	 */
-	public Play(String name, Client client, Date startDate, Date endDate)
+	public Play(String name, Client client, Date startDate, Date endDate, Dollar regularTicketPrice)
 	{
 
 		if (startDate.after(endDate))
@@ -129,6 +130,7 @@ public class Play implements Serializable, Owned<Client>
 		this.owner = client;
 		this.startDate = startDate;
 		this.endDate = endDate;
+		this.regularTicketPrice = regularTicketPrice;
 	}
 
 	/**
@@ -163,6 +165,16 @@ public class Play implements Serializable, Owned<Client>
 	}
 
 	/**
+	 * Gets the regular ticket price for the play
+	 * @return the regular ticket price for the play
+	 */
+	public Dollar getRegularTicketPrice()
+	{
+
+		return regularTicketPrice;
+	}
+
+	/**
 	 * Gets the start date.
 	 * 
 	 * @return the date that the play begins showing.
@@ -170,15 +182,6 @@ public class Play implements Serializable, Owned<Client>
 	public Date getStartDate()
 	{
 		return startDate;
-	}
-
-	/**
-	 * @return
-	 */
-	public Dollar getTicketPrice()
-	{
-
-		return ticketPrice;
 	}
 
 	/**
@@ -209,6 +212,15 @@ public class Play implements Serializable, Owned<Client>
 	{
 		this.owner = owner;
 
+	}
+
+	/**
+	 * Sets Regular ticket price for this play
+	 * @param regularTicketPrice the regularTicketPrice to set
+	 */
+	public void setRegularTicketPrice(Dollar regularTicketPrice)
+	{
+		this.regularTicketPrice = regularTicketPrice;
 	}
 
 	/**

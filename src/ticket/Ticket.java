@@ -204,7 +204,7 @@ public abstract class Ticket
 		if (priceOfTicket == null)
 		{
 			setPriceOfTicket(new Dollar(
-					play.getTicketPrice().getAmount() * priceMultiplier));
+					play.getRegularTicketPrice().getAmount() * priceMultiplier));
 		}
 		return priceOfTicket;
 	}
