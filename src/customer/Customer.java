@@ -14,6 +14,7 @@ import keyToken.Keyed;
 import phoneNumber.PhoneNumber;
 import storage.FileIO;
 import storage.Savable;
+import ticket.Ticket;
 import ownership.Owned;
 
 /**
@@ -234,6 +235,11 @@ public class Customer implements Serializable, Keyed<Long>
 	private LinkedList<CreditCard> cardList = new LinkedList<CreditCard>();
 	
 	/**
+	 * List to hold a customers purchased tickets
+	 */
+	private LinkedList<Ticket> ticketsList = new LinkedList<Ticket>();
+	
+	/**
 	 * Customer class constructor that initializes instances attributes,
 	 * generates an ID unique to the instance, and initializes a list of
 	 * CreditCard objects unique to the instance.
@@ -418,5 +424,25 @@ public class Customer implements Serializable, Keyed<Long>
 	 */
 	public void setPhoneNum(String phoneNum){
 		this.phoneNumber.setNumber(phoneNum);
+	}
+
+	/**
+	 * gets the list of tickets owned
+	 * @return the ticketsList the list of tickets
+	 */
+	public LinkedList<Ticket> getTicketsList()
+	{
+		return ticketsList;
+	}
+
+	/**
+	 * Adds a ticket to this customer's ticket list
+	 * @param ticket
+	 * @return true if the ticket was added
+	 * @see java.util.LinkedList#add(java.lang.Object)
+	 */
+	public boolean add(Ticket ticket)
+	{
+		return ticketsList.add(ticket);
 	}
 }

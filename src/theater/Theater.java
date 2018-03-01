@@ -6,16 +6,19 @@ package theater;
 import java.io.IOException;
 import client.Client;
 import client.ClientList;
+import currency.Dollar;
 import customer.Customer;
 import customer.CustomerList;
 import exceptions.NoCardFoundException;
 import exceptions.NoKeyTokenFoundException;
+import exceptions.OverpayingClientException;
 import play.Play;
 import play.PlayList;
 import singleton.ReadResolveable;
 import storage.FileIO;
 import storage.Loadable;
 import storage.Savable;
+import ticket.Ticket;
 
 /**
  * Represents a theater that shows plays performed by clients to customers.
@@ -293,6 +296,30 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 		clientList.save();
 		customerList.save();
 		playList.save();
+	}
+	
+	/**
+	 * Sells a ticket
+	 * @param ticket
+	 */
+	public void Sell(Ticket ticket)
+	{
+		ticket.getOwner().add(ticket);
+		increaseDebt(ticket.getPlay().getOwner(), ticket.getPriceOfTicket().half());
+	}
+	
+	public void increaseDebt(Client client, Dollar dollars)
+	{
+		client.setBalanceDue(client.getBalanceDue().addTogether((dollars)));
+	}
+	
+	public void pay(Client client, Dollar dollars) throws OverpayingClientException
+	{
+		if(client.getBalanceDue().compareTo(dollars) < 0)
+		{
+			throw new OverpayingClientException();
+		}
+		client.setBalanceDue(new Dollar(client.getBalanceDue().getAmount() - dollars.getAmount()));
 	}
 
 	/**
