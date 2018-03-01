@@ -41,6 +41,11 @@ public class Dollar extends Currency<Dollar, Double>
 	 */
 	private static final String FORMAT_STRING = "%." + MAX_DECIMAL_PLACES + "f";
 
+	public static void main(String[] args)
+	{
+		System.out.println(new Dollar(10.00));
+	}
+
 	/**
 	 * The amount of money in United States Dollars
 	 */
@@ -55,6 +60,12 @@ public class Dollar extends Currency<Dollar, Double>
 	public Dollar(Double dollars) // unintended Trigun reference (^_^)
 	{
 		this.amount = dollars;
+	}
+
+	@Override
+	public Dollar addTogether(Dollar currency)
+	{
+		return new Dollar(this.amount + currency.getAmount());
 	}
 
 	/*
@@ -78,28 +89,6 @@ public class Dollar extends Currency<Dollar, Double>
 		return FORMAT_STRING;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see currency.Currency#setAmount(java.lang.Number)
-	 */
-	public void setAmount(Double amount)
-	{
-		this.amount = amount;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see currency.Currency#toString()
-	 */
-	@Override
-	public String toString()
-	{
-		return PREFIX_SYMBOL + String.format(getFormatString(), this.amount)
-				+ POSTFIX_SYMBOL;
-	}
-
 	/* (non-Javadoc)
 	 * @see currency.Currency#half()
 	 */
@@ -115,10 +104,14 @@ public class Dollar extends Currency<Dollar, Double>
 		return new Dollar(this.amount * d);
 	}
 
-	@Override
-	public Dollar addTogether(Dollar currency)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see currency.Currency#setAmount(java.lang.Number)
+	 */
+	public void setAmount(Double amount)
 	{
-		return new Dollar(this.amount + currency.getAmount());
+		this.amount = amount;
 	}
 
 	@Override
@@ -127,8 +120,15 @@ public class Dollar extends Currency<Dollar, Double>
 		return new Dollar(this.amount - currency.getAmount());
 	}
 	
-	public static void main(String[] args)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see currency.Currency#toString()
+	 */
+	@Override
+	public String toString()
 	{
-		System.out.println(new Dollar(10.00));
+		return PREFIX_SYMBOL + String.format(getFormatString(), this.amount)
+				+ POSTFIX_SYMBOL;
 	}
 }

@@ -221,6 +221,11 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 		return seatingCapacity;
 	}
 
+	public void increaseDebt(Client client, Dollar dollars)
+	{
+		client.setBalanceDue(client.getBalanceDue().addTogether((dollars)));
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -238,6 +243,15 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 		playList.load();
 	}
 
+	public void pay(Client client, Dollar dollars) throws OverpayingClientException
+	{
+		if(client.getBalanceDue().compareTo(dollars) < 0)
+		{
+			throw new OverpayingClientException();
+		}
+		client.setBalanceDue(new Dollar(client.getBalanceDue().getAmount() - dollars.getAmount()));
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -248,7 +262,7 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 	{
 		return instance();
 	}
-
+	
 	/**
 	 * removes a credit card
 	 * 
@@ -259,7 +273,7 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 	public void removeCreditCard(Customer customer, String cardNumber) throws NoCardFoundException{
 		customer.removeCreditCard(cardNumber);
 	}
-	
+
 	/**
 	 * Removes a client with matching id
 	 * 
@@ -281,7 +295,7 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 	{
 		customerList.removeMatched(id);
 	}
-
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -307,20 +321,6 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 	{
 		ticket.getOwner().add(ticket);
 		increaseDebt(ticket.getPlay().getOwner(), ticket.getPriceOfTicket().half());
-	}
-	
-	public void increaseDebt(Client client, Dollar dollars)
-	{
-		client.setBalanceDue(client.getBalanceDue().addTogether((dollars)));
-	}
-	
-	public void pay(Client client, Dollar dollars) throws OverpayingClientException
-	{
-		if(client.getBalanceDue().compareTo(dollars) < 0)
-		{
-			throw new OverpayingClientException();
-		}
-		client.setBalanceDue(new Dollar(client.getBalanceDue().getAmount() - dollars.getAmount()));
 	}
 
 	/**

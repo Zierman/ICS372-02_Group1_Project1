@@ -265,6 +265,17 @@ public class Customer implements Serializable, Keyed<Long>
 	}
 	
 	/**
+	 * Adds a ticket to this customer's ticket list
+	 * @param ticket The ticket to be added to the ticket list
+	 * @return true if the ticket was added
+	 * @see java.util.LinkedList#add(java.lang.Object)
+	 */
+	public boolean add(Ticket ticket)
+	{
+		return ticketsList.add(ticket);
+	}
+	
+	/**
 	 * adds a new card to cardList as long as that card doesn't already exist
 	 * within cardList 
 	 * @param cardNum The credit card number
@@ -353,6 +364,15 @@ public class Customer implements Serializable, Keyed<Long>
 		return this.phoneNumber;
 	}
 	
+	/**
+	 * gets the list of tickets owned
+	 * @return the ticketsList the list of tickets
+	 */
+	public LinkedList<Ticket> getTicketsList()
+	{
+		return ticketsList;
+	}
+	
 	/* (non-Javadoc)
 	 * @see keyToken.Keyed#matches(java.lang.Object)
 	 */
@@ -361,7 +381,7 @@ public class Customer implements Serializable, Keyed<Long>
 	{
 		return getID().matches(key);
 	}
-	
+
 	/**
 	 * removes a card from cardList as long as that card exists within cardList
 	 * @param cardNum The credit card number
@@ -390,7 +410,7 @@ public class Customer implements Serializable, Keyed<Long>
 	public void setAddress(String custAddress){
 		this.address.setAddress(custAddress);
 	}
-
+	
 	/**
 	 * sets this instance's id
 	 * @param custID the identification of the customer
@@ -398,7 +418,7 @@ public class Customer implements Serializable, Keyed<Long>
 	public void setID(ID custID){
 		this.id = custID;
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -411,7 +431,7 @@ public class Customer implements Serializable, Keyed<Long>
 		this.id.setValue(key);
 
 	}
-	
+
 	/**
 	 * sets this instance's name
 	 * @param custName the full name of the customer
@@ -426,25 +446,5 @@ public class Customer implements Serializable, Keyed<Long>
 	 */
 	public void setPhoneNum(String phoneNum){
 		this.phoneNumber.setNumber(phoneNum);
-	}
-
-	/**
-	 * gets the list of tickets owned
-	 * @return the ticketsList the list of tickets
-	 */
-	public LinkedList<Ticket> getTicketsList()
-	{
-		return ticketsList;
-	}
-
-	/**
-	 * Adds a ticket to this customer's ticket list
-	 * @param ticket The ticket to be added to the ticket list
-	 * @return true if the ticket was added
-	 * @see java.util.LinkedList#add(java.lang.Object)
-	 */
-	public boolean add(Ticket ticket)
-	{
-		return ticketsList.add(ticket);
 	}
 }

@@ -35,6 +35,15 @@ public abstract class CurrencyHelperClass<Type extends Number & Comparable<Type>
 	 */
 	private Type amount;
 
+	/* (non-Javadoc)
+	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	 */
+	@Override
+	public int compareTo(CurrencyHelperClass<Type> arg)
+	{
+		return this.getAmount().compareTo(arg.getAmount());
+	}
+
 	/**
 	 * Gets the amount of currency.
 	 * 
@@ -71,13 +80,4 @@ public abstract class CurrencyHelperClass<Type extends Number & Comparable<Type>
 	 */
 	@Override
 	public abstract String toString();
-
-	/* (non-Javadoc)
-	 * @see java.lang.Comparable#compareTo(java.lang.Object)
-	 */
-	@Override
-	public int compareTo(CurrencyHelperClass<Type> arg)
-	{
-		return this.getAmount().compareTo(arg.getAmount());
-	}
 }

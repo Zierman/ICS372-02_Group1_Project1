@@ -19,9 +19,9 @@ public abstract class Currency<CurrencyType extends CurrencyHelperClass<Type>, T
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	public abstract CurrencyType addTogether(CurrencyType currency);
 	public abstract CurrencyType half();
 	public abstract CurrencyType multiplyBy(double d);
-	public abstract CurrencyType addTogether(CurrencyType currency);
 	public abstract CurrencyType subtract(CurrencyType currency);
 	
 }
