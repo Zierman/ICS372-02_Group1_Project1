@@ -37,6 +37,20 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 	protected static final String FILENAME = "theater.dat";
 
 	/**
+	 * Gets or Creates the instance of the singleton Theater
+	 * 
+	 * @return the instance of the singleton Theater
+	 */
+	public static Theater instance()
+	{
+		if (singleton == null)
+		{
+			singleton = new Theater(1);
+		}
+		return singleton;
+	}
+
+	/**
 	 * the name of the theater.
 	 */
 	private String name;
@@ -62,76 +76,6 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 	private CustomerList customerList = CustomerList.instance();
 
 	/**
-	 * Gets a list of all clients.
-	 * 
-	 * @return a {@link client.ClientList} that holds all clients
-	 */
-	public ClientList getClientList()
-	{
-		return clientList;
-	}
-
-	/**
-	 * Gets a list of all plays.
-	 * 
-	 * @return a {@link play.PlayList} that holds all plays
-	 */
-	public PlayList getPlayList()
-	{
-		return playList;
-	}
-
-	/**
-	 * Gets a list of all customers.
-	 * 
-	 * @return a {@link customer.CustomerList} that holds all customers
-	 */
-	public CustomerList getCustomerList()
-	{
-		return customerList;
-	}
-
-	/**
-	 * Gets the seating capacity.
-	 * 
-	 * @return an <code>Integer</code> of the current seating capacity.
-	 */
-	public Integer getSeatingCapacity()
-	{
-		return seatingCapacity;
-	}
-
-	/**
-	 * Sets the seating capacity.
-	 * 
-	 * @param seatingCapacity an <code>Integer</code> of the current seating capacity.
-	 */
-	public void setSeatingCapacity(Integer seatingCapacity)
-	{
-		this.seatingCapacity = seatingCapacity;
-	}
-
-	/**
-	 * Gets the name of the theater.
-	 * 
-	 * @return a <code>String</code> representing the name of the theater
-	 */
-	public String getName()
-	{
-		return name;
-	}
-
-	/**
-	 * Sets the name of the theater.
-	 * 
-	 * @param name a <code>String</code> representing the name of the theater
-	 */
-	public void setName(String name)
-	{
-		this.name = name;
-	}
-
-	/**
 	 * Constructs a Theater used when creating a subtype singleton
 	 * 
 	 * @throws Exception if used to try to create a base type Theater
@@ -155,28 +99,122 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 	}
 
 	/**
-	 * Gets or Creates the instance of the singleton Theater
+	 * Adds a new client
 	 * 
-	 * @return the instance of the singleton Theater
+	 * @param client {@link client.Client} to be added.
+	 * @return true if added, false if not.
 	 */
-	public static Theater instance()
+	public boolean add(Client client)
 	{
-		if (singleton == null)
-		{
-			singleton = new Theater(1);
-		}
-		return singleton;
+		return clientList.add(client);
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * Adds a new customer
 	 * 
-	 * @see singleton.Singleton#readResolve()
+	 * @param customer a {@link customer.Customer} to be added.
+	 * @return true if added, false if not.
+	 */
+	public boolean add(Customer customer)
+	{
+		return customerList.add(customer);
+	}
+
+	/**
+	 * adds a new credit card
+	 * 
+	 * @param customer
+	 * @param cardNumber
+	 * @param cardExpiration
+	 * @return true if added, false if not
+	 * @throws NoCardFoundException
+	 */
+	public boolean add(Customer customer, String cardNumber, String cardExpiration) throws NoCardFoundException{
+		return customer.addCreditCard(cardNumber, cardExpiration);
+	}
+
+	/**
+	 * Adds a new play
+	 * 
+	 * @param play a {@link play.Play} tobe added.
+	 * @return true if added, false if not.
+	 */
+	public boolean add(Play play)
+	{
+		return playList.add(play);
+	}
+
+	/* (non-Javadoc)
+	 * @see storage.Loadable#canLoad()
 	 */
 	@Override
-	public Theater readResolve()
+	public boolean canLoad()
 	{
-		return instance();
+		try
+		{
+			FileIO theaterFile = FileIO.startRead(FILENAME);
+			String tmpString = (String) theaterFile.read();
+			Integer tmpInteger = (Integer) theaterFile.read();
+			theaterFile.close();
+			clientList.canLoad();
+			customerList.canLoad();
+			playList.canLoad();
+		}
+		catch(Exception e)
+		{
+			
+		}
+		return true;
+	}
+
+	/**
+	 * Gets a list of all clients.
+	 * 
+	 * @return a {@link client.ClientList} that holds all clients
+	 */
+	public ClientList getClientList()
+	{
+		return clientList;
+	}
+
+	/**
+	 * Gets a list of all customers.
+	 * 
+	 * @return a {@link customer.CustomerList} that holds all customers
+	 */
+	public CustomerList getCustomerList()
+	{
+		return customerList;
+	}
+
+	/**
+	 * Gets the name of the theater.
+	 * 
+	 * @return a <code>String</code> representing the name of the theater
+	 */
+	public String getName()
+	{
+		return name;
+	}
+
+	/**
+	 * Gets a list of all plays.
+	 * 
+	 * @return a {@link play.PlayList} that holds all plays
+	 */
+	public PlayList getPlayList()
+	{
+		return playList;
+	}
+
+	/**
+	 * Gets the seating capacity.
+	 * 
+	 * @return an <code>Integer</code> of the current seating capacity.
+	 */
+	public Integer getSeatingCapacity()
+	{
+		return seatingCapacity;
 	}
 
 	/*
@@ -199,6 +237,50 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 	/*
 	 * (non-Javadoc)
 	 * 
+	 * @see singleton.Singleton#readResolve()
+	 */
+	@Override
+	public Theater readResolve()
+	{
+		return instance();
+	}
+
+	/**
+	 * removes a credit card
+	 * 
+	 * @param customer
+	 * @param cardNumber
+	 * @throws NoCardFoundException
+	 */
+	public void removeCreditCard(Customer customer, String cardNumber) throws NoCardFoundException{
+		customer.removeCreditCard(cardNumber);
+	}
+	
+	/**
+	 * Removes a client with matching id
+	 * 
+	 * @param id a <code>Long</code> that represents the Id
+	 * @throws NoKeyTokenFoundException if no match is found
+	 */
+	public void removeMatchedClient(Long id) throws NoKeyTokenFoundException
+	{
+		clientList.removeMatched(id);
+	}
+	
+	/**
+	 * Removes a customer with a matching id
+	 * 
+	 * @param id a <code>Long</code> that represents the Id
+	 * @throws NoKeyTokenFoundException if no match is found
+	 */
+	public void removeMatchedCustomer(Long id) throws NoKeyTokenFoundException
+	{
+		customerList.removeMatched(id);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see storage.Savable#save()
 	 */
 	@Override
@@ -214,104 +296,22 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 	}
 
 	/**
-	 * Adds a new client
+	 * Sets the name of the theater.
 	 * 
-	 * @param client {@link client.Client} to be added.
-	 * @return true if added, false if not.
+	 * @param name a <code>String</code> representing the name of the theater
 	 */
-	public boolean add(Client client)
+	public void setName(String name)
 	{
-		return clientList.add(client);
-	}
-
-	/**
-	 * Adds a new play
-	 * 
-	 * @param play a {@link play.Play} tobe added.
-	 * @return true if added, false if not.
-	 */
-	public boolean add(Play play)
-	{
-		return playList.add(play);
-	}
-
-	/**
-	 * Adds a new customer
-	 * 
-	 * @param customer a {@link customer.Customer} to be added.
-	 * @return true if added, false if not.
-	 */
-	public boolean add(Customer customer)
-	{
-		return customerList.add(customer);
+		this.name = name;
 	}
 	
 	/**
-	 * adds a new credit card
+	 * Sets the seating capacity.
 	 * 
-	 * @param customer
-	 * @param cardNumber
-	 * @param cardExpiration
-	 * @return true if added, false if not
-	 * @throws NoCardFoundException
+	 * @param seatingCapacity an <code>Integer</code> of the current seating capacity.
 	 */
-	public boolean add(Customer customer, String cardNumber, String cardExpiration) throws NoCardFoundException{
-		return customer.addCreditCard(cardNumber, cardExpiration);
-	}
-	
-	/**
-	 * removes a credit card
-	 * 
-	 * @param customer
-	 * @param cardNumber
-	 * @throws NoCardFoundException
-	 */
-	public void removeCreditCard(Customer customer, String cardNumber) throws NoCardFoundException{
-		customer.removeCreditCard(cardNumber);
-	}
-
-	/**
-	 * Removes a client with matching id
-	 * 
-	 * @param id a <code>Long</code> that represents the Id
-	 * @throws NoKeyTokenFoundException if no match is found
-	 */
-	public void removeMatchedClient(Long id) throws NoKeyTokenFoundException
+	public void setSeatingCapacity(Integer seatingCapacity)
 	{
-		clientList.removeMatched(id);
-	}
-
-	/**
-	 * Removes a customer with a matching id
-	 * 
-	 * @param id a <code>Long</code> that represents the Id
-	 * @throws NoKeyTokenFoundException if no match is found
-	 */
-	public void removeMatchedCustomer(Long id) throws NoKeyTokenFoundException
-	{
-		customerList.removeMatched(id);
-	}
-	
-	/* (non-Javadoc)
-	 * @see storage.Loadable#canLoad()
-	 */
-	@Override
-	public boolean canLoad()
-	{
-		try
-		{
-			FileIO theaterFile = FileIO.startRead(FILENAME);
-			String tmpString = (String) theaterFile.read();
-			Integer tmpInteger = (Integer) theaterFile.read();
-			theaterFile.close();
-			clientList.canLoad();
-			customerList.canLoad();
-			playList.canLoad();
-		}
-		catch(Exception e)
-		{
-			
-		}
-		return true;
+		this.seatingCapacity = seatingCapacity;
 	}
 }

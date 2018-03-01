@@ -20,19 +20,65 @@ public abstract class Ticket
 		implements Keyed<Long>, Owned<Customer>, Serializable
 {
 	/**
+	 * Holds a serial number assosiated with the ticket.
+	 * 
+	 * @author Joshua Zierman [py1422xs@metrostate.edu]
+	 *
+	 */
+	public static class SerialNumber extends KeyToken<Ticket, Long>
+	{
+		/**
+		 * Serial Version Number
+		 */
+		private static final long serialVersionUID = 1L;
+
+		/**
+		 * The last serial number used
+		 */
+		private static Long lastValue = 0L;
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see keyToken.KeyToken#getLastValue()
+		 */
+		@Override
+		protected Long getLastValue()
+		{
+
+			return lastValue;
+		}
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see keyToken.KeyToken#getNextValue()
+		 */
+		@Override
+		protected Long getNextValue()
+		{
+
+			return lastValue + 1;
+		}
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see keyToken.KeyToken#setLastValue(java.lang.Comparable)
+		 */
+		@Override
+		protected void setLastValue(Long serialNumberValue)
+		{
+			lastValue = serialNumberValue;
+
+		}
+
+	}
+
+	/**
 	 * Serial Version
 	 */
 	private static final long serialVersionUID = 1L;
-
-	public Ticket(Date dateOfShow, Play play, Customer owner)
-	{
-		super();
-		this.dateOfShow = dateOfShow;
-		this.play = play;
-		this.owner = owner;
-		this.serialNumber = new SerialNumber();
-		extraMessage = null;
-	}
 
 	/**
 	 * The serial number of the ticket.
@@ -74,6 +120,16 @@ public abstract class Ticket
 	 */
 	protected Customer owner;
 
+	public Ticket(Date dateOfShow, Play play, Customer owner)
+	{
+		super();
+		this.dateOfShow = dateOfShow;
+		this.play = play;
+		this.owner = owner;
+		this.serialNumber = new SerialNumber();
+		extraMessage = null;
+	}
+
 	/**
 	 * gets the date of show
 	 * 
@@ -85,35 +141,42 @@ public abstract class Ticket
 	}
 
 	/**
-	 * sets the date of the show
+	 * Gets the extra message
 	 * 
-	 * @param dateOfShow
-	 *            the dateOfShow to set
+	 * @return the extraMessage
 	 */
-	public void setDateOfShow(Date dateOfShow)
+	public String getExtraMessage()
 	{
-		this.dateOfShow = dateOfShow;
+		return extraMessage;
+	}
+
+	@Override
+	public Long getKey()
+	{
+
+		return serialNumber.getKeyValue();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see ownership.Owned#getOwner()
+	 */
+	@Override
+	public Customer getOwner()
+	{
+
+		return owner;
 	}
 
 	/**
-	 * gets the type of ticket
+	 * Gets the play
 	 * 
-	 * @return the typeOfTicket
+	 * @return the play
 	 */
-	public String getTypeOfTicket()
+	public Play getPlay()
 	{
-		return typeOfTicket;
-	}
-
-	/**
-	 * sets the type of ticket
-	 * 
-	 * @param typeOfTicket
-	 *            the typeOfTicket to set
-	 */
-	public void setTypeOfTicket(String typeOfTicket)
-	{
-		this.typeOfTicket = typeOfTicket;
+		return play;
 	}
 
 	/**
@@ -124,17 +187,6 @@ public abstract class Ticket
 	public double getPriceMultiplier()
 	{
 		return priceMultiplier;
-	}
-
-	/**
-	 * Sets the price multiplier
-	 * 
-	 * @param priceMultiplier
-	 *            the priceMultiplier to set
-	 */
-	public void setPriceMultiplier(double priceMultiplier)
-	{
-		this.priceMultiplier = priceMultiplier;
 	}
 
 	/**
@@ -158,146 +210,13 @@ public abstract class Ticket
 	}
 
 	/**
-	 * Sets the price of the ticket
+	 * gets the type of ticket
 	 * 
-	 * @param priceOfTicket
-	 *            the priceOfTicket to set
+	 * @return the typeOfTicket
 	 */
-	public void setPriceOfTicket(Dollar priceOfTicket)
+	public String getTypeOfTicket()
 	{
-		this.priceOfTicket = priceOfTicket;
-	}
-
-	/**
-	 * Gets the extra message
-	 * 
-	 * @return the extraMessage
-	 */
-	public String getExtraMessage()
-	{
-		return extraMessage;
-	}
-
-	/**
-	 * Sets the extra message
-	 * 
-	 * @param extraMessage
-	 *            the extraMessage to set
-	 */
-	public void setExtraMessage(String extraMessage)
-	{
-		this.extraMessage = extraMessage;
-	}
-
-	/**
-	 * Gets the play
-	 * 
-	 * @return the play
-	 */
-	public Play getPlay()
-	{
-		return play;
-	}
-
-	/**
-	 * Sets the play.
-	 * 
-	 * @param play
-	 *            the play to set
-	 */
-	public void setPlay(Play play)
-	{
-		this.play = play;
-	}
-
-	/**
-	 * Holds a serial number assosiated with the ticket.
-	 * 
-	 * @author Joshua Zierman [py1422xs@metrostate.edu]
-	 *
-	 */
-	public static class SerialNumber extends KeyToken<Ticket, Long>
-	{
-		/**
-		 * Serial Version Number
-		 */
-		private static final long serialVersionUID = 1L;
-
-		/**
-		 * The last serial number used
-		 */
-		private static Long lastValue = 0L;
-
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see keyToken.KeyToken#getNextValue()
-		 */
-		@Override
-		protected Long getNextValue()
-		{
-
-			return lastValue + 1;
-		}
-
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see keyToken.KeyToken#getLastValue()
-		 */
-		@Override
-		protected Long getLastValue()
-		{
-
-			return lastValue;
-		}
-
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see keyToken.KeyToken#setLastValue(java.lang.Comparable)
-		 */
-		@Override
-		protected void setLastValue(Long serialNumberValue)
-		{
-			lastValue = serialNumberValue;
-
-		}
-
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see ownership.Owned#setOwner(java.lang.Object)
-	 */
-	@Override
-	public void setOwner(Customer owner)
-	{
-		this.owner = owner;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see ownership.Owned#getOwner()
-	 */
-	@Override
-	public Customer getOwner()
-	{
-
-		return owner;
-	}
-
-	/**
-	 * Sets the key to a provided key. used in loading from storage.
-	 * 
-	 * @param keyToken
-	 * @see keyToken.KeyToken#setKey(keyToken.KeyToken)
-	 */
-	public void setKey(KeyToken<Ticket, Long> keyToken)
-	{
-		serialNumber.setKey(keyToken);
+		return typeOfTicket;
 	}
 
 	/**
@@ -325,6 +244,39 @@ public abstract class Ticket
 		return serialNumber.matches(keyValue);
 	}
 
+	/**
+	 * sets the date of the show
+	 * 
+	 * @param dateOfShow
+	 *            the dateOfShow to set
+	 */
+	public void setDateOfShow(Date dateOfShow)
+	{
+		this.dateOfShow = dateOfShow;
+	}
+
+	/**
+	 * Sets the extra message
+	 * 
+	 * @param extraMessage
+	 *            the extraMessage to set
+	 */
+	public void setExtraMessage(String extraMessage)
+	{
+		this.extraMessage = extraMessage;
+	}
+
+	/**
+	 * Sets the key to a provided key. used in loading from storage.
+	 * 
+	 * @param keyToken
+	 * @see keyToken.KeyToken#setKey(keyToken.KeyToken)
+	 */
+	public void setKey(KeyToken<Ticket, Long> keyToken)
+	{
+		serialNumber.setKey(keyToken);
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -337,11 +289,59 @@ public abstract class Ticket
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see ownership.Owned#setOwner(java.lang.Object)
+	 */
 	@Override
-	public Long getKey()
+	public void setOwner(Customer owner)
 	{
+		this.owner = owner;
+	}
 
-		return serialNumber.getKeyValue();
+	/**
+	 * Sets the play.
+	 * 
+	 * @param play
+	 *            the play to set
+	 */
+	public void setPlay(Play play)
+	{
+		this.play = play;
+	}
+
+	/**
+	 * Sets the price multiplier
+	 * 
+	 * @param priceMultiplier
+	 *            the priceMultiplier to set
+	 */
+	public void setPriceMultiplier(double priceMultiplier)
+	{
+		this.priceMultiplier = priceMultiplier;
+	}
+
+	/**
+	 * Sets the price of the ticket
+	 * 
+	 * @param priceOfTicket
+	 *            the priceOfTicket to set
+	 */
+	public void setPriceOfTicket(Dollar priceOfTicket)
+	{
+		this.priceOfTicket = priceOfTicket;
+	}
+
+	/**
+	 * sets the type of ticket
+	 * 
+	 * @param typeOfTicket
+	 *            the typeOfTicket to set
+	 */
+	public void setTypeOfTicket(String typeOfTicket)
+	{
+		this.typeOfTicket = typeOfTicket;
 	}
 
 }

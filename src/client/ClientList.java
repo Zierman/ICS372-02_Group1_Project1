@@ -37,6 +37,19 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	private static LinkedList<Client> clients = new LinkedList<Client>();
 
 	/**
+	 * Gets or Creates the instance of the singleton <code>ClientList</code>
+	 * @return the instance of the singleton <code>ClientList</code>
+	 */
+	public static ClientList instance()
+	{
+		if (singleton == null)
+		{
+			singleton = new ClientList(1);
+		}
+		return singleton;
+	}
+
+	/**
 	 * 
 	 * Constructs a <code>ClientList</code> used when creating a subtype singleton
 	 * 
@@ -60,28 +73,6 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	 */
 	private ClientList(int i)
 	{
-	}
-
-	/**
-	 * Gets or Creates the instance of the singleton <code>ClientList</code>
-	 * @return the instance of the singleton <code>ClientList</code>
-	 */
-	public static ClientList instance()
-	{
-		if (singleton == null)
-		{
-			singleton = new ClientList(1);
-		}
-		return singleton;
-	}
-
-	/* (non-Javadoc)
-	 * @see singleton.Singleton#readResolve()
-	 */
-	@Override
-	public ClientList readResolve()
-	{
-		return instance();
 	}
 
 	/* (non-Javadoc)
@@ -121,6 +112,29 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	}
 
 	/* (non-Javadoc)
+	 * @see storage.Loadable#canLoad()
+	 */
+	@Override
+	public boolean canLoad()
+	{
+		Long id = getLastKey();
+		try
+		{
+			
+			FileIO clientFile = FileIO.startRead(FILENAME);
+			LinkedList<Client> tmp =  (LinkedList<Client>) clientFile.read();
+			clientFile.close();
+			
+		}
+		catch (Exception e)
+		{
+			return false;
+		}
+		setLastKey(id);
+		return true;
+	}
+
+	/* (non-Javadoc)
 	 * @see java.util.List#clear()
 	 */
 	@Override
@@ -148,12 +162,42 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	}
 
 	/* (non-Javadoc)
+	 * @see keyToken.KeyedList#findMatched(java.lang.Object)
+	 */
+	@Override
+	public Client findMatched(Long key) throws NoKeyTokenFoundException
+	{
+		Client client = null;
+		for(Client c :  instance())
+		{
+			if(c.matches(key))
+			{
+				client = c;
+			}
+		}
+		if(client == null)
+		{
+			throw new NoKeyTokenFoundException();
+		}
+		return client;
+	}
+
+	/* (non-Javadoc)
 	 * @see java.util.List#get(int)
 	 */
 	@Override
 	public Client get(int index)
 	{
 		return clients.get(index);
+	}
+
+	/* (non-Javadoc)
+	 * @see keyToken.KeyedList#getLastKey()
+	 */
+	@Override
+	public Long getLastKey()
+	{
+		return Client.lastId;
 	}
 
 	/* (non-Javadoc)
@@ -211,12 +255,31 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	}
 
 	/* (non-Javadoc)
-	 * @see java.util.List#remove(java.lang.Object)
+	 * @see storage.Loadable#load()
 	 */
 	@Override
-	public boolean remove(Object object)
+	public void load() throws ClassNotFoundException, IOException
 	{
-		return clients.remove(object);
+		instance().clear(); // clears the list in case anything was in it
+		FileIO clientFile = FileIO.startRead(FILENAME);
+		LinkedList<Client> tmp =  (LinkedList<Client>) clientFile.read();
+		clientFile.close();
+		
+		for(Client c : tmp)
+		{
+			instance().add(c);
+			
+			c.getID().setKey(c.getID());
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see singleton.Singleton#readResolve()
+	 */
+	@Override
+	public ClientList readResolve()
+	{
+		return instance();
 	}
 
 	/* (non-Javadoc)
@@ -229,12 +292,46 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	}
 
 	/* (non-Javadoc)
+	 * @see java.util.List#remove(java.lang.Object)
+	 */
+	@Override
+	public boolean remove(Object object)
+	{
+		return clients.remove(object);
+	}
+
+	/* (non-Javadoc)
 	 * @see java.util.List#removeAll(java.util.Collection)
 	 */
 	@Override
 	public boolean removeAll(Collection<?> collection)
 	{
 		return clients.removeAll(collection);
+	}
+
+	/* (non-Javadoc)
+	 * @see keyToken.KeyedList#removeMatched(java.lang.Object)
+	 */
+	@Override
+	public void removeMatched(Long key) throws NoKeyTokenFoundException
+	{
+		boolean found = false;
+		int i = 0;
+		for(Client c :  instance())
+		{
+			if(c.matches(key))
+			{
+				instance().remove(i);
+				found = true;
+				break;
+			}
+			i++;
+		}
+		if(!found)
+		{
+			throw new NoKeyTokenFoundException();
+		}
+		
 	}
 
 	/* (non-Javadoc)
@@ -247,12 +344,36 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	}
 
 	/* (non-Javadoc)
+	 * @see storage.Savable#save()
+	 */
+	@Override
+	public void save() throws IOException
+	{
+	
+		
+		FileIO clientFile = FileIO.startWrite(FILENAME);
+		clientFile.write(new LinkedList<Client>(instance()));
+		clientFile.close();
+		
+	}
+
+	/* (non-Javadoc)
 	 * @see java.util.List#set(int, java.lang.Object)
 	 */
 	@Override
 	public Client set(int index, Client client)
 	{
 		return clients.set(index, client);
+	}
+
+	/* (non-Javadoc)
+	 * @see keyToken.KeyedList#setLastKey(java.lang.Object)
+	 */
+	@Override
+	public void setLastKey(Long key)
+	{
+		Client.lastId = key;
+		
 	}
 
 	/* (non-Javadoc)
@@ -289,126 +410,5 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	public <T> T[] toArray(T[] arg0)
 	{
 		return clients.toArray(arg0);
-	}
-
-	/* (non-Javadoc)
-	 * @see storage.Loadable#load()
-	 */
-	@Override
-	public void load() throws ClassNotFoundException, IOException
-	{
-		instance().clear(); // clears the list in case anything was in it
-		FileIO clientFile = FileIO.startRead(FILENAME);
-		LinkedList<Client> tmp =  (LinkedList<Client>) clientFile.read();
-		clientFile.close();
-		
-		for(Client c : tmp)
-		{
-			instance().add(c);
-			
-			c.getID().setKey(c.getID());
-		}
-	}
-
-	/* (non-Javadoc)
-	 * @see storage.Savable#save()
-	 */
-	@Override
-	public void save() throws IOException
-	{
-	
-		
-		FileIO clientFile = FileIO.startWrite(FILENAME);
-		clientFile.write(new LinkedList<Client>(instance()));
-		clientFile.close();
-		
-	}
-
-	/* (non-Javadoc)
-	 * @see keyToken.KeyedList#findMatched(java.lang.Object)
-	 */
-	@Override
-	public Client findMatched(Long key) throws NoKeyTokenFoundException
-	{
-		Client client = null;
-		for(Client c :  instance())
-		{
-			if(c.matches(key))
-			{
-				client = c;
-			}
-		}
-		if(client == null)
-		{
-			throw new NoKeyTokenFoundException();
-		}
-		return client;
-	}
-
-	/* (non-Javadoc)
-	 * @see keyToken.KeyedList#removeMatched(java.lang.Object)
-	 */
-	@Override
-	public void removeMatched(Long key) throws NoKeyTokenFoundException
-	{
-		boolean found = false;
-		int i = 0;
-		for(Client c :  instance())
-		{
-			if(c.matches(key))
-			{
-				instance().remove(i);
-				found = true;
-				break;
-			}
-			i++;
-		}
-		if(!found)
-		{
-			throw new NoKeyTokenFoundException();
-		}
-		
-	}
-
-	/* (non-Javadoc)
-	 * @see storage.Loadable#canLoad()
-	 */
-	@Override
-	public boolean canLoad()
-	{
-		Long id = getLastKey();
-		try
-		{
-			
-			FileIO clientFile = FileIO.startRead(FILENAME);
-			LinkedList<Client> tmp =  (LinkedList<Client>) clientFile.read();
-			clientFile.close();
-			
-		}
-		catch (Exception e)
-		{
-			return false;
-		}
-		setLastKey(id);
-		return true;
-	}
-
-	/* (non-Javadoc)
-	 * @see keyToken.KeyedList#getLastKey()
-	 */
-	@Override
-	public Long getLastKey()
-	{
-		return Client.lastId;
-	}
-
-	/* (non-Javadoc)
-	 * @see keyToken.KeyedList#setLastKey(java.lang.Object)
-	 */
-	@Override
-	public void setLastKey(Long key)
-	{
-		Client.lastId = key;
-		
 	}
 }

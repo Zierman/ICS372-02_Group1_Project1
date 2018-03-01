@@ -20,16 +20,6 @@ public abstract class KeyToken <Type, Key extends Comparable<Key> > implements S
 	 */
 	private Key keyValue;
 	
-	public Key getKeyValue()
-	{
-		return keyValue;
-	}
-
-	public void setKeyValue(Key keyValue)
-	{
-		this.keyValue = keyValue;
-	}
-
 	/**
 	 * Constructs a new Key Value
 	 */
@@ -38,12 +28,20 @@ public abstract class KeyToken <Type, Key extends Comparable<Key> > implements S
 		keyValue = getNextValue();
 		setLastValue(keyValue);
 	}
-	
-	/**
-	 * Gets the next key to be generated.
-	 * @return a key value
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
-	protected abstract Key getNextValue();
+	@Override
+	public boolean equals(Object obj)
+	{
+		return obj instanceof KeyToken && toTestString().equals(((KeyToken<Type, Key>)obj).toTestString());
+	}
+
+	public Key getKeyValue()
+	{
+		return keyValue;
+	}
 	
 	/**
 	 * Gets the last key generated
@@ -52,33 +50,10 @@ public abstract class KeyToken <Type, Key extends Comparable<Key> > implements S
 	protected abstract Key getLastValue();
 	
 	/**
-	 * Sets the last key generated
-	 * @param key a key value
+	 * Gets the next key to be generated.
+	 * @return a key value
 	 */
-	protected abstract void setLastValue(Key key);
-	
-	/**
-	 * Sets the key and
-	 * @param key a key value
-	 */
-	public void setValue(Key key)
-	{
-		this.keyValue = key;
-		
-		if(this.keyValue.compareTo(getLastValue()) < 0)
-		{
-			setLastValue(this.keyValue);
-		}
-	}
-	
-	/**
-	 * Sets the key 
-	 * @param keyToken a key value
-	 */
-	public void setKey(KeyToken<Type, Key> keyToken)
-	{
-		setValue(keyToken.keyValue);
-	}
+	protected abstract Key getNextValue();
 	
 	/**
 	 * Checks if a key value matches this key value
@@ -100,20 +75,40 @@ public abstract class KeyToken <Type, Key extends Comparable<Key> > implements S
 		return this.keyValue.equals(key);
 	}
 	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
+	/**
+	 * Sets the key 
+	 * @param keyToken a key value
 	 */
-	@Override
-	public boolean equals(Object obj)
+	public void setKey(KeyToken<Type, Key> keyToken)
 	{
-		return obj instanceof KeyToken && toTestString().equals(((KeyToken<Type, Key>)obj).toTestString());
+		setValue(keyToken.keyValue);
+	}
+	
+	public void setKeyValue(Key keyValue)
+	{
+		this.keyValue = keyValue;
+	}
+	
+	/**
+	 * Sets the last key generated
+	 * @param key a key value
+	 */
+	protected abstract void setLastValue(Key key);
+	
+	/**
+	 * Sets the key and
+	 * @param key a key value
+	 */
+	public void setValue(Key key)
+	{
+		this.keyValue = key;
+		
+		if(this.keyValue.compareTo(getLastValue()) < 0)
+		{
+			setLastValue(this.keyValue);
+		}
 	}
 
-	
-	public String toTestString()
-	{
-		return getClass().getName() + keyValue;
-	}
 	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
@@ -122,5 +117,10 @@ public abstract class KeyToken <Type, Key extends Comparable<Key> > implements S
 	public String toString()
 	{
 		return "" + keyValue;
+	}
+	
+	public String toTestString()
+	{
+		return getClass().getName() + keyValue;
 	}
 }

@@ -12,8 +12,21 @@ import userInterface.UI;
 public class RemoveCreditCard implements Command<UI>
 {
 	private static RemoveCreditCard singleton;
+	/**
+	 * Gets or creates an instance of the singleton
+	 * @return an instance of the singleton
+	 */
+	public static RemoveCreditCard instance()
+	{
+		if (singleton == null)
+		{
+			singleton = new RemoveCreditCard(1);
+		}
+		return singleton;
+	}
 	private final String LABEL = "Remvoe a credit card.";
 	private final boolean IS_DATA_COMMAND = true;
+
 	private final boolean IS_TERMINATION_COMMAND = false;
 
 	/**
@@ -41,62 +54,6 @@ public class RemoveCreditCard implements Command<UI>
 	private RemoveCreditCard(int i)
 	{
 	}
-
-	/**
-	 * Gets or creates an instance of the singleton
-	 * @return an instance of the singleton
-	 */
-	public static RemoveCreditCard instance()
-	{
-		if (singleton == null)
-		{
-			singleton = new RemoveCreditCard(1);
-		}
-		return singleton;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see userInterface.Command#getLabel()
-	 */
-	@Override
-	public String getLabel()
-	{
-		return instance().LABEL;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see userInterface.Command#isDataCommand()
-	 */
-	@Override
-	public boolean isDataCommand()
-	{
-		return instance().IS_DATA_COMMAND;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see singleton.Singleton#readResolve()
-	 */
-	@Override
-	public Command<UI> readResolve()
-	{
-		return instance();
-	}
-
-	/* (non-Javadoc)
-	 * @see uiCommands.Command#isTerminateionCommand()
-	 */
-	@Override
-	public boolean isTerminationCommand()
-	{
-		return IS_TERMINATION_COMMAND;
-	}
-
 
 	/* (non-Javadoc)
 	 * @see uiCommands.Command#call(java.lang.Object)
@@ -137,6 +94,49 @@ public class RemoveCreditCard implements Command<UI>
 			}
 		}
 		
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see userInterface.Command#getLabel()
+	 */
+	@Override
+	public String getLabel()
+	{
+		return instance().LABEL;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see userInterface.Command#isDataCommand()
+	 */
+	@Override
+	public boolean isDataCommand()
+	{
+		return instance().IS_DATA_COMMAND;
+	}
+
+	/* (non-Javadoc)
+	 * @see uiCommands.Command#isTerminateionCommand()
+	 */
+	@Override
+	public boolean isTerminationCommand()
+	{
+		return IS_TERMINATION_COMMAND;
+	}
+
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see singleton.Singleton#readResolve()
+	 */
+	@Override
+	public Command<UI> readResolve()
+	{
+		return instance();
 	}
 
 }

@@ -15,15 +15,6 @@ public class PhoneNumber implements Serializable
 	private static final long serialVersionUID = 1L;
 	private String number;
 	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString()
-	{
-		return getNumber();
-	}
-
 	/**
 	 * Gets the phone number.
 	 * @return a <code>String</code> representation of the phone number.
@@ -31,6 +22,16 @@ public class PhoneNumber implements Serializable
 	public String getNumber()
 	{
 		return number;
+	}
+
+	/**
+	 * Sets the phone number
+	 * @param phoneNumber a <code>PhoneNumber</code> object.
+	 */
+	public void setNumber(PhoneNumber phoneNumber)
+	{
+		this.number = phoneNumber.getNumber();
+		
 	}
 
 	/**
@@ -42,13 +43,12 @@ public class PhoneNumber implements Serializable
 		this.number = number;
 	}
 
-	/**
-	 * Sets the phone number
-	 * @param phoneNumber a <code>PhoneNumber</code> object.
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
 	 */
-	public void setNumber(PhoneNumber phoneNumber)
+	@Override
+	public String toString()
 	{
-		this.number = phoneNumber.getNumber();
-		
+		return getNumber();
 	}
 }

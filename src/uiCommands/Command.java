@@ -14,16 +14,16 @@ import singleton.ReadResolveable;
  */
 public interface Command<Type> extends ReadResolveable<Command<Type>>
 {
+	/**Executes the action associated with the command.
+	 * @param ui a user interface
+	 */
+	public void call(Type ui);
+
 	/**
 	 * Gets a label to show to user describing the command.
 	 * @return the label.
 	 */
 	public String getLabel();
-
-	/**Executes the action associated with the command.
-	 * @param ui a user interface
-	 */
-	public void call(Type ui);
 
 	/**
 	 * Checks to see if the command accesses data.

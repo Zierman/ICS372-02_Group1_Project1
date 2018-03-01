@@ -17,41 +17,6 @@ import phoneNumber.PhoneNumber;
 public class Client implements Serializable, Keyed<Long>
 {
 	/**
-	 * Serialization version.
-	 */
-	private static final long serialVersionUID = 1L;
-
-	/**
-	 * The last used ID key.
-	 */
-	protected static long lastId = 0L;
-
-	/**
-	 * The client id.
-	 */
-	private ID id;
-
-	/**
-	 * The amount of money owed to the client.
-	 */
-	private Dollar balanceDue;
-
-	/**
-	 * The client's name.
-	 */
-	private Name name = new Name();
-
-	/**
-	 * The client's street address.
-	 */
-	private Address address = new Address();
-
-	/**
-	 * The client's phone number.
-	 */
-	private PhoneNumber phoneNumber = new PhoneNumber();
-
-	/**
 	 * Represents the client id
 	 * 
 	 * @author Joshua Zierman [py1422xs@metrostate.edu]
@@ -68,23 +33,23 @@ public class Client implements Serializable, Keyed<Long>
 		/*
 		 * (non-Javadoc)
 		 * 
-		 * @see keyToken.KeyToken#getNextKey()
-		 */
-		@Override
-		protected Long getNextValue()
-		{
-			return Client.lastId + 1;
-		}
-
-		/*
-		 * (non-Javadoc)
-		 * 
 		 * @see keyToken.KeyToken#getLastKey()
 		 */
 		@Override
 		protected Long getLastValue()
 		{
 			return Client.lastId;
+		}
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see keyToken.KeyToken#getNextKey()
+		 */
+		@Override
+		protected Long getNextValue()
+		{
+			return Client.lastId + 1;
 		}
 
 		/*
@@ -152,23 +117,39 @@ public class Client implements Serializable, Keyed<Long>
 	}
 
 	/**
-	 * Constructs a new <code>Client</code> object.
-	 * 
-	 * @param name
-	 *            the string representation of the client's name.
-	 * @param address
-	 *            the string representation of the client's address.
-	 * @param phoneNumber
-	 *            the string representation of the client's phone number.
+	 * Serialization version.
 	 */
-	public Client(String name, String address, String phoneNumber)
-	{
-		this.name.setName(name);
-		this.address.setAddress(address);
-		this.phoneNumber.setNumber(phoneNumber);
-		id = new ID();
-		balanceDue = new Dollar(0.0);
-	}
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * The last used ID key.
+	 */
+	protected static long lastId = 0L;
+
+	/**
+	 * The client id.
+	 */
+	private ID id;
+
+	/**
+	 * The amount of money owed to the client.
+	 */
+	private Dollar balanceDue;
+
+	/**
+	 * The client's name.
+	 */
+	private Name name = new Name();
+
+	/**
+	 * The client's street address.
+	 */
+	private Address address = new Address();
+
+	/**
+	 * The client's phone number.
+	 */
+	private PhoneNumber phoneNumber = new PhoneNumber();
 
 	/**
 	 * Constructs a new <code>Client</code> object.
@@ -192,13 +173,33 @@ public class Client implements Serializable, Keyed<Long>
 	}
 
 	/**
-	 * Gets the client ID.
+	 * Constructs a new <code>Client</code> object.
 	 * 
-	 * @return the <code>ID</code> object that holds the client's ID.
+	 * @param name
+	 *            the string representation of the client's name.
+	 * @param address
+	 *            the string representation of the client's address.
+	 * @param phoneNumber
+	 *            the string representation of the client's phone number.
 	 */
-	public ID getID()
+	public Client(String name, String address, String phoneNumber)
 	{
-		return id;
+		this.name.setName(name);
+		this.address.setAddress(address);
+		this.phoneNumber.setNumber(phoneNumber);
+		id = new ID();
+		balanceDue = new Dollar(0.0);
+	}
+
+	/**
+	 * Gets the client's address.
+	 * 
+	 * @return the <code>Address</code> object that contains the client's
+	 *         address.
+	 */
+	public Address getAddress()
+	{
+		return address;
 	}
 
 	/**
@@ -213,15 +214,19 @@ public class Client implements Serializable, Keyed<Long>
 	}
 
 	/**
-	 * Sets the amount of mony that is owed to the client.
+	 * Gets the client ID.
 	 * 
-	 * @param balanceDue
-	 *            a <code>Dollar</code> object that represents how much money is
-	 *            owed to the client.
+	 * @return the <code>ID</code> object that holds the client's ID.
 	 */
-	public void setBalanceDue(Dollar balanceDue)
+	public ID getID()
 	{
-		this.balanceDue = balanceDue;
+		return id;
+	}
+
+	@Override
+	public Long getKey()
+	{
+		return this.id.getKeyValue();
 	}
 
 	/**
@@ -235,25 +240,25 @@ public class Client implements Serializable, Keyed<Long>
 	}
 
 	/**
-	 * Sets the client's name.
+	 * Gets the client's phone number.
 	 * 
-	 * @param name
-	 *            a <code>String</code> representation of the client's name.
+	 * @return the <code>PhoneNumber</code> object that contains the client's
+	 *         phone number.
 	 */
-	public void setName(String name)
+	public PhoneNumber getPhoneNumber()
 	{
-		this.name.setName(name);
+		return phoneNumber;
 	}
 
-	/**
-	 * Gets the client's address.
+	/*
+	 * (non-Javadoc)
 	 * 
-	 * @return the <code>Address</code> object that contains the client's
-	 *         address.
+	 * @see keyToken.Keyed#matches(java.lang.Object)
 	 */
-	public Address getAddress()
+	@Override
+	public boolean matches(Long key)
 	{
-		return address;
+		return getID().matches(key);
 	}
 
 	/**
@@ -269,37 +274,15 @@ public class Client implements Serializable, Keyed<Long>
 	}
 
 	/**
-	 * Gets the client's phone number.
+	 * Sets the amount of mony that is owed to the client.
 	 * 
-	 * @return the <code>PhoneNumber</code> object that contains the client's
-	 *         phone number.
+	 * @param balanceDue
+	 *            a <code>Dollar</code> object that represents how much money is
+	 *            owed to the client.
 	 */
-	public PhoneNumber getPhoneNumber()
+	public void setBalanceDue(Dollar balanceDue)
 	{
-		return phoneNumber;
-	}
-
-	/**
-	 * Sets the client's phone number.
-	 * 
-	 * @param phoneNumber
-	 *            the <code>PhoneNumber</code> object that contains the client's
-	 *            phone number.
-	 */
-	public void setPhoneNumber(String phoneNumber)
-	{
-		this.phoneNumber.setNumber(phoneNumber);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see keyToken.Keyed#matches(java.lang.Object)
-	 */
-	@Override
-	public boolean matches(Long key)
-	{
-		return getID().matches(key);
+		this.balanceDue = balanceDue;
 	}
 
 	/*
@@ -315,9 +298,26 @@ public class Client implements Serializable, Keyed<Long>
 
 	}
 
-	@Override
-	public Long getKey()
+	/**
+	 * Sets the client's name.
+	 * 
+	 * @param name
+	 *            a <code>String</code> representation of the client's name.
+	 */
+	public void setName(String name)
 	{
-		return this.id.getKeyValue();
+		this.name.setName(name);
+	}
+
+	/**
+	 * Sets the client's phone number.
+	 * 
+	 * @param phoneNumber
+	 *            the <code>PhoneNumber</code> object that contains the client's
+	 *            phone number.
+	 */
+	public void setPhoneNumber(String phoneNumber)
+	{
+		this.phoneNumber.setNumber(phoneNumber);
 	}
 }

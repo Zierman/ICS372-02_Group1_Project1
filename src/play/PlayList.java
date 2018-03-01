@@ -29,6 +29,20 @@ public class PlayList
 	private static LinkedList<Play> plays = new LinkedList<Play>();
 
 	/**
+	 * Gets or creates an instance of <code>PlayList</code>.
+	 * 
+	 * @return the instance of <code>PlayList</code>
+	 */
+	public static PlayList instance()
+	{
+		if (singleton == null)
+		{
+			singleton = new PlayList(1);
+		}
+		return singleton;
+	}
+
+	/**
 	 * Constructs a <code>PlayList</code> used when creating a subtype singleton
 	 * 
 	 * @throws Exception
@@ -53,29 +67,19 @@ public class PlayList
 	{
 	}
 
-	/**
-	 * Gets or creates an instance of <code>PlayList</code>.
-	 * 
-	 * @return the instance of <code>PlayList</code>
-	 */
-	public static PlayList instance()
-	{
-		if (singleton == null)
-		{
-			singleton = new PlayList(1);
-		}
-		return singleton;
-	}
-
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see singleton.Singleton#readResolve()
+	 * @see java.util.List#add(int, java.lang.Object)
 	 */
 	@Override
-	public PlayList readResolve()
+	public void add(int index, Play play)
 	{
-		return instance();
+		if (!canAdd(play))
+		{
+			throw new DateTimeException(null);
+		}
+		plays.add(index, play);
 	}
 
 	/*
@@ -91,21 +95,6 @@ public class PlayList
 			throw new ConflictingDatesException();
 		}
 		return plays.add(play);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.util.List#add(int, java.lang.Object)
-	 */
-	@Override
-	public void add(int index, Play play)
-	{
-		if (!canAdd(play))
-		{
-			throw new DateTimeException(null);
-		}
-		plays.add(index, play);
 	}
 
 	/*
@@ -139,6 +128,50 @@ public class PlayList
 			
 		}
 		return size != plays.size();
+	}
+
+	public boolean canAdd(Play play)
+	{
+		Date start1 = play.getStartDate();
+		Date start = null;
+		Date end1 = play.getEndDate();
+		Date end = null;
+		boolean canAdd = true;
+
+		for (Play p : instance())
+		{
+			start = p.getStartDate();
+			end = p.getEndDate();
+
+			if (start.before(end1) && end.after(start1))
+			{
+				canAdd = false;
+			}
+
+		}
+		return canAdd;
+	}
+
+	@Override
+	public boolean canLoad()
+	{
+		try
+		{
+			clear(); // clears the list in case anything was in it
+			FileIO playFile = FileIO.startRead(FILENAME);
+			LinkedList<Play> tmp = (LinkedList<Play>) playFile.read();
+			playFile.close();
+
+			for (Play c : tmp)
+			{
+				instance().add(c);
+			}
+		}
+		catch (Exception e)
+		{
+			return false;
+		}
+		return true;
 	}
 
 	/*
@@ -254,12 +287,31 @@ public class PlayList
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see java.util.List#remove(java.lang.Object)
+	 * @see storage.Loadable#load()
 	 */
 	@Override
-	public boolean remove(Object object)
+	public void load() throws ClassNotFoundException, IOException
 	{
-		return plays.remove(object);
+		clear(); // clears the list in case anything was in it
+		FileIO playFile = FileIO.startRead(FILENAME);
+		LinkedList<Play> tmp = (LinkedList<Play>) playFile.read();
+		playFile.close();
+
+		for (Play c : tmp)
+		{
+			instance().add(c);
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see singleton.Singleton#readResolve()
+	 */
+	@Override
+	public PlayList readResolve()
+	{
+		return instance();
 	}
 
 	/*
@@ -271,6 +323,17 @@ public class PlayList
 	public Play remove(int index)
 	{
 		return plays.remove(index);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.util.List#remove(java.lang.Object)
+	 */
+	@Override
+	public boolean remove(Object object)
+	{
+		return plays.remove(object);
 	}
 
 	/*
@@ -293,6 +356,21 @@ public class PlayList
 	public boolean retainAll(Collection<?> collection)
 	{
 		return plays.retainAll(collection);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see storage.Savable#save()
+	 */
+	@Override
+	public void save() throws IOException
+	{
+
+		FileIO playFile = FileIO.startWrite(FILENAME);
+		playFile.write(new LinkedList<Play>(instance()));
+		playFile.close();
+
 	}
 
 	/*
@@ -348,84 +426,6 @@ public class PlayList
 	public <T> T[] toArray(T[] arg0)
 	{
 		return plays.toArray(arg0);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see storage.Loadable#load()
-	 */
-	@Override
-	public void load() throws ClassNotFoundException, IOException
-	{
-		clear(); // clears the list in case anything was in it
-		FileIO playFile = FileIO.startRead(FILENAME);
-		LinkedList<Play> tmp = (LinkedList<Play>) playFile.read();
-		playFile.close();
-
-		for (Play c : tmp)
-		{
-			instance().add(c);
-		}
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see storage.Savable#save()
-	 */
-	@Override
-	public void save() throws IOException
-	{
-
-		FileIO playFile = FileIO.startWrite(FILENAME);
-		playFile.write(new LinkedList<Play>(instance()));
-		playFile.close();
-
-	}
-
-	@Override
-	public boolean canLoad()
-	{
-		try
-		{
-			clear(); // clears the list in case anything was in it
-			FileIO playFile = FileIO.startRead(FILENAME);
-			LinkedList<Play> tmp = (LinkedList<Play>) playFile.read();
-			playFile.close();
-
-			for (Play c : tmp)
-			{
-				instance().add(c);
-			}
-		}
-		catch (Exception e)
-		{
-			return false;
-		}
-		return true;
-	}
-
-	public boolean canAdd(Play play)
-	{
-		Date start1 = play.getStartDate();
-		Date start = null;
-		Date end1 = play.getEndDate();
-		Date end = null;
-		boolean canAdd = true;
-
-		for (Play p : instance())
-		{
-			start = p.getStartDate();
-			end = p.getEndDate();
-
-			if (start.before(end1) && end.after(start1))
-			{
-				canAdd = false;
-			}
-
-		}
-		return canAdd;
 	}
 	
 	

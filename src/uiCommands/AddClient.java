@@ -15,8 +15,21 @@ import userInterface.UI;
 public class AddClient implements Command<UI>
 {
 	private static AddClient singleton;
+	/**
+	 * Gets or creates an instance of the singleton
+	 * @return an instance of the singleton
+	 */
+	public static AddClient instance()
+	{
+		if (singleton == null)
+		{
+			singleton = new AddClient(1);
+		}
+		return singleton;
+	}
 	private final String LABEL = "Add a new client";
 	private final boolean IS_DATA_COMMAND = true;
+
 	private final boolean IS_TERMINATION_COMMAND = false;
 
 	/**
@@ -43,52 +56,6 @@ public class AddClient implements Command<UI>
 	 */
 	private AddClient(int i)
 	{
-	}
-
-	/**
-	 * Gets or creates an instance of the singleton
-	 * @return an instance of the singleton
-	 */
-	public static AddClient instance()
-	{
-		if (singleton == null)
-		{
-			singleton = new AddClient(1);
-		}
-		return singleton;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see userInterface.Command#getLabel()
-	 */
-	@Override
-	public String getLabel()
-	{
-		return instance().LABEL;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see userInterface.Command#isDataCommand()
-	 */
-	@Override
-	public boolean isDataCommand()
-	{
-		return instance().IS_DATA_COMMAND;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see singleton.Singleton#readResolve()
-	 */
-	@Override
-	public Command<UI> readResolve()
-	{
-		return instance();
 	}
 
 	/* (non-Javadoc)
@@ -131,6 +98,28 @@ public class AddClient implements Command<UI>
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see userInterface.Command#getLabel()
+	 */
+	@Override
+	public String getLabel()
+	{
+		return instance().LABEL;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see userInterface.Command#isDataCommand()
+	 */
+	@Override
+	public boolean isDataCommand()
+	{
+		return instance().IS_DATA_COMMAND;
+	}
+
 	/* (non-Javadoc)
 	 * @see uiCommands.Command#isTerminationCommand()
 	 */
@@ -138,6 +127,17 @@ public class AddClient implements Command<UI>
 	public boolean isTerminationCommand()
 	{
 		return IS_TERMINATION_COMMAND;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see singleton.Singleton#readResolve()
+	 */
+	@Override
+	public Command<UI> readResolve()
+	{
+		return instance();
 	}
 
 }

@@ -22,31 +22,6 @@ public class Dollar extends Currency<Double>
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * The amount of money in United States Dollars
-	 */
-	private Double amount;
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see currency.Currency#getAmount()
-	 */
-	public Double getAmount()
-	{
-		return amount;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see currency.Currency#setAmount(java.lang.Number)
-	 */
-	public void setAmount(Double amount)
-	{
-		this.amount = amount;
-	}
-
-	/**
 	 * The '$' symbol is the prefix
 	 */
 	private static final String PREFIX_SYMBOL = "$";
@@ -67,6 +42,11 @@ public class Dollar extends Currency<Double>
 	private static final String FORMAT_STRING = "%." + MAX_DECIMAL_PLACES + "f";
 
 	/**
+	 * The amount of money in United States Dollars
+	 */
+	private Double amount;
+
+	/**
 	 * Constructs a <code>Dollar</code> object
 	 * 
 	 * @param dollars
@@ -80,12 +60,32 @@ public class Dollar extends Currency<Double>
 	/*
 	 * (non-Javadoc)
 	 * 
+	 * @see currency.Currency#getAmount()
+	 */
+	public Double getAmount()
+	{
+		return amount;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see currency.Currency#getFormatString()
 	 */
 	@Override
 	protected String getFormatString()
 	{
 		return FORMAT_STRING;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see currency.Currency#setAmount(java.lang.Number)
+	 */
+	public void setAmount(Double amount)
+	{
+		this.amount = amount;
 	}
 
 	/*

@@ -11,6 +11,9 @@ package keyToken;
  */
 public interface Keyed<Key>
 {
+	public Key getKey();
+	
+
 	/**
 	 * Checks if the object has a key that matches
 	 * 
@@ -19,9 +22,6 @@ public interface Keyed<Key>
 	 * @return true if they match or false if they do not.
 	 */
 	public boolean matches(Key key);
-	
-
-	public Key getKey();
 	
 	public void setKey(Key key);
 }

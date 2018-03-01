@@ -14,8 +14,21 @@ import userInterface.UI;
 public class ExitApplication implements Command<UI>
 {
 	private static ExitApplication singleton;
+	/**
+	 * Gets or creates an instance of the singleton
+	 * @return an instance of the singleton
+	 */
+	public static ExitApplication instance()
+	{
+		if (singleton == null)
+		{
+			singleton = new ExitApplication(1);
+		}
+		return singleton;
+	}
 	private final String LABEL = "Exit the application";
 	private final boolean IS_DATA_COMMAND = true;
+
 	private final boolean IS_TERMINATION_COMMAND = true;
 
 	/**
@@ -44,52 +57,6 @@ public class ExitApplication implements Command<UI>
 	{
 	}
 
-	/**
-	 * Gets or creates an instance of the singleton
-	 * @return an instance of the singleton
-	 */
-	public static ExitApplication instance()
-	{
-		if (singleton == null)
-		{
-			singleton = new ExitApplication(1);
-		}
-		return singleton;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see userInterface.Command#getLabel()
-	 */
-	@Override
-	public String getLabel()
-	{
-		return instance().LABEL;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see userInterface.Command#isDataCommand()
-	 */
-	@Override
-	public boolean isDataCommand()
-	{
-		return instance().IS_DATA_COMMAND;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see singleton.Singleton#readResolve()
-	 */
-	@Override
-	public Command<UI> readResolve()
-	{
-		return instance();
-	}
-
 	/* (non-Javadoc)
 	 * @see uiCommands.Command#call(java.lang.Object)
 	 */
@@ -114,6 +81,28 @@ public class ExitApplication implements Command<UI>
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see userInterface.Command#getLabel()
+	 */
+	@Override
+	public String getLabel()
+	{
+		return instance().LABEL;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see userInterface.Command#isDataCommand()
+	 */
+	@Override
+	public boolean isDataCommand()
+	{
+		return instance().IS_DATA_COMMAND;
+	}
+
 	/* (non-Javadoc)
 	 * @see uiCommands.Command#isTerminationCommand()
 	 */
@@ -121,6 +110,17 @@ public class ExitApplication implements Command<UI>
 	public boolean isTerminationCommand()
 	{
 		return IS_TERMINATION_COMMAND;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see singleton.Singleton#readResolve()
+	 */
+	@Override
+	public Command<UI> readResolve()
+	{
+		return instance();
 	}
 
 }

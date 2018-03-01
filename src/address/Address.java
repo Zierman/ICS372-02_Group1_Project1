@@ -30,20 +30,20 @@ public class Address implements Serializable
 
 	/**
 	 * Sets the address
-	 * @param address a string representation of the address.
-	 */
-	public void setAddress(String address)
-	{
-		this.address = address;
-	}
-
-	/**
-	 * Sets the address
 	 * @param address an <code>Address</code> object.
 	 */
 	public void setAddress(Address address)
 	{
 		this.address = address.getAddress();
+	}
+
+	/**
+	 * Sets the address
+	 * @param address a string representation of the address.
+	 */
+	public void setAddress(String address)
+	{
+		this.address = address;
 	}
 	
 	/* (non-Javadoc)

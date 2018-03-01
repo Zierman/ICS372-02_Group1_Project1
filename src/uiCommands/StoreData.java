@@ -11,8 +11,21 @@ import userInterface.UI;
 public class StoreData implements Command<UI>
 {
 	private static StoreData singleton;
+	/**
+	 * Gets or creates an instance of the singleton
+	 * @return an instance of the singleton
+	 */
+	public static StoreData instance()
+	{
+		if (singleton == null)
+		{
+			singleton = new StoreData(1);
+		}
+		return singleton;
+	}
 	private final String LABEL = "Store all data.";
 	private final boolean IS_DATA_COMMAND = true;
+
 	private final boolean IS_TERMINATION_COMMAND = false;
 
 	/**
@@ -29,7 +42,7 @@ public class StoreData implements Command<UI>
 			throw new Exception();
 		}
 	}
-
+	
 	/**
 	 * Constructs the <code>StoreData</code> object used to create the singleton.
 	 * 
@@ -40,18 +53,29 @@ public class StoreData implements Command<UI>
 	private StoreData(int i)
 	{
 	}
-	
-	/**
-	 * Gets or creates an instance of the singleton
-	 * @return an instance of the singleton
+
+	/* (non-Javadoc)
+	 * @see uiCommands.Command#call(java.lang.Object)
 	 */
-	public static StoreData instance()
+	@Override
+	public void call(UI ui)
 	{
-		if (singleton == null)
+		boolean done = false;
+		while(!done)
+		try
 		{
-			singleton = new StoreData(1);
+			Theater theater = ui.getTheater();
+			theater.save();
+			done = true;
 		}
-		return singleton;
+		catch (Exception e)
+		{
+			// show error message
+			UI.outputError(e, "Unable to store data");
+			
+			// ask if user wants to continue and end if the user answers no
+			done = !UI.tryAgainCheck();
+		}
 	}
 
 	/*
@@ -76,17 +100,6 @@ public class StoreData implements Command<UI>
 		return instance().IS_DATA_COMMAND;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see singleton.Singleton#readResolve()
-	 */
-	@Override
-	public Command<UI> readResolve()
-	{
-		return instance();
-	}
-
 	/* (non-Javadoc)
 	 * @see uiCommands.Command#isTerminateionCommand()
 	 */
@@ -97,28 +110,15 @@ public class StoreData implements Command<UI>
 	}
 
 
-	/* (non-Javadoc)
-	 * @see uiCommands.Command#call(java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see singleton.Singleton#readResolve()
 	 */
 	@Override
-	public void call(UI ui)
+	public Command<UI> readResolve()
 	{
-		boolean done = false;
-		while(!done)
-		try
-		{
-			Theater theater = ui.getTheater();
-			theater.save();
-			done = true;
-		}
-		catch (Exception e)
-		{
-			// show error message
-			UI.outputError(e, "Unable to store data");
-			
-			// ask if user wants to continue and end if the user answers no
-			done = !UI.tryAgainCheck();
-		}
+		return instance();
 	}
 
 }

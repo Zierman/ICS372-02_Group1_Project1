@@ -12,8 +12,21 @@ import userInterface.UI;
 public class RemoveClient implements Command<UI>
 {
 	private static RemoveClient singleton;
+	/**
+	 * Gets or creates an instance of the singleton
+	 * @return an instance of the singleton
+	 */
+	public static RemoveClient instance()
+	{
+		if (singleton == null)
+		{
+			singleton = new RemoveClient(1);
+		}
+		return singleton;
+	}
 	private final String LABEL = "Remvoe a client from the client list.";
 	private final boolean IS_DATA_COMMAND = true;
+
 	private final boolean IS_TERMINATION_COMMAND = false;
 
 	/**
@@ -42,17 +55,29 @@ public class RemoveClient implements Command<UI>
 	{
 	}
 
-	/**
-	 * Gets or creates an instance of the singleton
-	 * @return an instance of the singleton
+	/* (non-Javadoc)
+	 * @see uiCommands.Command#call(java.lang.Object)
 	 */
-	public static RemoveClient instance()
+	@Override
+	public void call(UI ui)
 	{
-		if (singleton == null)
+		boolean done = false;
+		while(!done)
 		{
-			singleton = new RemoveClient(1);
+			Theater theater = ui.getTheater();
+			Long key = Long.parseLong(UI.getInput("Enter client ID: "));
+			try
+			{
+				theater.removeMatchedClient(key);
+				UI.outputSuccessMessage("client removed");
+			}
+			catch (NoKeyTokenFoundException e)
+			{
+				UI.outputError(e, "no match found");
+			}
+			done = !ui.yesCheck("Remove another client?");
 		}
-		return singleton;
+		
 	}
 
 	/*
@@ -77,17 +102,6 @@ public class RemoveClient implements Command<UI>
 		return instance().IS_DATA_COMMAND;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see singleton.Singleton#readResolve()
-	 */
-	@Override
-	public Command<UI> readResolve()
-	{
-		return instance();
-	}
-
 	/* (non-Javadoc)
 	 * @see uiCommands.Command#isTerminateionCommand()
 	 */
@@ -98,29 +112,15 @@ public class RemoveClient implements Command<UI>
 	}
 
 
-	/* (non-Javadoc)
-	 * @see uiCommands.Command#call(java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see singleton.Singleton#readResolve()
 	 */
 	@Override
-	public void call(UI ui)
+	public Command<UI> readResolve()
 	{
-		boolean done = false;
-		while(!done)
-		{
-			Theater theater = ui.getTheater();
-			Long key = Long.parseLong(UI.getInput("Enter client ID: "));
-			try
-			{
-				theater.removeMatchedClient(key);
-				UI.outputSuccessMessage("client removed");
-			}
-			catch (NoKeyTokenFoundException e)
-			{
-				UI.outputError(e, "no match found");
-			}
-			done = !ui.yesCheck("Remove another client?");
-		}
-		
+		return instance();
 	}
 
 }

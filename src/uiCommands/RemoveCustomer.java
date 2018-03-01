@@ -11,8 +11,21 @@ import userInterface.UI;
 public class RemoveCustomer implements Command<UI>
 {
 	private static RemoveCustomer singleton;
+	/**
+	 * Gets or creates an instance of the singleton
+	 * @return an instance of the singleton
+	 */
+	public static RemoveCustomer instance()
+	{
+		if (singleton == null)
+		{
+			singleton = new RemoveCustomer(1);
+		}
+		return singleton;
+	}
 	private final String LABEL = "Remvoe a customer from the customer list.";
 	private final boolean IS_DATA_COMMAND = true;
+
 	private final boolean IS_TERMINATION_COMMAND = false;
 
 	/**
@@ -41,17 +54,29 @@ public class RemoveCustomer implements Command<UI>
 	{
 	}
 
-	/**
-	 * Gets or creates an instance of the singleton
-	 * @return an instance of the singleton
+	/* (non-Javadoc)
+	 * @see uiCommands.Command#call(java.lang.Object)
 	 */
-	public static RemoveCustomer instance()
+	@Override
+	public void call(UI ui)
 	{
-		if (singleton == null)
-		{
-			singleton = new RemoveCustomer(1);
+		boolean done = false;
+		while(!done){
+			Theater theater = ui.getTheater();
+			Long key = Long.parseLong(UI.getInput("Enter customer ID: "));
+			try
+			{
+				theater.removeMatchedCustomer(key);
+				UI.outputSuccessMessage("customer removed");
+			}
+			catch (NoKeyTokenFoundException e)
+			{
+				UI.outputError(e, "no match found");
+				done = !UI.tryAgainCheck();
+			}
+			done = !UI.yesCheck("Remove another customer?");
 		}
-		return singleton;
+
 	}
 
 	/*
@@ -79,17 +104,6 @@ public class RemoveCustomer implements Command<UI>
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see singleton.Singleton#readResolve()
-	 */
-	@Override
-	public Command<UI> readResolve()
-	{
-		return instance();
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
 	 * @see uiCommands.Command#isTerminateionCommand()
 	 * @author Troy Novak [wh1617wd@metrostate.edu]
 	 */
@@ -99,29 +113,15 @@ public class RemoveCustomer implements Command<UI>
 		return IS_TERMINATION_COMMAND;
 	}
 
-	/* (non-Javadoc)
-	 * @see uiCommands.Command#call(java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see singleton.Singleton#readResolve()
 	 */
 	@Override
-	public void call(UI ui)
+	public Command<UI> readResolve()
 	{
-		boolean done = false;
-		while(!done){
-			Theater theater = ui.getTheater();
-			Long key = Long.parseLong(UI.getInput("Enter customer ID: "));
-			try
-			{
-				theater.removeMatchedCustomer(key);
-				UI.outputSuccessMessage("customer removed");
-			}
-			catch (NoKeyTokenFoundException e)
-			{
-				UI.outputError(e, "no match found");
-				done = !UI.tryAgainCheck();
-			}
-			done = !UI.yesCheck("Remove another customer?");
-		}
-
+		return instance();
 	}
 
 }

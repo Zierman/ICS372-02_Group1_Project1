@@ -17,33 +17,6 @@ import ownership.Owned;
 public class Play implements Serializable, Owned<Client>
 {
 	/**
-	 * Serialization version.
-	 */
-	private static final long serialVersionUID = 1L;
-
-	/**
-	 * the name of the play.
-	 */
-	private Name name = new Name();
-
-	/**
-	 * The client that performs the play.
-	 */
-	private Client owner;
-
-	/**
-	 * the date that the play starts performances.
-	 */
-	private Date startDate;
-
-	/**
-	 * the date that the play ends performances.
-	 */
-	private Date endDate;
-
-	private Dollar ticketPrice;
-
-	/**
 	 * Play name
 	 * 
 	 * @author Joshua Zierman [py1422xs@metrostate.edu]
@@ -106,6 +79,33 @@ public class Play implements Serializable, Owned<Client>
 	}
 
 	/**
+	 * Serialization version.
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * the name of the play.
+	 */
+	private Name name = new Name();
+
+	/**
+	 * The client that performs the play.
+	 */
+	private Client owner;
+
+	/**
+	 * the date that the play starts performances.
+	 */
+	private Date startDate;
+
+	/**
+	 * the date that the play ends performances.
+	 */
+	private Date endDate;
+
+	private Dollar ticketPrice;
+
+	/**
 	 * Creates a <code>Play</code> object
 	 * 
 	 * @param name
@@ -132,6 +132,16 @@ public class Play implements Serializable, Owned<Client>
 	}
 
 	/**
+	 * Gets the end date
+	 * 
+	 * @return the date that the play stops showing.
+	 */
+	public Date getEndDate()
+	{
+		return endDate;
+	}
+
+	/**
 	 * Gets the name
 	 * 
 	 * @return a <code>Name</code> object.
@@ -139,6 +149,47 @@ public class Play implements Serializable, Owned<Client>
 	public Name getName()
 	{
 		return name;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see ownership.Owned#getOwner()
+	 */
+	@Override
+	public Client getOwner()
+	{
+		return owner;
+	}
+
+	/**
+	 * Gets the start date.
+	 * 
+	 * @return the date that the play begins showing.
+	 */
+	public Date getStartDate()
+	{
+		return startDate;
+	}
+
+	/**
+	 * @return
+	 */
+	public Dollar getTicketPrice()
+	{
+
+		return ticketPrice;
+	}
+
+	/**
+	 * Sets the end date
+	 * 
+	 * @param endDate
+	 *            the date that the play stops showing.
+	 */
+	public void setEndDate(Date endDate)
+	{
+		this.endDate = endDate;
 	}
 
 	/**
@@ -153,14 +204,11 @@ public class Play implements Serializable, Owned<Client>
 		this.name.setName(name);
 	}
 
-	/**
-	 * Gets the start date.
-	 * 
-	 * @return the date that the play begins showing.
-	 */
-	public Date getStartDate()
+	@Override
+	public void setOwner(Client owner)
 	{
-		return startDate;
+		this.owner = owner;
+
 	}
 
 	/**
@@ -172,54 +220,6 @@ public class Play implements Serializable, Owned<Client>
 	public void setStartDate(Date startDate)
 	{
 		this.startDate = startDate;
-	}
-
-	/**
-	 * Gets the end date
-	 * 
-	 * @return the date that the play stops showing.
-	 */
-	public Date getEndDate()
-	{
-		return endDate;
-	}
-
-	/**
-	 * Sets the end date
-	 * 
-	 * @param endDate
-	 *            the date that the play stops showing.
-	 */
-	public void setEndDate(Date endDate)
-	{
-		this.endDate = endDate;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see ownership.Owned#getOwner()
-	 */
-	@Override
-	public Client getOwner()
-	{
-		return owner;
-	}
-
-	@Override
-	public void setOwner(Client owner)
-	{
-		this.owner = owner;
-
-	}
-
-	/**
-	 * @return
-	 */
-	public Dollar getTicketPrice()
-	{
-
-		return ticketPrice;
 	}
 
 }
