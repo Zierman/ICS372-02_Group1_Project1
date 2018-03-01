@@ -14,7 +14,7 @@ package currency;
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
-public class Dollar extends Currency<Double>
+public class Dollar extends Currency<Dollar, Double>
 {
 	/**
 	 * serialization version indicator
@@ -52,7 +52,7 @@ public class Dollar extends Currency<Double>
 	 * @param dollars
 	 *            the amount of money in United States Dollars.
 	 */
-	public Dollar(Double dollars)
+	public Dollar(Double dollars) // unintended Trigun reference (^_^)
 	{
 		this.amount = dollars;
 	}
@@ -64,7 +64,7 @@ public class Dollar extends Currency<Double>
 	 */
 	public Double getAmount()
 	{
-		return amount;
+		return this.amount;
 	}
 
 	/*
@@ -96,7 +96,39 @@ public class Dollar extends Currency<Double>
 	@Override
 	public String toString()
 	{
-		return PREFIX_SYMBOL + String.format(getFormatString(), amount)
+		return PREFIX_SYMBOL + String.format(getFormatString(), this.amount)
 				+ POSTFIX_SYMBOL;
+	}
+
+	/* (non-Javadoc)
+	 * @see currency.Currency#half()
+	 */
+	@Override
+	public Dollar half()
+	{
+		return new Dollar(this.amount / 2);
+	}
+
+	@Override
+	public Dollar multiplyBy(double d)
+	{
+		return new Dollar(this.amount * d);
+	}
+
+	@Override
+	public Dollar addTogether(Dollar currency)
+	{
+		return new Dollar(this.amount + currency.getAmount());
+	}
+
+	@Override
+	public Dollar subtract(Dollar currency)
+	{
+		return new Dollar(this.amount - currency.getAmount());
+	}
+	
+	public static void main(String[] args)
+	{
+		System.out.println(new Dollar(10.00));
 	}
 }
