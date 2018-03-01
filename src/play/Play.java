@@ -27,7 +27,7 @@ public class Play implements Serializable, Owned<Client>
 		/**
 		 * Serialization version.
 		 */
-		private static final long serialVersionUID = 1L;
+		private static final long serialVersionUID = 2L;
 
 		/**
 		 * shortest allowed length of name
