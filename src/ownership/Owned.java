@@ -13,8 +13,8 @@ public interface Owned<OwnerType>
 	 */
 	public OwnerType getOwner();
 
-	/**Gets the owner.
-	 * @return the owner object
+	/**Sets the owner.
+	 * @param owner The object that owns this
 	 */
 	public void setOwner(OwnerType owner);
 }

@@ -268,8 +268,8 @@ public class Customer implements Serializable, Keyed<Long>
 	 * adds a new card to cardList as long as that card doesn't already exist
 	 * within cardList 
 	 * @param cardNum The credit card number
-	 * @param cardExpiry the expereraiton date
-	 * @throws NoCardFoundException  if the card cannot be found
+	 * @param cardExpiry the expiration date
+	 * @throws CardAlreadyInListException  if the card is already in list
 	 * @return true if the card is found or false if not. 
 	 */
 	public boolean addCreditCard(String cardNum, String cardExpiry) throws CardAlreadyInListException{
@@ -364,8 +364,8 @@ public class Customer implements Serializable, Keyed<Long>
 	
 	/**
 	 * removes a card from cardList as long as that card exists within cardList
-	 * @param cardNum
-	 * @throws NoCardFoundException 
+	 * @param cardNum The credit card number
+	 * @throws NoCardFoundException if the credit card number doesn't match any in list.
 	 */
 	public void removeCreditCard(String cardNum) throws NoCardFoundException{
 		// if card exists within cardList...
@@ -385,7 +385,7 @@ public class Customer implements Serializable, Keyed<Long>
 	
 	/**
 	 * sets this instance's address
-	 * @param custAddress
+	 * @param custAddress customer's street address
 	 */
 	public void setAddress(String custAddress){
 		this.address.setAddress(custAddress);
@@ -393,7 +393,7 @@ public class Customer implements Serializable, Keyed<Long>
 
 	/**
 	 * sets this instance's id
-	 * @param custID
+	 * @param custID the identification of the customer
 	 */
 	public void setID(ID custID){
 		this.id = custID;

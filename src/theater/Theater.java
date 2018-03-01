@@ -9,6 +9,7 @@ import client.ClientList;
 import currency.Dollar;
 import customer.Customer;
 import customer.CustomerList;
+import exceptions.CardAlreadyInListException;
 import exceptions.NoCardFoundException;
 import exceptions.NoKeyTokenFoundException;
 import exceptions.OverpayingClientException;
@@ -126,13 +127,13 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 	/**
 	 * adds a new credit card
 	 * 
-	 * @param customer
-	 * @param cardNumber
-	 * @param cardExpiration
+	 * @param customer The customer who is adding the credit card.
+	 * @param cardNumber the credit card number for the new credit card.
+	 * @param cardExpiration the expiration date of the new card.
 	 * @return true if added, false if not
-	 * @throws NoCardFoundException
+	 * @throws CardAlreadyInListException if the card that is being added was already in list.
 	 */
-	public boolean add(Customer customer, String cardNumber, String cardExpiration) throws NoCardFoundException{
+	public boolean add(Customer customer, String cardNumber, String cardExpiration) throws CardAlreadyInListException{
 		return customer.addCreditCard(cardNumber, cardExpiration);
 	}
 
@@ -251,9 +252,9 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 	/**
 	 * removes a credit card
 	 * 
-	 * @param customer
-	 * @param cardNumber
-	 * @throws NoCardFoundException
+	 * @param customer the customer who owns the credit card to be removed
+	 * @param cardNumber the credit card number of the card to remove.
+	 * @throws NoCardFoundException if the credit card number doesn't match any card in list.
 	 */
 	public void removeCreditCard(Customer customer, String cardNumber) throws NoCardFoundException{
 		customer.removeCreditCard(cardNumber);
@@ -300,7 +301,7 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 	
 	/**
 	 * Sells a ticket
-	 * @param ticket
+	 * @param ticket The ticket to be sold
 	 */
 	public void Sell(Ticket ticket)
 	{

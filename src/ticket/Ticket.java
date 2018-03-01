@@ -269,7 +269,7 @@ public abstract class Ticket
 	/**
 	 * Sets the key to a provided key. used in loading from storage.
 	 * 
-	 * @param keyToken
+	 * @param keyToken the keyToken that should be used as this key token
 	 * @see keyToken.KeyToken#setKey(keyToken.KeyToken)
 	 */
 	public void setKey(KeyToken<Ticket, Long> keyToken)

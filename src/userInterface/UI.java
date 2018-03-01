@@ -76,7 +76,7 @@ public class UI implements ReadResolveable<UI>, Closeable
 
 	/**
 	 * Gets the first number to be shown in the list of commands.
-	 * @return
+	 * @return the first number of the command list
 	 */
 	public static int getCommandListFirstNumber()
 	{
