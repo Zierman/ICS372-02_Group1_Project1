@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @param <Type>
  *            they type of number that is used to store the currency value
  */
-public abstract class Currency<CurrencyType extends CurrencyHelperClass<Type>, Type extends Number & Comparable<Type>> extends CurrencyHelperClass<Type> implements Serializable, Comparable<CurrencyHelperClass<Type>> 
+public abstract class Currency<CurrencyType extends CurrencyHelper<Type>, Type extends Number & Comparable<Type>> extends CurrencyHelper<Type> implements Serializable, Comparable<CurrencyHelper<Type>> 
 {
 
 	/**

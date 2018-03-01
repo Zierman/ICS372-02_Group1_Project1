@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @param <Type>
  *            they type of number that is used to store the currency value
  */
-public abstract class CurrencyHelperClass<Type extends Number & Comparable<Type>> implements Serializable, Comparable<CurrencyHelperClass<Type>>
+public abstract class CurrencyHelper<Type extends Number & Comparable<Type>> implements Serializable, Comparable<CurrencyHelper<Type>>
 {
 	/**
 	 * the version of the serialization.
@@ -39,7 +39,7 @@ public abstract class CurrencyHelperClass<Type extends Number & Comparable<Type>
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)
 	 */
 	@Override
-	public int compareTo(CurrencyHelperClass<Type> arg)
+	public int compareTo(CurrencyHelper<Type> arg)
 	{
 		return this.getAmount().compareTo(arg.getAmount());
 	}
