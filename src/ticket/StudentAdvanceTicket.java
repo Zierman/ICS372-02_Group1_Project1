@@ -5,6 +5,11 @@ import java.util.Date;
 import customer.Customer;
 import play.Play;
 
+/**
+ * A discounted ticket to a play for a customer who buys it in advance and can show a student id when claiming the ticket.
+ * @author Joshua Zierman [py1422xs@metrostate.edu]
+ *
+ */
 public class StudentAdvanceTicket extends Ticket
 {
 	/**

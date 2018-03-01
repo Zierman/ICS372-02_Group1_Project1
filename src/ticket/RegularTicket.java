@@ -1,18 +1,21 @@
 package ticket;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Date;
-import java.util.LinkedList;
-
-import currency.Dollar;
 import customer.Customer;
 import play.Play;
-import storage.FileIO;
-import ticket.Ticket.SerialNumber;
 
+/**
+ * A normal ticket to a play for a customer who buys it that on the day of the show.
+ * @author Joshua Zierman [py1422xs@metrostate.edu]
+ *
+ */
 public class RegularTicket extends Ticket
 {
+
+	/**
+	 * Serial Version
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public RegularTicket(Date dateOfShow, Play play, Customer owner)
 	{

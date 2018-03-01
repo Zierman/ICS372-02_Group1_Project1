@@ -19,6 +19,11 @@ import play.Play;
 public abstract class Ticket
 		implements Keyed<Long>, Owned<Customer>, Serializable
 {
+	/**
+	 * Serial Version
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public Ticket(Date dateOfShow, Play play, Customer owner)
 	{
 		super();
@@ -34,18 +39,39 @@ public abstract class Ticket
 	 */
 	protected SerialNumber serialNumber;
 
+	/**
+	 * The date that this ticket is valid to see the show
+	 */
 	protected Date dateOfShow;
 
+	/**
+	 * A string that tells what type of ticket this is
+	 */
 	protected String typeOfTicket;
 
+	/**
+	 * The multiplier that is applied to the regular ticket price of the play to determine the starting price of this type of ticket.
+	 */
 	protected double priceMultiplier;
 
+	/**
+	 * The current price of this ticket
+	 */
 	protected Dollar priceOfTicket;
 
+	/**
+	 * A optional message to be printed on a ticket.
+	 */
 	protected String extraMessage;
 
+	/**
+	 * The play that this ticket is for.
+	 */
 	protected Play play;
 
+	/**
+	 * The owner of this ticket
+	 */
 	protected Customer owner;
 
 	/**
@@ -87,7 +113,7 @@ public abstract class Ticket
 	 */
 	public void setTypeOfTicket(String typeOfTicket)
 	{
-		typeOfTicket = typeOfTicket;
+		this.typeOfTicket = typeOfTicket;
 	}
 
 	/**
