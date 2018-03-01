@@ -7,14 +7,17 @@ import userInterface.UI;
 
 /**
  * The command to list all plays.
+ * 
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
 public class ListAllPlays implements Command<UI>
 {
 	private static ListAllPlays singleton;
+
 	/**
 	 * Gets or creates an instance of the singleton
+	 * 
 	 * @return an instance of the singleton
 	 */
 	public static ListAllPlays instance()
@@ -25,6 +28,7 @@ public class ListAllPlays implements Command<UI>
 		}
 		return singleton;
 	}
+
 	private final String LABEL = "Show a list of all plays.";
 	private final boolean IS_DATA_COMMAND = true;
 
@@ -32,7 +36,8 @@ public class ListAllPlays implements Command<UI>
 
 	/**
 	 * 
-	 * Constructs a <code>ListAllPlays</code> object used when creating a subtype singleton
+	 * Constructs a <code>ListAllPlays</code> object used when creating a
+	 * subtype singleton
 	 * 
 	 * @throws Exception
 	 *             if used to try to create a base type
@@ -46,7 +51,8 @@ public class ListAllPlays implements Command<UI>
 	}
 
 	/**
-	 * Constructs the <code>ListAllPlays</code> object used to create the singleton.
+	 * Constructs the <code>ListAllPlays</code> object used to create the
+	 * singleton.
 	 * 
 	 * @param i
 	 *            an integer with no significance other than giving it a
@@ -56,7 +62,9 @@ public class ListAllPlays implements Command<UI>
 	{
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see uiCommands.Command#call(java.lang.Object)
 	 * 
 	 */
@@ -76,14 +84,16 @@ public class ListAllPlays implements Command<UI>
 				for (Play play : playList)
 				{
 					found = true;
-					output += "name: " + play.getName() + ",\n" + "start date: "
-							+ play.getStartDate() + ",\n" + "end date: "
-							+ play.getEndDate() + ",\n" + "Client : "
-							+ play.getOwner().getName() + " ("
-							+ play.getOwner().getID() + ")\n" + "\n";
+					output += "name: " + play.getName() + ",\n";
+					output += "start date: " + play.getStartDate() + ",\n";
+					output += "end date: " + play.getEndDate() + ",\n";
+					output += "client : " + play.getOwner().getName() + " ("
+							+ play.getOwner().getID() + ")\n";
+					output += "regular ticket price: " + play.getRegularTicketPrice()  + "\n";
+					output += "\n";
 				}
-				
-				if(!found)
+
+				if (!found)
 				{
 					UI.println("No clients found.");
 				}
