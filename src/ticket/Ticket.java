@@ -123,9 +123,9 @@ public abstract class Ticket
 	public Ticket(Date dateOfShow, Play play, Customer owner)
 	{
 		super();
-		this.dateOfShow = dateOfShow;
-		this.play = play;
-		this.owner = owner;
+		setDateOfShow(dateOfShow);
+		setPlay(play);
+		setOwner(owner);
 		this.serialNumber = new SerialNumber();
 		extraMessage = null;
 	}
