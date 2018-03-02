@@ -5,6 +5,8 @@ import java.util.Date;
 
 import currency.Dollar;
 import customer.Customer;
+import exception.DateIsValidAssertionException;
+import exceptions.DateOutOfBoundsException;
 import keyToken.KeyToken;
 import keyToken.Keyed;
 import ownership.Owned;
@@ -120,7 +122,7 @@ public abstract class Ticket
 	 */
 	protected Customer owner;
 
-	public Ticket(Date dateOfShow, Play play, Customer owner)
+	public Ticket(Date dateOfShow, Play play, Customer owner) throws Exception
 	{
 		super();
 		setDateOfShow(dateOfShow);
@@ -128,6 +130,7 @@ public abstract class Ticket
 		setOwner(owner);
 		this.serialNumber = new SerialNumber();
 		extraMessage = null;
+		TicketIsValidAssertions();
 	}
 
 	/**
@@ -249,10 +252,24 @@ public abstract class Ticket
 	 * 
 	 * @param dateOfShow
 	 *            the dateOfShow to set
+	 * @throws DateOutOfBoundsException if the date of the show is out of bounds of the play's showing period.
 	 */
-	public void setDateOfShow(Date dateOfShow)
+	public void setDateOfShow(Date dateOfShow) throws DateOutOfBoundsException
 	{
-		this.dateOfShow = dateOfShow;
+		if(play == null)
+		{
+			// the play has not been set yet.
+			this.dateOfShow = dateOfShow;
+		}
+		else if(dateIsValid(dateOfShow))
+		{
+			this.dateOfShow = dateOfShow;
+		}
+		else
+		{
+			throw new DateOutOfBoundsException(dateOfShow);
+		}
+		
 	}
 
 	/**
@@ -305,10 +322,102 @@ public abstract class Ticket
 	 * 
 	 * @param play
 	 *            the play to set
+	 * @throws DateOutOfBoundsException if the ticket is for a day outside the bounds of the play's showing period.
 	 */
-	public void setPlay(Play play)
+	public void setPlay(Play play) throws DateOutOfBoundsException
 	{
-		this.play = play;
+	
+		if(dateOfShow == null)
+		{
+			// the dateOfShow has not been set yet.
+			this.play = play;
+		}
+		else if(dateIsValid(play))
+		{
+			this.play = play;
+		}
+		else
+		{
+			throw new DateOutOfBoundsException(play);
+		}
+	}
+	
+	/**
+	 * Checks to see if the date of the show is valid for the play. 
+	 * @return true if date of show is in the range (playStart, playEnd], otherwise returns false
+	 */
+	private boolean dateIsValid(Date dateOfShow)
+	{
+		boolean result;
+		Date playStart = play.getStartDate();
+		Date playEnd = play.getEndDate();
+		if(dateOfShow.after(playStart) && (dateOfShow.before(playEnd)) || dateOfShow.equals(playEnd)) 
+		{
+			result = true;
+		}
+		else
+		{
+			result = false;
+		}
+		return result;
+	}
+	
+
+	/**
+	 * Checks to see if the date of the show is valid for the play. 
+	 * @return true if date of show is in the range (playStart, playEnd], otherwise returns false
+	 */
+	private boolean dateIsValid()
+	{
+		boolean result;
+		Date playStart = play.getStartDate();
+		Date playEnd = play.getEndDate();
+		if(dateOfShow.after(playStart) && (dateOfShow.before(playEnd)) || dateOfShow.equals(playEnd)) 
+		{
+			result = true;
+		}
+		else
+		{
+			result = false;
+		}
+		return result;
+	}
+	
+	
+	private boolean dateIsValid(Play play)
+	{
+		boolean result;
+		Date playStart = play.getStartDate();
+		Date playEnd = play.getEndDate();
+		if(dateOfShow.after(playStart) && (dateOfShow.before(playEnd)) || dateOfShow.equals(playEnd)) 
+		{
+			result = true;
+		}
+		else
+		{
+			result = false;
+		}
+		return result;
+	}
+	
+	private void dateIsValidAssertion() throws DateIsValidAssertionException
+	{
+		try
+		{
+			if(!dateIsValid())
+			{
+				throw new DateIsValidAssertionException();
+			}
+		}
+		catch (Exception e)
+		{
+			throw new DateIsValidAssertionException();
+		}
+	}
+	
+	private void TicketIsValidAssertions() throws Exception
+	{
+		dateIsValidAssertion();
 	}
 
 	/**

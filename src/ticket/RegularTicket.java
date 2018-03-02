@@ -17,7 +17,7 @@ public class RegularTicket extends Ticket
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public RegularTicket(Date dateOfShow, Play play, Customer owner)
+	public RegularTicket(Date dateOfShow, Play play, Customer owner) throws Exception
 	{
 		super(dateOfShow, play, owner);
 

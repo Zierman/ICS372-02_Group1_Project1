@@ -17,7 +17,7 @@ public class AdvanceTicket extends Ticket
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public AdvanceTicket(Date dateOfShow, Play play, Customer owner)
+	public AdvanceTicket(Date dateOfShow, Play play, Customer owner) throws Exception
 	{
 		super(dateOfShow, play, owner);
 
