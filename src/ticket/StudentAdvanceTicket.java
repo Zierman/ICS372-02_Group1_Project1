@@ -19,17 +19,6 @@ public class StudentAdvanceTicket extends Ticket
 
 	public StudentAdvanceTicket(Date dateOfShow, Play play, Customer owner) throws Exception
 	{
-		super(dateOfShow, play, owner);
-
-		
-		typeOfTicket = "regular ticket";
-		
-		priceMultiplier = 1.0;
-		
-		priceOfTicket = getPriceOfTicket();
-		
-
-		extraMessage = "Must show valid student id.";
-		
+		super(dateOfShow, play, owner, 0.5, "student advance ticket", "Must show valid student id.");
 	}
 }

@@ -95,7 +95,7 @@ public abstract class Ticket
 	/**
 	 * A string that tells what type of ticket this is
 	 */
-	protected String typeOfTicket;
+	protected final String typeOfTicket;
 
 	/**
 	 * The multiplier that is applied to the regular ticket price of the play to determine the starting price of this type of ticket.
@@ -121,17 +121,37 @@ public abstract class Ticket
 	 * The owner of this ticket
 	 */
 	protected Customer owner;
+	
+	protected boolean hasExtraMessage;
 
-	public Ticket(Date dateOfShow, Play play, Customer owner) throws Exception
+	public Ticket(Date dateOfShow, Play play, Customer owner, Double priceMultiplier, String typeOfTicket, String extraMessage) throws Exception
 	{
 		super();
 		setDateOfShow(dateOfShow);
 		setPlay(play);
 		setOwner(owner);
+		setPriceMultiplier(priceMultiplier);
 		this.serialNumber = new SerialNumber();
-		extraMessage = null;
+		this.typeOfTicket = typeOfTicket;
+		setExtraMessage(extraMessage);
 		TicketIsValidAssertions();
+		
 	}
+
+	public Ticket(Date dateOfShow, Play play, Customer owner, Double priceMultiplier, String typeOfTicket) throws Exception
+	{
+		super();
+		setDateOfShow(dateOfShow);
+		setPlay(play);
+		setOwner(owner);
+		setPriceMultiplier(priceMultiplier);
+		this.serialNumber = new SerialNumber();
+		this.typeOfTicket = typeOfTicket;
+		setExtraMessage(null);
+		TicketIsValidAssertions();
+		
+	}
+	
 
 	/**
 	 * gets the date of show
@@ -280,6 +300,14 @@ public abstract class Ticket
 	 */
 	public void setExtraMessage(String extraMessage)
 	{
+		if(extraMessage != null && !extraMessage.isEmpty() )
+		{
+			hasExtraMessage = true;
+		}
+		else
+		{
+			hasExtraMessage = false;
+		}
 		this.extraMessage = extraMessage;
 	}
 
@@ -442,15 +470,6 @@ public abstract class Ticket
 		this.priceOfTicket = priceOfTicket;
 	}
 
-	/**
-	 * sets the type of ticket
-	 * 
-	 * @param typeOfTicket
-	 *            the typeOfTicket to set
-	 */
-	public void setTypeOfTicket(String typeOfTicket)
-	{
-		this.typeOfTicket = typeOfTicket;
-	}
+	
 
 }

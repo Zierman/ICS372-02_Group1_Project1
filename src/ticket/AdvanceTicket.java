@@ -19,15 +19,6 @@ public class AdvanceTicket extends Ticket
 
 	public AdvanceTicket(Date dateOfShow, Play play, Customer owner) throws Exception
 	{
-		super(dateOfShow, play, owner);
-
-		
-		typeOfTicket = "regular ticket";
-		
-		priceMultiplier = 0.7;
-		
-		priceOfTicket = getPriceOfTicket();
-		
-		
+		super(dateOfShow, play, owner, 0.7, "advance ticket");
 	}
 }

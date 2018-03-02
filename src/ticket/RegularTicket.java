@@ -19,15 +19,6 @@ public class RegularTicket extends Ticket
 
 	public RegularTicket(Date dateOfShow, Play play, Customer owner) throws Exception
 	{
-		super(dateOfShow, play, owner);
-
-		
-		typeOfTicket = "regular ticket";
-		
-		priceMultiplier = 1.0;
-		
-		priceOfTicket = getPriceOfTicket();
-		
-		
+		super(dateOfShow, play, owner, 1.0, "regular ticket");	
 	}
 }
