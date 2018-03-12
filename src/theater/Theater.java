@@ -249,7 +249,7 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 		{
 			throw new OverpayingClientException();
 		}
-		client.setBalanceDue(new Dollar(client.getBalanceDue().getAmount() - dollars.getAmount()));
+		client.setBalanceDue(client.getBalanceDue().subtract(dollars));
 	}
 	
 	/*
