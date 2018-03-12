@@ -5,7 +5,7 @@ import java.util.Date;
 
 import currency.Dollar;
 import customer.Customer;
-import exception.DateIsValidAssertionException;
+import exceptions.DateIsValidAssertionException;
 import exceptions.DateOutOfBoundsException;
 import keyToken.KeyToken;
 import keyToken.Keyed;

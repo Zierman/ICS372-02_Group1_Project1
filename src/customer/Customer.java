@@ -235,10 +235,6 @@ public class Customer implements Serializable, Keyed<Long>
 	 */
 	private LinkedList<CreditCard> cardList = new LinkedList<CreditCard>();
 	
-	/**
-	 * List to hold a customers purchased tickets
-	 */
-	private LinkedList<Ticket> ticketsList = new LinkedList<Ticket>();
 	
 	/**
 	 * Customer class constructor that initializes instances attributes,
@@ -264,16 +260,7 @@ public class Customer implements Serializable, Keyed<Long>
 		
 	}
 	
-	/**
-	 * Adds a ticket to this customer's ticket list
-	 * @param ticket The ticket to be added to the ticket list
-	 * @return true if the ticket was added
-	 * @see java.util.LinkedList#add(java.lang.Object)
-	 */
-	public boolean add(Ticket ticket)
-	{
-		return ticketsList.add(ticket);
-	}
+	
 	
 	/**
 	 * adds a new card to cardList as long as that card doesn't already exist
@@ -364,14 +351,6 @@ public class Customer implements Serializable, Keyed<Long>
 		return this.phoneNumber;
 	}
 	
-	/**
-	 * gets the list of tickets owned
-	 * @return the ticketsList the list of tickets
-	 */
-	public LinkedList<Ticket> getTicketsList()
-	{
-		return ticketsList;
-	}
 	
 	/* (non-Javadoc)
 	 * @see keyToken.Keyed#matches(java.lang.Object)

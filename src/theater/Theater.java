@@ -20,6 +20,7 @@ import storage.FileIO;
 import storage.Loadable;
 import storage.Savable;
 import ticket.Ticket;
+import ticket.TicketList;
 
 /**
  * Represents a theater that shows plays performed by clients to customers.
@@ -73,6 +74,8 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 	 * a list of all plays.
 	 */
 	private PlayList playList = PlayList.instance();
+	
+	private TicketList ticketList = TicketList.instance();
 
 	/**
 	 * a list of all customers.
@@ -319,7 +322,7 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 	 */
 	public void Sell(Ticket ticket)
 	{
-		ticket.getOwner().add(ticket);
+		ticketList.add(ticket);
 		increaseDebt(ticket.getPlay().getOwner(), ticket.getPriceOfTicket().half());
 	}
 
