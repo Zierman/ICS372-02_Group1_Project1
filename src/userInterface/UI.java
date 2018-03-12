@@ -12,6 +12,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 import client.Client;
+import currency.Dollar;
 import customer.Customer;
 import exceptions.NoKeyTokenFoundException;
 import singleton.ReadResolveable;
@@ -220,10 +221,69 @@ public class UI implements ReadResolveable<UI>, Closeable
 	
 	public static Date getDateFromInput(String prompt) throws ParseException
 	{
-		String dateString = UI.getInput(
-				prompt + " (MM/dd/yyyy): ");
-		return new SimpleDateFormat("MM/dd/yyyy")
-				.parse(dateString);
+		boolean done = false;
+		Date date = null;
+		
+		while (!done)
+		{
+			try
+			{
+				String dateString = UI.getInput(
+						prompt + " (MM/dd/yyyy): ");
+				date =  new SimpleDateFormat("MM/dd/yyyy")
+						.parse(dateString);
+			}
+			catch (ParseException e)
+			{
+				// show error message
+				UI.outputError(e,
+						"Input could not be parsed to Date.");
+	
+				// ask if user wants to continue and end if the user
+				// answers no
+				done = !UI.tryAgainCheck();
+				
+				if (done)
+				{
+					throw e;
+				}
+			}
+		}
+		
+		return date;
+	}
+	
+	public static Dollar getDollarFromInput(String prompt)
+	{
+		Dollar dollar = null;
+		// sets regular ticket price from user input
+		boolean done = false;
+		while (!done)
+		{
+			try
+			{
+				String startDateString = UI.getInput(
+						prompt + ": $");
+				 dollar = new Dollar(Double.parseDouble(startDateString));
+				 done = true;
+			}
+			catch(NumberFormatException e)
+			{
+				// show error message
+				UI.outputError(e,
+						"Input could not be parsed to Dollar due to invalid number format.");
+
+				// ask if user wants to continue and end if the user
+				// answers no
+				done = !UI.tryAgainCheck();
+
+				if (done)
+				{
+					throw e;
+				}
+			}
+		}
+		return dollar;
 	}
 
 	/**

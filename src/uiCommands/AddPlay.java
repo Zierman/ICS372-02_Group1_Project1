@@ -82,92 +82,17 @@ public class AddPlay implements Command<UI>
 		boolean done = false;
 		Client client = null;
 		Play play = null;
+		Dollar price = null;
+		String name = "";
+		
 		while (!done)
 		{
 			try
 			{
 				// get input needed to create a new play object
-				String name = UI.getInput("Enter play's name: ");
-//				String clientID = UI.getInput("Enter client's ID: ");
-				Dollar price = null;
-
-
-//				// find client from input client ID
-//				boolean doneWithID = false;
-//				while (!doneWithID)
-//				{
-//					client = null;
-//					try
-//					{
-//						for (Client c : theater.getClientList())
-//						{
-//							try
-//							{
-//								if (c.getID().matches(Long.parseLong(clientID)))
-//								{
-//									client = c;
-//									break;
-//								}
-//							}
-//							catch (NumberFormatException e)
-//							{
-//								throw new NoKeyTokenFoundException();
-//							}
-//						}
-//						if (client == null)
-//						{
-//							throw new NoKeyTokenFoundException();
-//						}
-//						else
-//						{
-//							doneWithID = true;
-//						}
-//					}
-//					catch (NoKeyTokenFoundException e)
-//					{
-//						// show error message
-//						UI.outputError(e, "Client ID could not be matched.");
-//
-//						// ask if user wants to continue and end if the user
-//						// answers no
-//						doneWithID = !UI.tryAgainCheck();
-//
-//						if (doneWithID)
-//						{
-//							throw new Exception();
-//						}
-//					}
-//				}
+				name = UI.getInput("Enter play's name: ");
 				client = UI.getClientFromInputID();
-				
-				
-				// sets regular ticket price from user input
-				boolean doneWithRegularTicketPrice = false;
-				while (!doneWithRegularTicketPrice)
-				{
-					try
-					{
-						String startDateString = UI.getInput(
-								"Enter play's regular ticket price: $");
-						 price = new Dollar(Double.parseDouble(startDateString));
-						 doneWithRegularTicketPrice = true;
-					}
-					catch(Exception e)
-					{
-						// show error message
-						UI.outputError(e,
-								"There was a problem with the entered regular ticket price.");
-
-						// ask if user wants to continue and end if the user
-						// answers no
-						doneWithRegularTicketPrice = !UI.tryAgainCheck();
-
-						if (doneWithRegularTicketPrice)
-						{
-							throw new Exception();
-						}
-					}
-				}
+				price = UI.getDollarFromInput("Enter the regular ticket price");
 				
 				// trys to set the dates from input
 				boolean doneWithDates = false;
@@ -185,18 +110,7 @@ public class AddPlay implements Command<UI>
 					}
 					catch (ParseException e)
 					{
-						// show error message
-						UI.outputError(e,
-								"Input could not be parsed to Date.");
-
-						// ask if user wants to continue and end if the user
-						// answers no
-						doneWithDates = !UI.tryAgainCheck();
-						
-						if (doneWithDates)
-						{
-							throw e;
-						}
+						throw e;
 					}
 					catch (ConflictingDatesException e)
 					{
@@ -229,8 +143,6 @@ public class AddPlay implements Command<UI>
 						}
 					}
 				}
-
-				
 
 				// add to list
 				theater.add(play);
