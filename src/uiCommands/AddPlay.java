@@ -6,6 +6,8 @@ package uiCommands;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
+
 import client.Client;
 import currency.Dollar;
 import exceptions.ConflictingDatesException;
@@ -79,62 +81,65 @@ public class AddPlay implements Command<UI>
 		Theater theater = ui.getTheater();
 		boolean done = false;
 		Client client = null;
+		Play play = null;
 		while (!done)
 		{
 			try
 			{
 				// get input needed to create a new play object
 				String name = UI.getInput("Enter play's name: ");
-				String clientID = UI.getInput("Enter client's ID: ");
+//				String clientID = UI.getInput("Enter client's ID: ");
 				Dollar price = null;
 
 
-				// find client from input client ID
-				boolean doneWithID = false;
-				while (!doneWithID)
-				{
-					client = null;
-					try
-					{
-						for (Client c : theater.getClientList())
-						{
-							try
-							{
-								if (c.getID().matches(Long.parseLong(clientID)))
-								{
-									client = c;
-									break;
-								}
-							}
-							catch (NumberFormatException e)
-							{
-								throw new NoKeyTokenFoundException();
-							}
-						}
-						if (client == null)
-						{
-							throw new NoKeyTokenFoundException();
-						}
-						else
-						{
-							doneWithID = true;
-						}
-					}
-					catch (NoKeyTokenFoundException e)
-					{
-						// show error message
-						UI.outputError(e, "Client ID could not be matched.");
-
-						// ask if user wants to continue and end if the user
-						// answers no
-						doneWithID = !UI.tryAgainCheck();
-
-						if (doneWithID)
-						{
-							throw new Exception();
-						}
-					}
-				}
+//				// find client from input client ID
+//				boolean doneWithID = false;
+//				while (!doneWithID)
+//				{
+//					client = null;
+//					try
+//					{
+//						for (Client c : theater.getClientList())
+//						{
+//							try
+//							{
+//								if (c.getID().matches(Long.parseLong(clientID)))
+//								{
+//									client = c;
+//									break;
+//								}
+//							}
+//							catch (NumberFormatException e)
+//							{
+//								throw new NoKeyTokenFoundException();
+//							}
+//						}
+//						if (client == null)
+//						{
+//							throw new NoKeyTokenFoundException();
+//						}
+//						else
+//						{
+//							doneWithID = true;
+//						}
+//					}
+//					catch (NoKeyTokenFoundException e)
+//					{
+//						// show error message
+//						UI.outputError(e, "Client ID could not be matched.");
+//
+//						// ask if user wants to continue and end if the user
+//						// answers no
+//						doneWithID = !UI.tryAgainCheck();
+//
+//						if (doneWithID)
+//						{
+//							throw new Exception();
+//						}
+//					}
+//				}
+				client = UI.getClientFromInputID();
+				
 				
 				// sets regular ticket price from user input
 				boolean doneWithRegularTicketPrice = false;
@@ -170,22 +175,28 @@ public class AddPlay implements Command<UI>
 				{
 					try
 					{
-						String startDateString = UI.getInput(
-								"Enter play's start date (MM/dd/yyyy): ");
-						Date startDate = new SimpleDateFormat("MM/dd/yyyy")
-								.parse(startDateString);
-
-						String endDateString = UI.getInput(
-								"Enter play's end date (MM/dd/yyyy): ");
-						Date endDate = new SimpleDateFormat("MM/dd/yyyy")
-								.parse(endDateString);
+						Date startDate = UI.getDateFromInput("Enter play's start date");
+						Date endDate = UI.getDateFromInput("Enter play's end date");;
 
 						// create new play object
-						Play play = new Play(name, client, startDate, endDate, price);
+						play = new Play(name, client, startDate, endDate, price);
+						
+						doneWithDates = true;
+					}
+					catch (ParseException e)
+					{
+						// show error message
+						UI.outputError(e,
+								"Input could not be parsed to Date.");
 
-						// add to list
-						theater.add(play);
-
+						// ask if user wants to continue and end if the user
+						// answers no
+						doneWithDates = !UI.tryAgainCheck();
+						
+						if (doneWithDates)
+						{
+							throw e;
+						}
 					}
 					catch (ConflictingDatesException e)
 					{
@@ -199,14 +210,14 @@ public class AddPlay implements Command<UI>
 						
 						if (doneWithDates)
 						{
-							throw new Exception();
+							throw e;
 						}
 					}
 					catch(Exception e)
 					{
 						// show error message
 						UI.outputError(e,
-								"There was a problem with the entered dates.");
+								"There was a problem creating the play object.");
 
 						// ask if user wants to continue and end if the user
 						// answers no
@@ -214,10 +225,15 @@ public class AddPlay implements Command<UI>
 
 						if (doneWithDates)
 						{
-							throw new Exception();
+							throw e;
 						}
 					}
 				}
+
+				
+
+				// add to list
+				theater.add(play);
 				
 				// show user that it was added
 				UI.outputSuccessMessage(name + " added to play list.");

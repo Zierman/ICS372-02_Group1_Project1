@@ -5,9 +5,15 @@ package userInterface;
 
 import java.io.Closeable;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+import client.Client;
+import customer.Customer;
+import exceptions.NoKeyTokenFoundException;
 import singleton.ReadResolveable;
 import theater.Theater;
 import uiCommands.AddClient;
@@ -102,6 +108,122 @@ public class UI implements ReadResolveable<UI>, Closeable
 		}
 		return input;
 
+	}
+	
+	public static Client getClientFromInputID() throws Exception
+	{
+		Theater theater = Theater.instance();
+		Client client = null;
+		// find client from input client ID
+		boolean doneWithID = false;
+		while (!doneWithID)
+		{
+			String clientID = UI.getInput("Enter client's ID: ");
+			client = null;
+			try
+			{
+				for (Client c : theater.getClientList())
+				{
+					try
+					{
+						if (c.getID().matches(Long.parseLong(clientID)))
+						{
+							client = c;
+							break;
+						}
+					}
+					catch (NumberFormatException e)
+					{
+						throw new NoKeyTokenFoundException();
+					}
+				}
+				if (client == null)
+				{
+					throw new NoKeyTokenFoundException();
+				}
+				else
+				{
+					doneWithID = true;
+				}
+			}
+			catch (NoKeyTokenFoundException e)
+			{
+				// show error message
+				UI.outputError(e, "Client ID could not be matched.");
+
+				// ask if user wants to continue and end if the user
+				// answers no
+				doneWithID = !UI.tryAgainCheck();
+
+				if (doneWithID)
+				{
+					throw new Exception();
+				}
+			}
+		}
+		return client;
+	}
+	
+	public static Customer getCustomerFromInputID() throws Exception
+	{
+		Theater theater = Theater.instance();
+		Customer customer = null;
+		// find customer from input customer ID
+		boolean doneWithID = false;
+		while (!doneWithID)
+		{
+			String customerID = UI.getInput("Enter customer's ID: ");
+			customer = null;
+			try
+			{
+				for (Customer c : theater.getCustomerList())
+				{
+					try
+					{
+						if (c.getID().matches(Long.parseLong(customerID)))
+						{
+							customer = c;
+							break;
+						}
+					}
+					catch (NumberFormatException e)
+					{
+						throw new NoKeyTokenFoundException();
+					}
+				}
+				if (customer == null)
+				{
+					throw new NoKeyTokenFoundException();
+				}
+				else
+				{
+					doneWithID = true;
+				}
+			}
+			catch (NoKeyTokenFoundException e)
+			{
+				// show error message
+				UI.outputError(e, "Customer ID could not be matched.");
+
+				// ask if user wants to continue and end if the user
+				// answers no
+				doneWithID = !UI.tryAgainCheck();
+
+				if (doneWithID)
+				{
+					throw new Exception();
+				}
+			}
+		}
+		return customer;
+	}
+	
+	public static Date getDateFromInput(String prompt) throws ParseException
+	{
+		String dateString = UI.getInput(
+				prompt + " (MM/dd/yyyy): ");
+		return new SimpleDateFormat("MM/dd/yyyy")
+				.parse(dateString);
 	}
 
 	/**
