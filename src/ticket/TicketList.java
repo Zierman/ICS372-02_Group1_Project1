@@ -12,13 +12,16 @@ import client.Client;
 import client.ClientList;
 import customer.Customer;
 import customer.CustomerList;
+import exceptions.DateOutOfBoundsException;
 import exceptions.NotEnoughSeatsAvailibleException;
 import play.Play;
+import play.PlayList;
 import singleton.ReadResolveable;
 import storage.FileIO;
 import storage.Loadable;
 import storage.Savable;
 import theater.Theater;
+import userInterface.UI;
 
 public class TicketList
 		implements ReadResolveable<TicketList>, List<Ticket>, Savable, Loadable
@@ -150,7 +153,7 @@ public class TicketList
 		{
 			checkCanAdd(p); // will throw an exception if it can't
 		}
-		
+
 		for (Ticket p : collection)
 		{
 			tickets.add(index++, p);
@@ -306,17 +309,32 @@ public class TicketList
 
 		for (Ticket t : tmp)
 		{
-			
-			Customer match = null;
+
 			for (Customer customer : CustomerList.instance())
 			{
 				if (customer.matches(t.getOwner().getKey()))
 				{
-					match = customer;
+					t.setOwner(customer);
 				}
 			}
-			t.setOwner(match);
-	
+
+			for (Play play : PlayList.instance())
+			{
+				if (play.equals(t.getPlay()))
+					;
+				{
+					try
+					{
+						t.setPlay(play);
+					}
+					catch (Exception e)
+					{
+						UI.outputError(e,
+								"couldn't load ticket beause play could not be set");
+					}
+				}
+			}
+
 			instance().add(t);
 		}
 	}
@@ -449,11 +467,11 @@ public class TicketList
 	public int countFor(Date dateOfShow)
 	{
 		int count = 0;
-		for(Ticket t : this)
+		for (Ticket t : this)
 		{
-			if(t.getDateOfShow().equals(dateOfShow))
+			if (t.getDateOfShow().equals(dateOfShow))
 			{
-				count ++;
+				count++;
 			}
 		}
 		return count;
