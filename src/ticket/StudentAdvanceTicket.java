@@ -3,6 +3,7 @@ package ticket;
 import java.util.Date;
 
 import customer.Customer;
+import customer.Customer.CreditCard;
 import play.Play;
 
 /**
@@ -17,8 +18,8 @@ public class StudentAdvanceTicket extends Ticket
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public StudentAdvanceTicket(Date dateOfShow, Play play, Customer owner) throws Exception
+	public StudentAdvanceTicket(Date dateOfShow, Play play, Customer owner, CreditCard creditCard) throws Exception
 	{
-		super(dateOfShow, play, owner, 0.5, "student advance ticket", "Must show valid student id.");
+		super(dateOfShow, play, owner, 0.5, "student advance ticket", "Must show valid student id.", creditCard);
 	}
 }

@@ -3,6 +3,7 @@ package ticket;
 import java.util.Date;
 
 import customer.Customer;
+import customer.Customer.CreditCard;
 import play.Play;
 
 /**
@@ -17,8 +18,8 @@ public class AdvanceTicket extends Ticket
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public AdvanceTicket(Date dateOfShow, Play play, Customer owner) throws Exception
+	public AdvanceTicket(Date dateOfShow, Play play, Customer owner, CreditCard creditCard) throws Exception
 	{
-		super(dateOfShow, play, owner, 0.7, "advance ticket");
+		super(dateOfShow, play, owner, 0.7, "advance ticket", creditCard);
 	}
 }

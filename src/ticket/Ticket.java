@@ -5,6 +5,7 @@ import java.util.Date;
 
 import currency.Dollar;
 import customer.Customer;
+import customer.Customer.CreditCard;
 import exceptions.DateIsValidAssertionException;
 import exceptions.DateOutOfBoundsException;
 import keyToken.KeyToken;
@@ -123,8 +124,10 @@ public abstract class Ticket
 	protected Customer owner;
 	
 	protected boolean hasExtraMessage;
+	
+	protected CreditCard creditCard;
 
-	public Ticket(Date dateOfShow, Play play, Customer owner, Double priceMultiplier, String typeOfTicket, String extraMessage) throws Exception
+	public Ticket(Date dateOfShow, Play play, Customer owner, Double priceMultiplier, String typeOfTicket, String extraMessage, CreditCard creditCard) throws Exception
 	{
 		super();
 		setDateOfShow(dateOfShow);
@@ -135,10 +138,11 @@ public abstract class Ticket
 		this.typeOfTicket = typeOfTicket;
 		setExtraMessage(extraMessage);
 		TicketIsValidAssertions();
+		this.creditCard = creditCard;
 		
 	}
 
-	public Ticket(Date dateOfShow, Play play, Customer owner, Double priceMultiplier, String typeOfTicket) throws Exception
+	public Ticket(Date dateOfShow, Play play, Customer owner, Double priceMultiplier, String typeOfTicket, CreditCard creditCard) throws Exception
 	{
 		super();
 		setDateOfShow(dateOfShow);
@@ -149,6 +153,7 @@ public abstract class Ticket
 		this.typeOfTicket = typeOfTicket;
 		setExtraMessage(null);
 		TicketIsValidAssertions();
+		this.creditCard = creditCard;
 		
 	}
 	
