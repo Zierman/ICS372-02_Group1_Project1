@@ -4,6 +4,9 @@
 package theater;
 
 import java.io.IOException;
+import java.util.Collection;
+import java.util.Date;
+
 import client.Client;
 import client.ClientList;
 import currency.Dollar;
@@ -12,6 +15,7 @@ import customer.CustomerList;
 import exceptions.CardAlreadyInListException;
 import exceptions.NoCardFoundException;
 import exceptions.NoKeyTokenFoundException;
+import exceptions.NoPlayFoundException;
 import exceptions.OverpayingClientException;
 import play.Play;
 import play.PlayList;
@@ -62,8 +66,10 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 
 	/**
 	 * How many customers can attend a play.
+	 * 
+	 * Currently there is no command to change the seating capacity but it is flexible.
 	 */
-	private Integer seatingCapacity;
+	private Integer seatingCapacity = 100; 
 
 	/**
 	 * a list of all clients.
@@ -244,6 +250,7 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 		clientList.load();
 		customerList.load();
 		playList.load();
+		ticketList.load();
 	}
 
 	public void pay(Client client, Dollar dollars) throws OverpayingClientException
@@ -314,6 +321,7 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 		clientList.save();
 		customerList.save();
 		playList.save();
+		ticketList.save();
 	}
 	
 	/**
@@ -344,5 +352,49 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 	public void setSeatingCapacity(Integer seatingCapacity)
 	{
 		this.seatingCapacity = seatingCapacity;
+	}
+
+	public Play getPlay(Date dateOfShow) throws NoPlayFoundException
+	{
+		Play play = null;
+		
+		for(Play p : playList)
+		{
+			// if dateOfShow is in range [start, end) of the play
+			if((p.getStartDate().before(dateOfShow) && p.getEndDate().after(dateOfShow)) || p.getStartDate().equals(dateOfShow))
+			{
+				play = p;
+			}
+		}
+		if(play == null)
+		{
+			throw new NoPlayFoundException();
+		}
+		
+		return play;
+	}
+
+	public void sell(Ticket ticket)
+	{
+		ticketList.add(ticket);
+		
+		// client that performs the play gets half the price of the ticket
+		ticket.getPlay().getOwner().setBalanceDue(ticket.getPlay().getOwner().getBalanceDue().addTogether(ticket.getPriceOfTicket().half()));
+	}
+
+	public boolean canSellTickets(int qty, Date dateOfShow)
+	{
+		int alreadySold = ticketList.countFor(dateOfShow);
+		return qty + alreadySold <= seatingCapacity;
+		
+	}
+
+	public void sell(Collection<Ticket> tickets)
+	{
+		for(Ticket ticket : tickets)
+		{
+			sell(ticket);
+		}
+		
 	}
 }

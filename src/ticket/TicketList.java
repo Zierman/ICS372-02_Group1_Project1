@@ -2,12 +2,13 @@ package ticket;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
-import exceptions.ShowingSoldOutException;
+import exceptions.NotEnoughSeatsAvailibleException;
 import singleton.ReadResolveable;
 import storage.FileIO;
 import storage.Loadable;
@@ -93,7 +94,7 @@ public class TicketList
 		}
 		if (count >= Theater.instance().getSeatingCapacity())
 		{
-			throw new ShowingSoldOutException();
+			throw new NotEnoughSeatsAvailibleException();
 		}
 	}
 
@@ -427,6 +428,19 @@ public class TicketList
 	public <T> T[] toArray(T[] arg0)
 	{
 		return tickets.toArray(arg0);
+	}
+
+	public int countFor(Date dateOfShow)
+	{
+		int count = 0;
+		for(Ticket t : this)
+		{
+			if(t.getDateOfShow().equals(dateOfShow))
+			{
+				count ++;
+			}
+		}
+		return count;
 	}
 
 }
