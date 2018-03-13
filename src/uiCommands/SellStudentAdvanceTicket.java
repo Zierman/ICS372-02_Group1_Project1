@@ -1,6 +1,17 @@
 package uiCommands;
 
+import java.util.ArrayList;
+import java.util.Date;
+
+import customer.Customer;
+import customer.Customer.CreditCard;
+import exceptions.NoPlayFoundException;
+import exceptions.NotEnoughSeatsAvailibleException;
+import exceptions.OutOfBoundsException;
+import play.Play;
 import theater.Theater;
+import ticket.StudentAdvanceTicket;
+import ticket.Ticket;
 import userInterface.UI;
 
 public class SellStudentAdvanceTicket implements Command<UI>
@@ -57,7 +68,94 @@ public class SellStudentAdvanceTicket implements Command<UI>
 		public void call(UI ui)
 		{
 			Theater theater = ui.getTheater();
-			// TODO finish this
+			Customer customer = null;
+			CreditCard creditCard = null;
+			Date dateOfShow = null;
+			Play play = null;
+			int qty = 0;
+			boolean done = false;
+
+			while (!done)
+			{
+
+				try
+				{
+					// ask for qty tickets to sell
+					qty = UI.getIntFromInput("Enter the number of tickets to sell");
+					if (qty < 1)
+					{
+						throw new OutOfBoundsException(
+								"number of tickets must be postitive");
+					}
+
+					// ask for customer ID
+					customer = UI.getCustomerFromInputID();
+
+					// ask for credit card number
+					creditCard = UI.getCreditCardFromInput(customer);
+
+					// ask for the date of the show
+					dateOfShow = UI
+							.getDateFromInput("Enter the date of the showing");
+
+					// check that there is enough seats available
+					if (!theater.canSellTickets(qty, dateOfShow))
+					{
+						throw new NotEnoughSeatsAvailibleException();
+					}
+
+					// find the play that shows on that date
+					play = theater.getPlay(dateOfShow);
+
+					// create tickets
+					ArrayList<Ticket> tickets = new ArrayList<Ticket>();
+					for (int i = 0; i < qty; i++)
+					{
+						tickets.add(new StudentAdvanceTicket(dateOfShow, play, customer, creditCard));
+					}
+
+					// sell tickets
+					theater.sell(tickets);
+
+					done = true;
+				}
+				catch (NotEnoughSeatsAvailibleException e)
+				{
+					// show error message
+					UI.outputError(e,
+							"Unable to sell ticket because there are not enough seats availible");
+
+					// ask if user wants to continue and end if the user answers no
+					done = !UI.tryAgainCheck();
+				}
+				catch (OutOfBoundsException e)
+				{
+					// show error message
+					UI.outputError(e,
+							"Unable to sell ticket because " + e.getMessage());
+
+					// ask if user wants to continue and end if the user answers no
+					done = !UI.tryAgainCheck();
+				}
+				catch (NoPlayFoundException e)
+				{
+					// show error message
+					UI.outputError(e,
+							"Unable to sell ticket because no play is showing on that day");
+
+					// ask if user wants to continue and end if the user answers no
+					done = !UI.tryAgainCheck();
+				}
+				catch (Exception e)
+				{
+					// show error message
+					UI.outputError(e, "Unable to sell ticket");
+
+					// ask if user wants to continue and end if the user answers no
+					done = !UI.tryAgainCheck();
+				}
+
+			}
 		}
 
 		/*
