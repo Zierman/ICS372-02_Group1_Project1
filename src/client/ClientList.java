@@ -411,4 +411,11 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	{
 		return clients.toArray(arg0);
 	}
+
+	public void reset()
+	{
+		clear();
+		singleton = null;
+		instance();
+	}
 }

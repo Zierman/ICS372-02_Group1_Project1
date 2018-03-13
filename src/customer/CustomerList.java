@@ -411,4 +411,12 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		return instance().customers.toArray(arg0);
 	}
 
+	public void reset()
+	{
+		clear();
+		singleton = null;
+		instance();
+		
+	}
+
 }

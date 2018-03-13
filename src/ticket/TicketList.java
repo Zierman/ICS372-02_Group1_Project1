@@ -477,4 +477,12 @@ public class TicketList
 		return count;
 	}
 
+	public void reset()
+	{
+
+		clear();
+		singleton = null;
+		instance();
+	}
+
 }

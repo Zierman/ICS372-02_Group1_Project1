@@ -133,6 +133,11 @@ public class PlayList
 		return size != plays.size();
 	}
 
+	/** 
+	 * Checks to see if the play can be added
+	 * @param play the play to add
+	 * @return True if the new play's dates don't conflict with other plays in list.
+	 */
 	public boolean canAdd(Play play)
 	{
 		Date start1 = play.getStartDate();
@@ -146,7 +151,7 @@ public class PlayList
 			start = p.getStartDate();
 			end = p.getEndDate();
 
-			if (start.before(end1) && end.after(start1))
+			if ((start.before(end1) && end.after(start1)) || end.equals(end1) || start.equals(start1))
 			{
 				canAdd = false;
 			}
@@ -439,6 +444,14 @@ public class PlayList
 	public <T> T[] toArray(T[] arg0)
 	{
 		return plays.toArray(arg0);
+	}
+
+	public void reset()
+	{
+
+		clear();
+		singleton = null;
+		instance();
 	}
 
 }

@@ -1,5 +1,6 @@
 package uiCommands;
 
+import client.Client;
 import theater.Theater;
 import userInterface.UI;
 
@@ -58,6 +59,12 @@ public class PayClient implements Command<UI>
 		{
 			Theater theater = ui.getTheater();
 			// TODO finish this
+			
+			// use UI.getClientFromInputID() to ask for a client id (returns a client object reference)
+			
+			// use UI.getDollarFromInput("Enter amount to pay client") to ask for a dollar amount (returns a dollar object)
+						
+			// use theater.pay(client, dollars) to pay the client. will throw OverpayingClientException if trying to pay too much
 		}
 
 		/*

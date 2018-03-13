@@ -244,14 +244,32 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 	@Override
 	public void load() throws ClassNotFoundException, IOException
 	{
-		FileIO theaterFile = FileIO.startRead(FILENAME);
-		instance().setName((String) theaterFile.read());
-		instance().setSeatingCapacity((Integer) theaterFile.read());
-		theaterFile.close();
-		clientList.load();
-		customerList.load();
-		playList.load();
-		ticketList.load();
+		try
+		{
+			FileIO theaterFile = FileIO.startRead(FILENAME);
+			instance().setName((String) theaterFile.read());
+			instance().setSeatingCapacity((Integer) theaterFile.read());
+			theaterFile.close();
+			clientList.load();
+			customerList.load();
+			playList.load();
+			ticketList.load();
+		}
+		catch (Exception e)
+		{
+			reset();
+			throw e;
+		}
+	}
+
+	private Theater reset()
+	{
+		clientList.reset();
+		customerList.reset();
+		playList.reset();
+		ticketList.reset();
+		return instance();
+		
 	}
 
 	public void pay(Client client, Dollar dollars) throws OverpayingClientException

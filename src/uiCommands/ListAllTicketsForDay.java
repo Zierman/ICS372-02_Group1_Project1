@@ -1,6 +1,8 @@
 package uiCommands;
 
 import theater.Theater;
+import ticket.RegularTicket;
+import ticket.Ticket;
 import userInterface.UI;
 
 public class ListAllTicketsForDay implements Command<UI>
@@ -58,6 +60,14 @@ public class ListAllTicketsForDay implements Command<UI>
 		{
 			Theater theater = ui.getTheater();
 			// TODO finish this
+			
+			// use UI.getDateFromInput(prompt) to get date from input
+			
+			// use theater.getTicketList() to get list of alltickets
+			
+			// check if ticket.getDateOfShow().equals(inputDate)
+			
+			// if so list the information
 		}
 
 		/*

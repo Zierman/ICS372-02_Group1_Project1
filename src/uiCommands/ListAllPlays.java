@@ -95,7 +95,7 @@ public class ListAllPlays implements Command<UI>
 
 				if (!found)
 				{
-					UI.println("No clients found.");
+					UI.println("No plays found.");
 				}
 				else
 				{
