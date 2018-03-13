@@ -57,7 +57,7 @@ public class SellRegularTicket implements Command<UI>
 		public void call(UI ui)
 		{
 			Theater theater = ui.getTheater();
-			// TODO finish this
+			
 		}
 
 		/*

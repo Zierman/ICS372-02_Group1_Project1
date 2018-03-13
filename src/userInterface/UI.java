@@ -258,6 +258,38 @@ public class UI implements ReadResolveable<UI>, Closeable
 		return date;
 	}
 	
+	public static int getIntFromInput(String prompt)
+	{
+		int number = 0;
+		boolean done = false;
+		while (!done)
+		{
+			try
+			{
+				String inputStr = UI.getInput(
+						prompt + ": $");
+				 number = Integer.parseInt(inputStr);
+				 done = true;
+			}
+			catch (NumberFormatException e)
+			{
+				// show error message
+				UI.outputError(e,
+						"Input could not be parsed to Integer due to invalid number format.");
+
+				// ask if user wants to continue and end if the user
+				// answers no
+				done = !UI.tryAgainCheck();
+
+				if (done)
+				{
+					throw e;
+				}
+			}
+		}
+		return number;
+	}
+	
 	public static Dollar getDollarFromInput(String prompt)
 	{
 		Dollar dollar = null;
@@ -267,9 +299,9 @@ public class UI implements ReadResolveable<UI>, Closeable
 		{
 			try
 			{
-				String startDateString = UI.getInput(
+				String inputStr = UI.getInput(
 						prompt + ": $");
-				 dollar = new Dollar(Double.parseDouble(startDateString));
+				 dollar = new Dollar(Double.parseDouble(inputStr));
 				 done = true;
 			}
 			catch(NumberFormatException e)
