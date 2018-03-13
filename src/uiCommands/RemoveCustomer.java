@@ -23,7 +23,7 @@ public class RemoveCustomer implements Command<UI>
 		}
 		return singleton;
 	}
-	private final String LABEL = "Remvoe a customer from the customer list.";
+	private final String LABEL = "Remove a customer from the customer list.";
 	private final boolean IS_DATA_COMMAND = true;
 
 	private final boolean IS_TERMINATION_COMMAND = false;

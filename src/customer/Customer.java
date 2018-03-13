@@ -215,7 +215,7 @@ public class Customer implements Serializable, Keyed<Long>
 	/**
 	 * The last used ID key.
 	 */
-	protected static Long lastID = Long.MIN_VALUE;
+	protected static Long lastID = 0L;
 	
 	/**
 	 * The customer id.

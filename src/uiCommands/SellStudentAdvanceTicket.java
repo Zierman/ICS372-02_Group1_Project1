@@ -1,5 +1,6 @@
 package uiCommands;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -118,6 +119,10 @@ public class SellStudentAdvanceTicket implements Command<UI>
 					theater.sell(tickets);
 
 					done = true;
+					UI.outputSuccessMessage(qty + " " + tickets.get(0).getTypeOfTicket()
+							+ "(s) sold to " + customer.getName() + " for the "
+							+ new SimpleDateFormat("MM/dd/yyyy").format(dateOfShow)
+							+ " showing of " + play.getName());
 				}
 				catch (NotEnoughSeatsAvailibleException e)
 				{

@@ -24,7 +24,7 @@ public class RemoveClient implements Command<UI>
 		}
 		return singleton;
 	}
-	private final String LABEL = "Remvoe a client from the client list.";
+	private final String LABEL = "Remove a client from the client list.";
 	private final boolean IS_DATA_COMMAND = true;
 
 	private final boolean IS_TERMINATION_COMMAND = false;

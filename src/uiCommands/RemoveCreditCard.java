@@ -24,7 +24,7 @@ public class RemoveCreditCard implements Command<UI>
 		}
 		return singleton;
 	}
-	private final String LABEL = "Remvoe a credit card.";
+	private final String LABEL = "Remove a credit card.";
 	private final boolean IS_DATA_COMMAND = true;
 
 	private final boolean IS_TERMINATION_COMMAND = false;
