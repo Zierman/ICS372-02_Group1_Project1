@@ -1,0 +1,723 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.2" icons="false" automaticImage="PNG" generate-combined-fragments="true">  
+  <object id="1" language="java" name="uiCommands.SellRegularTicket" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/uiCommands/SellRegularTicket.java" binary="false" label="sellRegularTicket" 
+    type="class" autoSize="true">    
+    <position height="-1" width="-1" x="113" y="0"/>    
+    <execution id="2">      
+      <position height="3684" width="0" x="0" y="131"/>    
+    </execution>    
+    <execution id="4">      
+      <position height="3621" width="0" x="0" y="173"/>    
+    </execution>  
+  </object>  
+  <object id="47" language="java" name="userInterface.UI" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/userInterface/UI.java" binary="false" label="ui" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="6">      
+      <position height="21" width="0" x="0" y="204"/>    
+    </execution>  
+  </object>  
+  <object id="48" language="java" name="userInterface.UI" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/userInterface/UI.java" binary="false" label="&lt;static&gt;" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="8">      
+      <position height="269" width="0" x="0" y="284"/>    
+    </execution>    
+    <execution id="12">      
+      <position height="600" width="0" x="0" y="702"/>    
+    </execution>    
+    <execution id="14">      
+      <position height="481" width="0" x="0" y="1323"/>    
+    </execution>    
+    <execution id="16">      
+      <position height="353" width="0" x="0" y="1825"/>    
+    </execution>    
+    <execution id="30">      
+      <position height="21" width="0" x="0" y="3272"/>    
+    </execution>    
+    <execution id="32">      
+      <position height="21" width="0" x="0" y="3314"/>    
+    </execution>    
+    <execution id="34">      
+      <position height="21" width="0" x="0" y="3404"/>    
+    </execution>    
+    <execution id="38">      
+      <position height="21" width="0" x="0" y="3488"/>    
+    </execution>    
+    <execution id="40">      
+      <position height="21" width="0" x="0" y="3578"/>    
+    </execution>    
+    <execution id="42">      
+      <position height="21" width="0" x="0" y="3620"/>    
+    </execution>    
+    <execution id="44">      
+      <position height="21" width="0" x="0" y="3710"/>    
+    </execution>    
+    <execution id="46">      
+      <position height="21" width="0" x="0" y="3752"/>    
+    </execution>    
+    <execution id="50">      
+      <position height="21" width="0" x="0" y="369"/>    
+    </execution>    
+    <execution id="52">      
+      <position height="21" width="0" x="0" y="459"/>    
+    </execution>    
+    <execution id="54">      
+      <position height="21" width="0" x="0" y="511"/>    
+    </execution>    
+    <execution id="58">      
+      <position height="21" width="0" x="0" y="824"/>    
+    </execution>    
+    <execution id="64">      
+      <position height="21" width="0" x="0" y="1208"/>    
+    </execution>    
+    <execution id="66">      
+      <position height="21" width="0" x="0" y="1260"/>    
+    </execution>    
+    <execution id="70">      
+      <position height="21" width="0" x="0" y="1450"/>    
+    </execution>    
+    <execution id="74">      
+      <position height="21" width="0" x="0" y="1668"/>    
+    </execution>    
+    <execution id="78">      
+      <position height="21" width="0" x="0" y="1762"/>    
+    </execution>    
+    <execution id="80">      
+      <position height="21" width="0" x="0" y="1910"/>    
+    </execution>    
+    <execution id="86">      
+      <position height="21" width="0" x="0" y="2084"/>    
+    </execution>    
+    <execution id="88">      
+      <position height="21" width="0" x="0" y="2136"/>    
+    </execution>  
+  </object>  
+  <object id="89" language="java" name="java.text.SimpleDateFormat" project="ICS372-02_Group1_Project1" 
+    file="C:/Program Files/Java/jre1.8.0_161/lib/rt.jar" binary="true" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="82">      
+      <position height="21" width="0" x="0" y="1941"/>    
+    </execution>    
+    <execution id="84">      
+      <position height="21" width="0" x="0" y="1983"/>    
+    </execution>  
+  </object>  
+  <object id="90" language="java" name="customer.Customer" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/customer/Customer.java" binary="false" label="customer" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="68">      
+      <position height="21" width="0" x="0" y="1387"/>    
+    </execution>    
+    <execution id="76">      
+      <position height="21" width="0" x="0" y="1699"/>    
+    </execution>  
+  </object>  
+  <object id="91" language="java" name="exceptions.NoCardFoundException" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/exceptions/NoCardFoundException.java" binary="false" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="72">      
+      <position height="21" width="0" x="0" y="1547"/>    
+    </execution>  
+  </object>  
+  <object id="92" language="java" name="theater.Theater" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/theater/Theater.java" binary="false" label="&lt;static&gt;" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="56">      
+      <position height="21" width="0" x="0" y="723"/>    
+    </execution>  
+  </object>  
+  <object id="93" language="java" name="exceptions.NoKeyTokenFoundException" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/exceptions/NoKeyTokenFoundException.java" binary="false" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="60">      
+      <position height="21" width="0" x="0" y="949"/>    
+    </execution>  
+  </object>  
+  <object id="94" language="java" name="exceptions.NoKeyTokenFoundException" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/exceptions/NoKeyTokenFoundException.java" binary="false" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="62">      
+      <position height="21" width="0" x="0" y="1087"/>    
+    </execution>  
+  </object>  
+  <object id="95" language="java" name="exceptions.OutOfBoundsException" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/exceptions/OutOfBoundsException.java" binary="false" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="10">      
+      <position height="21" width="0" x="0" y="640"/>    
+    </execution>  
+  </object>  
+  <object id="96" language="java" name="exceptions.NotEnoughSeatsAvailibleException" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/exceptions/NotEnoughSeatsAvailibleException.java" binary="false" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="18">      
+      <position height="21" width="0" x="0" y="2265"/>    
+    </execution>  
+  </object>  
+  <object id="97" language="java" name="theater.Theater" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/theater/Theater.java" binary="false" label="theater" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="20">      
+      <position height="134" width="0" x="0" y="2327"/>    
+    </execution>    
+    <execution id="28">      
+      <position height="557" width="0" x="0" y="2656"/>    
+    </execution>    
+    <execution id="101">      
+      <position height="451" width="0" x="0" y="2741"/>    
+    </execution>  
+  </object>  
+  <object id="122" language="java" name="ticket.TicketList" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/ticket/TicketList.java" binary="false" label="ticketList" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="103">      
+      <position height="21" width="0" x="0" y="2772"/>    
+    </execution>  
+  </object>  
+  <object id="123" language="java" name="ticket.Ticket" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/ticket/Ticket.java" binary="false" label="ticket" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="105">      
+      <position height="21" width="0" x="0" y="2814"/>    
+    </execution>    
+    <execution id="109">      
+      <position height="21" width="0" x="0" y="2898"/>    
+    </execution>    
+    <execution id="115">      
+      <position height="21" width="0" x="0" y="3024"/>    
+    </execution>  
+  </object>  
+  <object id="124" language="java" name="play.Play" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/play/Play.java" binary="false" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="107">      
+      <position height="21" width="0" x="0" y="2856"/>    
+    </execution>    
+    <execution id="121">      
+      <position height="21" width="0" x="0" y="3150"/>    
+    </execution>  
+  </object>  
+  <object id="125" language="java" name="play.Play" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/play/Play.java" binary="false" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="111">      
+      <position height="21" width="0" x="0" y="2940"/>    
+    </execution>    
+    <execution id="113">      
+      <position height="21" width="0" x="0" y="2982"/>    
+    </execution>    
+    <execution id="119">      
+      <position height="21" width="0" x="0" y="3108"/>    
+    </execution>  
+  </object>  
+  <object id="126" language="java" name="currency.Dollar" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/currency/Dollar.java" binary="false" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="117">      
+      <position height="21" width="0" x="0" y="3066"/>    
+    </execution>  
+  </object>  
+  <object id="127" language="java" name="exceptions.NoPlayFoundException" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/exceptions/NoPlayFoundException.java" binary="false" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="99">      
+      <position height="21" width="0" x="0" y="2419"/>    
+    </execution>  
+  </object>  
+  <object id="128" language="java" name="java.util.ArrayList" project="ICS372-02_Group1_Project1" 
+    file="C:/Program Files/Java/jre1.8.0_161/lib/rt.jar" binary="true" label="tickets" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="22">      
+      <position height="21" width="0" x="0" y="2482"/>    
+    </execution>    
+    <execution id="24">      
+      <position height="21" width="0" x="0" y="2562"/>    
+    </execution>  
+  </object>  
+  <object id="129" language="java" name="ticket.RegularTicket" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/ticket/RegularTicket.java" binary="false" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="26">      
+      <position height="21" width="0" x="0" y="2604"/>    
+    </execution>  
+  </object>  
+  <object id="130" language="java" name="exceptions.OutOfBoundsException" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/exceptions/OutOfBoundsException.java" binary="false" 
+    label="outOfBoundsException" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="36">      
+      <position height="21" width="0" x="0" y="3446"/>    
+    </execution>  
+  </object>  
+  <combined-fragment id="131" interaction-operator="NEG">    
+    <interaction-operand id="132" constraint="Exception e"/>  
+  </combined-fragment>  
+  <combined-fragment id="133" interaction-operator="LOOP">    
+    <interaction-operand id="134" constraint="while: !done"/>  
+  </combined-fragment>  
+  <combined-fragment id="135" interaction-operator="LOOP">    
+    <interaction-operand id="136" constraint="for:i &lt; qty"/>  
+  </combined-fragment>  
+  <combined-fragment id="137" interaction-operator="NEG">    
+    <interaction-operand id="138" constraint="OutOfBoundsException e"/>  
+  </combined-fragment>  
+  <combined-fragment id="139" interaction-operator="NEG">    
+    <interaction-operand id="140" constraint="NoPlayFoundException e"/>  
+  </combined-fragment>  
+  <combined-fragment id="141" interaction-operator="NEG">    
+    <interaction-operand id="142" constraint="NotEnoughSeatsAvailibleException e"/>  
+  </combined-fragment>  
+  <combined-fragment id="143" interaction-operator="OPT">    
+    <interaction-operand id="144" constraint="qty &lt; 1"/>  
+  </combined-fragment>  
+  <combined-fragment id="145" interaction-operator="OPT">    
+    <interaction-operand id="146" constraint="!theater.canSellTickets(qty, dateOfShow)"/>  
+  </combined-fragment>  
+  <combined-fragment id="147" interaction-operator="NEG">    
+    <interaction-operand id="148" constraint="Exception e"/>  
+  </combined-fragment>  
+  <combined-fragment id="149" interaction-operator="LOOP">    
+    <interaction-operand id="150" constraint="while: !done"/>  
+  </combined-fragment>  
+  <combined-fragment id="151" interaction-operator="LOOP">    
+    <interaction-operand id="152" constraint="for:i &lt; qty"/>  
+  </combined-fragment>  
+  <combined-fragment id="153" interaction-operator="NEG">    
+    <interaction-operand id="154" constraint="OutOfBoundsException e"/>  
+  </combined-fragment>  
+  <combined-fragment id="155" interaction-operator="NEG">    
+    <interaction-operand id="156" constraint="NoPlayFoundException e"/>  
+  </combined-fragment>  
+  <combined-fragment id="157" interaction-operator="NEG">    
+    <interaction-operand id="158" constraint="NotEnoughSeatsAvailibleException e"/>  
+  </combined-fragment>  
+  <combined-fragment id="159" interaction-operator="OPT">    
+    <interaction-operand id="160" constraint="qty &lt; 1"/>  
+  </combined-fragment>  
+  <combined-fragment id="161" interaction-operator="OPT">    
+    <interaction-operand id="162" constraint="!theater.canSellTickets(qty, dateOfShow)"/>  
+  </combined-fragment>  
+  <combined-fragment id="163" interaction-operator="LOOP">    
+    <interaction-operand id="164" constraint="while: !done">      
+      <fragment refId="11"/>      
+      <fragment refId="165"/>      
+      <fragment refId="166"/>      
+      <fragment refId="167"/>      
+      <fragment refId="168"/>      
+      <fragment refId="7"/>      
+      <fragment refId="169"/>      
+      <fragment refId="170"/>      
+      <fragment refId="21"/>      
+      <fragment refId="55"/>      
+      <fragment refId="171"/>      
+      <fragment refId="172"/>      
+      <fragment refId="173"/>      
+      <fragment refId="174"/>      
+      <fragment refId="175"/>      
+      <fragment refId="176"/>      
+      <fragment refId="27"/>      
+      <fragment refId="13"/>      
+      <fragment refId="15"/>      
+      <fragment refId="19"/>      
+      <fragment refId="177"/>    
+    </interaction-operand>    
+    <combined-fragment id="172" interaction-operator="OPT">      
+      <interaction-operand id="178" constraint="qty &lt; 1">        
+        <fragment refId="179"/>      
+      </interaction-operand>      
+      <combined-fragment id="179" interaction-operator="BREAK">        
+        <interaction-operand id="180" 
+          constraint="new OutOfBoundsException(&#xd;							&quot;number of tickets must be postitive&quot;)">          
+          <fragment refId="9"/>        
+        </interaction-operand>      
+      </combined-fragment>    
+    </combined-fragment>    
+    <combined-fragment id="166" interaction-operator="OPT">      
+      <interaction-operand id="181" constraint="!theater.canSellTickets(qty, dateOfShow)">        
+        <fragment refId="182"/>      
+      </interaction-operand>      
+      <combined-fragment id="182" interaction-operator="BREAK">        
+        <interaction-operand id="183" constraint="new NotEnoughSeatsAvailibleException()">          
+          <fragment refId="17"/>        
+        </interaction-operand>      
+      </combined-fragment>    
+    </combined-fragment>    
+    <combined-fragment id="168" interaction-operator="LOOP">      
+      <interaction-operand id="184" constraint="for:i &lt; qty">        
+        <fragment refId="23"/>        
+        <fragment refId="25"/>      
+      </interaction-operand>    
+    </combined-fragment>    
+    <combined-fragment id="177" interaction-operator="NEG">      
+      <interaction-operand id="185" constraint="NotEnoughSeatsAvailibleException e">        
+        <fragment refId="31"/>        
+        <fragment refId="29"/>      
+      </interaction-operand>    
+    </combined-fragment>    
+    <combined-fragment id="169" interaction-operator="NEG">      
+      <interaction-operand id="186" constraint="OutOfBoundsException e">        
+        <fragment refId="37"/>        
+        <fragment refId="35"/>        
+        <fragment refId="33"/>      
+      </interaction-operand>    
+    </combined-fragment>    
+    <combined-fragment id="167" interaction-operator="NEG">      
+      <interaction-operand id="187" constraint="NoPlayFoundException e">        
+        <fragment refId="41"/>        
+        <fragment refId="39"/>      
+      </interaction-operand>    
+    </combined-fragment>    
+    <combined-fragment id="175" interaction-operator="NEG">      
+      <interaction-operand id="188" constraint="Exception e">        
+        <fragment refId="43"/>        
+        <fragment refId="45"/>      
+      </interaction-operand>    
+    </combined-fragment>    
+    <combined-fragment id="176" interaction-operator="LOOP">      
+      <interaction-operand id="189" constraint="while: !done">        
+        <fragment refId="190"/>        
+        <fragment refId="49"/>      
+      </interaction-operand>      
+      <combined-fragment id="190" interaction-operator="NEG">        
+        <interaction-operand id="191" constraint="NumberFormatException e">          
+          <fragment refId="51"/>          
+          <fragment refId="53"/>        
+        </interaction-operand>      
+      </combined-fragment>    
+    </combined-fragment>    
+    <combined-fragment id="170" interaction-operator="LOOP">      
+      <interaction-operand id="192" constraint="while: !done">        
+        <fragment refId="57"/>        
+        <fragment refId="193"/>        
+        <fragment refId="194"/>        
+        <fragment refId="195"/>      
+      </interaction-operand>      
+      <combined-fragment id="195" interaction-operator="LOOP">        
+        <interaction-operand id="196" constraint="for: theater.getCustomerList()">          
+          <fragment refId="197"/>        
+        </interaction-operand>        
+        <combined-fragment id="197" interaction-operator="NEG">          
+          <interaction-operand id="198" constraint="NumberFormatException e">            
+            <fragment refId="199"/>          
+          </interaction-operand>          
+          <combined-fragment id="199" interaction-operator="BREAK">            
+            <interaction-operand id="200" constraint="new NoKeyTokenFoundException()">              
+              <fragment refId="59"/>            
+            </interaction-operand>          
+          </combined-fragment>        
+        </combined-fragment>      
+      </combined-fragment>      
+      <combined-fragment id="193" interaction-operator="OPT">        
+        <interaction-operand id="201" constraint="customer == null">          
+          <fragment refId="202"/>        
+        </interaction-operand>        
+        <combined-fragment id="202" interaction-operator="BREAK">          
+          <interaction-operand id="203" constraint="new NoKeyTokenFoundException()">            
+            <fragment refId="61"/>          
+          </interaction-operand>        
+        </combined-fragment>      
+      </combined-fragment>      
+      <combined-fragment id="194" interaction-operator="NEG">        
+        <interaction-operand id="204" constraint="NoKeyTokenFoundException e">          
+          <fragment refId="65"/>          
+          <fragment refId="63"/>        
+        </interaction-operand>      
+      </combined-fragment>    
+    </combined-fragment>    
+    <combined-fragment id="171" interaction-operator="LOOP">      
+      <interaction-operand id="205" constraint="while: !done">        
+        <fragment refId="67"/>        
+        <fragment refId="206"/>        
+        <fragment refId="69"/>        
+        <fragment refId="207"/>      
+      </interaction-operand>      
+      <combined-fragment id="206" interaction-operator="OPT">        
+        <interaction-operand id="208" constraint="card == null">          
+          <fragment refId="209"/>        
+        </interaction-operand>        
+        <combined-fragment id="209" interaction-operator="BREAK">          
+          <interaction-operand id="210" constraint="new NoCardFoundException()">            
+            <fragment refId="71"/>          
+          </interaction-operand>        
+        </combined-fragment>      
+      </combined-fragment>      
+      <combined-fragment id="207" interaction-operator="NEG">        
+        <interaction-operand id="211" constraint="NoCardFoundException e">          
+          <fragment refId="77"/>          
+          <fragment refId="73"/>          
+          <fragment refId="75"/>        
+        </interaction-operand>      
+      </combined-fragment>    
+    </combined-fragment>    
+    <combined-fragment id="173" interaction-operator="LOOP">      
+      <interaction-operand id="212" constraint="while: !done">        
+        <fragment refId="81"/>        
+        <fragment refId="213"/>        
+        <fragment refId="83"/>        
+        <fragment refId="79"/>      
+      </interaction-operand>      
+      <combined-fragment id="213" interaction-operator="NEG">        
+        <interaction-operand id="214" constraint="ParseException e">          
+          <fragment refId="85"/>          
+          <fragment refId="87"/>        
+        </interaction-operand>      
+      </combined-fragment>    
+    </combined-fragment>    
+    <combined-fragment id="174" interaction-operator="OPT">      
+      <interaction-operand id="215" constraint="play == null">        
+        <fragment refId="216"/>      
+      </interaction-operand>      
+      <combined-fragment id="216" interaction-operator="BREAK">        
+        <interaction-operand id="217" constraint="new NoPlayFoundException()">          
+          <fragment refId="98"/>        
+        </interaction-operand>      
+      </combined-fragment>    
+    </combined-fragment>    
+    <combined-fragment id="165" interaction-operator="LOOP">      
+      <interaction-operand id="218" constraint="for: tickets">        
+        <fragment refId="120"/>        
+        <fragment refId="116"/>        
+        <fragment refId="102"/>        
+        <fragment refId="110"/>        
+        <fragment refId="114"/>        
+        <fragment refId="112"/>        
+        <fragment refId="100"/>        
+        <fragment refId="108"/>        
+        <fragment refId="104"/>        
+        <fragment refId="118"/>        
+        <fragment refId="106"/>      
+      </interaction-operand>    
+    </combined-fragment>  
+  </combined-fragment>  
+  <message id="3" operation="call(userInterface.UI):void" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="5" operation="getTheater():theater.Theater" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
+  </message>  
+  <message id="7" operation="getIntFromInput(java.lang.String):int" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="8"/>  
+  </message>  
+  <message id="9" operation="OutOfBoundsException(java.lang.String)" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="10"/>  
+  </message>  
+  <message id="11" operation="getCustomerFromInputID():customer.Customer" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="12"/>  
+  </message>  
+  <message id="13" operation="getCreditCardFromInput(customer.Customer):customer.Customer.CreditCard" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="14"/>  
+  </message>  
+  <message id="15" operation="getDateFromInput(java.lang.String):java.util.Date" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="16"/>  
+  </message>  
+  <message id="17" operation="NotEnoughSeatsAvailibleException()" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="18"/>  
+  </message>  
+  <message id="19" operation="getPlay(java.util.Date):play.Play" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="20"/>  
+  </message>  
+  <message id="21" operation="ArrayList()" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="22"/>  
+  </message>  
+  <message id="23" operation="add(E):boolean" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="24"/>  
+  </message>  
+  <message id="25" operation="RegularTicket(java.util.Date,play.Play,customer.Customer,customer.Customer.CreditCard)" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="26"/>  
+  </message>  
+  <message id="27" operation="sell(java.util.Collection&lt;ticket.Ticket&gt;):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="28"/>  
+  </message>  
+  <message id="29" operation="outputError(java.lang.Exception,java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="30"/>  
+  </message>  
+  <message id="31" operation="tryAgainCheck():boolean" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="32"/>  
+  </message>  
+  <message id="33" operation="outputError(java.lang.Exception,java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="34"/>  
+  </message>  
+  <message id="35" operation="getMessage():java.lang.String" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="36"/>  
+  </message>  
+  <message id="37" operation="tryAgainCheck():boolean" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="38"/>  
+  </message>  
+  <message id="39" operation="outputError(java.lang.Exception,java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="40"/>  
+  </message>  
+  <message id="41" operation="tryAgainCheck():boolean" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="42"/>  
+  </message>  
+  <message id="43" operation="outputError(java.lang.Exception,java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="44"/>  
+  </message>  
+  <message id="45" operation="tryAgainCheck():boolean" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="46"/>  
+  </message>  
+  <message id="49" operation="getInput(java.lang.String):java.lang.String" asynchronous="false">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="50"/>  
+  </message>  
+  <message id="51" operation="outputError(java.lang.Exception,java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="52"/>  
+  </message>  
+  <message id="53" operation="tryAgainCheck():boolean" asynchronous="false">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="54"/>  
+  </message>  
+  <message id="55" operation="instance():theater.Theater" asynchronous="false">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="56"/>  
+  </message>  
+  <message id="57" operation="getInput(java.lang.String):java.lang.String" asynchronous="false">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="58"/>  
+  </message>  
+  <message id="59" operation="NoKeyTokenFoundException()" asynchronous="false">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="60"/>  
+  </message>  
+  <message id="61" operation="NoKeyTokenFoundException()" asynchronous="false">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="62"/>  
+  </message>  
+  <message id="63" operation="outputError(java.lang.Exception,java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="64"/>  
+  </message>  
+  <message id="65" operation="tryAgainCheck():boolean" asynchronous="false">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="66"/>  
+  </message>  
+  <message id="67" operation="getCardList():java.util.LinkedList&lt;CreditCard&gt;" asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="68"/>  
+  </message>  
+  <message id="69" operation="getInput(java.lang.String):java.lang.String" asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="70"/>  
+  </message>  
+  <message id="71" operation="NoCardFoundException()" asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="72"/>  
+  </message>  
+  <message id="73" operation="outputError(java.lang.Exception,java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="74"/>  
+  </message>  
+  <message id="75" operation="getName():customer.Customer.Name" asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="76"/>  
+  </message>  
+  <message id="77" operation="tryAgainCheck():boolean" asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="78"/>  
+  </message>  
+  <message id="79" operation="getInput(java.lang.String):java.lang.String" asynchronous="false">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="80"/>  
+  </message>  
+  <message id="81" operation="SimpleDateFormat(java.lang.String)" asynchronous="false">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="82"/>  
+  </message>  
+  <message id="83" operation="parse(java.lang.String):java.util.Date" asynchronous="false">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="84"/>  
+  </message>  
+  <message id="85" operation="outputError(java.lang.Exception,java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="86"/>  
+  </message>  
+  <message id="87" operation="tryAgainCheck():boolean" asynchronous="false">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="88"/>  
+  </message>  
+  <message id="98" operation="NoPlayFoundException()" asynchronous="false">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="99"/>  
+  </message>  
+  <message id="100" operation="sell(ticket.Ticket):void" asynchronous="false">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="101"/>  
+  </message>  
+  <message id="102" operation="add(ticket.Ticket):boolean" asynchronous="false">    
+    <end type="SOURCE" refId="101"/>    
+    <end type="TARGET" refId="103"/>  
+  </message>  
+  <message id="104" operation="getPlay():play.Play" asynchronous="false">    
+    <end type="SOURCE" refId="101"/>    
+    <end type="TARGET" refId="105"/>  
+  </message>  
+  <message id="106" operation="getOwner():client.Client" asynchronous="false">    
+    <end type="SOURCE" refId="101"/>    
+    <end type="TARGET" refId="107"/>  
+  </message>  
+  <message id="108" operation="getPlay():play.Play" asynchronous="false">    
+    <end type="SOURCE" refId="101"/>    
+    <end type="TARGET" refId="109"/>  
+  </message>  
+  <message id="110" operation="getOwner():client.Client" asynchronous="false">    
+    <end type="SOURCE" refId="101"/>    
+    <end type="TARGET" refId="111"/>  
+  </message>  
+  <message id="112" operation="getBalanceDue():currency.Dollar" asynchronous="false">    
+    <end type="SOURCE" refId="101"/>    
+    <end type="TARGET" refId="113"/>  
+  </message>  
+  <message id="114" operation="getPriceOfTicket():currency.Dollar" asynchronous="false">    
+    <end type="SOURCE" refId="101"/>    
+    <end type="TARGET" refId="115"/>  
+  </message>  
+  <message id="116" operation="half():currency.Dollar" asynchronous="false">    
+    <end type="SOURCE" refId="101"/>    
+    <end type="TARGET" refId="117"/>  
+  </message>  
+  <message id="118" operation="addTogether(currency.Dollar):currency.Dollar" asynchronous="false">    
+    <end type="SOURCE" refId="101"/>    
+    <end type="TARGET" refId="119"/>  
+  </message>  
+  <message id="120" operation="setBalanceDue(currency.Dollar):void" asynchronous="false">    
+    <end type="SOURCE" refId="101"/>    
+    <end type="TARGET" refId="121"/>  
+  </message>
+</sequence-diagram>
