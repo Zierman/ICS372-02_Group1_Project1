@@ -1,5 +1,9 @@
 package uiCommands;
 
+import java.util.Date;
+
+import customer.Customer;
+import customer.Customer.CreditCard;
 import theater.Theater;
 import userInterface.UI;
 
@@ -57,9 +61,38 @@ public class SellRegularTicket implements Command<UI>
 		public void call(UI ui)
 		{
 			Theater theater = ui.getTheater();
+			Customer customer = null;
+			CreditCard creditCard = null;
+			Date dateOfShow = null;
+			boolean done = false;
 			
-			// ask for qty tickets to sell
-			UI.getIntFromInput("Enter the number of tickets to sell");
+			while(!done)
+			{
+				
+				try
+				{
+					// ask for qty tickets to sell
+					UI.getIntFromInput("Enter the number of tickets to sell");
+					
+					// ask for customer ID
+					
+					// ask for credit card number
+					
+					
+					done = true;
+				}
+				catch (Exception e)
+				{
+					// show error message
+					UI.outputError(e, "Unable to sell ticket");
+					
+					// ask if user wants to continue and end if the user answers no
+					done = !UI.tryAgainCheck();
+				}
+			
+			}
+			
+			
 		}
 
 		/*

@@ -8,7 +8,7 @@ import java.io.Serializable;
  *
  * @param <Type> They type of object this key is used for
  */
-public abstract class KeyToken <Type, Key extends Comparable<Key> > implements Serializable
+public abstract class KeyToken <Type, Key extends Comparable<Key> > implements Serializable, Matchable<KeyToken<Type,Key>>
 {
 	/**
 	 * Serialization version

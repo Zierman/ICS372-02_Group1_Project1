@@ -9,11 +9,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 import client.Client;
 import currency.Dollar;
 import customer.Customer;
+import customer.Customer.CreditCard;
+import exceptions.NoCardFoundException;
 import exceptions.NoKeyTokenFoundException;
 import singleton.ReadResolveable;
 import theater.Theater;
@@ -121,8 +124,8 @@ public class UI implements ReadResolveable<UI>, Closeable
 		Theater theater = Theater.instance();
 		Client client = null;
 		// find client from input client ID
-		boolean doneWithID = false;
-		while (!doneWithID)
+		boolean done = false;
+		while (!done)
 		{
 			String clientID = UI.getInput("Enter client's ID: ");
 			client = null;
@@ -147,10 +150,9 @@ public class UI implements ReadResolveable<UI>, Closeable
 				{
 					throw new NoKeyTokenFoundException();
 				}
-				else
-				{
-					doneWithID = true;
-				}
+					
+				done = true;
+				
 			}
 			catch (NoKeyTokenFoundException e)
 			{
@@ -159,9 +161,9 @@ public class UI implements ReadResolveable<UI>, Closeable
 
 				// ask if user wants to continue and end if the user
 				// answers no
-				doneWithID = !UI.tryAgainCheck();
+				done = !UI.tryAgainCheck();
 
-				if (doneWithID)
+				if (done)
 				{
 					throw new Exception();
 				}
@@ -175,8 +177,8 @@ public class UI implements ReadResolveable<UI>, Closeable
 		Theater theater = Theater.instance();
 		Customer customer = null;
 		// find customer from input customer ID
-		boolean doneWithID = false;
-		while (!doneWithID)
+		boolean done = false;
+		while (!done)
 		{
 			String customerID = UI.getInput("Enter customer's ID: ");
 			customer = null;
@@ -201,10 +203,9 @@ public class UI implements ReadResolveable<UI>, Closeable
 				{
 					throw new NoKeyTokenFoundException();
 				}
-				else
-				{
-					doneWithID = true;
-				}
+				
+				done = true;
+				
 			}
 			catch (NoKeyTokenFoundException e)
 			{
@@ -213,9 +214,9 @@ public class UI implements ReadResolveable<UI>, Closeable
 
 				// ask if user wants to continue and end if the user
 				// answers no
-				doneWithID = !UI.tryAgainCheck();
+				done = !UI.tryAgainCheck();
 
-				if (doneWithID)
+				if (done)
 				{
 					throw new Exception();
 				}
@@ -237,6 +238,7 @@ public class UI implements ReadResolveable<UI>, Closeable
 						prompt + " (MM/dd/yyyy): ");
 				date =  new SimpleDateFormat("MM/dd/yyyy")
 						.parse(dateString);
+				done = true;
 			}
 			catch (ParseException e)
 			{
@@ -256,6 +258,54 @@ public class UI implements ReadResolveable<UI>, Closeable
 		}
 		
 		return date;
+	}
+	
+	public static CreditCard getCreditCardFromInput(Customer customer) throws NoCardFoundException
+	{
+		CreditCard card = null;
+		boolean done = false;
+		
+		while(!done)
+		{
+		
+			try
+			{
+				List<CreditCard> list = customer.getCardList();
+				String cardNumber = getInput("Enter credit card number");
+				
+				for(CreditCard c : list)
+				{
+					if(c.matches(cardNumber))
+					{
+						card = c;
+					}
+				}
+				if(card == null)
+				{
+					throw new NoCardFoundException();
+				}
+				
+				done = true;
+			}
+			catch (NoCardFoundException e)
+			{
+				// show error message
+				UI.outputError(e,
+						"No matching credit card found owned by " + customer.getName() + ".");
+	
+				// ask if user wants to continue and end if the user
+				// answers no
+				done = !UI.tryAgainCheck();
+				
+				if (done)
+				{
+					throw e;
+				}
+			}
+		}
+		
+		return card;
+		
 	}
 	
 	public static int getIntFromInput(String prompt)

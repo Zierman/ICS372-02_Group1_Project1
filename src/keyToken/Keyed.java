@@ -9,7 +9,7 @@ package keyToken;
  * @param <Key>
  *            The data type of the key value
  */
-public interface Keyed<Key>
+public interface Keyed<Key> extends Matchable<Key>
 {
 	public Key getKey();
 	

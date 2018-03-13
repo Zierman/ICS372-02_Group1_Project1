@@ -12,6 +12,7 @@ import exceptions.CardAlreadyInListException;
 import exceptions.NoCardFoundException;
 import keyToken.KeyToken;
 import keyToken.Keyed;
+import keyToken.Matchable;
 import phoneNumber.PhoneNumber;
 import storage.FileIO;
 import storage.Savable;
@@ -30,7 +31,7 @@ public class Customer implements Serializable, Keyed<Long>
 	 * @author Troy Novak [wh1617wd@metrostate.edu]
 	 * 
 	 */
-	public class CreditCard implements Owned<Customer>,Serializable{
+	public class CreditCard implements Owned<Customer>,Serializable,Matchable<String>{
 		
 		/**
 		 * Serialization version.
@@ -110,6 +111,12 @@ public class Customer implements Serializable, Keyed<Long>
 		{
 			this.owner = owner;
 			
+		}
+
+		@Override
+		public boolean matches(String valueToMatch)
+		{
+			return this.cardNumber.equals(valueToMatch);
 		}
 	}
 	
