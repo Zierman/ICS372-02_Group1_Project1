@@ -8,7 +8,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
+import client.Client;
+import client.ClientList;
+import customer.Customer;
+import customer.CustomerList;
 import exceptions.NotEnoughSeatsAvailibleException;
+import play.Play;
 import singleton.ReadResolveable;
 import storage.FileIO;
 import storage.Loadable;
@@ -299,9 +304,20 @@ public class TicketList
 		LinkedList<Ticket> tmp = (LinkedList<Ticket>) ticketFile.read();
 		ticketFile.close();
 
-		for (Ticket c : tmp)
+		for (Ticket t : tmp)
 		{
-			instance().add(c);
+			
+			Customer match = null;
+			for (Customer customer : CustomerList.instance())
+			{
+				if (customer.matches(t.getOwner().getKey()))
+				{
+					match = customer;
+				}
+			}
+			t.setOwner(match);
+	
+			instance().add(t);
 		}
 	}
 
