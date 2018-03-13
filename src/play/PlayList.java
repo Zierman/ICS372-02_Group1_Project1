@@ -9,11 +9,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
+import client.Client;
+import client.ClientList;
 import exceptions.ConflictingDatesException;
 import singleton.ReadResolveable;
 import storage.FileIO;
 import storage.Loadable;
 import storage.Savable;
+import theater.Theater;
 
 /**
  * A list of plays
@@ -106,7 +109,7 @@ public class PlayList
 	public boolean addAll(Collection<? extends Play> collection)
 	{
 		int size = plays.size();
-		for(Play p : collection)
+		for (Play p : collection)
 		{
 			plays.add(p);
 		}
@@ -122,10 +125,10 @@ public class PlayList
 	public boolean addAll(int index, Collection<? extends Play> collection)
 	{
 		int size = plays.size();
-		for(Play p : collection)
+		for (Play p : collection)
 		{
-			plays.add(index++ ,p);
-			
+			plays.add(index++, p);
+
 		}
 		return size != plays.size();
 	}
@@ -297,9 +300,19 @@ public class PlayList
 		LinkedList<Play> tmp = (LinkedList<Play>) playFile.read();
 		playFile.close();
 
-		for (Play c : tmp)
+		for (Play p : tmp)
 		{
-			instance().add(c);
+			
+			Client match = null;
+			for (Client client : ClientList.instance())
+			{
+				if (client.matches(p.getOwner().getKey()))
+				{
+					match = client;
+				}
+			}
+			p.setOwner(match);
+			instance().add(p);
 		}
 	}
 
@@ -427,6 +440,5 @@ public class PlayList
 	{
 		return plays.toArray(arg0);
 	}
-	
-	
+
 }

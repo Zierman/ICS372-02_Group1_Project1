@@ -25,6 +25,7 @@ import storage.Loadable;
 import storage.Savable;
 import ticket.Ticket;
 import ticket.TicketList;
+import userInterface.UI;
 
 /**
  * Represents a theater that shows plays performed by clients to customers.
@@ -379,7 +380,10 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 		ticketList.add(ticket);
 		
 		// client that performs the play gets half the price of the ticket
-		ticket.getPlay().getOwner().setBalanceDue(ticket.getPlay().getOwner().getBalanceDue().addTogether(ticket.getPriceOfTicket().half()));
+		Dollar newTotal = ticket.getPlay().getOwner().getBalanceDue().addTogether(ticket.getPriceOfTicket().half());
+		UI.outputError(new Exception(), newTotal.toString());
+		ticket.getPlay().getOwner().setBalanceDue(newTotal);
+		UI.outputError(null, ticket.getPlay().getOwner().getName().toString());
 	}
 
 	public boolean canSellTickets(int qty, Date dateOfShow)
