@@ -58,6 +58,8 @@ public class SellRegularTicket implements Command<UI>
 		{
 			Theater theater = ui.getTheater();
 			
+			// ask for qty tickets to sell
+			UI.getIntFromInput("Enter the number of tickets to sell");
 		}
 
 		/*

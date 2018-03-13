@@ -267,7 +267,7 @@ public class UI implements ReadResolveable<UI>, Closeable
 			try
 			{
 				String inputStr = UI.getInput(
-						prompt + ": $");
+						prompt + ": ");
 				 number = Integer.parseInt(inputStr);
 				 done = true;
 			}
