@@ -401,4 +401,12 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 		}
 		
 	}
+
+	/**
+	 * @return the ticketList
+	 */
+	public TicketList getTicketList()
+	{
+		return ticketList;
+	}
 }

@@ -6,6 +6,7 @@ import customer.Customer;
 import customer.Customer.CreditCard;
 import customer.CustomerList;
 import theater.Theater;
+import ticket.Ticket;
 import userInterface.UI;
 
 /**
@@ -88,6 +89,17 @@ public class ListAllCustomers implements Command<UI>
 						output += "Card Number: " + creditCard.getCardNumber()
 								+ "\nCard Expiration: " + creditCard.getCardExpiration()
 								+ "\n\n";
+					}
+					for(Ticket ticket : theater.getTicketList())
+					{
+						if(ticket.getOwner().matches(customer.getKey())) {
+							output += "Ticket Serial Number: " + ticket.getSerialNumber();
+							output += "\n Ticket Type: " + ticket.getTypeOfTicket();
+							output += "\n Play the ticket is for: " + ticket.getPlay().getName();
+							output += "\n Date of showing: " + ticket.getDateOfShow(); 
+							output += "\n Credit card used to buy: " + ticket.getCreditCard();
+							output += "\n\n";
+						}
 					}
 				}
 				if(!found){

@@ -475,6 +475,54 @@ public abstract class Ticket
 		this.priceOfTicket = priceOfTicket;
 	}
 
+	/**
+	 * @return the serialNumber
+	 */
+	public SerialNumber getSerialNumber()
+	{
+		return serialNumber;
+	}
+
+	/**
+	 * @param serialNumber the serialNumber to set
+	 */
+	public void setSerialNumber(SerialNumber serialNumber)
+	{
+		this.serialNumber = serialNumber;
+	}
+
+	/**
+	 * @return the hasExtraMessage
+	 */
+	public boolean isHasExtraMessage()
+	{
+		return hasExtraMessage;
+	}
+
+	/**
+	 * @param hasExtraMessage the hasExtraMessage to set
+	 */
+	public void setHasExtraMessage(boolean hasExtraMessage)
+	{
+		this.hasExtraMessage = hasExtraMessage;
+	}
+
+	/**
+	 * @return the creditCard
+	 */
+	public CreditCard getCreditCard()
+	{
+		return creditCard;
+	}
+
+	/**
+	 * @param creditCard the creditCard to set
+	 */
+	public void setCreditCard(CreditCard creditCard)
+	{
+		this.creditCard = creditCard;
+	}
+
 	
 
 }
