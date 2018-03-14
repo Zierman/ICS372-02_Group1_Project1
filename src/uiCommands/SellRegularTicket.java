@@ -13,6 +13,7 @@ import play.Play;
 import theater.Theater;
 import ticket.RegularTicket;
 import ticket.Ticket;
+import ticket.TicketFactory;
 import ticket.TicketList;
 import userInterface.UI;
 
@@ -116,8 +117,7 @@ public class SellRegularTicket implements Command<UI>
 				ArrayList<Ticket> tickets = new ArrayList<Ticket>();
 				for (int i = 0; i < qty; i++)
 				{
-					tickets.add(new RegularTicket(dateOfShow, play, customer,
-							creditCard));
+					tickets.add(TicketFactory.make(TicketFactory.REGULAR_TICKET, dateOfShow, play, customer, creditCard));
 				}
 
 				// sell tickets

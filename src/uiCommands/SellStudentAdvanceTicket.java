@@ -13,6 +13,7 @@ import play.Play;
 import theater.Theater;
 import ticket.StudentAdvanceTicket;
 import ticket.Ticket;
+import ticket.TicketFactory;
 import userInterface.UI;
 
 public class SellStudentAdvanceTicket implements Command<UI>
@@ -107,7 +108,7 @@ public class SellStudentAdvanceTicket implements Command<UI>
 					ArrayList<Ticket> tickets = new ArrayList<Ticket>();
 					for (int i = 0; i < qty; i++)
 					{
-						tickets.add(new StudentAdvanceTicket(dateOfShow, play, customer, creditCard));
+						tickets.add(TicketFactory.make(TicketFactory.STUDNET_ADVANCE_TICKET, dateOfShow, play, customer, creditCard));
 					}
 
 					// sell tickets
