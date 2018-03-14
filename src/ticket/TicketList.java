@@ -336,6 +336,8 @@ public class TicketList
 			}
 
 			instance().add(t);
+
+			t.getSerialNumber().setKey(t.getSerialNumber());
 		}
 	}
 
