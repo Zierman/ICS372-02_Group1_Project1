@@ -84,6 +84,18 @@ public class UI implements ReadResolveable<UI>, Closeable
 	 * call.
 	 */
 	protected static final boolean DEBUG_MODE = false;
+	protected static final SimpleDateFormat DATE_FORMAT_MDY = new SimpleDateFormat("MM/dd/yyyy");
+	protected static final SimpleDateFormat DATE_FORMAT_CREDIT_CARD_EXP = new SimpleDateFormat("MM/yy");
+	
+	public static String format(Date date)
+	{
+		return DATE_FORMAT_MDY.format(date);
+	}
+	
+	public static String formatCreditCardExp(Date date)
+	{
+		return DATE_FORMAT_CREDIT_CARD_EXP.format(date);
+	}
 
 	/**
 	 * The first number in shown in the command list. All commands will be shown
