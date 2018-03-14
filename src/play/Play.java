@@ -126,7 +126,7 @@ public class Play implements Serializable, Owned<Client>
 	 *            the <code>Date</code> object that holds the ending date.
 	 * @param regularTicketPrice the price of a non-discounted ticket.
 	 */
-	public Play(String name, Client client, Date startDate, Date endDate, Dollar regularTicketPrice, int SeatingCapacity)
+	public Play(String name, Client client, Date startDate, Date endDate, Dollar regularTicketPrice, int seatingCapacity)
 	{
 
 		if (startDate.after(endDate))
