@@ -12,6 +12,7 @@ import client.Client;
 import currency.Dollar;
 import exceptions.ConflictingDatesException;
 import exceptions.NoKeyTokenFoundException;
+import exceptions.OutOfBoundsException;
 import play.Play;
 import theater.Theater;
 import userInterface.UI;
@@ -84,6 +85,7 @@ public class AddPlay implements Command<UI>
 		Play play = null;
 		Dollar price = null;
 		String name = "";
+		int seatingCapacity = 0;
 		
 		while (!done)
 		{
@@ -93,6 +95,7 @@ public class AddPlay implements Command<UI>
 				name = UI.getInput("Enter play's name: ");
 				client = UI.getClientFromInputID();
 				price = UI.getDollarFromInput("Enter the regular ticket price");
+				seatingCapacity = UI.getIntFromInput("Enter the seating capacity", 1, null);
 				
 				// trys to set the dates from input
 				boolean doneWithDates = false;
@@ -154,7 +157,6 @@ public class AddPlay implements Command<UI>
 				done = !UI.yesCheck("Add another play?");
 
 			}
-
 			catch (Exception e)
 			{
 				// show error message

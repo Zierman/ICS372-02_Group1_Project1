@@ -18,6 +18,7 @@ import customer.Customer;
 import customer.Customer.CreditCard;
 import exceptions.NoCardFoundException;
 import exceptions.NoKeyTokenFoundException;
+import exceptions.OutOfBoundsException;
 import singleton.ReadResolveable;
 import theater.Theater;
 import uiCommands.AddClient;
@@ -83,14 +84,19 @@ public class UI implements ReadResolveable<UI>, Closeable
 	 * call.
 	 */
 	protected static final boolean DEBUG_MODE = false;
-	
+
 	/**
-	 * The first number in shown in the command list. All commands will be shown regardless.
+	 * The first number in shown in the command list. All commands will be shown
+	 * regardless.
 	 */
-	public static final int COMMAND_LIST_FIRST_NUMBER = 0; // If you want list to start at 1 instead of 0 enter 1.
+	public static final int COMMAND_LIST_FIRST_NUMBER = 0; // If you want list
+															// to start at 1
+															// instead of 0
+															// enter 1.
 
 	/**
 	 * Gets the first number to be shown in the list of commands.
+	 * 
 	 * @return the first number of the command list
 	 */
 	public static int getCommandListFirstNumber()
@@ -118,7 +124,7 @@ public class UI implements ReadResolveable<UI>, Closeable
 		return input;
 
 	}
-	
+
 	public static Client getClientFromInputID() throws Exception
 	{
 		Theater theater = Theater.instance();
@@ -150,9 +156,9 @@ public class UI implements ReadResolveable<UI>, Closeable
 				{
 					throw new NoKeyTokenFoundException();
 				}
-					
+
 				done = true;
-				
+
 			}
 			catch (NoKeyTokenFoundException e)
 			{
@@ -171,7 +177,7 @@ public class UI implements ReadResolveable<UI>, Closeable
 		}
 		return client;
 	}
-	
+
 	public static Customer getCustomerFromInputID() throws Exception
 	{
 		Theater theater = Theater.instance();
@@ -203,9 +209,9 @@ public class UI implements ReadResolveable<UI>, Closeable
 				{
 					throw new NoKeyTokenFoundException();
 				}
-				
+
 				done = true;
-				
+
 			}
 			catch (NoKeyTokenFoundException e)
 			{
@@ -224,102 +230,130 @@ public class UI implements ReadResolveable<UI>, Closeable
 		}
 		return customer;
 	}
-	
+
 	public static Date getDateFromInput(String prompt) throws ParseException
 	{
 		boolean done = false;
 		Date date = null;
-		
+
 		while (!done)
 		{
 			try
 			{
-				String dateString = UI.getInput(
-						prompt + " (MM/dd/yyyy): ");
-				date =  new SimpleDateFormat("MM/dd/yyyy")
-						.parse(dateString);
+				String dateString = UI.getInput(prompt + " (MM/dd/yyyy): ");
+				date = new SimpleDateFormat("MM/dd/yyyy").parse(dateString);
 				done = true;
 			}
 			catch (ParseException e)
 			{
 				// show error message
-				UI.outputError(e,
-						"Input could not be parsed to Date.");
-	
+				UI.outputError(e, "Input could not be parsed to Date.");
+
 				// ask if user wants to continue and end if the user
 				// answers no
 				done = !UI.tryAgainCheck();
-				
+
 				if (done)
 				{
 					throw e;
 				}
 			}
 		}
-		
+
 		return date;
 	}
-	
-	public static CreditCard getCreditCardFromInput(Customer customer) throws NoCardFoundException
+
+	public static CreditCard getCreditCardFromInput(Customer customer)
+			throws NoCardFoundException
 	{
 		CreditCard card = null;
 		boolean done = false;
-		
-		while(!done)
+
+		while (!done)
 		{
-		
+
 			try
 			{
 				List<CreditCard> list = customer.getCardList();
 				String cardNumber = getInput("Enter credit card number");
-				
-				for(CreditCard c : list)
+
+				for (CreditCard c : list)
 				{
-					if(c.matches(cardNumber))
+					if (c.matches(cardNumber))
 					{
 						card = c;
 					}
 				}
-				if(card == null)
+				if (card == null)
 				{
 					throw new NoCardFoundException();
 				}
-				
+
 				done = true;
 			}
 			catch (NoCardFoundException e)
 			{
 				// show error message
-				UI.outputError(e,
-						"No matching credit card found owned by " + customer.getName() + ".");
-	
+				UI.outputError(e, "No matching credit card found owned by "
+						+ customer.getName() + ".");
+
 				// ask if user wants to continue and end if the user
 				// answers no
 				done = !UI.tryAgainCheck();
-				
+
 				if (done)
 				{
 					throw e;
 				}
 			}
 		}
-		
+
 		return card;
-		
+
 	}
-	
-	public static int getIntFromInput(String prompt)
+
+	/**
+	 * Asks the user for an integer value
+	 * @param prompt the prompt to be shown to the user before the input is entered
+	 * @param low the lowest value that may be entered or null if there is no lower bound
+	 * @param high the lowest value that is too great to be in range or null if there is no upper bound
+	 * @return the input integer
+	 * @throws OutOfBoundsException if the user enters a value that is not in the range [low, high)
+	 * @throws NumberFormatException if the user enters a string that cannot be converted to an integer.
+	 */
+	public static int getIntFromInput(String prompt, Integer low, Integer high)
+			throws OutOfBoundsException, NumberFormatException
 	{
+		OutOfBoundsException ex = new OutOfBoundsException(
+				"Input must be in the range [" + low + "," + high + ")");
 		int number = 0;
 		boolean done = false;
 		while (!done)
 		{
 			try
 			{
-				String inputStr = UI.getInput(
-						prompt + ": ");
-				 number = Integer.parseInt(inputStr);
-				 done = true;
+				String inputStr = UI.getInput(prompt + ": ");
+				number = Integer.parseInt(inputStr);
+				if ((high != null && high.compareTo(number) <= 0)
+						|| low != null && low.compareTo(number) > 0)
+				{
+					throw ex;
+				}
+				done = true;
+			}
+			catch (OutOfBoundsException e)
+			{
+				// show error message
+				UI.outputError(e, e.getMessage());
+
+				// ask if user wants to continue and end if the user
+				// answers no
+				done = !UI.tryAgainCheck();
+
+				if (done)
+				{
+					throw e;
+				}
 			}
 			catch (NumberFormatException e)
 			{
@@ -339,7 +373,7 @@ public class UI implements ReadResolveable<UI>, Closeable
 		}
 		return number;
 	}
-	
+
 	public static Dollar getDollarFromInput(String prompt)
 	{
 		Dollar dollar = null;
@@ -349,12 +383,11 @@ public class UI implements ReadResolveable<UI>, Closeable
 		{
 			try
 			{
-				String inputStr = UI.getInput(
-						prompt + ": $");
-				 dollar = new Dollar(Double.parseDouble(inputStr));
-				 done = true;
+				String inputStr = UI.getInput(prompt + ": $");
+				dollar = new Dollar(Double.parseDouble(inputStr));
+				done = true;
 			}
-			catch(NumberFormatException e)
+			catch (NumberFormatException e)
 			{
 				// show error message
 				UI.outputError(e,
@@ -383,26 +416,25 @@ public class UI implements ReadResolveable<UI>, Closeable
 		if (singleton == null)
 		{
 			singleton = new UI(1);
-			commandList.add(ExitApplication.instance()); 
+			commandList.add(ExitApplication.instance());
 			commandList.add(AddClient.instance());
-			commandList.add(RemoveClient.instance()); 
-			commandList.add(ListAllClients.instance()); 
-			commandList.add(AddCustomer.instance()); 
-			commandList.add(RemoveCustomer.instance()); 
-			commandList.add(AddCreditCard.instance()); 
-			commandList.add(RemoveCreditCard.instance()); 
-			commandList.add(ListAllCustomers.instance()); 
-			commandList.add(AddPlay.instance()); 
-			commandList.add(ListAllPlays.instance()); 
-			commandList.add(StoreData.instance()); 
-			commandList.add(RetrieveData.instance()); 
-			commandList.add(SellRegularTicket.instance()); 
-			commandList.add(SellAdvanceTicket.instance()); 
+			commandList.add(RemoveClient.instance());
+			commandList.add(ListAllClients.instance());
+			commandList.add(AddCustomer.instance());
+			commandList.add(RemoveCustomer.instance());
+			commandList.add(AddCreditCard.instance());
+			commandList.add(RemoveCreditCard.instance());
+			commandList.add(ListAllCustomers.instance());
+			commandList.add(AddPlay.instance());
+			commandList.add(ListAllPlays.instance());
+			commandList.add(StoreData.instance());
+			commandList.add(RetrieveData.instance());
+			commandList.add(SellRegularTicket.instance());
+			commandList.add(SellAdvanceTicket.instance());
 			commandList.add(SellStudentAdvanceTicket.instance());
-			commandList.add(PayClient.instance()); 
+			commandList.add(PayClient.instance());
 			commandList.add(ListAllTicketsForDay.instance());
-			commandList.add(Help.instance()); 
-			
+			commandList.add(Help.instance());
 
 		}
 		return singleton;
@@ -410,7 +442,10 @@ public class UI implements ReadResolveable<UI>, Closeable
 
 	/**
 	 * Asks a question and returns true if user answers no.
-	 * @param question a String that holds a question to ask the user. Should end with '?'
+	 * 
+	 * @param question
+	 *            a String that holds a question to ask the user. Should end
+	 *            with '?'
 	 * @return true if the user answers no.
 	 */
 	public static boolean noCheck(String question)
@@ -487,14 +522,14 @@ public class UI implements ReadResolveable<UI>, Closeable
 
 		// input is a string to store user input
 		String input = "";
-		
-		if(ui.getTheater().canLoad())
+
+		if (ui.getTheater().canLoad())
 		{
-			if(UI.yesCheck("Save data was found, retrieve data?"))
+			if (UI.yesCheck("Save data was found, retrieve data?"))
 			{
 				retrieveDataCommand.call(ui);
 			}
-			
+
 		}
 
 		// show all commands.
@@ -507,7 +542,8 @@ public class UI implements ReadResolveable<UI>, Closeable
 			{
 				// get the command number from user
 				input = getInput("Enter command number: ");
-				int commandNumber = Integer.parseInt(input) - COMMAND_LIST_FIRST_NUMBER;
+				int commandNumber = Integer.parseInt(input)
+						- COMMAND_LIST_FIRST_NUMBER;
 
 				// find the command
 				lastCommand = commandList.get(commandNumber);
@@ -578,37 +614,40 @@ public class UI implements ReadResolveable<UI>, Closeable
 
 	/**
 	 * Asks a question and returns true if user answers yes.
-	 * @param question a String that holds a question to ask the user. Should end with '?'
+	 * 
+	 * @param question
+	 *            a String that holds a question to ask the user. Should end
+	 *            with '?'
 	 * @return true if the user answers yes.
 	 */
 	public static boolean yesCheck(String question)
 	{
 		// input will hold the user input
-				String input = "";
+		String input = "";
 
-				// tryAgain hold a boolean value to show if the user wants to try again
-				boolean yes = true;
+		// tryAgain hold a boolean value to show if the user wants to try again
+		boolean yes = true;
 
-				// until the user enters a string that starts with an 'n', 'N', 'y', or
-				// 'Y'
-				do
-				{
-					// gets a lower case version of the user input and stores it in
-					// input
-					input = UI.getInput(question + " (Y/N): ").toLowerCase();
-				}
-				while (!input.startsWith("n") && !input.startsWith("y"));
+		// until the user enters a string that starts with an 'n', 'N', 'y', or
+		// 'Y'
+		do
+		{
+			// gets a lower case version of the user input and stores it in
+			// input
+			input = UI.getInput(question + " (Y/N): ").toLowerCase();
+		}
+		while (!input.startsWith("n") && !input.startsWith("y"));
 
-				// if the user's input started with an 'n' or 'N'
-				if (input.startsWith("n"))
-				{
-					// the user does not wish to try again
-					yes = false;
-				}
+		// if the user's input started with an 'n' or 'N'
+		if (input.startsWith("n"))
+		{
+			// the user does not wish to try again
+			yes = false;
+		}
 
-				// otherwise the user wants to try again and tryAgain remains true
+		// otherwise the user wants to try again and tryAgain remains true
 
-				return yes;
+		return yes;
 	}
 
 	/**
@@ -657,7 +696,7 @@ public class UI implements ReadResolveable<UI>, Closeable
 	{
 		scanner.close();
 	}
-	
+
 	/**
 	 * Checks if there has been any data commands used this session.
 	 * 
@@ -668,7 +707,6 @@ public class UI implements ReadResolveable<UI>, Closeable
 	{
 		return hasUsedDataCommand();
 	}
-	
 
 	/**
 	 * Gets the command list.

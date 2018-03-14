@@ -90,6 +90,7 @@ public class ListAllPlays implements Command<UI>
 					output += "client : " + play.getOwner().getName() + " ("
 							+ play.getOwner().getID() + ")\n";
 					output += "regular ticket price: " + play.getRegularTicketPrice()  + "\n";
+					output += "seating capacity: " + play.getSeatingCapacity() + "\n";
 					output += "\n";
 				}
 

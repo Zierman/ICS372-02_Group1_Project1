@@ -90,12 +90,7 @@ public class SellRegularTicket implements Command<UI>
 			try
 			{
 				// ask for qty tickets to sell
-				qty = UI.getIntFromInput("Enter the number of tickets to sell");
-				if (qty < 1)
-				{
-					throw new OutOfBoundsException(
-							"number of tickets must be postitive");
-				}
+				qty = UI.getIntFromInput("Enter the number of tickets to sell", 1, null);
 
 				// ask for customer ID
 				customer = UI.getCustomerFromInputID();
@@ -107,15 +102,16 @@ public class SellRegularTicket implements Command<UI>
 				dateOfShow = UI
 						.getDateFromInput("Enter the date of the showing");
 
-				// check that there is enough seats available
-				if (!theater.canSellTickets(qty, dateOfShow))
-				{
-					throw new NotEnoughSeatsAvailibleException();
-				}
 
 				// find the play that shows on that date
 				play = theater.getPlay(dateOfShow);
-
+				
+				// check that there is enough seats available
+				if (!theater.canSellTickets(qty, dateOfShow, play))
+				{
+					throw new NotEnoughSeatsAvailibleException();
+				}
+				
 				// create tickets
 				ArrayList<Ticket> tickets = new ArrayList<Ticket>();
 				for (int i = 0; i < qty; i++)

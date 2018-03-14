@@ -66,13 +66,6 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 	private String name;
 
 	/**
-	 * How many customers can attend a play.
-	 * 
-	 * Currently there is no command to change the seating capacity but it is flexible.
-	 */
-	private Integer seatingCapacity = 100; 
-
-	/**
 	 * a list of all clients.
 	 */
 	private ClientList clientList = ClientList.instance();
@@ -221,15 +214,7 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 		return playList;
 	}
 
-	/**
-	 * Gets the seating capacity.
-	 * 
-	 * @return an <code>Integer</code> of the current seating capacity.
-	 */
-	public Integer getSeatingCapacity()
-	{
-		return seatingCapacity;
-	}
+	
 
 	public void increaseDebt(Client client, Dollar dollars)
 	{
@@ -248,7 +233,6 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 		{
 			FileIO theaterFile = FileIO.startRead(FILENAME);
 			instance().setName((String) theaterFile.read());
-			instance().setSeatingCapacity((Integer) theaterFile.read());
 			theaterFile.close();
 			clientList.load();
 			customerList.load();
@@ -335,7 +319,6 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 	{
 		FileIO theaterFile = FileIO.startWrite(FILENAME);
 		theaterFile.write(name);
-		theaterFile.write(seatingCapacity);
 		theaterFile.close();
 		clientList.save();
 		customerList.save();
@@ -363,15 +346,6 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 		this.name = name;
 	}
 	
-	/**
-	 * Sets the seating capacity.
-	 * 
-	 * @param seatingCapacity an <code>Integer</code> of the current seating capacity.
-	 */
-	public void setSeatingCapacity(Integer seatingCapacity)
-	{
-		this.seatingCapacity = seatingCapacity;
-	}
 
 	public Play getPlay(Date dateOfShow) throws NoPlayFoundException
 	{
@@ -404,10 +378,10 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 		UI.outputError(null, ticket.getPlay().getOwner().getName().toString());
 	}
 
-	public boolean canSellTickets(int qty, Date dateOfShow)
+	public boolean canSellTickets(int qty, Date dateOfShow, Play play)
 	{
 		int alreadySold = ticketList.countFor(dateOfShow);
-		return qty + alreadySold <= seatingCapacity;
+		return qty + alreadySold <= play.getSeatingCapacity();
 		
 	}
 

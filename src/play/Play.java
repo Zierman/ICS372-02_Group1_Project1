@@ -106,6 +106,13 @@ public class Play implements Serializable, Owned<Client>
 	private Dollar regularTicketPrice;
 
 	/**
+	 * How many customers can attend a play.
+	 * 
+	 * Currently there is no command to change the seating capacity but it is flexible.
+	 */
+	private Integer seatingCapacity = 100;
+
+	/**
 	 * Creates a <code>Play</code> object
 	 * 
 	 * @param name
@@ -233,5 +240,25 @@ public class Play implements Serializable, Owned<Client>
 	{
 		this.startDate = startDate;
 	}
+	
+	/**
+	 * Gets the seating capacity.
+	 * 
+	 * @return an <code>Integer</code> of the current seating capacity.
+	 */
+	public Integer getSeatingCapacity()
+	{
+		return seatingCapacity;
+	}
 
+
+	/**
+	 * Sets the seating capacity.
+	 * 
+	 * @param seatingCapacity an <code>Integer</code> of the current seating capacity.
+	 */
+	public void setSeatingCapacity(Integer seatingCapacity)
+	{
+		this.seatingCapacity = seatingCapacity;
+	}
 }

@@ -100,7 +100,7 @@ public class TicketList
 				count++;
 			}
 		}
-		if (count >= Theater.instance().getSeatingCapacity())
+		if (count >= ticket.getPlay().getSeatingCapacity())
 		{
 			throw new NotEnoughSeatsAvailibleException();
 		}
