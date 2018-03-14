@@ -107,7 +107,7 @@ public class AddPlay implements Command<UI>
 						Date endDate = UI.getDateFromInput("Enter play's end date");;
 
 						// create new play object
-						play = new Play(name, client, startDate, endDate, price);
+						play = new Play(name, client, startDate, endDate, price, seatingCapacity);
 						
 						doneWithDates = true;
 					}

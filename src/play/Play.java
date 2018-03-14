@@ -110,7 +110,7 @@ public class Play implements Serializable, Owned<Client>
 	 * 
 	 * Currently there is no command to change the seating capacity but it is flexible.
 	 */
-	private Integer seatingCapacity = 100;
+	private Integer seatingCapacity;
 
 	/**
 	 * Creates a <code>Play</code> object
@@ -126,7 +126,7 @@ public class Play implements Serializable, Owned<Client>
 	 *            the <code>Date</code> object that holds the ending date.
 	 * @param regularTicketPrice the price of a non-discounted ticket.
 	 */
-	public Play(String name, Client client, Date startDate, Date endDate, Dollar regularTicketPrice)
+	public Play(String name, Client client, Date startDate, Date endDate, Dollar regularTicketPrice, int SeatingCapacity)
 	{
 
 		if (startDate.after(endDate))
@@ -138,6 +138,7 @@ public class Play implements Serializable, Owned<Client>
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.regularTicketPrice = regularTicketPrice;
+		this.seatingCapacity = seatingCapacity;
 	}
 
 	/**
