@@ -13,6 +13,7 @@ import play.Play;
 import theater.Theater;
 import ticket.AdvanceTicket;
 import ticket.Ticket;
+import ticket.TicketFactory;
 import userInterface.UI;
 
 public class SellAdvanceTicket implements Command<UI>
@@ -99,7 +100,7 @@ public class SellAdvanceTicket implements Command<UI>
 					play = theater.getPlay(dateOfShow);
 
 					// check that there is enough seats available
-					if (!theater.canSellTickets(qty, dateOfShow, play))
+					if (!theater.hasEnoughFreeSeats(qty, dateOfShow, play))
 					{
 						throw new NotEnoughSeatsAvailibleException();
 					}
@@ -108,7 +109,7 @@ public class SellAdvanceTicket implements Command<UI>
 					ArrayList<Ticket> tickets = new ArrayList<Ticket>();
 					for (int i = 0; i < qty; i++)
 					{
-						tickets.add(new AdvanceTicket(dateOfShow, play, customer, creditCard));
+						tickets.add(TicketFactory.make(TicketFactory.ADVANCE_TICKET, dateOfShow, play, customer, creditCard));
 					}
 
 					// sell tickets

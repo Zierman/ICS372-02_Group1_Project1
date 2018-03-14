@@ -378,7 +378,7 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 		UI.outputError(null, ticket.getPlay().getOwner().getName().toString());
 	}
 
-	public boolean canSellTickets(int qty, Date dateOfShow, Play play)
+	public boolean hasEnoughFreeSeats(int qty, Date dateOfShow, Play play)
 	{
 		int alreadySold = ticketList.countFor(dateOfShow);
 		return qty + alreadySold <= play.getSeatingCapacity();

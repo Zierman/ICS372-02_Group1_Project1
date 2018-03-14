@@ -53,7 +53,7 @@
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <realization id="7">    
-    <end type="SOURCE" refId="4"/>    
+    <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="1"/>  
   </realization>  
   <realization id="8">    
@@ -61,7 +61,7 @@
     <end type="TARGET" refId="1"/>  
   </realization>  
   <realization id="9">    
-    <end type="SOURCE" refId="5"/>    
+    <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="1"/>  
   </realization>  
   <realization id="10">    

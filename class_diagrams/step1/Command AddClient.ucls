@@ -53,17 +53,17 @@
     </display>  
   </class>  
   <dependency id="7">    
+    <bendpoint x="751" y="473"/>    
     <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="5"/>  
+    <end type="TARGET" refId="6"/>  
   </dependency>  
   <realization id="8">    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="4"/>  
   </realization>  
   <dependency id="9">    
-    <bendpoint x="751" y="473"/>    
     <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="6"/>  
+    <end type="TARGET" refId="5"/>  
   </dependency>  
   <association id="10">    
     <end type="SOURCE" refId="1" navigable="false" variant="ASSOCIATION">      

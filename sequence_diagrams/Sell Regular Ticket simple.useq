@@ -113,33 +113,33 @@
   </object>  
   <combined-fragment id="55" interaction-operator="LOOP">    
     <interaction-operand id="56" constraint="while: !done">      
-      <fragment refId="15"/>      
-      <fragment refId="57"/>      
-      <fragment refId="58"/>      
-      <fragment refId="59"/>      
       <fragment refId="19"/>      
       <fragment refId="7"/>      
+      <fragment refId="57"/>      
       <fragment refId="11"/>      
+      <fragment refId="58"/>      
       <fragment refId="21"/>      
-      <fragment refId="13"/>      
+      <fragment refId="59"/>      
       <fragment refId="60"/>      
+      <fragment refId="15"/>      
+      <fragment refId="13"/>      
       <fragment refId="61"/>      
       <fragment refId="62"/>      
       <fragment refId="27"/>      
       <fragment refId="63"/>    
     </interaction-operand>    
-    <combined-fragment id="61" interaction-operator="OPT">      
+    <combined-fragment id="60" interaction-operator="OPT">      
       <interaction-operand id="64" constraint="qty &lt; 1">        
         <fragment refId="65"/>      
       </interaction-operand>      
       <combined-fragment id="65" interaction-operator="BREAK">        
         <interaction-operand id="66" 
-          constraint="new OutOfBoundsException(&#xd;							&quot;number of tickets must be postitive&quot;)">          
+          constraint="new OutOfBoundsException(&#xd;       &quot;number of tickets must be postitive&quot;)">          
           <fragment refId="9"/>        
         </interaction-operand>      
       </combined-fragment>    
     </combined-fragment>    
-    <combined-fragment id="63" interaction-operator="OPT">      
+    <combined-fragment id="62" interaction-operator="OPT">      
       <interaction-operand id="67" constraint="!theater.canSellTickets(qty, dateOfShow)">        
         <fragment refId="68"/>      
       </interaction-operand>      
@@ -149,41 +149,42 @@
         </interaction-operand>      
       </combined-fragment>    
     </combined-fragment>    
-    <combined-fragment id="62" interaction-operator="LOOP">      
+    <combined-fragment id="61" interaction-operator="LOOP">      
       <interaction-operand id="70" constraint="for:i &lt; qty">        
         <fragment refId="25"/>        
         <fragment refId="23"/>      
       </interaction-operand>    
     </combined-fragment>    
-    <combined-fragment id="58" interaction-operator="NEG">      
+    <combined-fragment id="57" interaction-operator="NEG">      
       <interaction-operand id="71" constraint="NotEnoughSeatsAvailibleException e">        
-        <fragment refId="31"/>        
-        <fragment refId="29"/>      
+        <fragment refId="29"/>        
+        <fragment refId="31"/>      
       </interaction-operand>    
     </combined-fragment>    
     <combined-fragment id="59" interaction-operator="NEG">      
       <interaction-operand id="72" constraint="OutOfBoundsException e">        
-        <fragment refId="33"/>        
         <fragment refId="35"/>        
-        <fragment refId="37"/>      
+        <fragment refId="37"/>        
+        <fragment refId="33"/>      
       </interaction-operand>    
     </combined-fragment>    
-    <combined-fragment id="57" interaction-operator="NEG">      
+    <combined-fragment id="58" interaction-operator="NEG">      
       <interaction-operand id="73" constraint="NoPlayFoundException e">        
-        <fragment refId="41"/>        
-        <fragment refId="39"/>      
+        <fragment refId="39"/>        
+        <fragment refId="41"/>      
       </interaction-operand>    
     </combined-fragment>    
-    <combined-fragment id="60" interaction-operator="NEG">      
+    <combined-fragment id="63" interaction-operator="NEG">      
       <interaction-operand id="74" constraint="Exception e">        
-        <fragment refId="43"/>        
-        <fragment refId="45"/>      
+        <fragment refId="45"/>        
+        <fragment refId="43"/>      
       </interaction-operand>    
     </combined-fragment>  
   </combined-fragment>  
   <note id="75">    
     <position height="22" width="182" x="209" y="194"/>    
-    <text><![CDATA[Get number of tickets to sell]]>
+    <text><![CDATA[Get number of tickets to sell
+    ]]>
     </text>  
   </note>  
   <message id="3" operation="call(userInterface.UI):void" asynchronous="false">    

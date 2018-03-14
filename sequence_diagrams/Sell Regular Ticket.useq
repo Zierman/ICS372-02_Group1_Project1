@@ -312,40 +312,40 @@
   </combined-fragment>  
   <combined-fragment id="163" interaction-operator="LOOP">    
     <interaction-operand id="164" constraint="while: !done">      
-      <fragment refId="11"/>      
-      <fragment refId="165"/>      
-      <fragment refId="166"/>      
-      <fragment refId="167"/>      
-      <fragment refId="168"/>      
-      <fragment refId="7"/>      
-      <fragment refId="169"/>      
-      <fragment refId="170"/>      
-      <fragment refId="21"/>      
       <fragment refId="55"/>      
+      <fragment refId="165"/>      
+      <fragment refId="15"/>      
+      <fragment refId="7"/>      
+      <fragment refId="21"/>      
+      <fragment refId="166"/>      
+      <fragment refId="13"/>      
+      <fragment refId="167"/>      
+      <fragment refId="27"/>      
+      <fragment refId="168"/>      
+      <fragment refId="169"/>      
+      <fragment refId="19"/>      
+      <fragment refId="170"/>      
       <fragment refId="171"/>      
+      <fragment refId="11"/>      
       <fragment refId="172"/>      
       <fragment refId="173"/>      
       <fragment refId="174"/>      
       <fragment refId="175"/>      
       <fragment refId="176"/>      
-      <fragment refId="27"/>      
-      <fragment refId="13"/>      
-      <fragment refId="15"/>      
-      <fragment refId="19"/>      
       <fragment refId="177"/>    
     </interaction-operand>    
-    <combined-fragment id="172" interaction-operator="OPT">      
+    <combined-fragment id="167" interaction-operator="OPT">      
       <interaction-operand id="178" constraint="qty &lt; 1">        
         <fragment refId="179"/>      
       </interaction-operand>      
       <combined-fragment id="179" interaction-operator="BREAK">        
         <interaction-operand id="180" 
-          constraint="new OutOfBoundsException(&#xd;							&quot;number of tickets must be postitive&quot;)">          
+          constraint="new OutOfBoundsException(&#xd;       &quot;number of tickets must be postitive&quot;)">          
           <fragment refId="9"/>        
         </interaction-operand>      
       </combined-fragment>    
     </combined-fragment>    
-    <combined-fragment id="166" interaction-operator="OPT">      
+    <combined-fragment id="168" interaction-operator="OPT">      
       <interaction-operand id="181" constraint="!theater.canSellTickets(qty, dateOfShow)">        
         <fragment refId="182"/>      
       </interaction-operand>      
@@ -355,57 +355,57 @@
         </interaction-operand>      
       </combined-fragment>    
     </combined-fragment>    
-    <combined-fragment id="168" interaction-operator="LOOP">      
+    <combined-fragment id="173" interaction-operator="LOOP">      
       <interaction-operand id="184" constraint="for:i &lt; qty">        
-        <fragment refId="23"/>        
-        <fragment refId="25"/>      
+        <fragment refId="25"/>        
+        <fragment refId="23"/>      
       </interaction-operand>    
     </combined-fragment>    
-    <combined-fragment id="177" interaction-operator="NEG">      
+    <combined-fragment id="165" interaction-operator="NEG">      
       <interaction-operand id="185" constraint="NotEnoughSeatsAvailibleException e">        
         <fragment refId="31"/>        
         <fragment refId="29"/>      
       </interaction-operand>    
     </combined-fragment>    
-    <combined-fragment id="169" interaction-operator="NEG">      
+    <combined-fragment id="171" interaction-operator="NEG">      
       <interaction-operand id="186" constraint="OutOfBoundsException e">        
+        <fragment refId="33"/>        
         <fragment refId="37"/>        
-        <fragment refId="35"/>        
-        <fragment refId="33"/>      
+        <fragment refId="35"/>      
       </interaction-operand>    
     </combined-fragment>    
-    <combined-fragment id="167" interaction-operator="NEG">      
+    <combined-fragment id="166" interaction-operator="NEG">      
       <interaction-operand id="187" constraint="NoPlayFoundException e">        
         <fragment refId="41"/>        
         <fragment refId="39"/>      
       </interaction-operand>    
     </combined-fragment>    
-    <combined-fragment id="175" interaction-operator="NEG">      
+    <combined-fragment id="177" interaction-operator="NEG">      
       <interaction-operand id="188" constraint="Exception e">        
-        <fragment refId="43"/>        
-        <fragment refId="45"/>      
+        <fragment refId="45"/>        
+        <fragment refId="43"/>      
       </interaction-operand>    
     </combined-fragment>    
-    <combined-fragment id="176" interaction-operator="LOOP">      
+    <combined-fragment id="172" interaction-operator="LOOP">      
       <interaction-operand id="189" constraint="while: !done">        
         <fragment refId="190"/>        
         <fragment refId="49"/>      
       </interaction-operand>      
       <combined-fragment id="190" interaction-operator="NEG">        
         <interaction-operand id="191" constraint="NumberFormatException e">          
-          <fragment refId="51"/>          
-          <fragment refId="53"/>        
+          <fragment refId="53"/>          
+          <fragment refId="51"/>        
         </interaction-operand>      
       </combined-fragment>    
     </combined-fragment>    
-    <combined-fragment id="170" interaction-operator="LOOP">      
+    <combined-fragment id="174" interaction-operator="LOOP">      
       <interaction-operand id="192" constraint="while: !done">        
-        <fragment refId="57"/>        
         <fragment refId="193"/>        
+        <fragment refId="57"/>        
         <fragment refId="194"/>        
         <fragment refId="195"/>      
       </interaction-operand>      
-      <combined-fragment id="195" interaction-operator="LOOP">        
+      <combined-fragment id="193" interaction-operator="LOOP">        
         <interaction-operand id="196" constraint="for: theater.getCustomerList()">          
           <fragment refId="197"/>        
         </interaction-operand>        
@@ -420,7 +420,7 @@
           </combined-fragment>        
         </combined-fragment>      
       </combined-fragment>      
-      <combined-fragment id="193" interaction-operator="OPT">        
+      <combined-fragment id="194" interaction-operator="OPT">        
         <interaction-operand id="201" constraint="customer == null">          
           <fragment refId="202"/>        
         </interaction-operand>        
@@ -430,21 +430,21 @@
           </interaction-operand>        
         </combined-fragment>      
       </combined-fragment>      
-      <combined-fragment id="194" interaction-operator="NEG">        
+      <combined-fragment id="195" interaction-operator="NEG">        
         <interaction-operand id="204" constraint="NoKeyTokenFoundException e">          
           <fragment refId="65"/>          
           <fragment refId="63"/>        
         </interaction-operand>      
       </combined-fragment>    
     </combined-fragment>    
-    <combined-fragment id="171" interaction-operator="LOOP">      
+    <combined-fragment id="175" interaction-operator="LOOP">      
       <interaction-operand id="205" constraint="while: !done">        
         <fragment refId="67"/>        
-        <fragment refId="206"/>        
         <fragment refId="69"/>        
+        <fragment refId="206"/>        
         <fragment refId="207"/>      
       </interaction-operand>      
-      <combined-fragment id="206" interaction-operator="OPT">        
+      <combined-fragment id="207" interaction-operator="OPT">        
         <interaction-operand id="208" constraint="card == null">          
           <fragment refId="209"/>        
         </interaction-operand>        
@@ -454,20 +454,20 @@
           </interaction-operand>        
         </combined-fragment>      
       </combined-fragment>      
-      <combined-fragment id="207" interaction-operator="NEG">        
+      <combined-fragment id="206" interaction-operator="NEG">        
         <interaction-operand id="211" constraint="NoCardFoundException e">          
-          <fragment refId="77"/>          
           <fragment refId="73"/>          
+          <fragment refId="77"/>          
           <fragment refId="75"/>        
         </interaction-operand>      
       </combined-fragment>    
     </combined-fragment>    
-    <combined-fragment id="173" interaction-operator="LOOP">      
+    <combined-fragment id="169" interaction-operator="LOOP">      
       <interaction-operand id="212" constraint="while: !done">        
-        <fragment refId="81"/>        
         <fragment refId="213"/>        
         <fragment refId="83"/>        
-        <fragment refId="79"/>      
+        <fragment refId="79"/>        
+        <fragment refId="81"/>      
       </interaction-operand>      
       <combined-fragment id="213" interaction-operator="NEG">        
         <interaction-operand id="214" constraint="ParseException e">          
@@ -476,7 +476,7 @@
         </interaction-operand>      
       </combined-fragment>    
     </combined-fragment>    
-    <combined-fragment id="174" interaction-operator="OPT">      
+    <combined-fragment id="170" interaction-operator="OPT">      
       <interaction-operand id="215" constraint="play == null">        
         <fragment refId="216"/>      
       </interaction-operand>      
@@ -486,19 +486,19 @@
         </interaction-operand>      
       </combined-fragment>    
     </combined-fragment>    
-    <combined-fragment id="165" interaction-operator="LOOP">      
+    <combined-fragment id="176" interaction-operator="LOOP">      
       <interaction-operand id="218" constraint="for: tickets">        
-        <fragment refId="120"/>        
         <fragment refId="116"/>        
-        <fragment refId="102"/>        
         <fragment refId="110"/>        
+        <fragment refId="100"/>        
         <fragment refId="114"/>        
         <fragment refId="112"/>        
-        <fragment refId="100"/>        
-        <fragment refId="108"/>        
-        <fragment refId="104"/>        
         <fragment refId="118"/>        
-        <fragment refId="106"/>      
+        <fragment refId="106"/>        
+        <fragment refId="108"/>        
+        <fragment refId="102"/>        
+        <fragment refId="120"/>        
+        <fragment refId="104"/>      
       </interaction-operand>    
     </combined-fragment>  
   </combined-fragment>  
@@ -700,7 +700,7 @@
     <end type="SOURCE" refId="101"/>    
     <end type="TARGET" refId="111"/>  
   </message>  
-  <message id="112" operation="getBalanceDue():currency.Dollar" asynchronous="false">    
+  <message id="112" asynchronous="false">    
     <end type="SOURCE" refId="101"/>    
     <end type="TARGET" refId="113"/>  
   </message>  
@@ -712,11 +712,11 @@
     <end type="SOURCE" refId="101"/>    
     <end type="TARGET" refId="117"/>  
   </message>  
-  <message id="118" operation="addTogether(currency.Dollar):currency.Dollar" asynchronous="false">    
+  <message id="118" asynchronous="false">    
     <end type="SOURCE" refId="101"/>    
     <end type="TARGET" refId="119"/>  
   </message>  
-  <message id="120" operation="setBalanceDue(currency.Dollar):void" asynchronous="false">    
+  <message id="120" asynchronous="false">    
     <end type="SOURCE" refId="101"/>    
     <end type="TARGET" refId="121"/>  
   </message>

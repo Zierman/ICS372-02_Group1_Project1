@@ -98,7 +98,7 @@ public class SellStudentAdvanceTicket implements Command<UI>
 					play = theater.getPlay(dateOfShow);
 
 					// check that there is enough seats available
-					if (!theater.canSellTickets(qty, dateOfShow, play))
+					if (!theater.hasEnoughFreeSeats(qty, dateOfShow, play))
 					{
 						throw new NotEnoughSeatsAvailibleException();
 					}
