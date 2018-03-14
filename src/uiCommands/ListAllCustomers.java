@@ -96,7 +96,7 @@ public class ListAllCustomers implements Command<UI>
 							output += "Ticket Serial Number: " + ticket.getSerialNumber();
 							output += "\n Ticket Type: " + ticket.getTypeOfTicket();
 							output += "\n Play the ticket is for: " + ticket.getPlay().getName();
-							output += "\n Date of showing: " + ticket.getDateOfShow(); 
+							output += "\n Date of showing: " + UI.format(ticket.getDateOfShow()); 
 							output += "\n Credit card used to buy: " + ticket.getCreditCard();
 							output += "\n\n";
 						}

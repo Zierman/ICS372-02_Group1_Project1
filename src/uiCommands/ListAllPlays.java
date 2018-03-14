@@ -1,5 +1,7 @@
 package uiCommands;
 
+import java.text.SimpleDateFormat;
+
 import play.Play;
 import play.PlayList;
 import theater.Theater;
@@ -85,8 +87,8 @@ public class ListAllPlays implements Command<UI>
 				{
 					found = true;
 					output += "name: " + play.getName() + ",\n";
-					output += "start date: " + play.getStartDate() + ",\n";
-					output += "end date: " + play.getEndDate() + ",\n";
+					output += "start date: " + UI.format(play.getStartDate()) + ",\n";
+					output += "end date: " + UI.format(play.getEndDate()) + ",\n";
 					output += "client : " + play.getOwner().getName() + " ("
 							+ play.getOwner().getID() + ")\n";
 					output += "regular ticket price: " + play.getRegularTicketPrice()  + "\n";
