@@ -266,6 +266,7 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		for(Customer c : tmp)
 		{
 			instance().add(c);
+			c.getID().setKey(c.getID());
 		}
 	}
 

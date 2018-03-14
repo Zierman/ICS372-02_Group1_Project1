@@ -373,15 +373,20 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 		
 		// client that performs the play gets half the price of the ticket
 		Dollar newTotal = ticket.getPlay().getOwner().getBalanceDue().addTogether(ticket.getPriceOfTicket().half());
-		UI.outputError(new Exception(), newTotal.toString());
 		ticket.getPlay().getOwner().setBalanceDue(newTotal);
-		UI.outputError(null, ticket.getPlay().getOwner().getName().toString());
 	}
 
 	public boolean hasEnoughFreeSeats(int qty, Date dateOfShow, Play play)
 	{
-		int alreadySold = ticketList.countFor(dateOfShow);
-		return qty + alreadySold <= play.getSeatingCapacity();
+		try
+		{
+			int alreadySold = ticketList.countFor(dateOfShow);
+			return qty + alreadySold <= play.getSeatingCapacity();
+		}
+		catch (Exception e) 
+		{
+			return false;
+		}
 		
 	}
 

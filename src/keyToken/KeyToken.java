@@ -87,6 +87,12 @@ public abstract class KeyToken <Type, Key extends Comparable<Key> > implements S
 	public void setKeyValue(Key keyValue)
 	{
 		this.keyValue = keyValue;
+
+		
+		if(this.keyValue.compareTo(getLastValue()) > 0)
+		{
+			setLastValue(this.keyValue);
+		}
 	}
 	
 	/**
@@ -103,7 +109,7 @@ public abstract class KeyToken <Type, Key extends Comparable<Key> > implements S
 	{
 		this.keyValue = key;
 		
-		if(this.keyValue.compareTo(getLastValue()) < 0)
+		if(this.keyValue.compareTo(getLastValue()) > 0)
 		{
 			setLastValue(this.keyValue);
 		}
