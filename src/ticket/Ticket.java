@@ -12,6 +12,8 @@ import keyToken.KeyToken;
 import keyToken.Keyed;
 import ownership.Owned;
 import play.Play;
+import visitor.Visitable;
+import visitor.Visitor;
 
 /**
  * Tickets are objects grant entry to a play.
@@ -20,7 +22,7 @@ import play.Play;
  *
  */
 public abstract class Ticket
-		implements Keyed<Long>, Owned<Customer>, Serializable
+		implements Keyed<Long>, Owned<Customer>, Serializable, Visitable
 {
 	/**
 	 * Holds a serial number assosiated with the ticket.
@@ -523,6 +525,12 @@ public abstract class Ticket
 		this.creditCard = creditCard;
 	}
 
-	
+
+
+	@Override
+	public void accept(Visitor visitor)
+	{
+		visitor.visit(this);
+	}
 
 }

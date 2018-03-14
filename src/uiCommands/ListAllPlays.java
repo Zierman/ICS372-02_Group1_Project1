@@ -86,14 +86,16 @@ public class ListAllPlays implements Command<UI>
 				for (Play play : playList)
 				{
 					found = true;
-					output += "name: " + play.getName() + ",\n";
-					output += "start date: " + UI.format(play.getStartDate()) + ",\n";
-					output += "end date: " + UI.format(play.getEndDate()) + ",\n";
-					output += "client : " + play.getOwner().getName() + " ("
-							+ play.getOwner().getID() + ")\n";
-					output += "regular ticket price: " + play.getRegularTicketPrice()  + "\n";
-					output += "seating capacity: " + play.getSeatingCapacity() + "\n";
-					output += "\n";
+					ui.standardFormat.visit(play);
+					output += ui.standardFormat;
+//					output += "name: " + play.getName() + ",\n";
+//					output += "start date: " + UI.format(play.getStartDate()) + ",\n";
+//					output += "end date: " + UI.format(play.getEndDate()) + ",\n";
+//					output += "client : " + play.getOwner().getName() + " ("
+//							+ play.getOwner().getID() + ")\n";
+//					output += "regular ticket price: " + play.getRegularTicketPrice()  + "\n";
+//					output += "seating capacity: " + play.getSeatingCapacity() + "\n";
+//					output += "\n";
 				}
 
 				if (!found)

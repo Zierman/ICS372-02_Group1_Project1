@@ -41,6 +41,7 @@ import uiCommands.SellAdvanceTicket;
 import uiCommands.SellRegularTicket;
 import uiCommands.SellStudentAdvanceTicket;
 import uiCommands.StoreData;
+import visitor.StandardFormat;
 
 /**
  * A user interface that is responsible for handling interactions between the
@@ -770,4 +771,5 @@ public class UI implements ReadResolveable<UI>, Closeable
 		instance().dataCommandWasUsed = true;
 	}
 
+	public StandardFormat standardFormat = new StandardFormat();
 }

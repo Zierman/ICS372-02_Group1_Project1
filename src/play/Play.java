@@ -7,6 +7,8 @@ import java.util.Date;
 import client.Client;
 import currency.Dollar;
 import ownership.Owned;
+import visitor.Visitable;
+import visitor.Visitor;
 
 /**
  * A play that is performed in a theater by a client for customers.
@@ -14,7 +16,7 @@ import ownership.Owned;
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
-public class Play implements Serializable, Owned<Client>
+public class Play implements Serializable, Owned<Client>, Visitable
 {
 	/**
 	 * Play name
@@ -261,5 +263,13 @@ public class Play implements Serializable, Owned<Client>
 	public void setSeatingCapacity(Integer seatingCapacity)
 	{
 		this.seatingCapacity = seatingCapacity;
+	}
+	
+
+
+	@Override
+	public void accept(Visitor visitor)
+	{
+		visitor.visit(this);
 	}
 }

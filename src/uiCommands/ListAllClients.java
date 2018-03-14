@@ -80,11 +80,8 @@ public class ListAllClients implements Command<UI>
 				for (Client client : clientList)
 				{
 					found = true;
-					output += "id: " + client.getID() + ",\n" + "name: "
-							+ client.getName() + ",\n" + "balance due: "
-							+ client.getBalanceDue() + ",\n" + "address: "
-							+ client.getAddress() + ",\n" + "phone number: "
-							+ client.getPhoneNumber() + "\n" + "\n";
+					ui.standardFormat.visit(client);
+					output += ui.standardFormat;
 				}
 
 				if (!found)

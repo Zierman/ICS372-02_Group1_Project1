@@ -17,6 +17,8 @@ import phoneNumber.PhoneNumber;
 import storage.FileIO;
 import storage.Savable;
 import ticket.Ticket;
+import visitor.Visitable;
+import visitor.Visitor;
 import ownership.Owned;
 
 /**
@@ -24,14 +26,14 @@ import ownership.Owned;
  * @author Troy Novak [wh1617wd@metrostate.edu]
  *
  */
-public class Customer implements Serializable, Keyed<Long>
+public class Customer implements Serializable, Keyed<Long>, Visitable
 {
 	/**
 	 * subclass used to create individual objects for customer's credit cards
 	 * @author Troy Novak [wh1617wd@metrostate.edu]
 	 * 
 	 */
-	public class CreditCard implements Owned<Customer>,Serializable,Matchable<String>{
+	public class CreditCard implements Owned<Customer>,Serializable,Matchable<String>,Visitable{
 		
 		/**
 		 * Serialization version.
@@ -117,6 +119,13 @@ public class Customer implements Serializable, Keyed<Long>
 		public boolean matches(String valueToMatch)
 		{
 			return this.cardNumber.equals(valueToMatch);
+		}
+
+
+		@Override
+		public void accept(Visitor visitor)
+		{
+			visitor.visit(this);
 		}
 	}
 	
@@ -432,5 +441,13 @@ public class Customer implements Serializable, Keyed<Long>
 	 */
 	public void setPhoneNum(String phoneNum){
 		this.phoneNumber.setNumber(phoneNum);
+	}
+	
+
+
+	@Override
+	public void accept(Visitor visitor)
+	{
+		visitor.visit(this);
 	}
 }

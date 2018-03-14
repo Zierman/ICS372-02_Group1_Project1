@@ -8,6 +8,8 @@ import keyToken.KeyToken;
 import keyToken.Keyed;
 import keyToken.Matchable;
 import phoneNumber.PhoneNumber;
+import visitor.Visitable;
+import visitor.Visitor;
 
 /**
  * Represents a Client who performs plays at the theater.
@@ -15,7 +17,7 @@ import phoneNumber.PhoneNumber;
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
-public class Client implements Serializable, Keyed<Long>
+public class Client implements Serializable, Keyed<Long>, Visitable
 {
 	/**
 	 * Represents the client id
@@ -320,5 +322,11 @@ public class Client implements Serializable, Keyed<Long>
 	public void setPhoneNumber(String phoneNumber)
 	{
 		this.phoneNumber.setNumber(phoneNumber);
+	}
+
+	@Override
+	public void accept(Visitor visitor)
+	{
+		visitor.visit(this);
 	}
 }

@@ -80,27 +80,29 @@ public class ListAllCustomers implements Command<UI>
 				String output = "";
 				for(Customer customer : customerList){
 					found = true;
-					output += "ID: " + customer.getID() + "\nName: "
-							+ customer.getName() + "\nAddress: " 
-							+ customer.getAddress() + "\nPhone Number: "
-							+ customer.getPhoneNumber() + "\n\n";
-					LinkedList<CreditCard> cardList = customer.getCardList();
-					for(CreditCard creditCard : cardList){
-						output += "Card Number: " + creditCard.getCardNumber()
-								+ "\nCard Expiration: " + creditCard.getCardExpiration()
-								+ "\n\n";
-					}
-					for(Ticket ticket : theater.getTicketList())
-					{
-						if(ticket.getOwner().matches(customer.getKey())) {
-							output += "Ticket Serial Number: " + ticket.getSerialNumber();
-							output += "\n Ticket Type: " + ticket.getTypeOfTicket();
-							output += "\n Play the ticket is for: " + ticket.getPlay().getName();
-							output += "\n Date of showing: " + UI.format(ticket.getDateOfShow()); 
-							output += "\n Credit card used to buy: " + ticket.getCreditCard();
-							output += "\n\n";
-						}
-					}
+					ui.standardFormat.visit(customer);
+					output += ui.standardFormat;
+//					output += "ID: " + customer.getID() + "\nName: "
+//							+ customer.getName() + "\nAddress: " 
+//							+ customer.getAddress() + "\nPhone Number: "
+//							+ customer.getPhoneNumber() + "\n\n";
+//					LinkedList<CreditCard> cardList = customer.getCardList();
+//					for(CreditCard creditCard : cardList){
+//						output += "Card Number: " + creditCard.getCardNumber()
+//								+ "\nCard Expiration: " + creditCard.getCardExpiration()
+//								+ "\n\n";
+//					}
+//					for(Ticket ticket : theater.getTicketList())
+//					{
+//						if(ticket.getOwner().matches(customer.getKey())) {
+//							output += "Ticket Serial Number: " + ticket.getSerialNumber();
+//							output += "\n Ticket Type: " + ticket.getTypeOfTicket();
+//							output += "\n Play the ticket is for: " + ticket.getPlay().getName();
+//							output += "\n Date of showing: " + UI.format(ticket.getDateOfShow()); 
+//							output += "\n Credit card used to buy: " + ticket.getCreditCard();
+//							output += "\n\n";
+//						}
+//					}
 				}
 				if(!found){
 					UI.println("No customers found.");
