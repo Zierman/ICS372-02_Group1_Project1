@@ -194,6 +194,15 @@ public class Client implements Serializable, Keyed<Long>, Visitable
 		balanceDue = new Dollar(0.0);
 	}
 
+	/* (non-Javadoc)
+	 * @see visitor.Visitable#accept(visitor.Visitor)
+	 */
+	@Override
+	public void accept(Visitor visitor)
+	{
+		visitor.visit(this);
+	}
+
 	/**
 	 * Gets the client's address.
 	 * 
@@ -325,14 +334,5 @@ public class Client implements Serializable, Keyed<Long>, Visitable
 	public void setPhoneNumber(String phoneNumber)
 	{
 		this.phoneNumber.setNumber(phoneNumber);
-	}
-
-	/* (non-Javadoc)
-	 * @see visitor.Visitable#accept(visitor.Visitor)
-	 */
-	@Override
-	public void accept(Visitor visitor)
-	{
-		visitor.visit(this);
 	}
 }

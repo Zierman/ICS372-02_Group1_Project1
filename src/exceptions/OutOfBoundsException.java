@@ -6,17 +6,17 @@ package exceptions;
  */
 public class OutOfBoundsException extends Exception
 {
+	/**
+	 * Serial Version
+	 */
+	private static final long serialVersionUID = 1L;
+
 	String message = null;
 
 	public OutOfBoundsException(String message)
 	{
 		this.message = message;
 	}
-
-	/**
-	 * Serial Version
-	 */
-	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @return the message

@@ -87,16 +87,6 @@ public class UI implements ReadResolveable<UI>, Closeable
 	protected static final SimpleDateFormat DATE_FORMAT_MDY = new SimpleDateFormat("MM/dd/yyyy");
 	protected static final SimpleDateFormat DATE_FORMAT_CREDIT_CARD_EXP = new SimpleDateFormat("MM/yy");
 	
-	public static String format(Date date)
-	{
-		return DATE_FORMAT_MDY.format(date);
-	}
-	
-	public static String formatCreditCardExp(Date date)
-	{
-		return DATE_FORMAT_CREDIT_CARD_EXP.format(date);
-	}
-
 	/**
 	 * The first number in shown in the command list. All commands will be shown
 	 * regardless.
@@ -105,36 +95,15 @@ public class UI implements ReadResolveable<UI>, Closeable
 															// to start at 1
 															// instead of 0
 															// enter 1.
-
-	/**
-	 * Gets the first number to be shown in the list of commands.
-	 * 
-	 * @return the first number of the command list
-	 */
-	public static int getCommandListFirstNumber()
+	
+	public static String format(Date date)
 	{
-		return COMMAND_LIST_FIRST_NUMBER;
+		return DATE_FORMAT_MDY.format(date);
 	}
 
-	/**
-	 * Gets input from the user
-	 * 
-	 * @param userPrompt
-	 *            a string that is to be displayed to the user before getting
-	 *            input.
-	 * @return the string that was input from the user.
-	 */
-	public static String getInput(String userPrompt)
+	public static String formatCreditCardExp(Date date)
 	{
-		String input = "";
-
-		System.out.print(userPrompt);
-		while (input == "" && scanner.hasNextLine())
-		{
-			input += scanner.nextLine();
-		}
-		return input;
-
+		return DATE_FORMAT_CREDIT_CARD_EXP.format(date);
 	}
 
 	public static Client getClientFromInputID() throws Exception
@@ -169,6 +138,53 @@ public class UI implements ReadResolveable<UI>, Closeable
 			}
 		}
 		return client;
+	}
+
+	/**
+	 * Gets the first number to be shown in the list of commands.
+	 * 
+	 * @return the first number of the command list
+	 */
+	public static int getCommandListFirstNumber()
+	{
+		return COMMAND_LIST_FIRST_NUMBER;
+	}
+
+	public static CreditCard getCreditCardFromInput(Customer customer)
+			throws NoCardFoundException
+	{
+		CreditCard card = null;
+		boolean done = false;
+
+		while (!done)
+		{
+
+			try
+			{
+				String cardNumber = UI.getInput("Enter credit card number");
+				card = customer.findCreditCard(cardNumber);
+
+				done = true;
+			}
+			catch (NoCardFoundException e)
+			{
+				// show error message
+				UI.outputError(e, "No matching credit card found owned by "
+						+ customer.getName() + ".");
+
+				// ask if user wants to continue and end if the user
+				// answers no
+				done = !UI.tryAgainCheck();
+
+				if (done)
+				{
+					throw e;
+				}
+			}
+		}
+
+		return card;
+
 	}
 
 	public static Customer getCustomerFromInputID() throws Exception
@@ -237,27 +253,24 @@ public class UI implements ReadResolveable<UI>, Closeable
 		return date;
 	}
 
-	public static CreditCard getCreditCardFromInput(Customer customer)
-			throws NoCardFoundException
+	public static Dollar getDollarFromInput(String prompt)
 	{
-		CreditCard card = null;
+		Dollar dollar = null;
+		// sets regular ticket price from user input
 		boolean done = false;
-
 		while (!done)
 		{
-
 			try
 			{
-				String cardNumber = UI.getInput("Enter credit card number");
-				card = customer.findCreditCard(cardNumber);
-
+				String inputStr = UI.getInput(prompt + ": $");
+				dollar = new Dollar(Double.parseDouble(inputStr));
 				done = true;
 			}
-			catch (NoCardFoundException e)
+			catch (NumberFormatException e)
 			{
 				// show error message
-				UI.outputError(e, "No matching credit card found owned by "
-						+ customer.getName() + ".");
+				UI.outputError(e,
+						"Input could not be parsed to Dollar due to invalid number format.");
 
 				// ask if user wants to continue and end if the user
 				// answers no
@@ -269,8 +282,27 @@ public class UI implements ReadResolveable<UI>, Closeable
 				}
 			}
 		}
+		return dollar;
+	}
 
-		return card;
+	/**
+	 * Gets input from the user
+	 * 
+	 * @param userPrompt
+	 *            a string that is to be displayed to the user before getting
+	 *            input.
+	 * @return the string that was input from the user.
+	 */
+	public static String getInput(String userPrompt)
+	{
+		String input = "";
+
+		System.out.print(userPrompt);
+		while (input == "" && scanner.hasNextLine())
+		{
+			input += scanner.nextLine();
+		}
+		return input;
 
 	}
 
@@ -334,38 +366,6 @@ public class UI implements ReadResolveable<UI>, Closeable
 			}
 		}
 		return number;
-	}
-
-	public static Dollar getDollarFromInput(String prompt)
-	{
-		Dollar dollar = null;
-		// sets regular ticket price from user input
-		boolean done = false;
-		while (!done)
-		{
-			try
-			{
-				String inputStr = UI.getInput(prompt + ": $");
-				dollar = new Dollar(Double.parseDouble(inputStr));
-				done = true;
-			}
-			catch (NumberFormatException e)
-			{
-				// show error message
-				UI.outputError(e,
-						"Input could not be parsed to Dollar due to invalid number format.");
-
-				// ask if user wants to continue and end if the user
-				// answers no
-				done = !UI.tryAgainCheck();
-
-				if (done)
-				{
-					throw e;
-				}
-			}
-		}
-		return dollar;
 	}
 
 	/**
@@ -624,6 +624,11 @@ public class UI implements ReadResolveable<UI>, Closeable
 	private boolean dataCommandWasUsed = false;
 
 	/**
+	 * A visitor that enables easy standard formating of all object types that need to be output in the "ListAll______" commands
+	 */
+	 private StandardFormat standardFormat = new StandardFormat();
+
+	/**
 	 * Constructs a <code>UI</code> used when creating a subtype singleton
 	 * 
 	 * @throws Exception
@@ -681,6 +686,14 @@ public class UI implements ReadResolveable<UI>, Closeable
 	}
 
 	/**
+	 * @return the standardFormat
+	 */
+	public StandardFormat getStandardFormat()
+	{
+		return standardFormat;
+	}
+
+	/**
 	 * Gets the theater.
 	 * 
 	 * @return the <code>Theater</code> instance
@@ -719,19 +732,6 @@ public class UI implements ReadResolveable<UI>, Closeable
 	{
 		instance().dataCommandWasUsed = true;
 	}
-
-	/**
-	 * @return the standardFormat
-	 */
-	public StandardFormat getStandardFormat()
-	{
-		return standardFormat;
-	}
-
-	/**
-	 * A visitor that enables easy standard formating of all object types that need to be output in the "ListAll______" commands
-	 */
-	 private StandardFormat standardFormat = new StandardFormat();
 	
 	
 }

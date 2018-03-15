@@ -337,6 +337,19 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 	}
 
 	/* (non-Javadoc)
+	 * @see storage.Resetable#reset()
+	 */
+	@Override
+	public void reset()
+	{
+		clear();
+		singleton = null;
+		instance();
+		
+	}
+
+
+	/* (non-Javadoc)
 	 * @see java.util.List#retainAll(java.util.Collection)
 	 */
 	@Override
@@ -344,7 +357,6 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 	{
 		return instance().customers.retainAll(collection);
 	}
-
 
 	/* (non-Javadoc)
 	 * @see storage.Savable#save()
@@ -413,18 +425,6 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 	public <T> T[] toArray(T[] arg0)
 	{
 		return instance().customers.toArray(arg0);
-	}
-
-	/* (non-Javadoc)
-	 * @see storage.Resetable#reset()
-	 */
-	@Override
-	public void reset()
-	{
-		clear();
-		singleton = null;
-		instance();
-		
 	}
 
 }

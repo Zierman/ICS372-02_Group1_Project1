@@ -62,6 +62,15 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 			this.owner = owner;
 		}
 		
+		/* (non-Javadoc)
+		 * @see visitor.Visitable#accept(visitor.Visitor)
+		 */
+		@Override
+		public void accept(Visitor visitor)
+		{
+			visitor.visit(this);
+		}
+		
 		/**
 		 * returns this instance's cardExpiration
 		 * @return cardExpiration
@@ -86,7 +95,16 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 		{
 			return owner;
 		}
-		
+
+		/* (non-Javadoc)
+		 * @see keyToken.Matchable#matches(java.lang.Object)
+		 */
+		@Override
+		public boolean matches(String valueToMatch)
+		{
+			return this.cardNumber.equals(valueToMatch);
+		}
+
 		/**
 		 * sets this instance's cardExpiration
 		 * @param newCardExpiration the new card expiration date
@@ -103,6 +121,7 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 			this.cardNumber = newCardNumber;
 		}
 
+
 		/* (non-Javadoc)
 		 * @see ownership.Owned#setOwner(java.lang.Object)
 		 */
@@ -111,25 +130,6 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 		{
 			this.owner = owner;
 			
-		}
-
-		/* (non-Javadoc)
-		 * @see keyToken.Matchable#matches(java.lang.Object)
-		 */
-		@Override
-		public boolean matches(String valueToMatch)
-		{
-			return this.cardNumber.equals(valueToMatch);
-		}
-
-
-		/* (non-Javadoc)
-		 * @see visitor.Visitable#accept(visitor.Visitor)
-		 */
-		@Override
-		public void accept(Visitor visitor)
-		{
-			visitor.visit(this);
 		}
 		
 		/* (non-Javadoc)
@@ -292,6 +292,15 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 	
 	
 	
+	/* (non-Javadoc)
+	 * @see visitor.Visitable#accept(visitor.Visitor)
+	 */
+	@Override
+	public void accept(Visitor visitor)
+	{
+		visitor.visit(this);
+	}
+	
 	/**
 	 * adds a new card to cardList as long as that card doesn't already exist
 	 * within cardList 
@@ -331,6 +340,33 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 	}
 	
 	/**
+	 * @param customer
+	 * @param card
+	 * @return
+	 * @throws NoCardFoundException
+	 */
+	public CreditCard findCreditCard(String cardNumber)
+			throws NoCardFoundException
+	{
+		CreditCard card = null;
+		Customer customer = this;
+		List<CreditCard> list = customer.getCardList();
+	
+		for (CreditCard c : list)
+		{
+			if (c.matches(cardNumber))
+			{
+				card = c;
+			}
+		}
+		if (card == null)
+		{
+			throw new NoCardFoundException();
+		}
+		return card;
+	}
+	
+	/**
 	 * returns this instance's address
 	 * @return address
 	 */
@@ -365,6 +401,7 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 		return this.id.getKeyValue();
 	}
 	
+	
 	/**
 	 * returns this instance's name
 	 * @return name
@@ -372,7 +409,7 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 	public Name getName(){
 		return this.name;
 	}
-	
+
 	/**
 	 * returns this instance's phoneNumber
 	 * @return phoneNumber
@@ -380,7 +417,6 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 	public PhoneNumber getPhoneNumber(){
 		return this.phoneNumber;
 	}
-	
 	
 	/* (non-Javadoc)
 	 * @see keyToken.Keyed#matches(java.lang.Object)
@@ -390,7 +426,7 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 	{
 		return getID().matches(key);
 	}
-
+	
 	/**
 	 * removes a card from cardList as long as that card exists within cardList
 	 * @param cardNum The credit card number
@@ -411,7 +447,7 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 			throw new NoCardFoundException();
 		}
 	}
-	
+
 	/**
 	 * sets this instance's address
 	 * @param custAddress customer's street address
@@ -419,7 +455,7 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 	public void setAddress(String custAddress){
 		this.address.setAddress(custAddress);
 	}
-	
+
 	/**
 	 * sets this instance's id
 	 * @param custID the identification of the customer
@@ -440,6 +476,8 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 		this.id.setValue(key);
 
 	}
+	
+
 
 	/**
 	 * sets this instance's name
@@ -449,52 +487,14 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 		this.name.setName(custName);
 	}
 
+
+
 	/**
 	 * sets this instance's phoneNumber
 	 * @param phoneNum The phone number of the customer
 	 */
 	public void setPhoneNum(String phoneNum){
 		this.phoneNumber.setNumber(phoneNum);
-	}
-	
-
-
-	/* (non-Javadoc)
-	 * @see visitor.Visitable#accept(visitor.Visitor)
-	 */
-	@Override
-	public void accept(Visitor visitor)
-	{
-		visitor.visit(this);
-	}
-
-
-
-	/**
-	 * @param customer
-	 * @param card
-	 * @return
-	 * @throws NoCardFoundException
-	 */
-	public CreditCard findCreditCard(String cardNumber)
-			throws NoCardFoundException
-	{
-		CreditCard card = null;
-		Customer customer = this;
-		List<CreditCard> list = customer.getCardList();
-	
-		for (CreditCard c : list)
-		{
-			if (c.matches(cardNumber))
-			{
-				card = c;
-			}
-		}
-		if (card == null)
-		{
-			throw new NoCardFoundException();
-		}
-		return card;
 	}
 	
 	

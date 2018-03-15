@@ -57,22 +57,22 @@ public abstract class KeyToken <KeyedType, KeyType extends Comparable<KeyType> >
 	
 	/**
 	 * Checks if a key value matches this key value
-	 * @param value a key value
-	 * @return true if they match, else false
-	 */
-	public boolean matches(KeyType value)
-	{
-		return this.keyValue.equals(value);
-	}
-	
-	/**
-	 * Checks if a key value matches this key value
 	 * @param key a key value
 	 * @return true if they match, else false
 	 */
 	public boolean matches(KeyToken<KeyedType, KeyType> key)
 	{
 		return this.keyValue.equals(key.getKeyValue());
+	}
+	
+	/**
+	 * Checks if a key value matches this key value
+	 * @param value a key value
+	 * @return true if they match, else false
+	 */
+	public boolean matches(KeyType value)
+	{
+		return this.keyValue.equals(value);
 	}
 	
 	/**

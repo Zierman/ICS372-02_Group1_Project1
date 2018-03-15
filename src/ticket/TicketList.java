@@ -82,30 +82,6 @@ public class TicketList
 		tickets.add(index, ticket);
 	}
 
-	/**
-	 * Checks to see if a ticket can be added to the list
-	 * 
-	 * @param ticket
-	 *            to be added to list
-	 * @throws IllegalArgumentException
-	 *             if the ticket cannot be added to list
-	 */
-	private void checkCanAdd(Ticket ticket) throws IllegalArgumentException
-	{
-		int count = 0;
-		for (Ticket t : instance())
-		{
-			if (t.dateOfShow.equals(ticket.dateOfShow))
-			{
-				count++;
-			}
-		}
-		if (count >= ticket.getPlay().getSeatingCapacity())
-		{
-			throw new NotEnoughSeatsAvailibleException();
-		}
-	}
-
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -184,6 +160,30 @@ public class TicketList
 		return true;
 	}
 
+	/**
+	 * Checks to see if a ticket can be added to the list
+	 * 
+	 * @param ticket
+	 *            to be added to list
+	 * @throws IllegalArgumentException
+	 *             if the ticket cannot be added to list
+	 */
+	private void checkCanAdd(Ticket ticket) throws IllegalArgumentException
+	{
+		int count = 0;
+		for (Ticket t : instance())
+		{
+			if (t.dateOfShow.equals(ticket.dateOfShow))
+			{
+				count++;
+			}
+		}
+		if (count >= ticket.getPlay().getSeatingCapacity())
+		{
+			throw new NotEnoughSeatsAvailibleException();
+		}
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -215,6 +215,19 @@ public class TicketList
 	public boolean containsAll(Collection<?> collection)
 	{
 		return tickets.containsAll(collection);
+	}
+
+	public int countFor(Date dateOfShow)
+	{
+		int count = 0;
+		for (Ticket t : this)
+		{
+			if (t.getDateOfShow().equals(dateOfShow))
+			{
+				count++;
+			}
+		}
+		return count;
 	}
 
 	/*
@@ -385,6 +398,14 @@ public class TicketList
 		return tickets.removeAll(collection);
 	}
 
+	public void reset()
+	{
+
+		clear();
+		singleton = null;
+		instance();
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -464,27 +485,6 @@ public class TicketList
 	public <T> T[] toArray(T[] arg0)
 	{
 		return tickets.toArray(arg0);
-	}
-
-	public int countFor(Date dateOfShow)
-	{
-		int count = 0;
-		for (Ticket t : this)
-		{
-			if (t.getDateOfShow().equals(dateOfShow))
-			{
-				count++;
-			}
-		}
-		return count;
-	}
-
-	public void reset()
-	{
-
-		clear();
-		singleton = null;
-		instance();
 	}
 
 }

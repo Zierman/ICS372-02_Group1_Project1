@@ -373,6 +373,19 @@ public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable,
 	/*
 	 * (non-Javadoc)
 	 * 
+	 * @see storage.Resetable#reset()
+	 */
+	@Override
+	public void reset()
+	{
+		clear();
+		singleton = null;
+		instance();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#retainAll(java.util.Collection)
 	 */
 	@Override
@@ -449,19 +462,6 @@ public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable,
 	public <T> T[] toArray(T[] arg0)
 	{
 		return plays.toArray(arg0);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see storage.Resetable#reset()
-	 */
-	@Override
-	public void reset()
-	{
-		clear();
-		singleton = null;
-		instance();
 	}
 
 }

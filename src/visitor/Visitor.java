@@ -21,6 +21,12 @@ public interface Visitor
 	public void visit(Client client);
 	
 	/**
+	 * Visits a Credit Card
+	 * @param creditCard the credit card to be visited
+	 */
+	public void visit(CreditCard creditCard);
+	
+	/**
 	 * Visits a Customer
 	 * @param customer the customer to be visited
 	 */
@@ -31,12 +37,6 @@ public interface Visitor
 	 * @param play the play to be visited
 	 */
 	public void visit(Play play);
-	
-	/**
-	 * Visits a Credit Card
-	 * @param creditCard the credit card to be visited
-	 */
-	public void visit(CreditCard creditCard);
 	
 	/**
 	 * Visits a Ticket

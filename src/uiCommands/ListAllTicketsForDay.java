@@ -113,6 +113,21 @@ public class ListAllTicketsForDay implements Command<UI>
 		}
 	}
 
+	/**
+	 * Formats a ticket into a standard formated string for output.
+	 * 
+	 * @param ui
+	 *            the user interface that will do the formated output
+	 * @param ticket
+	 *            the ticket to be formated for output
+	 * @return a string of the formated ticket
+	 */
+	private String format(UI ui, Ticket ticket)
+	{
+		ui.getStandardFormat().visit(ticket);
+		return ui.getStandardFormat().toString();
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -155,21 +170,6 @@ public class ListAllTicketsForDay implements Command<UI>
 	public Command<UI> readResolve()
 	{
 		return instance();
-	}
-
-	/**
-	 * Formats a ticket into a standard formated string for output.
-	 * 
-	 * @param ui
-	 *            the user interface that will do the formated output
-	 * @param ticket
-	 *            the ticket to be formated for output
-	 * @return a string of the formated ticket
-	 */
-	private String format(UI ui, Ticket ticket)
-	{
-		ui.getStandardFormat().visit(ticket);
-		return ui.getStandardFormat().toString();
 	}
 
 }

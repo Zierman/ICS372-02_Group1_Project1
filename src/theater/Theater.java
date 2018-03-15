@@ -176,6 +176,73 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 	}
 
 	/**
+	 * @param theater
+	 * @param client
+	 * @param clientID
+	 * @return
+	 * @throws NoKeyTokenFoundException
+	 */
+	public Client findClient(String clientID) throws NoKeyTokenFoundException
+	{
+		Client client = null;
+		Theater theater = this;
+		for (Client c : theater.getClientList())
+		{
+			try
+			{
+				if (c.getID().matches(Long.parseLong(clientID)))
+				{
+					client = c;
+					break;
+				}
+			}
+			catch (NumberFormatException e)
+			{
+				throw new NoKeyTokenFoundException();
+			}
+		}
+		if (client == null)
+		{
+			throw new NoKeyTokenFoundException();
+		}
+		return client;
+	}
+
+	/**
+	 * @param theater
+	 * @param customer
+	 * @param customerID
+	 * @return
+	 * @throws NoKeyTokenFoundException
+	 */
+	public Customer findCustomer(
+			String customerID) throws NoKeyTokenFoundException
+	{
+		Customer customer = null;
+		Theater theater = this;
+		for (Customer c : theater.getCustomerList())
+		{
+			try
+			{
+				if (c.getID().matches(Long.parseLong(customerID)))
+				{
+					customer = c;
+					break;
+				}
+			}
+			catch (NumberFormatException e)
+			{
+				throw new NoKeyTokenFoundException();
+			}
+		}
+		if (customer == null)
+		{
+			throw new NoKeyTokenFoundException();
+		}
+		return customer;
+	}
+
+	/**
 	 * Gets a list of all clients.
 	 * 
 	 * @return a {@link client.ClientList} that holds all clients
@@ -195,6 +262,8 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 		return customerList;
 	}
 
+	
+
 	/**
 	 * Gets the name of the theater.
 	 * 
@@ -203,6 +272,26 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 	public String getName()
 	{
 		return name;
+	}
+
+	public Play getPlay(Date dateOfShow) throws NoPlayFoundException
+	{
+		Play play = null;
+		
+		for(Play p : playList)
+		{
+			// if dateOfShow is in range [start, end) of the play
+			if((p.getStartDate().before(dateOfShow) && p.getEndDate().after(dateOfShow)) || p.getStartDate().equals(dateOfShow))
+			{
+				play = p;
+			}
+		}
+		if(play == null)
+		{
+			throw new NoPlayFoundException();
+		}
+		
+		return play;
 	}
 
 	/**
@@ -215,8 +304,28 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 		return playList;
 	}
 
+	/**
+	 * @return the ticketList
+	 */
+	public TicketList getTicketList()
+	{
+		return ticketList;
+	}
 	
-
+	public boolean hasEnoughFreeSeats(int qty, Date dateOfShow, Play play)
+	{
+		try
+		{
+			int alreadySold = ticketList.countFor(dateOfShow);
+			return qty + alreadySold <= play.getSeatingCapacity();
+		}
+		catch (Exception e) 
+		{
+			return false;
+		}
+		
+	}
+	
 	public void increaseDebt(Client client, Dollar dollars)
 	{
 		client.setBalanceDue(client.getBalanceDue().addTogether((dollars)));
@@ -246,21 +355,7 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 			throw e;
 		}
 	}
-
-	/* (non-Javadoc)
-	 * @see storage.Resetable#reset()
-	 */
-	@Override
-	public void reset()
-	{
-		clientList.reset();
-		customerList.reset();
-		playList.reset();
-		ticketList.reset();
-		instance();
-		
-	}
-
+	
 	public void pay(Client client, Dollar dollars) throws OverpayingClientException
 	{
 		if(client.getBalanceDue().compareTo(dollars) < 0)
@@ -303,6 +398,7 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 		clientList.removeMatched(id);
 	}
 	
+
 	/**
 	 * Removes a customer with a matching id
 	 * 
@@ -313,7 +409,21 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 	{
 		customerList.removeMatched(id);
 	}
-	
+
+	/* (non-Javadoc)
+	 * @see storage.Resetable#reset()
+	 */
+	@Override
+	public void reset()
+	{
+		clientList.reset();
+		customerList.reset();
+		playList.reset();
+		ticketList.reset();
+		instance();
+		
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -330,7 +440,25 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 		playList.save();
 		ticketList.save();
 	}
-	
+
+	public void sell(Collection<Ticket> tickets)
+	{
+		for(Ticket ticket : tickets)
+		{
+			sell(ticket);
+		}
+		
+	}
+
+	public void sell(Ticket ticket)
+	{
+		ticketList.add(ticket);
+		
+		// client that performs the play gets half the price of the ticket
+		Dollar newTotal = ticket.getPlay().getOwner().getBalanceDue().addTogether(ticket.getPriceOfTicket().half());
+		ticket.getPlay().getOwner().setBalanceDue(newTotal);
+	}
+
 	/**
 	 * Sells a ticket
 	 * @param ticket The ticket to be sold
@@ -349,133 +477,5 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 	public void setName(String name)
 	{
 		this.name = name;
-	}
-	
-
-	public Play getPlay(Date dateOfShow) throws NoPlayFoundException
-	{
-		Play play = null;
-		
-		for(Play p : playList)
-		{
-			// if dateOfShow is in range [start, end) of the play
-			if((p.getStartDate().before(dateOfShow) && p.getEndDate().after(dateOfShow)) || p.getStartDate().equals(dateOfShow))
-			{
-				play = p;
-			}
-		}
-		if(play == null)
-		{
-			throw new NoPlayFoundException();
-		}
-		
-		return play;
-	}
-
-	public void sell(Ticket ticket)
-	{
-		ticketList.add(ticket);
-		
-		// client that performs the play gets half the price of the ticket
-		Dollar newTotal = ticket.getPlay().getOwner().getBalanceDue().addTogether(ticket.getPriceOfTicket().half());
-		ticket.getPlay().getOwner().setBalanceDue(newTotal);
-	}
-
-	public boolean hasEnoughFreeSeats(int qty, Date dateOfShow, Play play)
-	{
-		try
-		{
-			int alreadySold = ticketList.countFor(dateOfShow);
-			return qty + alreadySold <= play.getSeatingCapacity();
-		}
-		catch (Exception e) 
-		{
-			return false;
-		}
-		
-	}
-
-	public void sell(Collection<Ticket> tickets)
-	{
-		for(Ticket ticket : tickets)
-		{
-			sell(ticket);
-		}
-		
-	}
-
-	/**
-	 * @return the ticketList
-	 */
-	public TicketList getTicketList()
-	{
-		return ticketList;
-	}
-
-	/**
-	 * @param theater
-	 * @param customer
-	 * @param customerID
-	 * @return
-	 * @throws NoKeyTokenFoundException
-	 */
-	public Customer findCustomer(
-			String customerID) throws NoKeyTokenFoundException
-	{
-		Customer customer = null;
-		Theater theater = this;
-		for (Customer c : theater.getCustomerList())
-		{
-			try
-			{
-				if (c.getID().matches(Long.parseLong(customerID)))
-				{
-					customer = c;
-					break;
-				}
-			}
-			catch (NumberFormatException e)
-			{
-				throw new NoKeyTokenFoundException();
-			}
-		}
-		if (customer == null)
-		{
-			throw new NoKeyTokenFoundException();
-		}
-		return customer;
-	}
-
-	/**
-	 * @param theater
-	 * @param client
-	 * @param clientID
-	 * @return
-	 * @throws NoKeyTokenFoundException
-	 */
-	public Client findClient(String clientID) throws NoKeyTokenFoundException
-	{
-		Client client = null;
-		Theater theater = this;
-		for (Client c : theater.getClientList())
-		{
-			try
-			{
-				if (c.getID().matches(Long.parseLong(clientID)))
-				{
-					client = c;
-					break;
-				}
-			}
-			catch (NumberFormatException e)
-			{
-				throw new NoKeyTokenFoundException();
-			}
-		}
-		if (client == null)
-		{
-			throw new NoKeyTokenFoundException();
-		}
-		return client;
 	}
 }

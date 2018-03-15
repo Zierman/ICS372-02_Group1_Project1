@@ -25,6 +25,17 @@ public class StandardFormat implements Visitor
 	/*
 	 * (non-Javadoc)
 	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString()
+	{
+		return str;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see visitor.Visitor#visit(client.Client)
 	 */
 	@Override
@@ -35,6 +46,20 @@ public class StandardFormat implements Visitor
 				+ client.getBalanceDue() + ",\n" + "  address: "
 				+ client.getAddress() + ",\n" + "  phone number: "
 				+ client.getPhoneNumber() + "\n" + "\n";
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see visitor.Visitor#visit(customer.Customer.CreditCard)
+	 */
+	@Override
+	public void visit(CreditCard creditCard)
+	{
+		str = "Card Number: " + creditCard.getCardNumber()
+				+ "\n  Card Expiration: " + creditCard.getCardExpiration()
+				+ "\n\n";
+
 	}
 
 	/*
@@ -95,20 +120,6 @@ public class StandardFormat implements Visitor
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see visitor.Visitor#visit(customer.Customer.CreditCard)
-	 */
-	@Override
-	public void visit(CreditCard creditCard)
-	{
-		str = "Card Number: " + creditCard.getCardNumber()
-				+ "\n  Card Expiration: " + creditCard.getCardExpiration()
-				+ "\n\n";
-
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
 	 * @see visitor.Visitor#visit(ticket.Ticket)
 	 */
 	@Override
@@ -126,17 +137,6 @@ public class StandardFormat implements Visitor
 		}
 		str += "\n\n";
 
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString()
-	{
-		return str;
 	}
 
 }

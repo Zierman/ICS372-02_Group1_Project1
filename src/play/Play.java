@@ -145,6 +145,15 @@ public class Play implements Serializable, Owned<Client>, Visitable
 		this.seatingCapacity = seatingCapacity;
 	}
 
+	/* (non-Javadoc)
+	 * @see visitor.Visitable#accept(visitor.Visitor)
+	 */
+	@Override
+	public void accept(Visitor visitor)
+	{
+		visitor.visit(this);
+	}
+
 	/**
 	 * Gets the end date
 	 * 
@@ -184,6 +193,16 @@ public class Play implements Serializable, Owned<Client>, Visitable
 	{
 
 		return regularTicketPrice;
+	}
+
+	/**
+	 * Gets the seating capacity.
+	 * 
+	 * @return an <code>Integer</code> of the current seating capacity.
+	 */
+	public Integer getSeatingCapacity()
+	{
+		return seatingCapacity;
 	}
 
 	/**
@@ -228,7 +247,7 @@ public class Play implements Serializable, Owned<Client>, Visitable
 		this.owner = owner;
 
 	}
-
+	
 	/**
 	 * Sets Regular ticket price for this play
 	 * @param regularTicketPrice the regularTicketPrice to set
@@ -236,27 +255,6 @@ public class Play implements Serializable, Owned<Client>, Visitable
 	public void setRegularTicketPrice(Dollar regularTicketPrice)
 	{
 		this.regularTicketPrice = regularTicketPrice;
-	}
-
-	/**
-	 * Sets the start date
-	 * 
-	 * @param startDate
-	 *            the date that the play begins showing.
-	 */
-	public void setStartDate(Date startDate)
-	{
-		this.startDate = startDate;
-	}
-	
-	/**
-	 * Gets the seating capacity.
-	 * 
-	 * @return an <code>Integer</code> of the current seating capacity.
-	 */
-	public Integer getSeatingCapacity()
-	{
-		return seatingCapacity;
 	}
 
 
@@ -272,12 +270,14 @@ public class Play implements Serializable, Owned<Client>, Visitable
 	
 
 
-	/* (non-Javadoc)
-	 * @see visitor.Visitable#accept(visitor.Visitor)
+	/**
+	 * Sets the start date
+	 * 
+	 * @param startDate
+	 *            the date that the play begins showing.
 	 */
-	@Override
-	public void accept(Visitor visitor)
+	public void setStartDate(Date startDate)
 	{
-		visitor.visit(this);
+		this.startDate = startDate;
 	}
 }

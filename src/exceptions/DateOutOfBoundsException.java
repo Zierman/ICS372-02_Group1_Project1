@@ -7,12 +7,12 @@ import play.Play;
 public class DateOutOfBoundsException extends Exception
 {
 
+	/**
+	 * Serial Version
+	 */
+	private static final long serialVersionUID = 1L;
 	Play play = null;
 	Date date = null;
-	public DateOutOfBoundsException(Play play)
-	{
-		this.play = play;
-	}
 	public DateOutOfBoundsException(Date date)
 	{
 		this.date = date;
@@ -23,16 +23,9 @@ public class DateOutOfBoundsException extends Exception
 		this.play = play;
 	}
 
-	/**
-	 * Serial Version
-	 */
-	private static final long serialVersionUID = 1L;
-	/**
-	 * @return the play
-	 */
-	public Play getPlay()
+	public DateOutOfBoundsException(Play play)
 	{
-		return play;
+		this.play = play;
 	}
 	/**
 	 * @return the date
@@ -40,6 +33,13 @@ public class DateOutOfBoundsException extends Exception
 	public Date getDate()
 	{
 		return date;
+	}
+	/**
+	 * @return the play
+	 */
+	public Play getPlay()
+	{
+		return play;
 	}
 
 }
