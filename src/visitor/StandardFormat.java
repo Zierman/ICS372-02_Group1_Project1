@@ -11,10 +11,22 @@ import theater.Theater;
 import ticket.Ticket;
 import userInterface.UI;
 
+/**
+ * A Visitor used for Standard Formatted output of various objects that need to
+ * be displayed in the "ListAll___" commands
+ * 
+ * @author Joshua Zierman [py1422xs@metrostate.edu]
+ *
+ */
 public class StandardFormat implements Visitor
 {
 	private String str = "";
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see visitor.Visitor#visit(client.Client)
+	 */
 	@Override
 	public void visit(Client client)
 	{
@@ -25,33 +37,47 @@ public class StandardFormat implements Visitor
 				+ client.getPhoneNumber() + "\n" + "\n";
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see visitor.Visitor#visit(customer.Customer)
+	 */
 	@Override
 	public void visit(Customer customer)
 	{
-		str = "ID: " + customer.getID() + "\n  Name: "
-				+ customer.getName() + "\n  Address: " 
-				+ customer.getAddress() + "\n  Phone Number: "
+		str = "ID: " + customer.getID() + "\n  Name: " + customer.getName()
+				+ "\n  Address: " + customer.getAddress() + "\n  Phone Number: "
 				+ customer.getPhoneNumber() + "\n\n";
 		LinkedList<CreditCard> cardList = customer.getCardList();
-		for(CreditCard creditCard : cardList){
+		for (CreditCard creditCard : cardList)
+		{
 			str += "  Card Number: " + creditCard.getCardNumber()
 					+ "\n    Card Expiration: " + creditCard.getCardExpiration()
 					+ "\n\n";
 		}
-		for(Ticket ticket : Theater.instance().getTicketList())
+		for (Ticket ticket : Theater.instance().getTicketList())
 		{
-			if(ticket.getOwner().matches(customer.getKey())) {
+			if (ticket.getOwner().matches(customer.getKey()))
+			{
 				str += "  Ticket Serial Number: " + ticket.getSerialNumber();
 				str += "\n    Ticket Type: " + ticket.getTypeOfTicket();
-				str += "\n    Play the ticket is for: " + ticket.getPlay().getName();
-				str += "\n    Date of showing: " + UI.format(ticket.getDateOfShow()); 
-				str += "\n    Credit card used to buy: " + ticket.getCreditCard();
+				str += "\n    Play the ticket is for: "
+						+ ticket.getPlay().getName();
+				str += "\n    Date of showing: "
+						+ UI.format(ticket.getDateOfShow());
+				str += "\n    Credit card used to buy: "
+						+ ticket.getCreditCard();
 				str += "\n\n";
 			}
 		}
-		
+
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see visitor.Visitor#visit(play.Play)
+	 */
 	@Override
 	public void visit(Play play)
 	{
@@ -60,32 +86,48 @@ public class StandardFormat implements Visitor
 		str += "  end date: " + UI.format(play.getEndDate()) + ",\n";
 		str += "  client : " + play.getOwner().getName() + " ("
 				+ play.getOwner().getID() + ")\n";
-		str += "  regular ticket price: " + play.getRegularTicketPrice()  + "\n";
+		str += "  regular ticket price: " + play.getRegularTicketPrice() + "\n";
 		str += "  seating capacity: " + play.getSeatingCapacity() + "\n";
 		str += "\n";
-		
+
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see visitor.Visitor#visit(customer.Customer.CreditCard)
+	 */
 	@Override
 	public void visit(CreditCard creditCard)
 	{
 		str = "Card Number: " + creditCard.getCardNumber()
-		+ "\n  Card Expiration: " + creditCard.getCardExpiration()
-		+ "\n\n";
-		
+				+ "\n  Card Expiration: " + creditCard.getCardExpiration()
+				+ "\n\n";
+
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see visitor.Visitor#visit(ticket.Ticket)
+	 */
 	@Override
 	public void visit(Ticket ticket)
 	{
 		str = "Ticket Serial Number: " + ticket.getSerialNumber();
 		str += "\n  Ticket Type: " + ticket.getTypeOfTicket();
 		str += "\n  Play the ticket is for: " + ticket.getPlay().getName();
-		str += "\n  Date of showing: " + UI.format(ticket.getDateOfShow()); 
+		str += "\n  Date of showing: " + UI.format(ticket.getDateOfShow());
 		str += "\n  Credit card used to buy: " + ticket.getCreditCard();
 		str += "\n\n";
 	}
-	
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
 	public String toString()
 	{
 		return str;

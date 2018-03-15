@@ -1,6 +1,5 @@
 package customer;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Iterator;
@@ -8,7 +7,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
-import client.Client;
 import customer.Customer;
 import customer.CustomerList;
 import exceptions.NoKeyTokenFoundException;
@@ -16,6 +14,7 @@ import keyToken.KeyedList;
 import singleton.ReadResolveable;
 import storage.FileIO;
 import storage.Loadable;
+import storage.Resetable;
 import storage.Savable;
 
 /**
@@ -23,7 +22,7 @@ import storage.Savable;
  * @author Troy Novak [wh1617wd@metrostate.edu]
  *
  */
-public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Customer, Long>, Savable, Loadable
+public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Customer, Long>, Savable, Loadable, Resetable
 {
 	/**
 	 * the singleton <code>CustomerList</code>.
@@ -40,6 +39,10 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 	 */
 	private static LinkedList<Customer> customers = new LinkedList<Customer>();
 
+	/**
+	 * Creates and/or returns an instance of the CustomerList
+	 * @return the instance of CustomerList
+	 */
 	public static CustomerList instance()
 	{
 		if (singleton == null)
@@ -412,6 +415,10 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		return instance().customers.toArray(arg0);
 	}
 
+	/* (non-Javadoc)
+	 * @see storage.Resetable#reset()
+	 */
+	@Override
 	public void reset()
 	{
 		clear();

@@ -226,6 +226,9 @@ public class Client implements Serializable, Keyed<Long>, Visitable
 		return id;
 	}
 
+	/* (non-Javadoc)
+	 * @see keyToken.Keyed#getKey()
+	 */
 	@Override
 	public Long getKey()
 	{
@@ -324,6 +327,9 @@ public class Client implements Serializable, Keyed<Long>, Visitable
 		this.phoneNumber.setNumber(phoneNumber);
 	}
 
+	/* (non-Javadoc)
+	 * @see visitor.Visitable#accept(visitor.Visitor)
+	 */
 	@Override
 	public void accept(Visitor visitor)
 	{

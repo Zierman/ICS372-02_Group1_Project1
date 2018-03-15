@@ -12,6 +12,7 @@ import keyToken.KeyedList;
 import singleton.ReadResolveable;
 import storage.FileIO;
 import storage.Loadable;
+import storage.Resetable;
 import storage.Savable;
 
 /**
@@ -19,7 +20,7 @@ import storage.Savable;
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
-public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client, Long>, Savable, Loadable
+public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client, Long>, Savable, Loadable, Resetable
 {
 	/**
 	 * the singleton <code>ClientList</code>.
@@ -412,6 +413,10 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 		return clients.toArray(arg0);
 	}
 
+	/* (non-Javadoc)
+	 * @see storage.Resetable#reset()
+	 */
+	@Override
 	public void reset()
 	{
 		clear();

@@ -17,18 +17,18 @@ public abstract class CurrencyHelper<Type extends Number & Comparable<Type>> imp
 	 * the version of the serialization.
 	 */
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * a <code>String</code> that goes in front of the amount when converting to
-	 * <code>String</code>.
-	 */
-	private static final String PREFIX_SYMBOL = "";
-
-	/**
-	 * a <code>String</code> that goes in front of the amount when converting to
-	 * <code>String</code>.
-	 */
-	private static final String POSTFIX_SYMBOL = "";
+//
+//	/**
+//	 * a <code>String</code> that goes in front of the amount when converting to
+//	 * <code>String</code>.
+//	 */
+//	private static final String PREFIX_SYMBOL = "";
+//
+//	/**
+//	 * a <code>String</code> that goes in front of the amount when converting to
+//	 * <code>String</code>.
+//	 */
+//	private static final String POSTFIX_SYMBOL = "";
 
 	/**
 	 * the numeric value that represents the amount of the currency.

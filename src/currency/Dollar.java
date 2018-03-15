@@ -25,12 +25,6 @@ public class Dollar extends Currency<Dollar, Double>
 	 * The '$' symbol is the prefix
 	 */
 	private static final String PREFIX_SYMBOL = "$";
-
-	/**
-	 * There is no postfix
-	 */
-	private static final String POSTFIX_SYMBOL = "";
-
 	/**
 	 * The max decimal places to be displayed is 2
 	 */
@@ -62,6 +56,9 @@ public class Dollar extends Currency<Dollar, Double>
 		this.amount = dollars;
 	}
 
+	/* (non-Javadoc)
+	 * @see currency.Currency#addTogether(currency.CurrencyHelper)
+	 */
 	@Override
 	public Dollar addTogether(Dollar currency)
 	{
@@ -98,6 +95,9 @@ public class Dollar extends Currency<Dollar, Double>
 		return new Dollar(this.amount / 2);
 	}
 
+	/* (non-Javadoc)
+	 * @see currency.Currency#multiplyBy(double)
+	 */
 	@Override
 	public Dollar multiplyBy(double d)
 	{
@@ -114,6 +114,9 @@ public class Dollar extends Currency<Dollar, Double>
 		this.amount = amount;
 	}
 
+	/* (non-Javadoc)
+	 * @see currency.Currency#subtract(currency.CurrencyHelper)
+	 */
 	@Override
 	public Dollar subtract(Dollar currency)
 	{
@@ -128,7 +131,6 @@ public class Dollar extends Currency<Dollar, Double>
 	@Override
 	public String toString()
 	{
-		return PREFIX_SYMBOL + String.format(getFormatString(), this.amount)
-				+ POSTFIX_SYMBOL;
+		return PREFIX_SYMBOL + String.format(getFormatString(), this.amount);
 	}
 }

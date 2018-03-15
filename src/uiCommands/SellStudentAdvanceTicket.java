@@ -16,6 +16,11 @@ import ticket.Ticket;
 import ticket.TicketFactory;
 import userInterface.UI;
 
+/**
+ * A command to Sell a student advance ticket
+ * @author Joshua Zierman [py1422xs@metrostate.edu]
+ *
+ */
 public class SellStudentAdvanceTicket implements Command<UI>
 {
 		private static SellStudentAdvanceTicket singleton;

@@ -771,5 +771,8 @@ public class UI implements ReadResolveable<UI>, Closeable
 		instance().dataCommandWasUsed = true;
 	}
 
+	/**
+	 * A visitor that enables easy standard formating of all object types that need to be output in the "ListAll______" commands
+	 */
 	public StandardFormat standardFormat = new StandardFormat();
 }

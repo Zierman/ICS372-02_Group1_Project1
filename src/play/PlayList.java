@@ -15,6 +15,7 @@ import exceptions.ConflictingDatesException;
 import singleton.ReadResolveable;
 import storage.FileIO;
 import storage.Loadable;
+import storage.Resetable;
 import storage.Savable;
 import theater.Theater;
 
@@ -24,8 +25,8 @@ import theater.Theater;
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
-public class PlayList
-		implements ReadResolveable<PlayList>, List<Play>, Savable, Loadable
+public class PlayList implements ReadResolveable<PlayList>, List<Play>, Savable,
+		Loadable, Resetable
 {
 	private static PlayList singleton;
 	protected static final String FILENAME = "plays.dat";
@@ -133,10 +134,13 @@ public class PlayList
 		return size != plays.size();
 	}
 
-	/** 
+	/**
 	 * Checks to see if the play can be added
-	 * @param play the play to add
-	 * @return True if the new play's dates don't conflict with other plays in list.
+	 * 
+	 * @param play
+	 *            the play to add
+	 * @return True if the new play's dates don't conflict with other plays in
+	 *         list.
 	 */
 	public boolean canAdd(Play play)
 	{
@@ -151,7 +155,8 @@ public class PlayList
 			start = p.getStartDate();
 			end = p.getEndDate();
 
-			if ((start.before(end1) && end.after(start1)) || end.equals(end1) || start.equals(start1))
+			if ((start.before(end1) && end.after(start1)) || end.equals(end1)
+					|| start.equals(start1))
 			{
 				canAdd = false;
 			}
@@ -307,7 +312,7 @@ public class PlayList
 
 		for (Play p : tmp)
 		{
-			
+
 			Client match = null;
 			for (Client client : ClientList.instance())
 			{
@@ -446,9 +451,14 @@ public class PlayList
 		return plays.toArray(arg0);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see storage.Resetable#reset()
+	 */
+	@Override
 	public void reset()
 	{
-
 		clear();
 		singleton = null;
 		instance();

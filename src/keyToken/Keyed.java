@@ -6,13 +6,17 @@ package keyToken;
  * 
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
- * @param <Key>
+ * @param <KeyType>
  *            The data type of the key value
  */
-public interface Keyed<Key> extends Matchable<Key>
+public interface Keyed<KeyType> extends Matchable<KeyType>
 {
-	public Key getKey();
-	
+	/**
+	 * Gets the keyValue of the Keyed object
+	 * 
+	 * @return the keyValue
+	 */
+	public KeyType getKey();
 
 	/**
 	 * Checks if the object has a key that matches
@@ -21,7 +25,11 @@ public interface Keyed<Key> extends Matchable<Key>
 	 *            a key value
 	 * @return true if they match or false if they do not.
 	 */
-	public boolean matches(Key key);
-	
-	public void setKey(Key key);
+	public boolean matches(KeyType key);
+
+	/**
+	 * Sets the key of the object
+	 * @param key to set the key
+	 */
+	public void setKey(KeyType key);
 }

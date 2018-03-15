@@ -17,6 +17,11 @@ import ticket.TicketFactory;
 import ticket.TicketList;
 import userInterface.UI;
 
+/**
+ * A command to Sell a regular ticket
+ * @author Joshua Zierman [py1422xs@metrostate.edu]
+ *
+ */
 public class SellRegularTicket implements Command<UI>
 {
 	private static SellRegularTicket singleton;

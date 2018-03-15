@@ -127,6 +127,8 @@ public class Play implements Serializable, Owned<Client>, Visitable
 	 * @param endDate
 	 *            the <code>Date</code> object that holds the ending date.
 	 * @param regularTicketPrice the price of a non-discounted ticket.
+	 * 
+	 * @param seatingCapacity The amount of seats availibye during showings of this play
 	 */
 	public Play(String name, Client client, Date startDate, Date endDate, Dollar regularTicketPrice, int seatingCapacity)
 	{
@@ -217,6 +219,9 @@ public class Play implements Serializable, Owned<Client>, Visitable
 		this.name.setName(name);
 	}
 
+	/* (non-Javadoc)
+	 * @see ownership.Owned#setOwner(java.lang.Object)
+	 */
 	@Override
 	public void setOwner(Client owner)
 	{
@@ -267,6 +272,9 @@ public class Play implements Serializable, Owned<Client>, Visitable
 	
 
 
+	/* (non-Javadoc)
+	 * @see visitor.Visitable#accept(visitor.Visitor)
+	 */
 	@Override
 	public void accept(Visitor visitor)
 	{

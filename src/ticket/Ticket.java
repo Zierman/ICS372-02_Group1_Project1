@@ -125,10 +125,27 @@ public abstract class Ticket
 	 */
 	protected Customer owner;
 	
+	/**
+	 * true if the ticket has an extra message.
+	 */
 	protected boolean hasExtraMessage;
 	
+	/**
+	 * The credit card used to buy the ticket
+	 */
 	protected CreditCard creditCard;
 
+	/**
+	 * Creates a new Ticket
+	 * @param dateOfShow the Date that the showing is on
+	 * @param play the play the ticket is to see
+	 * @param owner the customer who the ticket is being sold to
+	 * @param priceMultiplier the price multiplier assosiated with this type of ticket
+	 * @param typeOfTicket the string representation of the type of ticket
+	 * @param extraMessage an extra message to be printed on the ticket
+	 * @param creditCard the credit card used to purchase the ticket
+	 * @throws Exception If the ticket could not be created
+	 */
 	public Ticket(Date dateOfShow, Play play, Customer owner, Double priceMultiplier, String typeOfTicket, String extraMessage, CreditCard creditCard) throws Exception
 	{
 		super();
@@ -144,6 +161,16 @@ public abstract class Ticket
 		
 	}
 
+	/**
+	 * Creates a new Ticket
+	 * @param dateOfShow the Date that the showing is on
+	 * @param play the play the ticket is to see
+	 * @param owner the customer who the ticket is being sold to
+	 * @param priceMultiplier the price multiplier assosiated with this type of ticket
+	 * @param typeOfTicket the string representation of the type of ticket
+	 * @param creditCard the credit card used to purchase the ticket
+	 * @throws Exception If the ticket could not be created
+	 */
 	public Ticket(Date dateOfShow, Play play, Customer owner, Double priceMultiplier, String typeOfTicket, CreditCard creditCard) throws Exception
 	{
 		super();
@@ -180,6 +207,9 @@ public abstract class Ticket
 		return extraMessage;
 	}
 
+	/* (non-Javadoc)
+	 * @see keyToken.Keyed#getKey()
+	 */
 	@Override
 	public Long getKey()
 	{
@@ -419,6 +449,11 @@ public abstract class Ticket
 	}
 	
 	
+	/**
+	 * Checks to see if the date is valid for the play
+	 * @param play the play that the ticket is for.
+	 * @return True if valid else false
+	 */
 	private boolean dateIsValid(Play play)
 	{
 		boolean result;
@@ -435,6 +470,10 @@ public abstract class Ticket
 		return result;
 	}
 	
+	/**
+	 * Checks to see that the date is valid and if not throws an exception
+	 * @throws DateIsValidAssertionException if the date is not valid.
+	 */
 	private void dateIsValidAssertion() throws DateIsValidAssertionException
 	{
 		try
@@ -450,6 +489,10 @@ public abstract class Ticket
 		}
 	}
 	
+	/**
+	 * Checks if the ticket is valid and if not throws an exception
+	 * @throws Exception if the ticket is invalid
+	 */
 	private void TicketIsValidAssertions() throws Exception
 	{
 		dateIsValidAssertion();
@@ -527,6 +570,9 @@ public abstract class Ticket
 
 
 
+	/* (non-Javadoc)
+	 * @see visitor.Visitable#accept(visitor.Visitor)
+	 */
 	@Override
 	public void accept(Visitor visitor)
 	{

@@ -22,6 +22,7 @@ import play.PlayList;
 import singleton.ReadResolveable;
 import storage.FileIO;
 import storage.Loadable;
+import storage.Resetable;
 import storage.Savable;
 import ticket.Ticket;
 import ticket.TicketList;
@@ -33,7 +34,7 @@ import userInterface.UI;
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
-public class Theater implements ReadResolveable<Theater>, Loadable, Savable
+public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Resetable
 {
 	/**
 	 * a <code>Theater</code> object to enforce singleton behavior.
@@ -246,13 +247,17 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable
 		}
 	}
 
-	private Theater reset()
+	/* (non-Javadoc)
+	 * @see storage.Resetable#reset()
+	 */
+	@Override
+	public void reset()
 	{
 		clientList.reset();
 		customerList.reset();
 		playList.reset();
 		ticketList.reset();
-		return instance();
+		instance();
 		
 	}
 

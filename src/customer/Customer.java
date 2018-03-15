@@ -1,22 +1,15 @@
 package customer;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.LinkedList;
 
-import com.sun.org.apache.xml.internal.serializer.SerializationHandler;
-
 import address.Address;
-import client.ClientList;
 import exceptions.CardAlreadyInListException;
 import exceptions.NoCardFoundException;
 import keyToken.KeyToken;
 import keyToken.Keyed;
 import keyToken.Matchable;
 import phoneNumber.PhoneNumber;
-import storage.FileIO;
-import storage.Savable;
-import ticket.Ticket;
 import visitor.Visitable;
 import visitor.Visitor;
 import ownership.Owned;
@@ -108,6 +101,9 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 			this.cardNumber = newCardNumber;
 		}
 
+		/* (non-Javadoc)
+		 * @see ownership.Owned#setOwner(java.lang.Object)
+		 */
 		@Override
 		public void setOwner(Customer owner)
 		{
@@ -115,6 +111,9 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 			
 		}
 
+		/* (non-Javadoc)
+		 * @see keyToken.Matchable#matches(java.lang.Object)
+		 */
 		@Override
 		public boolean matches(String valueToMatch)
 		{
@@ -122,6 +121,9 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 		}
 
 
+		/* (non-Javadoc)
+		 * @see visitor.Visitable#accept(visitor.Visitor)
+		 */
 		@Override
 		public void accept(Visitor visitor)
 		{
@@ -445,9 +447,14 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 	
 
 
+	/* (non-Javadoc)
+	 * @see visitor.Visitable#accept(visitor.Visitor)
+	 */
 	@Override
 	public void accept(Visitor visitor)
 	{
 		visitor.visit(this);
 	}
+	
+	
 }

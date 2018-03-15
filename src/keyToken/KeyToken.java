@@ -6,9 +6,9 @@ import java.io.Serializable;
  * A Key value token used to store a key such as an ID number
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
- * @param <Type> They type of object this key is used for
+ * @param <KeyedType> They type of object this key is used for
  */
-public abstract class KeyToken <Type, Key extends Comparable<Key> > implements Serializable, Matchable<KeyToken<Type,Key>>
+public abstract class KeyToken <KeyedType, KeyType extends Comparable<KeyType> > implements Serializable, Matchable<KeyToken<KeyedType,KeyType>>
 {
 	/**
 	 * Serialization version
@@ -18,7 +18,7 @@ public abstract class KeyToken <Type, Key extends Comparable<Key> > implements S
 	/**
 	 * The actual key value 
 	 */
-	private Key keyValue;
+	private KeyType keyValue;
 	
 	/**
 	 * Constructs a new Key Value
@@ -35,10 +35,10 @@ public abstract class KeyToken <Type, Key extends Comparable<Key> > implements S
 	@Override
 	public boolean equals(Object obj)
 	{
-		return obj instanceof KeyToken && toTestString().equals(((KeyToken<Type, Key>)obj).toTestString());
+		return obj instanceof KeyToken && toTestString().equals(((KeyToken<KeyedType, KeyType>)obj).toTestString());
 	}
 
-	public Key getKeyValue()
+	public KeyType getKeyValue()
 	{
 		return keyValue;
 	}
@@ -47,20 +47,20 @@ public abstract class KeyToken <Type, Key extends Comparable<Key> > implements S
 	 * Gets the last key generated
 	 * @return a key value
 	 */
-	protected abstract Key getLastValue();
+	protected abstract KeyType getLastValue();
 	
 	/**
 	 * Gets the next key to be generated.
 	 * @return a key value
 	 */
-	protected abstract Key getNextValue();
+	protected abstract KeyType getNextValue();
 	
 	/**
 	 * Checks if a key value matches this key value
 	 * @param value a key value
 	 * @return true if they match, else false
 	 */
-	public boolean matches(Key value)
+	public boolean matches(KeyType value)
 	{
 		return this.keyValue.equals(value);
 	}
@@ -70,21 +70,25 @@ public abstract class KeyToken <Type, Key extends Comparable<Key> > implements S
 	 * @param key a key value
 	 * @return true if they match, else false
 	 */
-	public boolean matches(KeyToken<Type, Key> key)
+	public boolean matches(KeyToken<KeyedType, KeyType> key)
 	{
-		return this.keyValue.equals(key);
+		return this.keyValue.equals(key.getKeyValue());
 	}
 	
 	/**
 	 * Sets the key 
 	 * @param keyToken a key value
 	 */
-	public void setKey(KeyToken<Type, Key> keyToken)
+	public void setKey(KeyToken<KeyedType, KeyType> keyToken)
 	{
 		setValue(keyToken.keyValue);
 	}
 	
-	public void setKeyValue(Key keyValue)
+	/**
+	 * Sets the key value of this object
+	 * @param keyValue the new key value to be set
+	 */
+	public void setKeyValue(KeyType keyValue)
 	{
 		this.keyValue = keyValue;
 
@@ -99,13 +103,13 @@ public abstract class KeyToken <Type, Key extends Comparable<Key> > implements S
 	 * Sets the last key generated
 	 * @param key a key value
 	 */
-	protected abstract void setLastValue(Key key);
+	protected abstract void setLastValue(KeyType key);
 	
 	/**
 	 * Sets the key and
 	 * @param key a key value
 	 */
-	public void setValue(Key key)
+	public void setValue(KeyType key)
 	{
 		this.keyValue = key;
 		
@@ -125,6 +129,10 @@ public abstract class KeyToken <Type, Key extends Comparable<Key> > implements S
 		return "" + keyValue;
 	}
 	
+	/**
+	 * Converts to a special string that allows for comparison
+	 * @return a specially formatted string
+	 */
 	public String toTestString()
 	{
 		return getClass().getName() + keyValue;
