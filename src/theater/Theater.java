@@ -411,4 +411,71 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 	{
 		return ticketList;
 	}
+
+	/**
+	 * @param theater
+	 * @param customer
+	 * @param customerID
+	 * @return
+	 * @throws NoKeyTokenFoundException
+	 */
+	public Customer findCustomer(
+			String customerID) throws NoKeyTokenFoundException
+	{
+		Customer customer = null;
+		Theater theater = this;
+		for (Customer c : theater.getCustomerList())
+		{
+			try
+			{
+				if (c.getID().matches(Long.parseLong(customerID)))
+				{
+					customer = c;
+					break;
+				}
+			}
+			catch (NumberFormatException e)
+			{
+				throw new NoKeyTokenFoundException();
+			}
+		}
+		if (customer == null)
+		{
+			throw new NoKeyTokenFoundException();
+		}
+		return customer;
+	}
+
+	/**
+	 * @param theater
+	 * @param client
+	 * @param clientID
+	 * @return
+	 * @throws NoKeyTokenFoundException
+	 */
+	public Client findClient(String clientID) throws NoKeyTokenFoundException
+	{
+		Client client = null;
+		Theater theater = this;
+		for (Client c : theater.getClientList())
+		{
+			try
+			{
+				if (c.getID().matches(Long.parseLong(clientID)))
+				{
+					client = c;
+					break;
+				}
+			}
+			catch (NumberFormatException e)
+			{
+				throw new NoKeyTokenFoundException();
+			}
+		}
+		if (client == null)
+		{
+			throw new NoKeyTokenFoundException();
+		}
+		return client;
+	}
 }

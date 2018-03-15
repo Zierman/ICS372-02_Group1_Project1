@@ -114,12 +114,18 @@ public class StandardFormat implements Visitor
 	@Override
 	public void visit(Ticket ticket)
 	{
+		
 		str = "Ticket Serial Number: " + ticket.getSerialNumber();
 		str += "\n  Ticket Type: " + ticket.getTypeOfTicket();
 		str += "\n  Play the ticket is for: " + ticket.getPlay().getName();
 		str += "\n  Date of showing: " + UI.format(ticket.getDateOfShow());
 		str += "\n  Credit card used to buy: " + ticket.getCreditCard();
+		if(ticket.hasExtraMessage())
+		{
+			str += "\n  Extra Message: " + ticket.getExtraMessage();
+		}
 		str += "\n\n";
+
 	}
 
 	/*

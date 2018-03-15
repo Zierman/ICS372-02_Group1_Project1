@@ -539,7 +539,7 @@ public abstract class Ticket
 	/**
 	 * @return the hasExtraMessage
 	 */
-	public boolean isHasExtraMessage()
+	public boolean hasExtraMessage()
 	{
 		return hasExtraMessage;
 	}

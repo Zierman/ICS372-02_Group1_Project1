@@ -13,6 +13,7 @@ import ticket.Ticket;
  */
 public interface Visitor
 {
+	
 	/**
 	 * Visits a Client
 	 * @param client the client to be visited

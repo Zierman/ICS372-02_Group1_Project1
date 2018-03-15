@@ -2,6 +2,7 @@ package customer;
 
 import java.io.Serializable;
 import java.util.LinkedList;
+import java.util.List;
 
 import address.Address;
 import exceptions.CardAlreadyInListException;
@@ -10,6 +11,7 @@ import keyToken.KeyToken;
 import keyToken.Keyed;
 import keyToken.Matchable;
 import phoneNumber.PhoneNumber;
+import userInterface.UI;
 import visitor.Visitable;
 import visitor.Visitor;
 import ownership.Owned;
@@ -128,6 +130,16 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 		public void accept(Visitor visitor)
 		{
 			visitor.visit(this);
+		}
+		
+		/* (non-Javadoc)
+		 * @see java.lang.Object#toString()
+		 */
+		@Override
+		public String toString()
+		{
+			
+			return "CreditCard(" + getCardNumber() + ", exp: " + getCardExpiration() + ")" ;
 		}
 	}
 	
@@ -454,6 +466,35 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 	public void accept(Visitor visitor)
 	{
 		visitor.visit(this);
+	}
+
+
+
+	/**
+	 * @param customer
+	 * @param card
+	 * @return
+	 * @throws NoCardFoundException
+	 */
+	public CreditCard findCreditCard(String cardNumber)
+			throws NoCardFoundException
+	{
+		CreditCard card = null;
+		Customer customer = this;
+		List<CreditCard> list = customer.getCardList();
+	
+		for (CreditCard c : list)
+		{
+			if (c.matches(cardNumber))
+			{
+				card = c;
+			}
+		}
+		if (card == null)
+		{
+			throw new NoCardFoundException();
+		}
+		return card;
 	}
 	
 	

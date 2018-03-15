@@ -80,8 +80,7 @@ public class ListAllClients implements Command<UI>
 				for (Client client : clientList)
 				{
 					found = true;
-					ui.standardFormat.visit(client);
-					output += ui.standardFormat;
+					output += format(ui, client);
 				}
 
 				if (!found)
@@ -105,6 +104,18 @@ public class ListAllClients implements Command<UI>
 			}
 		}
 
+	}
+
+	/** TODO fill this out
+	 * @param ui
+	 * @param output
+	 * @param client
+	 * @return
+	 */
+	private String format(UI ui, Client client)
+	{
+		ui.getStandardFormat().visit(client);
+		 return ui.getStandardFormat().toString();
 	}
 
 	/*

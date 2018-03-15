@@ -9,7 +9,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
 
 import client.Client;
@@ -150,26 +149,7 @@ public class UI implements ReadResolveable<UI>, Closeable
 			client = null;
 			try
 			{
-				for (Client c : theater.getClientList())
-				{
-					try
-					{
-						if (c.getID().matches(Long.parseLong(clientID)))
-						{
-							client = c;
-							break;
-						}
-					}
-					catch (NumberFormatException e)
-					{
-						throw new NoKeyTokenFoundException();
-					}
-				}
-				if (client == null)
-				{
-					throw new NoKeyTokenFoundException();
-				}
-
+				client = theater.findClient(clientID);
 				done = true;
 
 			}
@@ -203,26 +183,7 @@ public class UI implements ReadResolveable<UI>, Closeable
 			customer = null;
 			try
 			{
-				for (Customer c : theater.getCustomerList())
-				{
-					try
-					{
-						if (c.getID().matches(Long.parseLong(customerID)))
-						{
-							customer = c;
-							break;
-						}
-					}
-					catch (NumberFormatException e)
-					{
-						throw new NoKeyTokenFoundException();
-					}
-				}
-				if (customer == null)
-				{
-					throw new NoKeyTokenFoundException();
-				}
-
+				customer = theater.findCustomer(customerID);
 				done = true;
 
 			}
@@ -287,20 +248,8 @@ public class UI implements ReadResolveable<UI>, Closeable
 
 			try
 			{
-				List<CreditCard> list = customer.getCardList();
-				String cardNumber = getInput("Enter credit card number");
-
-				for (CreditCard c : list)
-				{
-					if (c.matches(cardNumber))
-					{
-						card = c;
-					}
-				}
-				if (card == null)
-				{
-					throw new NoCardFoundException();
-				}
+				String cardNumber = UI.getInput("Enter credit card number");
+				card = customer.findCreditCard(cardNumber);
 
 				done = true;
 			}
@@ -772,7 +721,17 @@ public class UI implements ReadResolveable<UI>, Closeable
 	}
 
 	/**
+	 * @return the standardFormat
+	 */
+	public StandardFormat getStandardFormat()
+	{
+		return standardFormat;
+	}
+
+	/**
 	 * A visitor that enables easy standard formating of all object types that need to be output in the "ListAll______" commands
 	 */
-	public StandardFormat standardFormat = new StandardFormat();
+	 private StandardFormat standardFormat = new StandardFormat();
+	
+	
 }

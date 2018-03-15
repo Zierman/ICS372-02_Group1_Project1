@@ -86,16 +86,7 @@ public class ListAllPlays implements Command<UI>
 				for (Play play : playList)
 				{
 					found = true;
-					ui.standardFormat.visit(play);
-					output += ui.standardFormat;
-//					output += "name: " + play.getName() + ",\n";
-//					output += "start date: " + UI.format(play.getStartDate()) + ",\n";
-//					output += "end date: " + UI.format(play.getEndDate()) + ",\n";
-//					output += "client : " + play.getOwner().getName() + " ("
-//							+ play.getOwner().getID() + ")\n";
-//					output += "regular ticket price: " + play.getRegularTicketPrice()  + "\n";
-//					output += "seating capacity: " + play.getSeatingCapacity() + "\n";
-//					output += "\n";
+					output += format(ui, play);
 				}
 
 				if (!found)
@@ -119,6 +110,18 @@ public class ListAllPlays implements Command<UI>
 			}
 		}
 
+	}
+
+	/**TODO finish doc
+	 * @param ui
+	 * @param output
+	 * @param play
+	 * @return
+	 */
+	private String format(UI ui, Play play)
+	{
+		ui.getStandardFormat().visit(play);
+		return ui.getStandardFormat().toString();
 	}
 
 	/*
