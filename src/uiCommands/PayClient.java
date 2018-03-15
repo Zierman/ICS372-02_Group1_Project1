@@ -1,6 +1,7 @@
 package uiCommands;
 
 import client.Client;
+import currency.Dollar;
 import theater.Theater;
 import userInterface.UI;
 
@@ -58,13 +59,24 @@ public class PayClient implements Command<UI>
 		public void call(UI ui)
 		{
 			Theater theater = ui.getTheater();
-			// TODO finish this
-			
-			// use UI.getClientFromInputID() to ask for a client id (returns a client object reference)
-			
-			// use UI.getDollarFromInput("Enter amount to pay client") to ask for a dollar amount (returns a dollar object)
-						
-			// use theater.pay(client, dollars) to pay the client. will throw OverpayingClientException if trying to pay too much
+			boolean done = false;
+			while(!done){
+				try{
+					// find appropriate client to pay
+					Client client = UI.getClientFromInputID();
+					// get amount to pay client and verify its validity
+					Dollar dollars = UI.getDollarFromInput("Enter amount to pay client");
+					// pay the client the appropriate amount
+					theater.pay(client, dollars);
+				}
+				catch(Exception e){
+					// output error message to user
+					UI.outputError(e, "Unable to pay client.");
+					
+					// ask user if they would like to try again
+					done = !UI.tryAgainCheck();
+				}
+			}
 		}
 
 		/*
