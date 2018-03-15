@@ -68,6 +68,12 @@ public class PayClient implements Command<UI>
 					Dollar dollars = UI.getDollarFromInput("Enter amount to pay client");
 					// pay the client the appropriate amount
 					theater.pay(client, dollars);
+					
+					// output to user that the Customer was added
+					UI.outputSuccessMessage(client + " has been paid\n");
+					
+					// ask the user if they would like to add another Customer
+					done = UI.getInput("Pay another client? (Y/N)").toLowerCase().startsWith("n");
 				}
 				catch(Exception e){
 					// output error message to user
