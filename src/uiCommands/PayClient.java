@@ -70,7 +70,7 @@ public class PayClient implements Command<UI>
 					theater.pay(client, dollars);
 					
 					// output to user that the Customer was added
-					UI.outputSuccessMessage(client + " has been paid\n");
+					UI.outputSuccessMessage("Client has been paid\n");
 					
 					// ask the user if they would like to add another Customer
 					done = UI.getInput("Pay another client? (Y/N)").toLowerCase().startsWith("n");
