@@ -4,7 +4,7 @@
   router="MANHATTAN">  
   <class id="1" language="java" name="ticket.RegularTicket" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/ticket/RegularTicket.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="205" y="450"/>    
+    <position height="-1" width="-1" x="216" y="502"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -13,7 +13,7 @@
   </class>  
   <class id="2" language="java" name="ticket.Ticket" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/ticket/Ticket.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="461" y="46"/>    
+    <position height="-1" width="-1" x="365" y="33"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -22,7 +22,7 @@
   </class>  
   <class id="3" language="java" name="ticket.StudentAdvanceTicket" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/ticket/StudentAdvanceTicket.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="467" y="467"/>    
+    <position height="-1" width="-1" x="512" y="502"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -31,7 +31,7 @@
   </class>  
   <class id="4" language="java" name="ticket.Ticket.SerialNumber" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/ticket/Ticket.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="927" y="64"/>    
+    <position height="-1" width="-1" x="664" y="201"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -40,7 +40,7 @@
   </class>  
   <class id="5" language="java" name="ticket.AdvanceTicket" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/ticket/AdvanceTicket.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="745" y="458"/>    
+    <position height="-1" width="-1" x="790" y="505"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -49,25 +49,25 @@
   </class>  
   <interface id="6" language="java" name="keyToken.Keyed" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/keyToken/Keyed.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="52" width="103" x="93" y="-244"/>    
+    <position height="-1" width="-1" x="663" y="363"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
-      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
-      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
   <interface id="7" language="java" name="ownership.Owned" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/ownership/Owned.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="115" y="36"/>    
+    <position height="-1" width="-1" x="108" y="26"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
-      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
-      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
   <class id="8" language="java" name="customer.Customer" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/customer/Customer.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="52" width="87" x="867" y="-183"/>    
+    <position height="-1" width="-1" x="676" y="-162"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -76,7 +76,7 @@
   </class>  
   <class id="9" language="java" name="play.Play" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/play/Play.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="52" width="87" x="854" y="-249"/>    
+    <position height="-1" width="-1" x="650" y="-238"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -85,7 +85,7 @@
   </class>  
   <class id="10" language="java" name="currency.Dollar" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/currency/Dollar.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="898" y="-301"/>    
+    <position height="-1" width="-1" x="667" y="-312"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -94,7 +94,7 @@
   </class>  
   <class id="11" language="java" name="ticket.TicketList" project="ICS372-02_Group1_Project1" 
     file="/ICS372-02_Group1_Project1/src/ticket/TicketList.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1225" y="140"/>    
+    <position height="-1" width="-1" x="869" y="-5"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -103,101 +103,271 @@
   </class>  
   <interface id="12" language="java" name="java.util.List" project="ICS372-02_Group1_Project1" 
     file="C:/Program Files/Java/jre1.8.0_161/lib/rt.jar" binary="true" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1148" y="-247"/>    
+    <position height="-1" width="-1" x="1201" y="77"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="13" language="java" name="keyToken.KeyedList" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/keyToken/KeyedList.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1036" y="439"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </interface>  
-  <realization id="13">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="6"/>  
-  </realization>  
-  <generalization id="14">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
-  <realization id="15">    
-    <bendpoint x="143" y="143"/>    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="7"/>  
-  </realization>  
-  <nesting id="16">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="4"/>  
-  </nesting>  
-  <generalization id="17">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
-  <association id="18">    
-    <bendpoint x="660" y="-102"/>    
-    <bendpoint x="660" y="-239"/>    
+  <interface id="14" language="java" name="storage.Loadable" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/storage/Loadable.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="865" y="-460"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <interface id="15" language="java" name="storage.ReadResolveable" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/storage/ReadResolveable.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="693" y="-462"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <interface id="16" language="java" name="storage.Savable" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/storage/Savable.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1018" y="-459"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <class id="17" language="java" name="keyToken.KeyToken" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/keyToken/KeyToken.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="648" y="60"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="ticket.TicketFactory" project="ICS372-02_Group1_Project1" 
+    file="/ICS372-02_Group1_Project1/src/ticket/TicketFactory.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="631" y="756"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="19">    
+    <bendpoint x="564" y="-115"/>    
+    <bendpoint x="564" y="-252"/>    
     <end type="SOURCE" refId="2" navigable="false" variant="ASSOCIATION">      
-      <attribute id="19" name="play"/>      
-      <multiplicity id="20" minimum="0" maximum="1"/>    
+      <attribute id="20" name="play">        
+        <position height="0" width="0" x="-247" y="-15"/>      
+      </attribute>      
+      <multiplicity id="21" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-247" y="-15"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="9" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="21">    
-    <end type="SOURCE" refId="2" navigable="false" variant="ASSOCIATION">      
-      <attribute id="22" name="serialNumber"/>      
-      <multiplicity id="23" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="24">    
+  <generalization id="22">    
+    <bendpoint x="665" y="107"/>    
+    <bendpoint x="651" y="107"/>    
     <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="17"/>  
+  </generalization>  
+  <dependency id="23">    
+    <bendpoint x="358" y="758"/>    
+    <end type="SOURCE" refId="18"/>    
     <end type="TARGET" refId="2"/>  
   </dependency>  
-  <association id="25">    
-    <bendpoint x="640" y="-124"/>    
-    <bendpoint x="640" y="-293"/>    
+  <dependency id="24">    
+    <bendpoint x="469" y="750"/>    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <realization id="25">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="14"/>  
+  </realization>  
+  <dependency id="26">    
+    <bendpoint x="1345" y="749"/>    
+    <bendpoint x="1345" y="-536"/>    
+    <bendpoint x="584" y="-536"/>    
+    <bendpoint x="584" y="-365"/>    
+    <bendpoint x="741" y="-365"/>    
+    <bendpoint x="741" y="-179"/>    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <realization id="27">    
+    <bendpoint x="925" y="377"/>    
+    <bendpoint x="1015" y="377"/>    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="13"/>  
+  </realization>  
+  <generalization id="28">    
+    <bendpoint x="723" y="435"/>    
+    <bendpoint x="503" y="435"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <dependency id="29">    
+    <bendpoint x="293" y="770"/>    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="30">    
+    <bendpoint x="544" y="-137"/>    
+    <bendpoint x="544" y="-306"/>    
     <end type="SOURCE" refId="2" navigable="false" variant="ASSOCIATION">      
-      <attribute id="26" name="priceOfTicket"/>      
-      <multiplicity id="27" minimum="0" maximum="1"/>    
+      <attribute id="31" name="priceOfTicket">        
+        <position height="0" width="0" x="-231" y="-11"/>      
+      </attribute>      
+      <multiplicity id="32" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-231" y="-11"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="10" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="28">    
-    <bendpoint x="683" y="-82"/>    
-    <bendpoint x="683" y="-145"/>    
-    <end type="SOURCE" refId="2" navigable="false" variant="ASSOCIATION">      
-      <attribute id="29" name="owner"/>      
-      <multiplicity id="30" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="31">    
+  <generalization id="33">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <generalization id="34">    
+    <bendpoint x="1184" y="439"/>    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
+  <realization id="35">    
+    <bendpoint x="918" y="-395"/>    
+    <bendpoint x="1014" y="-395"/>    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="16"/>  
+  </realization>  
+  <dependency id="36">    
+    <bendpoint x="1349" y="754"/>    
+    <bendpoint x="1349" y="-540"/>    
+    <bendpoint x="575" y="-540"/>    
+    <bendpoint x="575" y="-354"/>    
+    <bendpoint x="733" y="-354"/>    
+    <bendpoint x="733" y="-240"/>    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="9"/>  
+  </dependency>  
+  <realization id="37">    
+    <bendpoint x="546" y="359"/>    
+    <bendpoint x="546" y="343"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <realization id="38">    
+    <bendpoint x="158" y="131"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="7"/>  
+  </realization>  
+  <realization id="39">    
     <end type="SOURCE" refId="11"/>    
     <end type="TARGET" refId="12"/>  
   </realization>  
-  <association id="32">    
+  <dependency id="40">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="41">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <association id="42">    
     <end type="SOURCE" refId="11" navigable="false" variant="ASSOCIATION">      
-      <attribute id="33" name="singleton"/>      
-      <multiplicity id="34" minimum="0" maximum="1"/>    
+      <attribute id="43" name="singleton">        
+        <position height="0" width="0" x="-356" y="-145"/>      
+      </attribute>      
+      <multiplicity id="44" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-356" y="-145"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="11" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="35">    
-    <bendpoint x="834" y="-39"/>    
+  <association id="45">    
+    <bendpoint x="643" y="2"/>    
+    <bendpoint x="643" y="-18"/>    
     <end type="SOURCE" refId="11" navigable="false" variant="ASSOCIATION">      
-      <attribute id="36" name="tickets"/>      
-      <multiplicity id="37" minimum="0" maximum="2147483647"/>    
+      <attribute id="46" name="tickets">        
+        <position height="0" width="0" x="-96" y="-13"/>      
+      </attribute>      
+      <multiplicity id="47" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-96" y="-13"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="2" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="38">    
-    <end type="SOURCE" refId="5"/>    
+  <association id="48">    
+    <bendpoint x="546" y="211"/>    
+    <end type="SOURCE" refId="2" navigable="false" variant="ASSOCIATION">      
+      <attribute id="49" name="serialNumber">        
+        <position height="0" width="0" x="-263" y="137"/>      
+      </attribute>      
+      <multiplicity id="50" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-263" y="137"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="51">    
+    <bendpoint x="565" y="136"/>    
+    <bendpoint x="565" y="135"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="52">    
+    <bendpoint x="797" y="731"/>    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <generalization id="53">    
+    <bendpoint x="457" y="447"/>    
+    <bendpoint x="425" y="447"/>    
+    <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="2"/>  
   </generalization>  
+  <nesting id="54">    
+    <bendpoint x="561" y="255"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </nesting>  
+  <association id="55">    
+    <bendpoint x="587" y="-95"/>    
+    <bendpoint x="587" y="-158"/>    
+    <end type="SOURCE" refId="2" navigable="false" variant="ASSOCIATION">      
+      <attribute id="56" name="owner">        
+        <position height="0" width="0" x="-234" y="-5"/>      
+      </attribute>      
+      <multiplicity id="57" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-234" y="-5"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="58">    
+    <bendpoint x="807" y="-391"/>    
+    <bendpoint x="703" y="-391"/>    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="15"/>  
+  </realization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="false" package="false" protected="false" private="false" static="false"/>    

@@ -19,9 +19,9 @@ import exceptions.NoPlayFoundException;
 import exceptions.OverpayingClientException;
 import play.Play;
 import play.PlayList;
-import singleton.ReadResolveable;
 import storage.FileIO;
 import storage.Loadable;
+import storage.ReadResolveable;
 import storage.Resetable;
 import storage.Savable;
 import ticket.Ticket;
@@ -175,12 +175,10 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 		return true;
 	}
 
-	/**
-	 * @param theater
-	 * @param client
-	 * @param clientID
-	 * @return
-	 * @throws NoKeyTokenFoundException
+	/** Finds the client given a string representation of the client's id
+	 * @param clientID a string representation of the client's id
+	 * @return a client object
+	 * @throws NoKeyTokenFoundException if the clientID string cannot be matched
 	 */
 	public Client findClient(String clientID) throws NoKeyTokenFoundException
 	{
@@ -209,11 +207,10 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 	}
 
 	/**
-	 * @param theater
-	 * @param customer
-	 * @param customerID
-	 * @return
-	 * @throws NoKeyTokenFoundException
+	 * Finds the customer given a string representation of the customer's id
+	 * @param customerID a string representation of the customer's id
+	 * @return a Customer object
+	 * @throws NoKeyTokenFoundException if the Customer's id was not found
 	 */
 	public Customer findCustomer(
 			String customerID) throws NoKeyTokenFoundException

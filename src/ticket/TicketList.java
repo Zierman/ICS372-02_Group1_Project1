@@ -13,18 +13,25 @@ import client.ClientList;
 import customer.Customer;
 import customer.CustomerList;
 import exceptions.DateOutOfBoundsException;
+import exceptions.NoKeyTokenFoundException;
 import exceptions.NotEnoughSeatsAvailibleException;
+import keyToken.KeyedList;
 import play.Play;
 import play.PlayList;
-import singleton.ReadResolveable;
 import storage.FileIO;
 import storage.Loadable;
+import storage.ReadResolveable;
+import storage.Resetable;
 import storage.Savable;
 import theater.Theater;
 import userInterface.UI;
 //TODO Document this 
+/**
+ * @author Joshua Zierman [py1422xs@metrostate.edu]
+ *
+ */
 public class TicketList
-		implements ReadResolveable<TicketList>, List<Ticket>, Savable, Loadable
+		implements ReadResolveable<TicketList>, List<Ticket>, Savable, Loadable, Resetable, KeyedList<Ticket, Long>
 {
 	private static TicketList singleton;
 	protected static final String FILENAME = "tickets.dat";
@@ -230,6 +237,27 @@ public class TicketList
 		return count;
 	}
 
+	/* (non-Javadoc)
+	 * @see keyToken.KeyedList#findMatched(java.lang.Object)
+	 */
+	@Override
+	public Ticket findMatched(Long key) throws NoKeyTokenFoundException
+	{
+		Ticket ticket = null;
+		for(Ticket t :  instance())
+		{
+			if(t.matches(key))
+			{
+				ticket = t;
+			}
+		}
+		if(ticket == null)
+		{
+			throw new NoKeyTokenFoundException();
+		}
+		return ticket;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -239,6 +267,16 @@ public class TicketList
 	public Ticket get(int index)
 	{
 		return tickets.get(index);
+	}
+
+	/* (non-Javadoc)
+	 * @see keyToken.KeyedList#getLastKey()
+	 */
+	@Override
+	public Long getLastKey()
+	{
+		
+		return Ticket.getLastSerialNumberValue();
 	}
 
 	/*
@@ -376,6 +414,7 @@ public class TicketList
 		return tickets.remove(index);
 	}
 
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -398,6 +437,34 @@ public class TicketList
 		return tickets.removeAll(collection);
 	}
 
+	/* (non-Javadoc)
+	 * @see keyToken.KeyedList#removeMatched(java.lang.Object)
+	 */
+	@Override
+	public void removeMatched(Long key) throws NoKeyTokenFoundException
+	{
+		boolean found = false;
+		int i = 0;
+		for(Ticket t :  instance())
+		{
+			if(t.matches(key))
+			{
+				instance().remove(i);
+				found = true;
+				break;
+			}
+			i++;
+		}
+		if(!found)
+		{
+			throw new NoKeyTokenFoundException();
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see storage.Resetable#reset()
+	 */
+	@Override
 	public void reset()
 	{
 
@@ -441,6 +508,16 @@ public class TicketList
 	public Ticket set(int index, Ticket ticket)
 	{
 		return tickets.set(index, ticket);
+	}
+
+	/* (non-Javadoc)
+	 * @see keyToken.KeyedList#setLastKey(java.lang.Object)
+	 */
+	@Override
+	public void setLastKey(Long keyValue)
+	{
+		Ticket.setLastSerialNumberValue(keyValue);
+		
 	}
 
 	/*

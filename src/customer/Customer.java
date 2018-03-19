@@ -340,10 +340,10 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 	}
 	
 	/**
-	 * @param customer
-	 * @param card
-	 * @return
-	 * @throws NoCardFoundException
+	 * Finds the Card given a string representation of  credit card number
+	 * @param cardNumber a string representation of  credit card number for the card to find
+	 * @return a credit card object
+	 * @throws NoCardFoundException if the card cannot be found
 	 */
 	public CreditCard findCreditCard(String cardNumber)
 			throws NoCardFoundException

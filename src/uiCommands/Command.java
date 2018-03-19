@@ -3,7 +3,7 @@
  */
 package uiCommands;
 
-import singleton.ReadResolveable;
+import storage.ReadResolveable;
 
 
 /**

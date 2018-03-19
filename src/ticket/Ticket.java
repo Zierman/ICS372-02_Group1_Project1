@@ -86,6 +86,44 @@ public abstract class Ticket
 	private static final long serialVersionUID = 1L;
 
 	/**
+	 * Gets the last serial number as a Long
+	 * @return the last serial number as a Long
+	 */
+	protected static Long getLastSerialNumberValue()
+	{
+
+		return SerialNumber.lastValue;
+	}
+
+	/**
+	 * Gets the next serial number as a Long
+	 * @return the next serial number as a Long
+	 */
+	protected static Long getNextSerialNumberValue()
+	{
+
+		return SerialNumber.lastValue + 1;
+	}
+
+	/**
+	 * Sets the last serial number
+	 * @param serialNumberValue the value of the last serial number
+	 */
+	protected static void setLastSerialNumberValue(Long serialNumberValue)
+	{
+		SerialNumber.lastValue = serialNumberValue;
+	}
+
+	/**
+	 * Sets the last serial number
+	 * @param serialNumberValue the value of the last serial number
+	 */
+	protected static void setLastSerialNumberValue(Ticket.SerialNumber serialNumberValue)
+	{
+		SerialNumber.lastValue = serialNumberValue.getKeyValue();
+	}
+
+	/**
 	 * The serial number of the ticket.
 	 */
 	protected SerialNumber serialNumber;
@@ -104,12 +142,12 @@ public abstract class Ticket
 	 * The multiplier that is applied to the regular ticket price of the play to determine the starting price of this type of ticket.
 	 */
 	protected double priceMultiplier;
-
+	
 	/**
 	 * The current price of this ticket
 	 */
 	protected Dollar priceOfTicket;
-
+	
 	/**
 	 * A optional message to be printed on a ticket.
 	 */
@@ -125,11 +163,12 @@ public abstract class Ticket
 	 */
 	protected Customer owner;
 	
+
 	/**
 	 * true if the ticket has an extra message.
 	 */
 	protected boolean hasExtraMessage;
-	
+
 	/**
 	 * The credit card used to buy the ticket
 	 */
@@ -185,7 +224,6 @@ public abstract class Ticket
 		this.creditCard = creditCard;
 		
 	}
-	
 
 	/* (non-Javadoc)
 	 * @see visitor.Visitable#accept(visitor.Visitor)
@@ -345,7 +383,7 @@ public abstract class Ticket
 	{
 		return priceMultiplier;
 	}
-
+	
 	/**
 	 * Gets the price of the ticket
 	 * 
@@ -365,6 +403,7 @@ public abstract class Ticket
 		}
 		return priceOfTicket;
 	}
+	
 
 	/**
 	 * @return the serialNumber
@@ -373,7 +412,8 @@ public abstract class Ticket
 	{
 		return serialNumber;
 	}
-
+	
+	
 	/**
 	 * gets the type of ticket
 	 * 
@@ -383,7 +423,7 @@ public abstract class Ticket
 	{
 		return typeOfTicket;
 	}
-
+	
 	/**
 	 * @return the hasExtraMessage
 	 */
@@ -405,7 +445,6 @@ public abstract class Ticket
 	{
 		return serialNumber.matches(key);
 	}
-	
 
 	/*
 	 * (non-Javadoc)
@@ -417,8 +456,7 @@ public abstract class Ticket
 	{
 		return serialNumber.matches(keyValue);
 	}
-	
-	
+
 	/**
 	 * @param creditCard the creditCard to set
 	 */
@@ -426,7 +464,7 @@ public abstract class Ticket
 	{
 		this.creditCard = creditCard;
 	}
-	
+
 	/**
 	 * sets the date of the show
 	 * 
@@ -451,7 +489,7 @@ public abstract class Ticket
 		}
 		
 	}
-	
+
 	/**
 	 * Sets the extra message
 	 * 
@@ -513,6 +551,8 @@ public abstract class Ticket
 		this.owner = owner;
 	}
 
+
+
 	/**
 	 * Sets the play.
 	 * 
@@ -538,6 +578,10 @@ public abstract class Ticket
 		}
 	}
 
+	
+
+
+	
 	/**
 	 * Sets the price multiplier
 	 * 
@@ -549,6 +593,7 @@ public abstract class Ticket
 		this.priceMultiplier = priceMultiplier;
 	}
 
+	
 	/**
 	 * Sets the price of the ticket
 	 * 
@@ -560,6 +605,7 @@ public abstract class Ticket
 		this.priceOfTicket = priceOfTicket;
 	}
 
+	
 	/**
 	 * @param serialNumber the serialNumber to set
 	 */
@@ -568,8 +614,7 @@ public abstract class Ticket
 		this.serialNumber = serialNumber;
 	}
 
-
-
+	
 	/**
 	 * Checks if the ticket is valid and if not throws an exception
 	 * @throws Exception if the ticket is invalid
@@ -578,5 +623,4 @@ public abstract class Ticket
 	{
 		dateIsValidAssertion();
 	}
-
 }

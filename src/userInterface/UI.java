@@ -18,7 +18,7 @@ import customer.Customer.CreditCard;
 import exceptions.NoCardFoundException;
 import exceptions.NoKeyTokenFoundException;
 import exceptions.OutOfBoundsException;
-import singleton.ReadResolveable;
+import storage.ReadResolveable;
 import theater.Theater;
 import uiCommands.AddClient;
 import uiCommands.AddCreditCard;
