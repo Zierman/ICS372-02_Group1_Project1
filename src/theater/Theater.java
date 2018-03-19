@@ -248,6 +248,17 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 	{
 		return clientList;
 	}
+	
+	/**
+	 * gets the client's current balance due
+	 * 
+	 * @param client
+	 * @return a {@link client.balanceDue} that contains the client's balance
+	 */
+	public Dollar getClientBalanceDue(Client client)
+	{
+		return client.getBalanceDue();
+	}
 
 	/**
 	 * Gets a list of all customers.
