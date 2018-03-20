@@ -11,13 +11,13 @@ import keyToken.KeyToken;
 import keyToken.Keyed;
 import keyToken.Matchable;
 import phoneNumber.PhoneNumber;
-import userInterface.UI;
 import visitor.Visitable;
 import visitor.Visitor;
 import ownership.Owned;
 
 /**
  * Represents a Customer who attends plays at the theater.
+ * 
  * @author Troy Novak [wh1617wd@metrostate.edu]
  *
  */
@@ -25,44 +25,54 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 {
 	/**
 	 * subclass used to create individual objects for customer's credit cards
+	 * 
 	 * @author Troy Novak [wh1617wd@metrostate.edu]
 	 * 
 	 */
-	public class CreditCard implements Owned<Customer>,Serializable,Matchable<String>,Visitable{
-		
+	public class CreditCard implements Owned<Customer>, Serializable,
+			Matchable<String>, Visitable
+	{
+
 		/**
 		 * Serialization version.
 		 */
 		private static final long serialVersionUID = 1L;
-		
+
 		/**
 		 * the String representation of the credit card number
 		 */
 		private String cardNumber;
-		
+
 		/**
 		 * the String representation of the card expiration date
 		 */
 		private String cardExpiration;
-		
+
 		/**
 		 * the instance of Cutomer that owns the credit card
 		 */
 		private Customer owner;
-		
+
 		/**
 		 * creates a CreditCard object
-		 * @param cardNum The card number
-		 * @param cardExpiry the card's experation
-		 * @param owner the card's owner
+		 * 
+		 * @param cardNum
+		 *            The card number
+		 * @param cardExpiry
+		 *            the card's experation
+		 * @param owner
+		 *            the card's owner
 		 */
-		public CreditCard(String cardNum, String cardExpiry, Customer owner){
+		public CreditCard(String cardNum, String cardExpiry, Customer owner)
+		{
 			this.cardNumber = cardNum;
 			this.cardExpiration = cardExpiry;
 			this.owner = owner;
 		}
-		
-		/* (non-Javadoc)
+
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see visitor.Visitable#accept(visitor.Visitor)
 		 */
 		@Override
@@ -70,24 +80,30 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 		{
 			visitor.visit(this);
 		}
-		
+
 		/**
 		 * returns this instance's cardExpiration
+		 * 
 		 * @return cardExpiration
 		 */
-		public String getCardExpiration(){
+		public String getCardExpiration()
+		{
 			return this.cardExpiration;
 		}
-		
+
 		/**
 		 * returns this istance's cardNumber
+		 * 
 		 * @return cardNumber
 		 */
-		public String getCardNumber(){
+		public String getCardNumber()
+		{
 			return this.cardNumber;
 		}
-		
-		/* (non-Javadoc)
+
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see ownership.owned#getOwner()
 		 */
 		@Override
@@ -96,7 +112,9 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 			return owner;
 		}
 
-		/* (non-Javadoc)
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see keyToken.Matchable#matches(java.lang.Object)
 		 */
 		@Override
@@ -107,44 +125,55 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 
 		/**
 		 * sets this instance's cardExpiration
-		 * @param newCardExpiration the new card expiration date
+		 * 
+		 * @param newCardExpiration
+		 *            the new card expiration date
 		 */
-		public void setCardExpiration(String newCardExpiration){
+		public void setCardExpiration(String newCardExpiration)
+		{
 			this.cardExpiration = newCardExpiration;
 		}
 
 		/**
 		 * sets this instance's cardNumber
-		 * @param newCardNumber the new credit card number.
+		 * 
+		 * @param newCardNumber
+		 *            the new credit card number.
 		 */
-		public void setCardNumber(String newCardNumber){
+		public void setCardNumber(String newCardNumber)
+		{
 			this.cardNumber = newCardNumber;
 		}
 
-
-		/* (non-Javadoc)
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see ownership.Owned#setOwner(java.lang.Object)
 		 */
 		@Override
 		public void setOwner(Customer owner)
 		{
 			this.owner = owner;
-			
+
 		}
-		
-		/* (non-Javadoc)
+
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see java.lang.Object#toString()
 		 */
 		@Override
 		public String toString()
 		{
-			
-			return "CreditCard(" + getCardNumber() + ", exp: " + getCardExpiration() + ")" ;
+
+			return "CreditCard(" + getCardNumber() + ", exp: "
+					+ getCardExpiration() + ")";
 		}
 	}
-	
+
 	/**
 	 * subclass used to create an ID for each Customer
+	 * 
 	 * @author Joshua Zierman [py1422xs@metrostate.edu]
 	 *
 	 */
@@ -156,7 +185,9 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 		 */
 		private static final long serialVersionUID = 1L;
 
-		/* (non-Javadoc)
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see keyToken.ValueToken#getLastValue()
 		 */
 		@Override
@@ -165,7 +196,9 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 			return Customer.lastID;
 		}
 
-		/* (non-Javadoc)
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see keyToken.ValueToken#getNextValue()
 		 */
 		@Override
@@ -174,19 +207,22 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 			return Customer.lastID + 1;
 		}
 
-		/* (non-Javadoc)
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see keyToken.ValueToken#setLastValue(java.lang.Object)
 		 */
 		@Override
 		protected void setLastValue(Long key)
 		{
 			Customer.lastID = key;
-			
+
 		}
 	}
-	
+
 	/**
 	 * subclass used to create a name for each Customer
+	 * 
 	 * @author Joshua Zierman [py1422xs@metrostate.edu]
 	 *
 	 */
@@ -196,7 +232,7 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 		 * Serialization version.
 		 */
 		private static final long serialVersionUID = 1L;
-		
+
 		/**
 		 * The string representation of the name
 		 */
@@ -204,6 +240,7 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 
 		/**
 		 * Gets the customer's name.
+		 * 
 		 * @return the string representation of the name.
 		 */
 		public String getName()
@@ -213,14 +250,18 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 
 		/**
 		 * Sets the customer's name.
-		 * @param name the string representation of the name.
+		 * 
+		 * @param name
+		 *            the string representation of the name.
 		 */
 		public void setName(String name)
 		{
 			this.name = name;
 		}
-		
-		/* (non-Javadoc)
+
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see java.lang.Object#toString()
 		 */
 		@Override
@@ -229,56 +270,62 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 			return getName();
 		}
 	}
-	
+
 	/**
 	 * Serialization version.
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	/**
 	 * The last used ID key.
 	 */
 	protected static Long lastID = 0L;
-	
+
 	/**
 	 * The customer id.
 	 */
 	private ID id;
-	
+
 	/**
 	 * The customer's name.
 	 */
 	private Name name = new Name();
-	
+
 	/**
 	 * The customer's street address.
 	 */
 	private Address address = new Address();
-	
+
 	/**
 	 * The customer's phone number.
 	 */
 	private PhoneNumber phoneNumber = new PhoneNumber();
-	
+
 	/**
 	 * List to hold customer's credit card information
 	 */
 	private LinkedList<CreditCard> cardList = new LinkedList<CreditCard>();
-	
-	
+
 	/**
 	 * Customer class constructor that initializes instances attributes,
 	 * generates an ID unique to the instance, and initializes a list of
 	 * CreditCard objects unique to the instance.
+	 * 
 	 * @author Troy Novak [wh1617wd@metrostate.edu]
-	 * @param name the customer's full name
-	 * @param address the customer's street address
-	 * @param phoneNumber the customer's phone number
-	 * @param cardNumber The customer's credit card number
-	 * @param cardExpiration The credit card's expiration date
+	 * @param name
+	 *            the customer's full name
+	 * @param address
+	 *            the customer's street address
+	 * @param phoneNumber
+	 *            the customer's phone number
+	 * @param cardNumber
+	 *            The customer's credit card number
+	 * @param cardExpiration
+	 *            The credit card's expiration date
 	 */
-	public Customer(String name, String address,
-					String phoneNumber, String cardNumber, String cardExpiration){
+	public Customer(String name, String address, String phoneNumber,
+			String cardNumber, String cardExpiration)
+	{
 		// initialize customer's information
 		this.name.setName(name);
 		this.address.setAddress(address);
@@ -287,12 +334,12 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 		id = new ID();
 		// initialize the customer's list of credit cards
 		cardList.add(new CreditCard(cardNumber, cardExpiration, this));
-		
+
 	}
-	
-	
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see visitor.Visitable#accept(visitor.Visitor)
 	 */
 	@Override
@@ -300,50 +347,65 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 	{
 		visitor.visit(this);
 	}
-	
+
 	/**
 	 * adds a new card to cardList as long as that card doesn't already exist
-	 * within cardList 
-	 * @param cardNum The credit card number
-	 * @param cardExpiry the expiration date
-	 * @throws CardAlreadyInListException  if the card is already in list
-	 * @return true if the card is found or false if not. 
+	 * within cardList
+	 * 
+	 * @param cardNum
+	 *            The credit card number
+	 * @param cardExpiry
+	 *            the expiration date
+	 * @throws CardAlreadyInListException
+	 *             if the card is already in list
+	 * @return true if the card is found or false if not.
 	 */
-	public boolean addCreditCard(String cardNum, String cardExpiry) throws CardAlreadyInListException{
+	public boolean addCreditCard(String cardNum, String cardExpiry)
+			throws CardAlreadyInListException
+	{
 		// if card doesn't already exist within cardList...
-		if(!exists(cardNum))
+		if (!exists(cardNum))
 			// ...add new card to cardList
-			return cardList.add(new CreditCard(cardNum,cardExpiry, this));
-		
+			return cardList.add(new CreditCard(cardNum, cardExpiry, this));
+
 		// if card does already exist within cardList...
-		else{
+		else
+		{
 			throw new CardAlreadyInListException();
 		}
 	}
-	
+
 	/**
 	 * searches cardList for specified cardNumber
-	 * @param cardNum The credit card number
+	 * 
+	 * @param cardNum
+	 *            The credit card number
 	 * @return true if found
 	 * @return false if not found
 	 */
-	public boolean exists(String cardNum){
+	public boolean exists(String cardNum)
+	{
 		// list traversal loop
-		for(int i = 0; i < cardList.size(); i++){
+		for (int i = 0; i < cardList.size(); i++)
+		{
 			// if target is found...
-			if(cardList.get(i).getCardNumber().equals(cardNum))
+			if (cardList.get(i).getCardNumber().equals(cardNum))
 				// ...returns true...
 				return true;
 		}
 		// ...otherwise returns false
 		return false;
 	}
-	
+
 	/**
-	 * Finds the Card given a string representation of  credit card number
-	 * @param cardNumber a string representation of  credit card number for the card to find
+	 * Finds the Card given a string representation of credit card number
+	 * 
+	 * @param cardNumber
+	 *            a string representation of credit card number for the card to
+	 *            find
 	 * @return a credit card object
-	 * @throws NoCardFoundException if the card cannot be found
+	 * @throws NoCardFoundException
+	 *             if the card cannot be found
 	 */
 	public CreditCard findCreditCard(String cardNumber)
 			throws NoCardFoundException
@@ -351,7 +413,7 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 		CreditCard card = null;
 		Customer customer = this;
 		List<CreditCard> list = customer.getCardList();
-	
+
 		for (CreditCard c : list)
 		{
 			if (c.matches(cardNumber))
@@ -365,31 +427,37 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 		}
 		return card;
 	}
-	
+
 	/**
 	 * returns this instance's address
+	 * 
 	 * @return address
 	 */
-	public Address getAddress(){
+	public Address getAddress()
+	{
 		return this.address;
 	}
-	
+
 	/**
 	 * returns this instance's cardList
+	 * 
 	 * @return cardList
 	 */
-	public LinkedList<CreditCard> getCardList(){
+	public LinkedList<CreditCard> getCardList()
+	{
 		return this.cardList;
 	}
-	
+
 	/**
 	 * returns this instance's id
+	 * 
 	 * @return id
 	 */
-	public ID getID(){
+	public ID getID()
+	{
 		return this.id;
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -400,25 +468,30 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 	{
 		return this.id.getKeyValue();
 	}
-	
-	
+
 	/**
 	 * returns this instance's name
+	 * 
 	 * @return name
 	 */
-	public Name getName(){
+	public Name getName()
+	{
 		return this.name;
 	}
 
 	/**
 	 * returns this instance's phoneNumber
+	 * 
 	 * @return phoneNumber
 	 */
-	public PhoneNumber getPhoneNumber(){
+	public PhoneNumber getPhoneNumber()
+	{
 		return this.phoneNumber;
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see keyToken.Keyed#matches(java.lang.Object)
 	 */
 	@Override
@@ -426,41 +499,55 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 	{
 		return getID().matches(key);
 	}
-	
+
 	/**
 	 * removes a card from cardList as long as that card exists within cardList
-	 * @param cardNum The credit card number
-	 * @throws NoCardFoundException if the credit card number doesn't match any in list.
+	 * 
+	 * @param cardNum
+	 *            The credit card number
+	 * @throws NoCardFoundException
+	 *             if the credit card number doesn't match any in list.
 	 */
-	public void removeCreditCard(String cardNum) throws NoCardFoundException{
+	public void removeCreditCard(String cardNum) throws NoCardFoundException
+	{
 		// if card exists within cardList...
-		if(exists(cardNum)){
+		if (exists(cardNum))
+		{
 			// ...remove it from cardList
-			for(int i = 0; i < cardList.size(); i++){
-				if(cardList.get(i).getCardNumber().equals(cardNum)){
+			for (int i = 0; i < cardList.size(); i++)
+			{
+				if (cardList.get(i).getCardNumber().equals(cardNum))
+				{
 					cardList.remove(i);
 				}
 			}
 		}
 		// if card doesn't exist within cardList...
-		else{
+		else
+		{
 			throw new NoCardFoundException();
 		}
 	}
 
 	/**
 	 * sets this instance's address
-	 * @param custAddress customer's street address
+	 * 
+	 * @param custAddress
+	 *            customer's street address
 	 */
-	public void setAddress(String custAddress){
+	public void setAddress(String custAddress)
+	{
 		this.address.setAddress(custAddress);
 	}
 
 	/**
 	 * sets this instance's id
-	 * @param custID the identification of the customer
+	 * 
+	 * @param custID
+	 *            the identification of the customer
 	 */
-	public void setID(ID custID){
+	public void setID(ID custID)
+	{
 		this.id = custID;
 	}
 
@@ -476,26 +563,27 @@ public class Customer implements Serializable, Keyed<Long>, Visitable
 		this.id.setValue(key);
 
 	}
-	
-
 
 	/**
 	 * sets this instance's name
-	 * @param custName the full name of the customer
+	 * 
+	 * @param custName
+	 *            the full name of the customer
 	 */
-	public void setName(String custName){
+	public void setName(String custName)
+	{
 		this.name.setName(custName);
 	}
 
-
-
 	/**
 	 * sets this instance's phoneNumber
-	 * @param phoneNum The phone number of the customer
+	 * 
+	 * @param phoneNum
+	 *            The phone number of the customer
 	 */
-	public void setPhoneNum(String phoneNum){
+	public void setPhoneNum(String phoneNum)
+	{
 		this.phoneNumber.setNumber(phoneNum);
 	}
-	
-	
+
 }

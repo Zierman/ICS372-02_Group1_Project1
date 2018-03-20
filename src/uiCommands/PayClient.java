@@ -75,7 +75,7 @@ public class PayClient implements Command<UI>
 				Client client = UI.getClientFromInputID();
 				// output the Client's current balance
 				UI.println("Client's current balance: "
-							+ theater.getClientBalanceDue(client));
+						+ theater.getClientBalanceDue(client));
 				// get amount to pay client and verify its validity
 				Dollar dollars = UI
 						.getDollarFromInput("Enter amount to pay client");

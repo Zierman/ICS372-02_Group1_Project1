@@ -318,9 +318,9 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 	{
 		boolean found = false;
 		int i = 0;
-		for(Client c :  instance())
+		for (Client c : instance())
 		{
-			if(c.matches(key))
+			if (c.matches(key))
 			{
 				instance().remove(i);
 				found = true;
@@ -328,7 +328,7 @@ public class ClientList implements ReadResolveable<ClientList>, KeyedList<Client
 			}
 			i++;
 		}
-		if(!found)
+		if (!found)
 		{
 			throw new NoKeyTokenFoundException();
 		}

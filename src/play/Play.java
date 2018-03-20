@@ -110,7 +110,8 @@ public class Play implements Serializable, Owned<Client>, Visitable
 	/**
 	 * How many customers can attend a play.
 	 * 
-	 * Currently there is no command to change the seating capacity but it is flexible.
+	 * Currently there is no command to change the seating capacity but it is
+	 * flexible.
 	 */
 	private Integer seatingCapacity;
 
@@ -126,11 +127,14 @@ public class Play implements Serializable, Owned<Client>, Visitable
 	 *            the <code>Date</code> object that holds the starting date.
 	 * @param endDate
 	 *            the <code>Date</code> object that holds the ending date.
-	 * @param regularTicketPrice the price of a non-discounted ticket.
+	 * @param regularTicketPrice
+	 *            the price of a non-discounted ticket.
 	 * 
-	 * @param seatingCapacity The amount of seats availibye during showings of this play
+	 * @param seatingCapacity
+	 *            The amount of seats availibye during showings of this play
 	 */
-	public Play(String name, Client client, Date startDate, Date endDate, Dollar regularTicketPrice, int seatingCapacity)
+	public Play(String name, Client client, Date startDate, Date endDate,
+			Dollar regularTicketPrice, int seatingCapacity)
 	{
 
 		if (startDate.after(endDate))
@@ -145,7 +149,9 @@ public class Play implements Serializable, Owned<Client>, Visitable
 		this.seatingCapacity = seatingCapacity;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see visitor.Visitable#accept(visitor.Visitor)
 	 */
 	@Override
@@ -187,6 +193,7 @@ public class Play implements Serializable, Owned<Client>, Visitable
 
 	/**
 	 * Gets the regular ticket price for the play
+	 * 
 	 * @return the regular ticket price for the play
 	 */
 	public Dollar getRegularTicketPrice()
@@ -238,7 +245,9 @@ public class Play implements Serializable, Owned<Client>, Visitable
 		this.name.setName(name);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see ownership.Owned#setOwner(java.lang.Object)
 	 */
 	@Override
@@ -247,28 +256,28 @@ public class Play implements Serializable, Owned<Client>, Visitable
 		this.owner = owner;
 
 	}
-	
+
 	/**
 	 * Sets Regular ticket price for this play
-	 * @param regularTicketPrice the regularTicketPrice to set
+	 * 
+	 * @param regularTicketPrice
+	 *            the regularTicketPrice to set
 	 */
 	public void setRegularTicketPrice(Dollar regularTicketPrice)
 	{
 		this.regularTicketPrice = regularTicketPrice;
 	}
 
-
 	/**
 	 * Sets the seating capacity.
 	 * 
-	 * @param seatingCapacity an <code>Integer</code> of the current seating capacity.
+	 * @param seatingCapacity
+	 *            an <code>Integer</code> of the current seating capacity.
 	 */
 	public void setSeatingCapacity(Integer seatingCapacity)
 	{
 		this.seatingCapacity = seatingCapacity;
 	}
-	
-
 
 	/**
 	 * Sets the start date

@@ -11,8 +11,10 @@ import userInterface.UI;
 public class RemoveCustomer implements Command<UI>
 {
 	private static RemoveCustomer singleton;
+
 	/**
 	 * Gets or creates an instance of the singleton
+	 * 
 	 * @return an instance of the singleton
 	 */
 	public static RemoveCustomer instance()
@@ -23,6 +25,7 @@ public class RemoveCustomer implements Command<UI>
 		}
 		return singleton;
 	}
+
 	private final String LABEL = "Remove a customer from the customer list.";
 	private final boolean IS_DATA_COMMAND = true;
 
@@ -30,7 +33,8 @@ public class RemoveCustomer implements Command<UI>
 
 	/**
 	 * 
-	 * Constructs a <code>RemoveCustomer</code> object used when creating a subtype singleton
+	 * Constructs a <code>RemoveCustomer</code> object used when creating a
+	 * subtype singleton
 	 * 
 	 * @throws Exception
 	 *             if used to try to create a base type
@@ -44,7 +48,8 @@ public class RemoveCustomer implements Command<UI>
 	}
 
 	/**
-	 * Constructs the <code>RemoveCustomer</code> object used to create the singleton.
+	 * Constructs the <code>RemoveCustomer</code> object used to create the
+	 * singleton.
 	 * 
 	 * @param i
 	 *            an integer with no significance other than giving it a
@@ -54,14 +59,17 @@ public class RemoveCustomer implements Command<UI>
 	{
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see uiCommands.Command#call(java.lang.Object)
 	 */
 	@Override
 	public void call(UI ui)
 	{
 		boolean done = false;
-		while(!done){
+		while (!done)
+		{
 			Theater theater = ui.getTheater();
 			Long key = Long.parseLong(UI.getInput("Enter customer ID: "));
 			try
@@ -105,6 +113,7 @@ public class RemoveCustomer implements Command<UI>
 	 * (non-Javadoc)
 	 * 
 	 * @see uiCommands.Command#isTerminateionCommand()
+	 * 
 	 * @author Troy Novak [wh1617wd@metrostate.edu]
 	 */
 	@Override

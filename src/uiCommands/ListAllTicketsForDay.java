@@ -79,13 +79,15 @@ public class ListAllTicketsForDay implements Command<UI>
 			try
 			{
 				// TODO finish this
-		
-				Date inputDate = UI.getDateFromInput("Enter date of the showing: ");
-		
+
+				Date inputDate = UI
+						.getDateFromInput("Enter date of the showing: ");
+
 				for (Ticket ticket : ticketList)
 				{
-					if (UI.format(ticket.getDateOfShow()).contentEquals(UI.format(inputDate)))
-					{						
+					if (UI.format(ticket.getDateOfShow())
+							.contentEquals(UI.format(inputDate)))
+					{
 						output += format(ui, ticket);
 						found = true;
 					}
@@ -99,10 +101,11 @@ public class ListAllTicketsForDay implements Command<UI>
 				{
 					UI.println(output);
 				}
-				
+
 				done = true;
 			}
-			catch (Exception e) {
+			catch (Exception e)
+			{
 
 				// show error message
 				UI.outputError(e, "Unable to list all plays");

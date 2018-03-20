@@ -1,6 +1,5 @@
 package currency;
 
-
 /**
  * Represents United States Dollars
  * @author Joshua Zierman [py1422xs@metrostate.edu]
@@ -56,7 +55,9 @@ public class Dollar extends Currency<Dollar, Double>
 		this.amount = dollars;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see currency.Currency#addTogether(currency.CurrencyHelper)
 	 */
 	@Override
@@ -86,7 +87,9 @@ public class Dollar extends Currency<Dollar, Double>
 		return FORMAT_STRING;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see currency.Currency#half()
 	 */
 	@Override
@@ -95,7 +98,9 @@ public class Dollar extends Currency<Dollar, Double>
 		return new Dollar(this.amount / 2);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see currency.Currency#multiplyBy(double)
 	 */
 	@Override
@@ -114,7 +119,9 @@ public class Dollar extends Currency<Dollar, Double>
 		this.amount = amount;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see currency.Currency#subtract(currency.CurrencyHelper)
 	 */
 	@Override
@@ -122,7 +129,7 @@ public class Dollar extends Currency<Dollar, Double>
 	{
 		return new Dollar(this.amount - currency.getAmount());
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 

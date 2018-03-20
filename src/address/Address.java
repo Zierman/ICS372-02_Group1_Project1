@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 /**
  * Represents a street address.
+ * 
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
@@ -13,14 +14,15 @@ public class Address implements Serializable
 	 * the version of the serialization
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	/**
-	 *  a string that represents the address.
+	 * a string that represents the address.
 	 */
 	private String address;
 
 	/**
 	 * Gets the address
+	 * 
 	 * @return the string representation of the address.
 	 */
 	public String getAddress()
@@ -30,7 +32,9 @@ public class Address implements Serializable
 
 	/**
 	 * Sets the address
-	 * @param address an <code>Address</code> object.
+	 * 
+	 * @param address
+	 *            an <code>Address</code> object.
 	 */
 	public void setAddress(Address address)
 	{
@@ -39,14 +43,18 @@ public class Address implements Serializable
 
 	/**
 	 * Sets the address
-	 * @param address a string representation of the address.
+	 * 
+	 * @param address
+	 *            a string representation of the address.
 	 */
 	public void setAddress(String address)
 	{
 		this.address = address;
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override

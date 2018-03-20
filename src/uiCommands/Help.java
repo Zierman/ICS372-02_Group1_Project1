@@ -2,17 +2,19 @@ package uiCommands;
 
 import userInterface.UI;
 
-
 /**
  * The help command to display all commands.
+ * 
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
 public class Help implements Command<UI>
 {
 	private static Help singleton;
+
 	/**
 	 * Gets or creates an instance of the singleton
+	 * 
 	 * @return an instance of the singleton
 	 */
 	public static Help instance()
@@ -23,6 +25,7 @@ public class Help implements Command<UI>
 		}
 		return singleton;
 	}
+
 	private final String LABEL = "Show all commands.";
 	private final boolean IS_DATA_COMMAND = true;
 
@@ -30,7 +33,8 @@ public class Help implements Command<UI>
 
 	/**
 	 * 
-	 * Constructs a <code>Help</code> object used when creating a subtype singleton
+	 * Constructs a <code>Help</code> object used when creating a subtype
+	 * singleton
 	 * 
 	 * @throws Exception
 	 *             if used to try to create a base type
@@ -54,7 +58,9 @@ public class Help implements Command<UI>
 	{
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see uiCommands.Command#call(java.lang.Object)
 	 */
 	@Override

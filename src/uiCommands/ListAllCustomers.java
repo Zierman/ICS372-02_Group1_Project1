@@ -18,6 +18,7 @@ import userInterface.UI;
 public class ListAllCustomers implements Command<UI>
 {
 	private static ListAllCustomers singleton;
+
 	/**
 	 * Gets or creates an instance of the singleton
 	 * 
@@ -31,6 +32,7 @@ public class ListAllCustomers implements Command<UI>
 		}
 		return singleton;
 	}
+
 	private final String LABEL = "Show a list of all customers.";
 	private final boolean IS_DATA_COMMAND = true;
 
@@ -64,36 +66,45 @@ public class ListAllCustomers implements Command<UI>
 	{
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see uiCommands.Command#call(java.lang.Object)
+	 * 
 	 * @author Troy Novak [wh1617wd@metrostate.edu]
 	 */
 	@Override
 	public void call(UI ui)
 	{
 		boolean done = false;
-		while(!done){
-			try{
+		while (!done)
+		{
+			try
+			{
 				boolean found = false;
 				Theater theater = ui.getTheater();
 				CustomerList customerList = theater.getCustomerList();
 				String output = "";
-				for(Customer customer : customerList){
+				for (Customer customer : customerList)
+				{
 					found = true;
 					output += format(ui, customer);
 				}
-				if(!found){
+				if (!found)
+				{
 					UI.println("No customers found.");
 				}
-				else{
+				else
+				{
 					UI.println(output);
 				}
 				done = true;
 			}
-			catch(Exception e){
+			catch (Exception e)
+			{
 				// output error message to user
 				UI.outputError(e, "Unable to list all customers.");
-				
+
 				// ask user if they would like to try again
 				done = !UI.tryAgainCheck();
 			}
@@ -101,7 +112,9 @@ public class ListAllCustomers implements Command<UI>
 
 	}
 
-	/**TODO finish
+	/**
+	 * TODO finish
+	 * 
 	 * @param ui
 	 * @param output
 	 * @param customer

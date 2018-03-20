@@ -6,12 +6,14 @@ import userInterface.UI;
 
 /**
  * The command to add a new credit card
+ * 
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
 public class AddCreditCard implements Command<UI>
 {
 	private static AddCreditCard singleton;
+
 	/**
 	 * Gets or creates an instance of the singleton
 	 * 
@@ -25,6 +27,7 @@ public class AddCreditCard implements Command<UI>
 		}
 		return singleton;
 	}
+
 	private final String LABEL = "Add a new CreditCard.";
 	private final boolean IS_DATA_COMMAND = true;
 
@@ -58,8 +61,11 @@ public class AddCreditCard implements Command<UI>
 	{
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see uiCommands.Command#call(java.lang.Object)
+	 * 
 	 * @author Troy Novak [wh1617wd@metrostate.edu]
 	 */
 	@Override
@@ -67,33 +73,42 @@ public class AddCreditCard implements Command<UI>
 	{
 		Theater theater = ui.getTheater();
 		boolean done = false;
-		while(!done){
-			try{
-				// get Customer ID for customer for which to add a CreditCard object
-				Long customerID = Long.parseLong(UI.getInput("Enter Customer ID: "));
-				
+		while (!done)
+		{
+			try
+			{
+				// get Customer ID for customer for which to add a CreditCard
+				// object
+				Long customerID = Long
+						.parseLong(UI.getInput("Enter Customer ID: "));
+
 				// find customer using target customerID
-				Customer customer = theater.getCustomerList().findMatched(customerID);
-				
-				// get other necessary information to add a CreditCard object to the list
+				Customer customer = theater.getCustomerList()
+						.findMatched(customerID);
+
+				// get other necessary information to add a CreditCard object to
+				// the list
 				String cardNumber = UI.getInput("Enter Credit Card Number: ");
-				String cardExpiration = UI.getInput("Enter Credit Card Expiration: ");
-				
+				String cardExpiration = UI
+						.getInput("Enter Credit Card Expiration: ");
+
 				// add the CreditCard object to the Customer's list
 				theater.add(customer, cardNumber, cardExpiration);
-				
+
 				// output to user that CreditCard was added to the list
-				UI.outputSuccessMessage(cardNumber + " was added to Customer " + customerID
-										+ "'s list of credit cards.");
-				
+				UI.outputSuccessMessage(cardNumber + " was added to Customer "
+						+ customerID + "'s list of credit cards.");
+
 				// ask the user if they would like to add another CreditCard
-				done = UI.getInput("Add another Credit Card? (Y/N)").toLowerCase().startsWith("n");
-				
+				done = UI.getInput("Add another Credit Card? (Y/N)")
+						.toLowerCase().startsWith("n");
+
 			}
-			catch(Exception e){
+			catch (Exception e)
+			{
 				// output error message to user
 				UI.outputError(e, "Unable to add Credit Card.");
-				
+
 				// ask user if they would like to try again
 				done = !UI.tryAgainCheck();
 			}

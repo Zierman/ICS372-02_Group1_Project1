@@ -8,6 +8,7 @@ import play.Play;
 
 /**
  * A Factory for creating ticket objects
+ * 
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */

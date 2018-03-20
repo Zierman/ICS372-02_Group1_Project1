@@ -17,7 +17,6 @@ import storage.Loadable;
 import storage.ReadResolveable;
 import storage.Resetable;
 import storage.Savable;
-import theater.Theater;
 
 /**
  * A list of plays

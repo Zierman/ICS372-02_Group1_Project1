@@ -26,7 +26,6 @@ import storage.Resetable;
 import storage.Savable;
 import ticket.Ticket;
 import ticket.TicketList;
-import userInterface.UI;
 
 /**
  * Represents a theater that shows plays performed by clients to customers.
@@ -34,7 +33,8 @@ import userInterface.UI;
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
-public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Resetable
+public class Theater
+		implements ReadResolveable<Theater>, Loadable, Savable, Resetable
 {
 	/**
 	 * a <code>Theater</code> object to enforce singleton behavior.
@@ -75,7 +75,7 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 	 * a list of all plays.
 	 */
 	private PlayList playList = PlayList.instance();
-	
+
 	private TicketList ticketList = TicketList.instance();
 
 	/**
@@ -86,7 +86,8 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 	/**
 	 * Constructs a Theater used when creating a subtype singleton
 	 * 
-	 * @throws Exception if used to try to create a base type Theater
+	 * @throws Exception
+	 *             if used to try to create a base type Theater
 	 */
 	protected Theater() throws Exception
 	{
@@ -99,7 +100,8 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 	/**
 	 * Constructs the Theater used to create the singleton.
 	 * 
-	 * @param i an integer with no significance other than giving it a
+	 * @param i
+	 *            an integer with no significance other than giving it a
 	 *            different signature than the protected constructor.
 	 */
 	private Theater(int i)
@@ -109,7 +111,8 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 	/**
 	 * Adds a new client
 	 * 
-	 * @param client {@link client.Client} to be added.
+	 * @param client
+	 *            {@link client.Client} to be added.
 	 * @return true if added, false if not.
 	 */
 	public boolean add(Client client)
@@ -120,7 +123,8 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 	/**
 	 * Adds a new customer
 	 * 
-	 * @param customer a {@link customer.Customer} to be added.
+	 * @param customer
+	 *            a {@link customer.Customer} to be added.
 	 * @return true if added, false if not.
 	 */
 	public boolean add(Customer customer)
@@ -131,20 +135,27 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 	/**
 	 * adds a new credit card
 	 * 
-	 * @param customer The customer who is adding the credit card.
-	 * @param cardNumber the credit card number for the new credit card.
-	 * @param cardExpiration the expiration date of the new card.
+	 * @param customer
+	 *            The customer who is adding the credit card.
+	 * @param cardNumber
+	 *            the credit card number for the new credit card.
+	 * @param cardExpiration
+	 *            the expiration date of the new card.
 	 * @return true if added, false if not
-	 * @throws CardAlreadyInListException if the card that is being added was already in list.
+	 * @throws CardAlreadyInListException
+	 *             if the card that is being added was already in list.
 	 */
-	public boolean add(Customer customer, String cardNumber, String cardExpiration) throws CardAlreadyInListException{
+	public boolean add(Customer customer, String cardNumber,
+			String cardExpiration) throws CardAlreadyInListException
+	{
 		return customer.addCreditCard(cardNumber, cardExpiration);
 	}
 
 	/**
 	 * Adds a new play
 	 * 
-	 * @param play a {@link play.Play} tobe added.
+	 * @param play
+	 *            a {@link play.Play} tobe added.
 	 * @return true if added, false if not.
 	 */
 	public boolean add(Play play)
@@ -152,7 +163,9 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 		return playList.add(play);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see storage.Loadable#canLoad()
 	 */
 	@Override
@@ -168,17 +181,21 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 			customerList.canLoad();
 			playList.canLoad();
 		}
-		catch(Exception e)
+		catch (Exception e)
 		{
-			
+
 		}
 		return true;
 	}
 
-	/** Finds the client given a string representation of the client's id
-	 * @param clientID a string representation of the client's id
+	/**
+	 * Finds the client given a string representation of the client's id
+	 * 
+	 * @param clientID
+	 *            a string representation of the client's id
 	 * @return a client object
-	 * @throws NoKeyTokenFoundException if the clientID string cannot be matched
+	 * @throws NoKeyTokenFoundException
+	 *             if the clientID string cannot be matched
 	 */
 	public Client findClient(String clientID) throws NoKeyTokenFoundException
 	{
@@ -208,12 +225,15 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 
 	/**
 	 * Finds the customer given a string representation of the customer's id
-	 * @param customerID a string representation of the customer's id
+	 * 
+	 * @param customerID
+	 *            a string representation of the customer's id
 	 * @return a Customer object
-	 * @throws NoKeyTokenFoundException if the Customer's id was not found
+	 * @throws NoKeyTokenFoundException
+	 *             if the Customer's id was not found
 	 */
-	public Customer findCustomer(
-			String customerID) throws NoKeyTokenFoundException
+	public Customer findCustomer(String customerID)
+			throws NoKeyTokenFoundException
 	{
 		Customer customer = null;
 		Theater theater = this;
@@ -248,7 +268,7 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 	{
 		return clientList;
 	}
-	
+
 	/**
 	 * gets the client's current balance due
 	 * 
@@ -270,8 +290,6 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 		return customerList;
 	}
 
-	
-
 	/**
 	 * Gets the name of the theater.
 	 * 
@@ -285,20 +303,22 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 	public Play getPlay(Date dateOfShow) throws NoPlayFoundException
 	{
 		Play play = null;
-		
-		for(Play p : playList)
+
+		for (Play p : playList)
 		{
 			// if dateOfShow is in range [start, end) of the play
-			if((p.getStartDate().before(dateOfShow) && p.getEndDate().after(dateOfShow)) || p.getStartDate().equals(dateOfShow))
+			if ((p.getStartDate().before(dateOfShow)
+					&& p.getEndDate().after(dateOfShow))
+					|| p.getStartDate().equals(dateOfShow))
 			{
 				play = p;
 			}
 		}
-		if(play == null)
+		if (play == null)
 		{
 			throw new NoPlayFoundException();
 		}
-		
+
 		return play;
 	}
 
@@ -319,7 +339,7 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 	{
 		return ticketList;
 	}
-	
+
 	public boolean hasEnoughFreeSeats(int qty, Date dateOfShow, Play play)
 	{
 		try
@@ -327,13 +347,13 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 			int alreadySold = ticketList.countFor(dateOfShow);
 			return qty + alreadySold <= play.getSeatingCapacity();
 		}
-		catch (Exception e) 
+		catch (Exception e)
 		{
 			return false;
 		}
-		
+
 	}
-	
+
 	public void increaseDebt(Client client, Dollar dollars)
 	{
 		client.setBalanceDue(client.getBalanceDue().addTogether((dollars)));
@@ -363,16 +383,17 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 			throw e;
 		}
 	}
-	
-	public void pay(Client client, Dollar dollars) throws OverpayingClientException
+
+	public void pay(Client client, Dollar dollars)
+			throws OverpayingClientException
 	{
-		if(client.getBalanceDue().compareTo(dollars) < 0)
+		if (client.getBalanceDue().compareTo(dollars) < 0)
 		{
 			throw new OverpayingClientException();
 		}
 		client.setBalanceDue(client.getBalanceDue().subtract(dollars));
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -383,42 +404,52 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 	{
 		return instance();
 	}
-	
+
 	/**
 	 * removes a credit card
 	 * 
-	 * @param customer the customer who owns the credit card to be removed
-	 * @param cardNumber the credit card number of the card to remove.
-	 * @throws NoCardFoundException if the credit card number doesn't match any card in list.
+	 * @param customer
+	 *            the customer who owns the credit card to be removed
+	 * @param cardNumber
+	 *            the credit card number of the card to remove.
+	 * @throws NoCardFoundException
+	 *             if the credit card number doesn't match any card in list.
 	 */
-	public void removeCreditCard(Customer customer, String cardNumber) throws NoCardFoundException{
+	public void removeCreditCard(Customer customer, String cardNumber)
+			throws NoCardFoundException
+	{
 		customer.removeCreditCard(cardNumber);
 	}
 
 	/**
 	 * Removes a client with matching id
 	 * 
-	 * @param id a <code>Long</code> that represents the Id
-	 * @throws NoKeyTokenFoundException if no match is found
+	 * @param id
+	 *            a <code>Long</code> that represents the Id
+	 * @throws NoKeyTokenFoundException
+	 *             if no match is found
 	 */
 	public void removeMatchedClient(Long id) throws NoKeyTokenFoundException
 	{
 		clientList.removeMatched(id);
 	}
-	
 
 	/**
 	 * Removes a customer with a matching id
 	 * 
-	 * @param id a <code>Long</code> that represents the Id
-	 * @throws NoKeyTokenFoundException if no match is found
+	 * @param id
+	 *            a <code>Long</code> that represents the Id
+	 * @throws NoKeyTokenFoundException
+	 *             if no match is found
 	 */
 	public void removeMatchedCustomer(Long id) throws NoKeyTokenFoundException
 	{
 		customerList.removeMatched(id);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see storage.Resetable#reset()
 	 */
 	@Override
@@ -429,7 +460,7 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 		playList.reset();
 		ticketList.reset();
 		instance();
-		
+
 	}
 
 	/*
@@ -451,36 +482,41 @@ public class Theater implements ReadResolveable<Theater>, Loadable, Savable, Res
 
 	public void sell(Collection<Ticket> tickets)
 	{
-		for(Ticket ticket : tickets)
+		for (Ticket ticket : tickets)
 		{
 			sell(ticket);
 		}
-		
+
 	}
 
 	public void sell(Ticket ticket)
 	{
 		ticketList.add(ticket);
-		
+
 		// client that performs the play gets half the price of the ticket
-		Dollar newTotal = ticket.getPlay().getOwner().getBalanceDue().addTogether(ticket.getPriceOfTicket().half());
+		Dollar newTotal = ticket.getPlay().getOwner().getBalanceDue()
+				.addTogether(ticket.getPriceOfTicket().half());
 		ticket.getPlay().getOwner().setBalanceDue(newTotal);
 	}
 
 	/**
 	 * Sells a ticket
-	 * @param ticket The ticket to be sold
+	 * 
+	 * @param ticket
+	 *            The ticket to be sold
 	 */
 	public void Sell(Ticket ticket)
 	{
 		ticketList.add(ticket);
-		increaseDebt(ticket.getPlay().getOwner(), ticket.getPriceOfTicket().half());
+		increaseDebt(ticket.getPlay().getOwner(),
+				ticket.getPriceOfTicket().half());
 	}
 
 	/**
 	 * Sets the name of the theater.
 	 * 
-	 * @param name a <code>String</code> representing the name of the theater
+	 * @param name
+	 *            a <code>String</code> representing the name of the theater
 	 */
 	public void setName(String name)
 	{

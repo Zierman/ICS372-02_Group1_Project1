@@ -6,14 +6,17 @@ import userInterface.UI;
 
 /**
  * The command to remove a client.
+ * 
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */
 public class RemoveClient implements Command<UI>
 {
 	private static RemoveClient singleton;
+
 	/**
 	 * Gets or creates an instance of the singleton
+	 * 
 	 * @return an instance of the singleton
 	 */
 	public static RemoveClient instance()
@@ -24,6 +27,7 @@ public class RemoveClient implements Command<UI>
 		}
 		return singleton;
 	}
+
 	private final String LABEL = "Remove a client from the client list.";
 	private final boolean IS_DATA_COMMAND = true;
 
@@ -31,7 +35,8 @@ public class RemoveClient implements Command<UI>
 
 	/**
 	 * 
-	 * Constructs a <code>RemoveClient</code> object used when creating a subtype singleton
+	 * Constructs a <code>RemoveClient</code> object used when creating a
+	 * subtype singleton
 	 * 
 	 * @throws Exception
 	 *             if used to try to create a base type
@@ -45,7 +50,8 @@ public class RemoveClient implements Command<UI>
 	}
 
 	/**
-	 * Constructs the <code>RemoveClient</code> object used to create the singleton.
+	 * Constructs the <code>RemoveClient</code> object used to create the
+	 * singleton.
 	 * 
 	 * @param i
 	 *            an integer with no significance other than giving it a
@@ -55,14 +61,16 @@ public class RemoveClient implements Command<UI>
 	{
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see uiCommands.Command#call(java.lang.Object)
 	 */
 	@Override
 	public void call(UI ui)
 	{
 		boolean done = false;
-		while(!done)
+		while (!done)
 		{
 			Theater theater = ui.getTheater();
 			Long key = Long.parseLong(UI.getInput("Enter client ID: "));
@@ -77,7 +85,7 @@ public class RemoveClient implements Command<UI>
 			}
 			done = !ui.yesCheck("Remove another client?");
 		}
-		
+
 	}
 
 	/*
@@ -102,7 +110,9 @@ public class RemoveClient implements Command<UI>
 		return instance().IS_DATA_COMMAND;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see uiCommands.Command#isTerminateionCommand()
 	 */
 	@Override
@@ -110,7 +120,6 @@ public class RemoveClient implements Command<UI>
 	{
 		return IS_TERMINATION_COMMAND;
 	}
-
 
 	/*
 	 * (non-Javadoc)

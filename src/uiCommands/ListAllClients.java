@@ -14,6 +14,7 @@ import userInterface.UI;
 public class ListAllClients implements Command<UI>
 {
 	private static ListAllClients singleton;
+
 	/**
 	 * Gets or creates an instance of the singleton
 	 * 
@@ -27,6 +28,7 @@ public class ListAllClients implements Command<UI>
 		}
 		return singleton;
 	}
+
 	private final String LABEL = "Show a list of all clients.";
 	private final boolean IS_DATA_COMMAND = true;
 
@@ -106,7 +108,9 @@ public class ListAllClients implements Command<UI>
 
 	}
 
-	/** TODO fill this out
+	/**
+	 * TODO fill this out
+	 * 
 	 * @param ui
 	 * @param output
 	 * @param client
@@ -115,7 +119,7 @@ public class ListAllClients implements Command<UI>
 	private String format(UI ui, Client client)
 	{
 		ui.getStandardFormat().visit(client);
-		 return ui.getStandardFormat().toString();
+		return ui.getStandardFormat().toString();
 	}
 
 	/*

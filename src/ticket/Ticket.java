@@ -87,6 +87,7 @@ public abstract class Ticket
 
 	/**
 	 * Gets the last serial number as a Long
+	 * 
 	 * @return the last serial number as a Long
 	 */
 	protected static Long getLastSerialNumberValue()
@@ -97,6 +98,7 @@ public abstract class Ticket
 
 	/**
 	 * Gets the next serial number as a Long
+	 * 
 	 * @return the next serial number as a Long
 	 */
 	protected static Long getNextSerialNumberValue()
@@ -107,7 +109,9 @@ public abstract class Ticket
 
 	/**
 	 * Sets the last serial number
-	 * @param serialNumberValue the value of the last serial number
+	 * 
+	 * @param serialNumberValue
+	 *            the value of the last serial number
 	 */
 	protected static void setLastSerialNumberValue(Long serialNumberValue)
 	{
@@ -116,9 +120,12 @@ public abstract class Ticket
 
 	/**
 	 * Sets the last serial number
-	 * @param serialNumberValue the value of the last serial number
+	 * 
+	 * @param serialNumberValue
+	 *            the value of the last serial number
 	 */
-	protected static void setLastSerialNumberValue(Ticket.SerialNumber serialNumberValue)
+	protected static void setLastSerialNumberValue(
+			Ticket.SerialNumber serialNumberValue)
 	{
 		SerialNumber.lastValue = serialNumberValue.getKeyValue();
 	}
@@ -139,15 +146,16 @@ public abstract class Ticket
 	protected final String typeOfTicket;
 
 	/**
-	 * The multiplier that is applied to the regular ticket price of the play to determine the starting price of this type of ticket.
+	 * The multiplier that is applied to the regular ticket price of the play to
+	 * determine the starting price of this type of ticket.
 	 */
 	protected double priceMultiplier;
-	
+
 	/**
 	 * The current price of this ticket
 	 */
 	protected Dollar priceOfTicket;
-	
+
 	/**
 	 * A optional message to be printed on a ticket.
 	 */
@@ -162,7 +170,6 @@ public abstract class Ticket
 	 * The owner of this ticket
 	 */
 	protected Customer owner;
-	
 
 	/**
 	 * true if the ticket has an extra message.
@@ -176,15 +183,25 @@ public abstract class Ticket
 
 	/**
 	 * Creates a new Ticket
-	 * @param dateOfShow the Date that the showing is on
-	 * @param play the play the ticket is to see
-	 * @param owner the customer who the ticket is being sold to
-	 * @param priceMultiplier the price multiplier assosiated with this type of ticket
-	 * @param typeOfTicket the string representation of the type of ticket
-	 * @param creditCard the credit card used to purchase the ticket
-	 * @throws Exception If the ticket could not be created
+	 * 
+	 * @param dateOfShow
+	 *            the Date that the showing is on
+	 * @param play
+	 *            the play the ticket is to see
+	 * @param owner
+	 *            the customer who the ticket is being sold to
+	 * @param priceMultiplier
+	 *            the price multiplier assosiated with this type of ticket
+	 * @param typeOfTicket
+	 *            the string representation of the type of ticket
+	 * @param creditCard
+	 *            the credit card used to purchase the ticket
+	 * @throws Exception
+	 *             If the ticket could not be created
 	 */
-	public Ticket(Date dateOfShow, Play play, Customer owner, Double priceMultiplier, String typeOfTicket, CreditCard creditCard) throws Exception
+	public Ticket(Date dateOfShow, Play play, Customer owner,
+			Double priceMultiplier, String typeOfTicket, CreditCard creditCard)
+			throws Exception
 	{
 		super();
 		setDateOfShow(dateOfShow);
@@ -196,21 +213,32 @@ public abstract class Ticket
 		setExtraMessage(null);
 		TicketIsValidAssertions();
 		this.creditCard = creditCard;
-		
+
 	}
 
 	/**
 	 * Creates a new Ticket
-	 * @param dateOfShow the Date that the showing is on
-	 * @param play the play the ticket is to see
-	 * @param owner the customer who the ticket is being sold to
-	 * @param priceMultiplier the price multiplier assosiated with this type of ticket
-	 * @param typeOfTicket the string representation of the type of ticket
-	 * @param extraMessage an extra message to be printed on the ticket
-	 * @param creditCard the credit card used to purchase the ticket
-	 * @throws Exception If the ticket could not be created
+	 * 
+	 * @param dateOfShow
+	 *            the Date that the showing is on
+	 * @param play
+	 *            the play the ticket is to see
+	 * @param owner
+	 *            the customer who the ticket is being sold to
+	 * @param priceMultiplier
+	 *            the price multiplier assosiated with this type of ticket
+	 * @param typeOfTicket
+	 *            the string representation of the type of ticket
+	 * @param extraMessage
+	 *            an extra message to be printed on the ticket
+	 * @param creditCard
+	 *            the credit card used to purchase the ticket
+	 * @throws Exception
+	 *             If the ticket could not be created
 	 */
-	public Ticket(Date dateOfShow, Play play, Customer owner, Double priceMultiplier, String typeOfTicket, String extraMessage, CreditCard creditCard) throws Exception
+	public Ticket(Date dateOfShow, Play play, Customer owner,
+			Double priceMultiplier, String typeOfTicket, String extraMessage,
+			CreditCard creditCard) throws Exception
 	{
 		super();
 		setDateOfShow(dateOfShow);
@@ -222,10 +250,12 @@ public abstract class Ticket
 		setExtraMessage(extraMessage);
 		TicketIsValidAssertions();
 		this.creditCard = creditCard;
-		
+
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see visitor.Visitable#accept(visitor.Visitor)
 	 */
 	@Override
@@ -235,15 +265,18 @@ public abstract class Ticket
 	}
 
 	/**
-	 * Checks to see if the date of the show is valid for the play. 
-	 * @return true if date of show is in the range (playStart, playEnd], otherwise returns false
+	 * Checks to see if the date of the show is valid for the play.
+	 * 
+	 * @return true if date of show is in the range (playStart, playEnd],
+	 *         otherwise returns false
 	 */
 	private boolean dateIsValid()
 	{
 		boolean result;
 		Date playStart = play.getStartDate();
 		Date playEnd = play.getEndDate();
-		if(dateOfShow.after(playStart) && (dateOfShow.before(playEnd)) || dateOfShow.equals(playEnd)) 
+		if (dateOfShow.after(playStart) && (dateOfShow.before(playEnd))
+				|| dateOfShow.equals(playEnd))
 		{
 			result = true;
 		}
@@ -255,15 +288,18 @@ public abstract class Ticket
 	}
 
 	/**
-	 * Checks to see if the date of the show is valid for the play. 
-	 * @return true if date of show is in the range (playStart, playEnd], otherwise returns false
+	 * Checks to see if the date of the show is valid for the play.
+	 * 
+	 * @return true if date of show is in the range (playStart, playEnd],
+	 *         otherwise returns false
 	 */
 	private boolean dateIsValid(Date dateOfShow)
 	{
 		boolean result;
 		Date playStart = play.getStartDate();
 		Date playEnd = play.getEndDate();
-		if(dateOfShow.after(playStart) && (dateOfShow.before(playEnd)) || dateOfShow.equals(playEnd)) 
+		if (dateOfShow.after(playStart) && (dateOfShow.before(playEnd))
+				|| dateOfShow.equals(playEnd))
 		{
 			result = true;
 		}
@@ -276,7 +312,9 @@ public abstract class Ticket
 
 	/**
 	 * Checks to see if the date is valid for the play
-	 * @param play the play that the ticket is for.
+	 * 
+	 * @param play
+	 *            the play that the ticket is for.
 	 * @return True if valid else false
 	 */
 	private boolean dateIsValid(Play play)
@@ -284,7 +322,8 @@ public abstract class Ticket
 		boolean result;
 		Date playStart = play.getStartDate();
 		Date playEnd = play.getEndDate();
-		if(dateOfShow.after(playStart) && (dateOfShow.before(playEnd)) || dateOfShow.equals(playEnd)) 
+		if (dateOfShow.after(playStart) && (dateOfShow.before(playEnd))
+				|| dateOfShow.equals(playEnd))
 		{
 			result = true;
 		}
@@ -297,13 +336,15 @@ public abstract class Ticket
 
 	/**
 	 * Checks to see that the date is valid and if not throws an exception
-	 * @throws DateIsValidAssertionException if the date is not valid.
+	 * 
+	 * @throws DateIsValidAssertionException
+	 *             if the date is not valid.
 	 */
 	private void dateIsValidAssertion() throws DateIsValidAssertionException
 	{
 		try
 		{
-			if(!dateIsValid())
+			if (!dateIsValid())
 			{
 				throw new DateIsValidAssertionException();
 			}
@@ -342,7 +383,9 @@ public abstract class Ticket
 		return extraMessage;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see keyToken.Keyed#getKey()
 	 */
 	@Override
@@ -383,13 +426,13 @@ public abstract class Ticket
 	{
 		return priceMultiplier;
 	}
-	
+
 	/**
 	 * Gets the price of the ticket
 	 * 
 	 * @return the priceOfTicket
 	 */
-	public Dollar getPriceOfTicket() 
+	public Dollar getPriceOfTicket()
 	{
 		// I set it up so that if the price is blank, it will calculate and set
 		// the current price to the initial price of that type of ticket, but if
@@ -398,12 +441,11 @@ public abstract class Ticket
 
 		if (priceOfTicket == null)
 		{
-			setPriceOfTicket(new Dollar(
-					play.getRegularTicketPrice().getAmount() * priceMultiplier));
+			setPriceOfTicket(new Dollar(play.getRegularTicketPrice().getAmount()
+					* priceMultiplier));
 		}
 		return priceOfTicket;
 	}
-	
 
 	/**
 	 * @return the serialNumber
@@ -412,8 +454,7 @@ public abstract class Ticket
 	{
 		return serialNumber;
 	}
-	
-	
+
 	/**
 	 * gets the type of ticket
 	 * 
@@ -423,7 +464,7 @@ public abstract class Ticket
 	{
 		return typeOfTicket;
 	}
-	
+
 	/**
 	 * @return the hasExtraMessage
 	 */
@@ -431,7 +472,7 @@ public abstract class Ticket
 	{
 		return hasExtraMessage;
 	}
-	
+
 	/**
 	 * Checks to see if the key value in the parameter is a match for this
 	 * item's key
@@ -458,7 +499,8 @@ public abstract class Ticket
 	}
 
 	/**
-	 * @param creditCard the creditCard to set
+	 * @param creditCard
+	 *            the creditCard to set
 	 */
 	public void setCreditCard(CreditCard creditCard)
 	{
@@ -470,16 +512,18 @@ public abstract class Ticket
 	 * 
 	 * @param dateOfShow
 	 *            the dateOfShow to set
-	 * @throws DateOutOfBoundsException if the date of the show is out of bounds of the play's showing period.
+	 * @throws DateOutOfBoundsException
+	 *             if the date of the show is out of bounds of the play's
+	 *             showing period.
 	 */
 	public void setDateOfShow(Date dateOfShow) throws DateOutOfBoundsException
 	{
-		if(play == null)
+		if (play == null)
 		{
 			// the play has not been set yet.
 			this.dateOfShow = dateOfShow;
 		}
-		else if(dateIsValid(dateOfShow))
+		else if (dateIsValid(dateOfShow))
 		{
 			this.dateOfShow = dateOfShow;
 		}
@@ -487,7 +531,7 @@ public abstract class Ticket
 		{
 			throw new DateOutOfBoundsException(dateOfShow);
 		}
-		
+
 	}
 
 	/**
@@ -498,7 +542,7 @@ public abstract class Ticket
 	 */
 	public void setExtraMessage(String extraMessage)
 	{
-		if(extraMessage != null && !extraMessage.isEmpty() )
+		if (extraMessage != null && !extraMessage.isEmpty())
 		{
 			hasExtraMessage = true;
 		}
@@ -510,7 +554,8 @@ public abstract class Ticket
 	}
 
 	/**
-	 * @param hasExtraMessage the hasExtraMessage to set
+	 * @param hasExtraMessage
+	 *            the hasExtraMessage to set
 	 */
 	public void setHasExtraMessage(boolean hasExtraMessage)
 	{
@@ -520,7 +565,8 @@ public abstract class Ticket
 	/**
 	 * Sets the key to a provided key. used in loading from storage.
 	 * 
-	 * @param keyToken the keyToken that should be used as this key token
+	 * @param keyToken
+	 *            the keyToken that should be used as this key token
 	 * @see keyToken.KeyToken#setKey(keyToken.KeyToken)
 	 */
 	public void setKey(KeyToken<Ticket, Long> keyToken)
@@ -551,24 +597,24 @@ public abstract class Ticket
 		this.owner = owner;
 	}
 
-
-
 	/**
 	 * Sets the play.
 	 * 
 	 * @param play
 	 *            the play to set
-	 * @throws DateOutOfBoundsException if the ticket is for a day outside the bounds of the play's showing period.
+	 * @throws DateOutOfBoundsException
+	 *             if the ticket is for a day outside the bounds of the play's
+	 *             showing period.
 	 */
 	public void setPlay(Play play) throws DateOutOfBoundsException
 	{
-	
-		if(dateOfShow == null)
+
+		if (dateOfShow == null)
 		{
 			// the dateOfShow has not been set yet.
 			this.play = play;
 		}
-		else if(dateIsValid(play))
+		else if (dateIsValid(play))
 		{
 			this.play = play;
 		}
@@ -578,10 +624,6 @@ public abstract class Ticket
 		}
 	}
 
-	
-
-
-	
 	/**
 	 * Sets the price multiplier
 	 * 
@@ -593,7 +635,6 @@ public abstract class Ticket
 		this.priceMultiplier = priceMultiplier;
 	}
 
-	
 	/**
 	 * Sets the price of the ticket
 	 * 
@@ -605,19 +646,20 @@ public abstract class Ticket
 		this.priceOfTicket = priceOfTicket;
 	}
 
-	
 	/**
-	 * @param serialNumber the serialNumber to set
+	 * @param serialNumber
+	 *            the serialNumber to set
 	 */
 	public void setSerialNumber(SerialNumber serialNumber)
 	{
 		this.serialNumber = serialNumber;
 	}
 
-	
 	/**
 	 * Checks if the ticket is valid and if not throws an exception
-	 * @throws Exception if the ticket is invalid
+	 * 
+	 * @throws Exception
+	 *             if the ticket is invalid
 	 */
 	private void TicketIsValidAssertions() throws Exception
 	{

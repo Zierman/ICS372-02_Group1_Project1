@@ -19,21 +19,24 @@ import storage.Savable;
 
 /**
  * A list that holds customers.
+ * 
  * @author Troy Novak [wh1617wd@metrostate.edu]
  *
  */
-public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Customer, Long>, Savable, Loadable, Resetable
+public class CustomerList implements ReadResolveable<CustomerList>,
+		KeyedList<Customer, Long>, Savable, Loadable, Resetable
 {
 	/**
 	 * the singleton <code>CustomerList</code>.
 	 */
 	private static CustomerList singleton;
-	
+
 	/**
-	 * The filename <code>String</code> that is used for the save and load functionality.
+	 * The filename <code>String</code> that is used for the save and load
+	 * functionality.
 	 */
 	protected static final String FILENAME = "customers.dat";
-	
+
 	/**
 	 * the <code>LinkedList</code> that holds all the customers
 	 */
@@ -41,6 +44,7 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 
 	/**
 	 * Creates and/or returns an instance of the CustomerList
+	 * 
 	 * @return the instance of CustomerList
 	 */
 	public static CustomerList instance()
@@ -54,7 +58,8 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 
 	/**
 	 * 
-	 * Constructs a <code>CustomerList</code> used when creating a subtype singleton
+	 * Constructs a <code>CustomerList</code> used when creating a subtype
+	 * singleton
 	 * 
 	 * @throws Exception
 	 *             if used to try to create a base type
@@ -78,7 +83,9 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 	{
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#add(java.lang.Object)
 	 */
 	@Override
@@ -87,7 +94,9 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		return instance().customers.add(customer);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#add(int, java.lang.Object)
 	 */
 	@Override
@@ -96,7 +105,9 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		instance().customers.add(index, customer);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#addAll(java.util.Collection)
 	 */
 	@Override
@@ -105,7 +116,9 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		return instance().customers.addAll(collection);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#addAll(int, java.util.Collection)
 	 */
 	@Override
@@ -114,7 +127,9 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		return instance().customers.addAll(index, collection);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see storage.Loadable#canLoad()
 	 */
 	@Override
@@ -124,7 +139,8 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		try
 		{
 			FileIO customerFile = FileIO.startRead(FILENAME);
-			LinkedList<Customer> tmp =  (LinkedList<Customer>) customerFile.read();
+			LinkedList<Customer> tmp = (LinkedList<Customer>) customerFile
+					.read();
 			customerFile.close();
 		}
 		catch (Exception e)
@@ -135,7 +151,9 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		return true;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#clear()
 	 */
 	@Override
@@ -144,7 +162,9 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		instance().customers.clear();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#contains(java.lang.Object)
 	 */
 	@Override
@@ -153,7 +173,9 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		return instance().customers.contains(object);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#containsAll(java.util.Collection)
 	 */
 	@Override
@@ -162,28 +184,32 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		return instance().customers.containsAll(collection);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see keyToken.KeyedList#findMatched(java.lang.Object)
 	 */
 	@Override
 	public Customer findMatched(Long key) throws NoKeyTokenFoundException
 	{
 		Customer customer = null;
-		for(Customer c :  instance())
+		for (Customer c : instance())
 		{
-			if(c.matches(key))
+			if (c.matches(key))
 			{
 				customer = c;
 			}
 		}
-		if(customer == null)
+		if (customer == null)
 		{
 			throw new NoKeyTokenFoundException();
 		}
 		return customer;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#get(int)
 	 */
 	@Override
@@ -192,7 +218,9 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		return instance().customers.get(index);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see keyToken.KeyedList#getLastKey()
 	 */
 	@Override
@@ -201,7 +229,9 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		return Customer.lastID;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#indexOf(java.lang.Object)
 	 */
 	@Override
@@ -210,7 +240,9 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		return instance().customers.indexOf(object);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#isEmpty()
 	 */
 	@Override
@@ -219,7 +251,9 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		return instance().customers.isEmpty();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#iterator()
 	 */
 	@Override
@@ -228,7 +262,9 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		return instance().customers.iterator();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#lastIndexOf(java.lang.Object)
 	 */
 	@Override
@@ -237,7 +273,9 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		return instance().customers.lastIndexOf(object);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#listIterator()
 	 */
 	@Override
@@ -246,7 +284,9 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		return instance().customers.listIterator();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#listIterator(int)
 	 */
 	@Override
@@ -255,7 +295,9 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		return instance().customers.listIterator(index);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see storage.Loadable#load()
 	 */
 	@Override
@@ -263,17 +305,19 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 	{
 		instance().clear(); // clears the list in case anything was in it
 		FileIO customerFile = FileIO.startRead(FILENAME);
-		LinkedList<Customer> tmp =  (LinkedList<Customer>) customerFile.read();
+		LinkedList<Customer> tmp = (LinkedList<Customer>) customerFile.read();
 		customerFile.close();
-		
-		for(Customer c : tmp)
+
+		for (Customer c : tmp)
 		{
 			instance().add(c);
 			c.getID().setKey(c.getID());
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see singleton.Singleton#readResolve()
 	 */
 	@Override
@@ -282,7 +326,9 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		return instance();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#remove(int)
 	 */
 	@Override
@@ -291,7 +337,9 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		return instance().customers.remove(index);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#remove(java.lang.Object)
 	 */
 	@Override
@@ -300,7 +348,9 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		return instance().customers.remove(object);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#removeAll(java.util.Collection)
 	 */
 	@Override
@@ -309,7 +359,9 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		return instance().customers.removeAll(collection);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see keyToken.KeyedList#removeMatched(java.lang.Object)
 	 */
 	@Override
@@ -318,9 +370,9 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 
 		boolean found = false;
 		int i = 0;
-		for(Customer c :  instance())
+		for (Customer c : instance())
 		{
-			if(c.matches(key))
+			if (c.matches(key))
 			{
 				instance().remove(i);
 				found = true;
@@ -328,15 +380,16 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 			}
 			i++;
 		}
-		if(!found)
+		if (!found)
 		{
 			throw new NoKeyTokenFoundException();
 		}
-		
-		
+
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see storage.Resetable#reset()
 	 */
 	@Override
@@ -345,11 +398,12 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		clear();
 		singleton = null;
 		instance();
-		
+
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#retainAll(java.util.Collection)
 	 */
 	@Override
@@ -358,21 +412,24 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		return instance().customers.retainAll(collection);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see storage.Savable#save()
 	 */
 	@Override
 	public void save() throws IOException
 	{
-	
-		
+
 		FileIO customerFile = FileIO.startWrite(FILENAME);
 		customerFile.write(new LinkedList<Customer>(instance()));
 		customerFile.close();
-		
+
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#set(int, java.lang.Object)
 	 */
 	@Override
@@ -381,17 +438,21 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		return instance().customers.set(index, customer);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see keyToken.KeyedList#setLastKey(java.lang.Object)
 	 */
 	@Override
 	public void setLastKey(Long key)
 	{
 		Customer.lastID = key;
-		
+
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#size()
 	 */
 	@Override
@@ -400,7 +461,9 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		return instance().customers.size();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#subList(int, int)
 	 */
 	@Override
@@ -409,7 +472,9 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		return instance().customers.subList(startIndex, endIndex);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#toArray()
 	 */
 	@Override
@@ -418,7 +483,9 @@ public class CustomerList implements ReadResolveable<CustomerList>, KeyedList<Cu
 		return instance().customers.toArray();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.List#toArray(java.lang.Object[])
 	 */
 	@Override

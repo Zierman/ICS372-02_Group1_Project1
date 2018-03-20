@@ -1,7 +1,9 @@
 package storage;
 
 /**
- * A method is required to be able to set the implementing object to an initial state
+ * A method is required to be able to set the implementing object to an initial
+ * state
+ * 
  * @author Joshua Zierman [py1422xs@metrostate.edu]
  *
  */

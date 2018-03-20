@@ -29,7 +29,9 @@ public interface Keyed<KeyType> extends Matchable<KeyType>
 
 	/**
 	 * Sets the key of the object
-	 * @param key to set the key
+	 * 
+	 * @param key
+	 *            to set the key
 	 */
 	public void setKey(KeyType key);
 }

@@ -26,6 +26,7 @@ import userInterface.UI;
 public class AddPlay implements Command<UI>
 {
 	private static AddPlay singleton;
+
 	/**
 	 * Gets or creates an instance of the singleton
 	 * 
@@ -39,6 +40,7 @@ public class AddPlay implements Command<UI>
 		}
 		return singleton;
 	}
+
 	private final String LABEL = "Add a new play";
 	private final boolean IS_DATA_COMMAND = true;
 
@@ -86,7 +88,7 @@ public class AddPlay implements Command<UI>
 		Dollar price = null;
 		String name = "";
 		int seatingCapacity = 0;
-		
+
 		while (!done)
 		{
 			try
@@ -95,20 +97,25 @@ public class AddPlay implements Command<UI>
 				name = UI.getInput("Enter play's name: ");
 				client = UI.getClientFromInputID();
 				price = UI.getDollarFromInput("Enter the regular ticket price");
-				seatingCapacity = UI.getIntFromInput("Enter the seating capacity", 1, null);
-				
+				seatingCapacity = UI
+						.getIntFromInput("Enter the seating capacity", 1, null);
+
 				// trys to set the dates from input
 				boolean doneWithDates = false;
 				while (!doneWithDates)
 				{
 					try
 					{
-						Date startDate = UI.getDateFromInput("Enter play's start date");
-						Date endDate = UI.getDateFromInput("Enter play's end date");;
+						Date startDate = UI
+								.getDateFromInput("Enter play's start date");
+						Date endDate = UI
+								.getDateFromInput("Enter play's end date");
+						;
 
 						// create new play object
-						play = new Play(name, client, startDate, endDate, price, seatingCapacity);
-						
+						play = new Play(name, client, startDate, endDate, price,
+								seatingCapacity);
+
 						doneWithDates = true;
 					}
 					catch (ParseException e)
@@ -124,13 +131,13 @@ public class AddPlay implements Command<UI>
 						// ask if user wants to continue and end if the user
 						// answers no
 						doneWithDates = !UI.tryAgainCheck();
-						
+
 						if (doneWithDates)
 						{
 							throw e;
 						}
 					}
-					catch(Exception e)
+					catch (Exception e)
 					{
 						// show error message
 						UI.outputError(e,
@@ -149,7 +156,7 @@ public class AddPlay implements Command<UI>
 
 				// add to list
 				theater.add(play);
-				
+
 				// show user that it was added
 				UI.outputSuccessMessage(name + " added to play list.");
 

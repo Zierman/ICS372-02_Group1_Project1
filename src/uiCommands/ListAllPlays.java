@@ -112,7 +112,9 @@ public class ListAllPlays implements Command<UI>
 
 	}
 
-	/**TODO finish doc
+	/**
+	 * TODO finish doc
+	 * 
 	 * @param ui
 	 * @param output
 	 * @param play

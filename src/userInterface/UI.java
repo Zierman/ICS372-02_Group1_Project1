@@ -84,9 +84,11 @@ public class UI implements ReadResolveable<UI>, Closeable
 	 * call.
 	 */
 	protected static final boolean DEBUG_MODE = false;
-	protected static final SimpleDateFormat DATE_FORMAT_MDY = new SimpleDateFormat("MM/dd/yyyy");
-	protected static final SimpleDateFormat DATE_FORMAT_CREDIT_CARD_EXP = new SimpleDateFormat("MM/yy");
-	
+	protected static final SimpleDateFormat DATE_FORMAT_MDY = new SimpleDateFormat(
+			"MM/dd/yyyy");
+	protected static final SimpleDateFormat DATE_FORMAT_CREDIT_CARD_EXP = new SimpleDateFormat(
+			"MM/yy");
+
 	/**
 	 * The first number in shown in the command list. All commands will be shown
 	 * regardless.
@@ -95,7 +97,7 @@ public class UI implements ReadResolveable<UI>, Closeable
 															// to start at 1
 															// instead of 0
 															// enter 1.
-	
+
 	public static String format(Date date)
 	{
 		return DATE_FORMAT_MDY.format(date);
@@ -308,12 +310,22 @@ public class UI implements ReadResolveable<UI>, Closeable
 
 	/**
 	 * Asks the user for an integer value
-	 * @param prompt the prompt to be shown to the user before the input is entered
-	 * @param low the lowest value that may be entered or null if there is no lower bound
-	 * @param high the lowest value that is too great to be in range or null if there is no upper bound
+	 * 
+	 * @param prompt
+	 *            the prompt to be shown to the user before the input is entered
+	 * @param low
+	 *            the lowest value that may be entered or null if there is no
+	 *            lower bound
+	 * @param high
+	 *            the lowest value that is too great to be in range or null if
+	 *            there is no upper bound
 	 * @return the input integer
-	 * @throws OutOfBoundsException if the user enters a value that is not in the range [low, high)
-	 * @throws NumberFormatException if the user enters a string that cannot be converted to an integer.
+	 * @throws OutOfBoundsException
+	 *             if the user enters a value that is not in the range [low,
+	 *             high)
+	 * @throws NumberFormatException
+	 *             if the user enters a string that cannot be converted to an
+	 *             integer.
 	 */
 	public static int getIntFromInput(String prompt, Integer low, Integer high)
 			throws OutOfBoundsException, NumberFormatException
@@ -624,9 +636,10 @@ public class UI implements ReadResolveable<UI>, Closeable
 	private boolean dataCommandWasUsed = false;
 
 	/**
-	 * A visitor that enables easy standard formating of all object types that need to be output in the "ListAll______" commands
+	 * A visitor that enables easy standard formating of all object types that
+	 * need to be output in the "ListAll______" commands
 	 */
-	 private StandardFormat standardFormat = new StandardFormat();
+	private StandardFormat standardFormat = new StandardFormat();
 
 	/**
 	 * Constructs a <code>UI</code> used when creating a subtype singleton
@@ -732,6 +745,5 @@ public class UI implements ReadResolveable<UI>, Closeable
 	{
 		instance().dataCommandWasUsed = true;
 	}
-	
-	
+
 }

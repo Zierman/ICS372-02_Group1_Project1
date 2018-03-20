@@ -12,6 +12,7 @@ import userInterface.UI;
 public class RetrieveData implements Command<UI>
 {
 	private static RetrieveData singleton;
+
 	/**
 	 * Gets or creates an instance of the singleton
 	 * 
@@ -25,6 +26,7 @@ public class RetrieveData implements Command<UI>
 		}
 		return singleton;
 	}
+
 	private final String LABEL = "Retrieve all data.";
 	private final boolean IS_DATA_COMMAND = true;
 

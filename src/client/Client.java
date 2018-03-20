@@ -6,7 +6,6 @@ import address.Address;
 import currency.Dollar;
 import keyToken.KeyToken;
 import keyToken.Keyed;
-import keyToken.Matchable;
 import phoneNumber.PhoneNumber;
 import visitor.Visitable;
 import visitor.Visitor;
@@ -194,7 +193,9 @@ public class Client implements Serializable, Keyed<Long>, Visitable
 		balanceDue = new Dollar(0.0);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see visitor.Visitable#accept(visitor.Visitor)
 	 */
 	@Override
@@ -235,7 +236,9 @@ public class Client implements Serializable, Keyed<Long>, Visitable
 		return id;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see keyToken.Keyed#getKey()
 	 */
 	@Override

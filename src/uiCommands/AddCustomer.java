@@ -11,8 +11,10 @@ import userInterface.UI;
 public class AddCustomer implements Command<UI>
 {
 	private static AddCustomer singleton;
+
 	/**
 	 * Gets or creates an instance of the singleton
+	 * 
 	 * @return an instance of the singleton
 	 */
 	public static AddCustomer instance()
@@ -23,6 +25,7 @@ public class AddCustomer implements Command<UI>
 		}
 		return singleton;
 	}
+
 	private final String LABEL = "Add a customer to the customer list.";
 	private final boolean IS_DATA_COMMAND = true;
 
@@ -30,7 +33,8 @@ public class AddCustomer implements Command<UI>
 
 	/**
 	 * 
-	 * Constructs a <code>AddCustomer</code> object used when creating a subtype singleton
+	 * Constructs a <code>AddCustomer</code> object used when creating a subtype
+	 * singleton
 	 * 
 	 * @throws Exception
 	 *             if used to try to create a base type
@@ -44,7 +48,8 @@ public class AddCustomer implements Command<UI>
 	}
 
 	/**
-	 * Constructs the <code>AddCustomer</code> object used to create the singleton.
+	 * Constructs the <code>AddCustomer</code> object used to create the
+	 * singleton.
 	 * 
 	 * @param i
 	 *            an integer with no significance other than giving it a
@@ -54,8 +59,11 @@ public class AddCustomer implements Command<UI>
 	{
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see uiCommands.Command#call(java.lang.Object)
+	 * 
 	 * @author Troy Novak [wh1617wd@metrostate.edu]
 	 */
 	@Override
@@ -63,37 +71,46 @@ public class AddCustomer implements Command<UI>
 	{
 		Theater theater = ui.getTheater();
 		boolean done = false;
-		while(!done){
-			try{
+		while (!done)
+		{
+			try
+			{
 				// get input needed to create a new Customer object
 				String customerName = UI.getInput("Enter Customer's Name: ");
-				String customerAddress = UI.getInput("Enter Customer's Address: ");
-				String customerPhoneNumber = UI.getInput("Enter Customer's Phone Number: ");
+				String customerAddress = UI
+						.getInput("Enter Customer's Address: ");
+				String customerPhoneNumber = UI
+						.getInput("Enter Customer's Phone Number: ");
 				String cardNumber = UI.getInput("Enter a Credit Card Number: ");
-				String cardExpiration = UI.getInput("Enter the Credit Card's Expiration Date: ");
-				
+				String cardExpiration = UI
+						.getInput("Enter the Credit Card's Expiration Date: ");
+
 				// create the new Customer object
-				Customer customer = new Customer(customerName, customerAddress, customerPhoneNumber, cardNumber, cardExpiration);
-				
+				Customer customer = new Customer(customerName, customerAddress,
+						customerPhoneNumber, cardNumber, cardExpiration);
+
 				// add the Customer object to the list
 				theater.add(customer);
-				
+
 				// output to user that the Customer was added
-				UI.outputSuccessMessage(customerName + " added to customer list.\n");
-				
+				UI.outputSuccessMessage(
+						customerName + " added to customer list.\n");
+
 				// ask the user if they would like to add another Customer
-				done = UI.getInput("Add another customer? (Y/N)").toLowerCase().startsWith("n");
-				
+				done = UI.getInput("Add another customer? (Y/N)").toLowerCase()
+						.startsWith("n");
+
 			}
-			catch(Exception e){
+			catch (Exception e)
+			{
 				// output error message to user
 				UI.outputError(e, "Unable to add customer.");
-				
+
 				// ask user if they would like to try again or end
 				done = !UI.tryAgainCheck();
 			}
 		}
-		
+
 	}
 
 	/*
@@ -118,7 +135,9 @@ public class AddCustomer implements Command<UI>
 		return instance().IS_DATA_COMMAND;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see uiCommands.Command#isTerminateionCommand()
 	 */
 	@Override
@@ -126,7 +145,6 @@ public class AddCustomer implements Command<UI>
 	{
 		return IS_TERMINATION_COMMAND;
 	}
-
 
 	/*
 	 * (non-Javadoc)
